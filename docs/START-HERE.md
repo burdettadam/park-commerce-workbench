@@ -113,7 +113,7 @@ With Node **24** and npm on the workstation, while the three APIs are running:
 
 ```bash
 cd storefront
-npm install
+npm ci
 npm run build
 npm run start
 ```
@@ -122,7 +122,7 @@ Visit `http://127.0.0.1:4200`. Paste **DEMO_GUEST_TOKEN** from `.env` into the p
 
 The application sends quotes through GraphQL and booking commands through REST. Tokens stay in memory. Only the schema version, authenticated subject, hold ID and retry key are retained in **sessionStorage**. After a reload, reenter the token and authenticate; the server reports whether the original hold is active, confirmed or expired. Checking status never confirms a purchase. A timeout preserves the original key. Form edits and new purchases stay blocked until the checkout is resolved and explicitly cleared. Closing the tab or clearing site data is not a supported recovery guarantee. See [the lifecycle and limits](project/checkout-recovery.md).
 
-The imported checkout now includes a reviewed `storefront/package-lock.json`; use `npm ci` for repeatable installs. The Angular build and type check were run on the import branch, while browser behavior remains unverified. The development proxy uses ports 8081/8082/8083 unless you set `CATALOG_PORT`, `PRICING_PORT`, and `BOOKING_PORT` in its process.
+The checkout includes `storefront/package-lock.json` for repeatable installs. The Angular build and type check have passed locally and in hosted CI; browser behavior remains unverified. The development proxy uses ports 8081/8082/8083 unless you set `CATALOG_PORT`, `PRICING_PORT`, and `BOOKING_PORT` in its process.
 
 ## 8. Start the Vaadin employee client
 

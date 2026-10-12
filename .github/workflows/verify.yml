@@ -49,6 +49,8 @@ jobs:
           cache-dependency-path: storefront/package-lock.json
       - run: npm ci
         working-directory: storefront
+      - run: npm audit --audit-level=high
+        working-directory: storefront
       - run: npm run test:types
         working-directory: storefront
       - run: npm run build
