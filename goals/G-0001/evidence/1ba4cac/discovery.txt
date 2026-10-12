@@ -1,0 +1,8 @@
+G-0001 native discovery observation — 12 October 2026
+
+Source candidate: 1ba4cace00f0d70ec596fccb85d84df0ba47ec00
+Client: codex-cli 0.162.0-alpha.17.2 on Windows
+
+`codex debug prompt-input "Inspect project instruction discovery only"` exited 0 from this worktree. Its fresh model-visible input list contained five messages and mentioned the project AGENTS.md plus work-goal and worktree-flow. The raw JSON remains local-only in ignored `.tmp/` because it includes other private instructions; SHA-256 E543CD7754326A961FF085BDDF590A9A8CB4F79876D9CC45AC07B0DA13650225.
+
+`codex doctor --summary --ascii` reported project configuration loaded and authentication configured. The debug prompt input did not contain the strings contract-reviewer or adversarial-reviewer. Both role files exist in `.codex/agents/`, but file presence and config loading do not establish that a fresh native session can invoke them. Fresh VS Code extension discovery and effective reviewer-role execution remain unverified. AC02 is open.

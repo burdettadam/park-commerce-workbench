@@ -54,16 +54,16 @@ Pending human decisions: name the permanent scope/architecture/repository/releas
 
 | Slice | Actual ref | Writer/role | Plan revision | Dependencies | Included revision | Work/evidence |
 | --- | --- | --- | --- | --- | --- | --- |
-| Bootstrap adoption and coordination | `goal/G-0001` | Current Codex session; one writer | `G-0001-active-1` | Proposal commit `0a68d87` and reviewed local initializer | Pending first checkpoint | [bootstrap progress](work/bootstrap.md) |
+| Bootstrap adoption and coordination | `goal/G-0001` | Current Codex session; one writer | `G-0001-active-1` | Proposal commit `0a68d87` and reviewed local initializer | `c8c46a2` plan, `1ba4cac` candidate | [bootstrap progress](work/bootstrap.md), [candidate observations](evidence/1ba4cac/adoption.md) |
 
-Source candidate S, base, toolchain/configuration digest and accepted active-plan commit: **not frozen**. Fixed-candidate acceptance checks have not run. Earlier CI and initializer observations are historical context until bound to this goal's candidate.
+Source candidate S: `1ba4cace00f0d70ec596fccb85d84df0ba47ec00`; base and accepted active-plan commit P: `c8c46a2824f558e33c9e640fe6fc82dfdf705399`. Git Bash/Git/Codex versions and the reviewed initializer executable digest are recorded in [adoption observations](evidence/1ba4cac/adoption.md). The worktree was clean when the fixed-candidate initializer and tooling checks ran. This later report commit E describes S; it does not claim to be S. Earlier CI observations remain historical context.
 
 ## Progress, review and recovery
 
-- **Current state:** active. Initial slice: establish this accepted work contract, then capture actual initializer version/preview/rerun evidence and adoption gaps.
-- **Verification/validation:** no criterion has passed for this goal. Native skill/role discovery in a fresh session and intended-use validation remain open.
+- **Current state:** active. The plan and initializer proposal have been checkpointed; AC01 has current-source command observations, and AC02/AC04 have partial observations. [Human adoption choices](evidence/1ba4cac/adoption.md#human-adoption-decisions-still-required-for-ac03) remain open.
+- **Verification/validation:** exact version output, real preview/rerun and 29 mock tooling checks were observed on S. Preview and apply both exited 3 because the preserved generic README proposal needs a disposition; this is not a command failure hidden as green. No criterion is marked passed yet. Fresh role invocation, project policy adoption, independent reviews and intended-use validation remain open.
 - **Reviews:** 0 of 2 current-candidate independent reviews; round 0 of at most 3. No reviewer finding or human approval is invented.
 - **Exceptions/debt:** no waiver. Unconfigured ownership, isolation, recovery and hosted approval are open decisions with Adam Burdett as proposed decision owner; reconsider before readiness.
 - **Release:** no version-producing merge approval requested; no merge M, distributable D, tag, deployment or health claim.
-- **Recovery:** this single work branch will be pushed as a checkpoint. Remote presence alone does not prove a clean restore or retrieval of indispensable artifacts. RPO/RTO remain unconfigured.
-- **Next action:** run AC01 on a fixed branch revision, retain sanitized raw output, then prepare AC03 decisions for human review while checking AC02/AC04 independently.
+- **Recovery:** this single work branch will be pushed as a checkpoint after the report commit. Remote presence alone does not prove a clean restore or retrieval of indispensable artifacts. RPO/RTO remain unconfigured.
+- **Next action:** obtain the project owner's AC03 adoption decisions, then verify reviewer-role discovery and current-candidate independent reviews. Recheck affected evidence after any accepted control change.
