@@ -78,6 +78,7 @@ e57b92c1b961d1bc2f11598cad628a08e136d93ab2c4c94a5809b3baa213b590  core/src/test/
 d411f9b27a8241cafcb0590f4974ba8cfbdfa95fd1a74e317124ec9836a5426d  docs/START-HERE.md
 03b2fb2d7d7a65cd145531cf25a5103586fd825c3de7227c8f3fab6e73bccf4c  docs/agent-handoff.md
 0f9fdd684095c6152f09c150e44cef76830c7c3f11b327657e3d99a41b014598  docs/agent-init/README.md
+b6b2151f807a0592a43f64ae00919714fdcd49d266ed77c77428eb6d78928185  docs/agent-init/proposals/0.2.0-bc235dc1d675/docs/agent-init/README.md
 cb320fb249e3b772767e200d158ddf17abe0c568729878178aefce74f7c761c2  docs/archive-source-manifest-2026-10-12.sha256
 5123b4c8ac10de2b7ae6eddd1768cd366061f89399ae3c4fa9f2e13e2c1b52e6  docs/archive-verification.md
 b0d1156ef5d798de46847cdbd49ce748aa1c0638b7bf802f1eb60a810302f51a  docs/bootstrap-verification-2026-10-12.md
