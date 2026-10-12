@@ -4,7 +4,7 @@
 
 **10 milestones · 30 goal proposals · 120 acceptance criteria · 90 goal-specific artifact requirements**
 
-Revision: `proposal-2`, updated 12 October 2026 for the public checkout. The owner has since activated [G-0001](../../goals/G-0001/README.md) from this proposal. See [the starting audit](CURRENT-STATE-2026-10-12.md). **No milestone is claimed complete.** Earlier source, local runs and hosted CI are reusable evidence only when their inputs and limits match an accepted goal; they do not establish independent reviews or human acceptance.
+Revision: `proposal-2`, updated 12 October 2026 for the public checkout. The owner has since advanced [G-0001](../../goals/G-0001/README.md) to ready and activated [G-0002](../../goals/G-0002/README.md) from their proposals. See [the starting audit](CURRENT-STATE-2026-10-12.md). **No milestone is claimed complete.** Earlier source, local runs and hosted CI are reusable evidence only when their inputs and limits match an accepted goal; they do not establish independent reviews or human acceptance.
 
 This roadmap serves two purposes: build a credible Java/Spring commerce portfolio and test whether the existing goal-driven workflow produces correct, reviewable, recoverable work. Each goal has a bounded outcome, prerequisites, exclusions, expected results and named evidence. Existing source is a candidate to validate or extend, not a reason to regenerate everything.
 
