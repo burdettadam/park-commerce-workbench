@@ -5,18 +5,22 @@ entries below using real product commands and evidence. `UNCONFIGURED` is a gap,
 not a command or success result. No product runtime or GitHub workflow is
 generated until its stack and required checks are known.
 
+For G-0001, Adam Burdett [adopted the first-local-goal choices](goals/G-0001/work/owner-decisions.md)
+on 12 October 2026. They govern this Windows/Git Bash pilot only. Wider product
+support and two-instance isolation need their own measured decisions.
+
 ## Reconstructable product recipe
 
 | Required information | Actual definition or maintained link |
 | --- | --- |
-| Supported OS, Git, Codex/extension versions | Source handoff documents Git Bash on Windows and Linux checks in [START HERE](docs/START-HERE.md); formal supported-version decision remains UNCONFIGURED. This import used Git for Windows 2.53.0 and Codex CLI 0.162.0-alpha.17.2. |
-| Toolchain/runtime/service/browser versions and native lockfiles | JDK 21, Maven 3.9+, Node 24, Docker Compose v2 are the source targets in root `README.md` and `pom.xml`. `storefront/package-lock.json` pins the npm tree for `npm ci`. Browser version remains UNCONFIGURED. |
+| Supported OS, Git, Codex/extension versions | G-0001 pilot: Windows with Git Bash, Git for Windows 2.53.0.windows.2 and Codex CLI 0.162.0-alpha.17.2. Source handoff also documents Linux checks in [START HERE](docs/START-HERE.md); broader support and IDE-extension version certification are future decisions. |
+| Toolchain/runtime/service/browser versions and native lockfiles | G-0001 pilot uses JDK 21, Maven 3.9+, Node 24 and Docker Compose v2 from root `README.md` and `pom.xml`. `storefront/package-lock.json` pins the npm tree for `npm ci`. Browser acceptance is outside this initializer/documentation goal; a UI goal must select and verify browser versions. |
 | Setup, fixture preparation, existing live-reload command | [START HERE](docs/START-HERE.md), `scripts/configure-local.sh`, `docker compose up --build -d --wait`, `node scripts/demo-http.mjs`; UI start commands are in START HERE. Create private `.env` locally; never commit it. |
-| Focused, contract, integration, browser and build commands | `scripts/test-core.sh --demo`, `node --test storefront/src/app/*.test.mjs`, `node --test scripts/pricing-contract.test.mjs`, `scripts/verify.sh --java`, `scripts/verify.sh --integration`, `node scripts/validate-roadmap.mjs`; see START HERE for UI builds. Actual browser acceptance remains UNCONFIGURED. |
+| Focused, contract, integration, browser and build commands | `scripts/test-core.sh --demo`, `node --test storefront/src/app/*.test.mjs`, `node --test scripts/pricing-contract.test.mjs`, `scripts/verify.sh --java`, `scripts/verify.sh --integration`, `node scripts/validate-roadmap.mjs`; see START HERE for UI builds. G-0001 runs initializer/version/discovery/tooling checks; browser acceptance belongs to a later UI goal. |
 | Working directory and materially relevant configuration | Run root scripts from the repository root; `storefront` npm commands from `storefront/`. `compose.yml`, `.env.example`, and `docs/project/security.md` describe local ports and synthetic credentials. |
-| Local/CI differences, production-build checks | `.github/workflows/verify.yml` runs Linux candidate checks; it has not been accepted as a release gate. The [import verification](docs/import-verification-2026-10-12.md) records the earlier Windows `.env` ACL failure; the later Git Bash tooling suite and six-service Windows Compose run passed on the fix branch. Browser acceptance remains open. |
-| Submodules, LFS, hooks, generated sources, private setup | No tracked LFS objects were observed at bootstrap. The private initializer source is not vendored; provenance is in [development bootstrap](docs/development-bootstrap.md). Submodule and hook policy remains UNCONFIGURED. |
-| Development credential names and secure recovery procedure | `.env.example` names development values; `scripts/configure-local.sh` creates private local `.env`. Secure recovery and account ownership remain UNCONFIGURED. |
+| Local/CI differences, production-build checks | `.github/workflows/verify.yml` runs Linux candidate checks; it is not a version release gate. The [import verification](docs/import-verification-2026-10-12.md) records the earlier Windows `.env` ACL failure; the later Git Bash tooling suite and six-service Windows Compose run passed on the fix branch. Browser acceptance belongs to a later UI goal. |
+| Submodules, LFS, hooks, generated sources, private setup | No tracked LFS objects were observed at bootstrap. G-0001 has no submodule or hook operation. The private initializer source is not vendored; provenance is in [development bootstrap](docs/development-bootstrap.md). A later goal using submodules or hooks must define and test its policy. |
+| Development credential names and secure recovery procedure | `.env.example` names development values; `scripts/configure-local.sh` creates private local `.env`. Adam Burdett owns account recovery; on a replacement host, restore GitHub/Codex access through their secure account flows and recreate local `.env` from the example. Do not commit credentials or assume Git clone restores machine settings. |
 
 Record material host/build-mode/locale/timezone assumptions. Demonstrate setup
 from clean inputs without correctness depending on an existing cache. Keep
@@ -41,10 +45,10 @@ isolated. A missing control is a product work item.
 
 | Execution bound | Demonstrated value and mechanism |
 | --- | --- |
-| Concurrent live instances / active-work limit | UNCONFIGURED |
-| Test workers and shared-state serialization | UNCONFIGURED |
-| Readiness and test time bounds | UNCONFIGURED |
-| Endpoint identity, process ownership, interrupted cleanup | UNCONFIGURED |
+| Concurrent live instances / active-work limit | G-0001: one owned local Compose project and one active mutable product instance. Two-instance independence remains G-0003 work. |
+| Test workers and shared-state serialization | G-0001: serialize tests sharing its local database or ports; use synthetic fixtures. No general product worker count is certified. |
+| Readiness and test time bounds | G-0001: retain actual exit status and duration for local checks; stop a hung run by its owned process/session handle. CI uses the existing workflow timeouts. No general readiness bound is certified. |
+| Endpoint identity, process ownership, interrupted cleanup | G-0001: use maintained local commands, record the Compose project/container IDs if started, and stop only owned resources after interruption. No two-instance endpoint isolation is claimed. |
 
 Start instances on demand. Share read-only dependencies/safe caches where valid.
 Stop only owned resources. Record ownership using existing session/process
@@ -110,12 +114,12 @@ separate scope decision. Production-data recovery is separate from development.
 
 | Commitment | Actual value, owner, and retained evidence |
 | --- | --- |
-| Maximum tolerable active-work loss / RPO | UNCONFIGURED |
-| Target time to resume useful development / RTO | UNCONFIGURED |
-| Retained work/checkpoint refs and required private guidance | Per-goal record |
-| Indispensable artifact retention duration, owner, digest, retrieval | UNCONFIGURED |
-| Access, machine setup and native GitHub/Codex settings recovery | UNCONFIGURED |
-| Restore-drill triggers and measured loss/resumption time | UNCONFIGURED |
+| Maximum tolerable active-work loss / RPO | G-0001 target: one hour while actively working. Push each meaningful increment, at handoff and at least hourly during active work; no unattended backup while inactive. Owner: Adam Burdett. |
+| Target time to resume useful development / RTO | G-0001 target: one working day with GitHub material and independently recoverable account access surviving. Owner: Adam Burdett. |
+| Retained work/checkpoint refs and required private guidance | Per-goal record; push required refs and sanitized evidence before a coordinating goal checkpoint. The private initializer executable is not required after adoption. |
+| Indispensable artifact retention duration, owner, digest, retrieval | Adam Burdett retains indispensable goal evidence through closure and 30 days afterward, with exact digest and sampled clean-clone retrieval before closure. Record any artifact that cannot be recovered from Git. |
+| Access, machine setup and native GitHub/Codex settings recovery | Adam Burdett owns secure GitHub/Codex account recovery. Reinstall documented toolchain, restore account settings through native facilities, and recreate `.env` locally from `.env.example`; never commit tokens. |
+| Restore-drill triggers and measured loss/resumption time | Drill after material setup, access or recovery changes and before the first version release. Record measured elapsed loss/resumption time in the applicable goal evidence; the G-0001 clean-clone retrieval is partial, not a measured full restore. |
 
 Checkpoint completed increments, pause/handoff, and before destructive cleanup.
 Publish each component/work branch and required artifact before its coordinating

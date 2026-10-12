@@ -6,7 +6,7 @@ Status: **active**. Milestone: M0. Dependencies: none; human bootstrap authority
 
 - **Authority to start:** the project owner's 12 October 2026 request to make an active goal from the first documented goal and achieve its proposed plan.
 - **Accepted source proposal:** [G-0001 proposal-2](../../docs/roadmap/goals/G-0001/README.md) at `0a68d87d2312a1dd40f47a6ef2cd0bdaa938b80c`. This active record is revision `G-0001-active-1`. The proposal remains historical navigation; changes to the four criteria require a recorded human scope decision.
-- **Governing baseline:** `AGENTS.md`, `PLANS.md`, `GOVERNANCE.md`, `DEVELOPMENT.md`, and `ARCHITECTURE.md` at the accepted proposal commit. `GOVERNANCE.md` still calls itself proposed. This bootstrap goal obtains its human adoption decision; opening the goal does not adopt that policy or grant release authority.
+- **Governing baseline:** `AGENTS.md`, `PLANS.md`, `GOVERNANCE.md`, `DEVELOPMENT.md`, and `ARCHITECTURE.md` at the accepted proposal commit. Adam Burdett subsequently [adopted the seven first-local-goal choices](work/owner-decisions.md) on 12 October 2026. Adoption does not grant agent release authority or waive candidate verification and review.
 - **Intended user and outcome:** a fresh Codex/editor session can discover the real `work-goal` and `worktree-flow` skills and reviewer roles, locate accepted project rules, and resume from Git without prior chat.
 - **Operating conditions:** public repository; Windows development host with Git for Windows Bash and the reviewed sibling `git-agent 0.2.0`; synthetic/local data only. Run actual commands from this worktree root. Scrub outputs before publishing to the public repository.
 - **Quality limits and exclusions:** preserve existing guidance and secrets; do not copy the private initializer executable, add an agent execution layer, change repository visibility, publish a version, deploy, or claim a clean restore from a local-only copy. Existing build/CI observations may inform this goal but do not replace its own current evidence.
@@ -48,7 +48,7 @@ The common [artifact contract](../../docs/roadmap/ARTIFACT-CONTRACT.md) and [unf
 
 Run an exact-version check, real initializer preview and safe rerun; inspect adopted/proposed/conflicting guidance; decide product commands, ownership, reviewers, isolation and recovery; verify native discovery and hosted controls. Reuse the generated guidance and existing product commands. A new dependency, public-contract change, policy relaxation or version-producing merge needs its own applicable authority. The accepted scope does not include product feature work.
 
-Pending human decisions: name the permanent scope/architecture/repository/release owners; adopt or revise the governing baseline and N/R policy; set local isolation and recovery commitments; identify an eligible human review path for version-producing merges on this personal GitHub repository. These are AC03 work, not exceptions already granted.
+The owner has decided the scope/architecture/repository/release authority, N/R policy, first-local-goal isolation and recovery targets, and the distinct-human requirement for a version-producing merge. A specific eligible human reviewer and an enforceable hosted approval route are still unresolved; that later merge is blocked until resolved. These open hosted controls are not exceptions to the adopted policy.
 
 ## Branch and candidate record
 
@@ -60,10 +60,10 @@ Source candidate S: `1ba4cace00f0d70ec596fccb85d84df0ba47ec00`; base and accepte
 
 ## Progress, review and recovery
 
-- **Current state:** active. The plan and initializer proposal have been checkpointed; AC01 has current-source command observations, and AC02/AC04 have partial observations. [Human adoption choices](evidence/1ba4cac/adoption.md#human-adoption-decisions-still-required-for-ac03) remain open.
+- **Current state:** active. The owner [adopted the first-local-goal choices](work/owner-decisions.md); their maintained-document implementation is being verified. AC01 has historical fixed-source command observations, and AC02/AC04 have partial observations.
 - **Verification/validation:** exact version output, real preview/rerun and 29 mock tooling checks were observed on S. Preview and apply both exited 3 because the preserved generic README proposal needs a disposition; this is not a command failure hidden as green. No criterion is marked passed yet. Fresh role invocation, project policy adoption, independent reviews and intended-use validation remain open.
 - **Reviews:** 0 of 2 current-candidate independent reviews; round 0 of at most 3. No reviewer finding or human approval is invented.
-- **Exceptions/debt:** no waiver. Unconfigured ownership, isolation, recovery and hosted approval are open decisions with Adam Burdett as proposed decision owner; reconsider before readiness.
+- **Exceptions/debt:** no waiver. Adam Burdett owns the adopted first-local-goal policy. Native custom-role selection and an eligible hosted human approval route remain open, with no false enforcement claim.
 - **Release:** no version-producing merge approval requested; no merge M, distributable D, tag, deployment or health claim.
-- **Recovery:** this single work branch will be pushed as a checkpoint after the report commit. Remote presence alone does not prove a clean restore or retrieval of indispensable artifacts. RPO/RTO remain unconfigured.
-- **Next action:** obtain the project owner's AC03 adoption decisions, then verify reviewer-role discovery and current-candidate independent reviews. Recheck affected evidence after any accepted control change.
+- **Recovery:** the branch is pushed through report commit `c19c1bd`; a clean public clone retrieved the 424-entry manifest with zero mismatches. The adopted one-hour active-work RPO and one-working-day RTO are targets, not measured achievements; private settings and current unpushed changes are not covered by that clone.
+- **Next action:** verify the adopted-document candidate with the actual initializer, update discovery evidence, obtain two independent current-candidate reviews, and resolve native custom-role selection before claiming readiness.

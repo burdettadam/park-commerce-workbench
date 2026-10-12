@@ -1,7 +1,7 @@
 # Development governance
 
-This is a proposed baseline until adopted by the project's authority. Replace
-unconfigured assignments with actual owners or links to established policy.
+Adam Burdett adopted this baseline for the first local goal on 12 October 2026
+through the [G-0001 owner decision](goals/G-0001/work/owner-decisions.md).
 Initializing files does not grant credentials, accept a plan, or activate GitHub
 rules. This document contains project policy, not Codex configuration keys.
 
@@ -9,10 +9,10 @@ rules. This document contains project policy, not Codex configuration keys.
 
 | Assignment | Current owner or established authority |
 | --- | --- |
-| Scope, acceptance criteria, and policy adoption | UNCONFIGURED |
-| Architecture and compatibility decisions | UNCONFIGURED |
-| Repository administration across goals | UNCONFIGURED |
-| Human release review and operational authority | UNCONFIGURED |
+| Scope, acceptance criteria, and policy adoption | Adam Burdett |
+| Architecture and compatibility decisions | Adam Burdett |
+| Repository administration across goals | Adam Burdett |
+| Human release and operational authority | Adam Burdett; every version-producing merge still needs a distinct eligible human reviewer before merge |
 
 Each goal assigns its integration owner; each branch has one writing owner.
 The repository administration owner coordinates shared configuration, destructive
@@ -56,7 +56,7 @@ criteria or the human release rule.
 
 ## Independent review policy
 
-Initial defaults upon adoption; change through the preceding baseline:
+Adopted defaults; change through the preceding baseline:
 
 | Setting | Policy |
 | --- | --- |

@@ -1,6 +1,6 @@
 # G-0001 owner decision packet
 
-Status: **proposed**, not adopted. Prepared 12 October 2026 from the accepted G-0001 contract and observed first-local-goal controls. Adam Burdett is the project owner named in the accepted proposal. Record his explicit accept/revise/reject decision for each group before changing project-wide policy or claiming AC03.
+Status: **adopted for G-0001** by Adam Burdett on 12 October 2026. Prepared from the accepted G-0001 contract and observed first-local-goal controls. The owner answered “Adopt all proposed decisions” to the seven-group decision request in the active goal conversation. This adopts the choices below; it does not prove implementation, native-role availability, GitHub enforcement, or release approval.
 
 ## First local goal choices
 
@@ -25,12 +25,12 @@ The CLI role-selector gap is an **AC02 blocker**. A supported native role invoca
 
 | Group | Owner decision/date | Approved revision or reason for rejection |
 | --- | --- | --- |
-| Product commands and support | Pending | |
-| Decision owners | Pending | |
-| Independent reviews | Pending | |
-| Local isolation and execution bounds | Pending | |
-| Development recovery | Pending | |
-| Release control | Pending | |
-| Initializer README proposal | Pending | |
+| Product commands and support | Adopted, 12 October 2026 | Scoped pilot configuration and maintained commands; broader support remains future work |
+| Decision owners | Adopted, 12 October 2026 | Adam Burdett holds the named project authority; branch writers remain per-goal |
+| Independent reviews | Adopted, 12 October 2026 | N=2, R=3 and assigned guides; actual native-role gap remains open |
+| Local isolation and execution bounds | Adopted, 12 October 2026 | One owned instance and serialized shared-state tests for G-0001; no two-instance claim |
+| Development recovery | Adopted, 12 October 2026 | One-hour active-work RPO target, one-working-day RTO target, retained evidence and restore triggers; targets still need measurement |
+| Release control | Adopted, 12 October 2026 | Distinct eligible human review before a later version-producing merge; current GitHub review rule does not enforce this |
+| Initializer README proposal | Adopted, 12 October 2026 | Keep product README and add the exact proposed digest line |
 
-No pending row grants an agent project-wide authority. Once decided, update the maintained policy documents, regenerate affected evidence, and obtain independent review under the accepted prior baseline.
+The adoption decision authorizes these project choices only. It does not grant an agent human-approval authority. The maintained policy documents and current evidence must be checked against this decision and independently reviewed under the preceding accepted baseline.

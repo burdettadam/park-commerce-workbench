@@ -1,6 +1,7 @@
 # Adopt the agent workflow
 
 Generated from `git agent init` template revision `0.2.0`.
+Template-set digest: `git-blob-sha1:bc235dc1d6759efc018e38c02cda10cc4ffae5a4`.
 
 This is a local scaffold for VS Code/Codex, two instruction-only skills, Git and
 GitHub. The initializer exits after proposing or creating files. Use the skills
