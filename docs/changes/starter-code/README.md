@@ -1,5 +1,7 @@
 # Starter-code candidate handoff
 
+> **Historical pre-publication handoff.** Statements below about an unpushed or private repository describe that earlier checkpoint. Use [current state](../../roadmap/CURRENT-STATE-2026-10-12.md) for the public checkout and first git-agent trial.
+
 This checkpoint adds real implementation and regression tests to the supplied roadmap. It remains local and not ready for release. Nothing has been pushed to GitHub; repository visibility was not changed or rechecked in this turn.
 
 ## Changes

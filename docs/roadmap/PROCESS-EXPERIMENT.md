@@ -10,7 +10,7 @@ This is a practical engineering evaluation, not a controlled study proving that 
 
 One **accepted goal candidate** is a unit of observation. One goal may have multiple candidates, branches, failed checks and review rounds. Preserve these distinctions. Count repeated executions as repeated runs, not distinct tests or new completed goals.
 
-Start with the small concrete G-0002 version-guard defect, then G-0003 handoff/branch exercise. Audit at least five different executed goals by G-0029: a bounded defect, framework/database integration, commerce behavior, artifact delivery, and platform recovery.
+Start with G-0002's controlled version-guard challenge, then G-0003's handoff/branch exercise. The guard was fixed before the public snapshot, so this is a mutation/regression exercise rather than a newly repaired defect. Audit at least five different executed goals by G-0029: a bounded defect or regression challenge, framework/database integration, commerce behavior, artifact delivery, and platform recovery.
 
 ## What to record while working
 
@@ -32,7 +32,7 @@ All ratios should disclose the numerator and denominator. A zero denominator is 
 
 | Exercise | Setup | Expected outcome | Goal |
 | --- | --- | --- | --- |
-| Known bounded defect | Original wrapper sees `0.2.01`, `10.2.0`, `0.2.0-rc.1` | Regression test fails before fix and passes after fix, while compatible behavior remains | G-0002 |
+| Known bounded regression challenge | Disposable copy uses the old substring guard with `0.2.01`, `10.2.0`, `0.2.0-rc.1` | Existing tests fail on the mutation and pass on the unchanged current guard; no new fix is claimed | G-0002 |
 | Scope expansion | A writer proposes an unrelated capability during a bounded goal | Proposal/decision retained; unauthorized implementation is not silently merged | G-0003 |
 | Stale review | Present report for candidate S1 after a relevant change creates S2 | Ready gate refuses stale coverage and requests applicable re-review | G-0003 / G-0029 |
 | Missing evidence | Omit a required log, criterion or indispensable artifact | Remains blocked/needs-decision; no empty-report pass | G-0003 / G-0029 |

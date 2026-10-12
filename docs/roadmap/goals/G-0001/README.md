@@ -2,7 +2,7 @@
 
 Milestone: M0
 Depends on: none
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: high
 
@@ -16,7 +16,7 @@ Intended-use validation owner: Adam Burdett, proposed; record the actual respons
 
 ## Scope
 
-Import the source into the intended local worktree; manually verify the exact reviewed initializer version; run preview/application; adopt product documents, real commands, reviewers, and recovery responsibilities.
+Use the existing public worktree and generated guidance; manually verify the exact reviewed initializer version; run a fresh preview and a non-destructive rerun; adopt product documents, real commands, reviewers, and recovery responsibilities. Record the earlier import and initial application as historical evidence, not new work.
 
 ## Exclusions
 
@@ -24,7 +24,7 @@ Do not reimplement git-agent, copy its private executable into this project, inv
 
 ## Preconditions and authority boundaries
 
-Bootstrap exception: the human reviews and adopts initial rules explicitly; an unadopted policy cannot approve itself. Manually inspect the exact version before using the known-weak wrapper.
+Bootstrap exception: the human reviews and adopts initial rules explicitly; an unadopted policy cannot approve itself. The current wrapper has an exact-version guard, but the reviewed executable must still be identified before it is used.
 
 Accept all prerequisite candidates and the exact relevant input revisions before execution. Unresolved access, budget, toolchain, source ownership or required success criteria are planning gaps, not successful checks. Keep the role-aligned technology stack; a material replacement needs a recorded decision.
 
@@ -39,7 +39,7 @@ Expected outcomes below are proposed contractual tests, not observations. Accept
 
 ### G-0001-AC01
 
-Record the exact output of git agent --version and verify the reviewed version is exactly 0.2.0 before invoking the current wrapper; reject look-alike/prerelease versions. Run preview and application against this worktree root, retaining actual exit codes and proposed adoption gaps.
+Record the exact output of git agent --version and verify the reviewed version is exactly 0.2.0 before invoking the current wrapper; reject look-alike/prerelease versions. Run a fresh preview and safe rerun against this worktree root, retaining exit codes and adoption gaps. Link the historical first application separately.
 
 Required evidence: `G-0001-A01` plus the relevant raw check, source S and independent review coverage.
 
@@ -57,7 +57,7 @@ Required evidence: `G-0001-A01` plus the relevant raw check, source S and indepe
 
 ### G-0001-AC04
 
-The accepted PLANS guidance points to this roadmap and one canonical active-goal location. No .env, private executable or secret enters tracked files, and every remote write remains blocked until current privacy is verified.
+The accepted PLANS guidance points to this roadmap and one canonical active-goal location. No .env, private executable or secret enters tracked files. Record the actual public repository, protected-branch, CI, and human-review controls before claiming remote recovery or release safety.
 
 Required evidence: `G-0001-A03` plus the relevant raw check, source S and independent review coverage.
 
@@ -76,8 +76,8 @@ The common manifest, environment, raw checks, independent contract/adversarial r
 ## Validation commands and new tests
 
 - `git agent --version` — existing. Reviewed private initializer must already be installed; manually verify exact 0.2.0.
-- `bash scripts/init-agent.sh --preview` — existing. Requires the intended Git worktree and exact reviewed initializer; wrapper defect G-0002 remains until repaired.
-- `bash scripts/init-agent.sh --apply` — existing. Writes actual guidance locally; only after manual exact-version and preview review.
+- `bash scripts/init-agent.sh --preview` — existing. Requires the intended Git worktree and exact reviewed initializer; the current exact-version guard has mock coverage.
+- `bash scripts/init-agent.sh --apply` — existing. Rerun is allowed after preview review; inspect the file plan and preserve any proposed/conflicting guidance.
 - `bash scripts/test-tooling.sh` — existing. Disposable fixtures/mock initializer only; not real upstream adoption.
 
 Existing commands establish only their stated coverage. Extend tests for the new criteria; a successful baseline command does not automatically prove a new goal. Resolve unspecified goal-specific commands during plan acceptance and retain the actual executed commands, working directory and inputs.

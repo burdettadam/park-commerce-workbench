@@ -2,7 +2,7 @@
 
 Milestone: M1
 Depends on: G-0004
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: high
 
@@ -39,7 +39,7 @@ Expected outcomes below are proposed contractual tests, not observations. Accept
 
 ### G-0005-AC01
 
-Execute all currently defined database integration tests (the foundation contains 12). Record selected/executed/skipped counts per suite and fail the gate if required suites are empty or skipped.
+Execute all database integration tests selected at the accepted source revision. Record selected/executed/skipped counts per suite and fail the gate if required suites are empty or skipped; historical foundation counts are not the current expected count.
 
 Required evidence: `G-0005-A01` plus the relevant raw check, source S and independent review coverage.
 

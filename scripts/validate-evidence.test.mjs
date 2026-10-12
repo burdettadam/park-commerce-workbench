@@ -48,7 +48,17 @@ rejects('required skipped tests are rejected',f=>Object.assign(f.manifest.checks
 rejects('open valid review blockers prevent structural readiness',f=>f.manifest.reviews[1].open_blockers=1,/open blockers/);
 rejects('same reviewer session cannot be counted twice',f=>f.manifest.reviews[1].session_id=f.manifest.reviews[0].session_id,/distinct independent sessions/);
 rejects('artifact path traversal is refused',f=>f.art('G-0002-A01').path='../outside.txt',/Missing\/unsafe artifact/);
-rejects('symlinked artifacts are refused',f=>{const a=f.art('G-0002-A01');fs.unlinkSync(path.join(f.directory,a.path));fs.symlinkSync(path.join(f.directory,f.art('ENVIRONMENT').path),path.join(f.directory,a.path));},/Symlink refused/);
+test('symlinked artifacts are refused',t=>withFixture(f=>{
+  const a=f.art('G-0002-A01');
+  fs.unlinkSync(path.join(f.directory,a.path));
+  try { fs.symlinkSync(path.join(f.directory,f.art('ENVIRONMENT').path),path.join(f.directory,a.path)); }
+  catch(e) {
+    if (['EPERM','EACCES','ENOTSUP'].includes(e.code)) { t.skip(`Host does not permit symlink creation: ${e.code}`); return; }
+    throw e;
+  }
+  const r=validateEvidence(f.save());
+  assert.ok(r.errors.some(x=>/Symlink refused/.test(x)),JSON.stringify(r.errors));
+}));
 rejects('dirty source is not identified as a frozen candidate',f=>f.manifest.candidate.working_tree_clean=false,/not declared clean/);
 rejects('missing intended-use validation is not a pass',f=>f.manifest.intended_use_validation.decision='not_run',/intended-use validation/);
 rejects('placeholder Git identity is rejected',f=>f.manifest.candidate.source_commit='NOT_A_COMMIT',/Git identities/);

@@ -1,8 +1,8 @@
-# G-0002 — Repair exact-version matching through one real red/green goal
+# G-0002 — Validate the existing version guard with a red/green challenge
 
 Milestone: M0
 Depends on: G-0001
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: medium
 
@@ -16,7 +16,7 @@ Intended-use validation owner: Adam Burdett, proposed; record the actual respons
 
 ## Scope
 
-Fix the concrete substring-version defect in scripts/init-agent.sh and extend the existing mock-based tooling tests. Use this bounded change to exercise a complete goal loop.
+Validate the already repaired exact-version guard in scripts/init-agent.sh. Use a disposable, deliberately weakened copy to demonstrate that the regression test catches the old defect, then verify the unchanged current guard. Make a product change only if the exercise reveals a real defect. Use this bounded exercise to test the goal loop without claiming a second repair.
 
 ## Exclusions
 
@@ -30,8 +30,8 @@ Accept all prerequisite candidates and the exact relevant input revisions before
 
 ## Deliverable code, configuration or documents
 
-- scripts/init-agent.sh exact-version guard.
-- scripts/test-tooling.sh targeted version-output cases.
+- A retained red/green challenge tied to exact source revisions and a disposable mutation.
+- Any focused regression fix and tests required by a newly observed defect; otherwise an evidence-only candidate.
 
 ## Acceptance criteria
 
@@ -39,25 +39,25 @@ Expected outcomes below are proposed contractual tests, not observations. Accept
 
 ### G-0002-AC01
 
-Before the fix, independently reproduce rejection failures for 0.2.01, 10.2.0 and 0.2.0-rc.1 in disposable worktrees with a mock command. Preserve the expected-failing run and its exit status; the planning discovery is context, not a substitute for the goal run.
+In a disposable worktree, commit a deliberately restored old substring check on a local-only challenge branch and show that the existing mock tests fail for 0.2.01, 10.2.0 and 0.2.0-rc.1. Retain that exact challenge commit, failing assertions and exit status. Archived pre-fix evidence is historical context, not a new goal run or a new product defect.
 
 Required evidence: `G-0002-A01` plus the relevant raw check, source S and independent review coverage.
 
 ### G-0002-AC02
 
-After the fix, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked.
+On the unchanged current source, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked. Also run a preview with the reviewed real initializer on the current worktree; distinguish that observation from mock coverage.
 
 Required evidence: `G-0002-A02` plus the relevant raw check, source S and independent review coverage.
 
 ### G-0002-AC03
 
-All existing tooling checks remain selected and passing, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Add explicit assertions instead of only updating expected snapshots.
+All existing tooling checks remain selected and passing on the intended host, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Record any host-specific skipped check explicitly; do not replace assertions with snapshots.
 
 Required evidence: `G-0002-A02` plus the relevant raw check, source S and independent review coverage.
 
 ### G-0002-AC04
 
-Obtain independent contract and adversarial reviews of fixed candidate S; a fix or relevant test change invalidates stale review coverage. Record the diff and actual acceptance separately; no reviewer, tag or approval is fabricated.
+Obtain independent contract and adversarial reviews of fixed candidate S, including the challenge method and any actual product diff. A relevant source or test change invalidates stale review coverage. Record actual acceptance separately; no reviewer, tag or approval is fabricated.
 
 Required evidence: `G-0002-A03` plus the relevant raw check, source S and independent review coverage.
 
@@ -67,15 +67,16 @@ Relative to the eventual candidate evidence directory, for example `goals/G-0002
 
 | ID | File | Purpose |
 | --- | --- | --- |
-| `G-0002-A01` | `red-before.txt` | Actual defect reproduction with the expected failing assertion. |
-| `G-0002-A02` | `green-after.txt` | Post-fix regression matrix and retained tooling suite. |
-| `G-0002-A03` | `scope-and-review.md` | Bounded source diff, candidate identity and reviewer dispositions. |
+| `G-0002-A01` | `red-before.txt` | Disposable mutation, observed failing assertions and historical-source distinction. |
+| `G-0002-A02` | `green-after.txt` | Current-source regression matrix, real initializer preview and retained tooling suite. |
+| `G-0002-A03` | `scope-and-review.md` | Actual product diff or explicit evidence-only result, candidate identity and reviewer dispositions. |
 
 The common manifest, environment, raw checks, independent contract/adversarial review reports, intended-use validation, decision and handoff are also mandatory. Start from [the unfilled manifest template](manifest.template.json) and [artifact contract](../../ARTIFACT-CONTRACT.md). The unfilled template deliberately fails the readiness checker.
 
 ## Validation commands and new tests
 
 - `bash scripts/test-tooling.sh` — existing. Disposable fixtures/mock initializer only; not real upstream adoption.
+- `bash scripts/init-agent.sh --preview` — existing. Requires reviewed `git-agent 0.2.0` on Git Bash `PATH`; records real initializer observation without writing guidance.
 - `bash scripts/test-core.sh --demo` — existing. JDK 21 and Bash; in-memory domain adapters only.
 - `node scripts/validate-roadmap.mjs` — added_by_this_delivery. Read-only structural checks; no execution or adoption of goals.
 

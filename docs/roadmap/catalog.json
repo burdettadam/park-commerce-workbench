@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Static proposed roadmap index, not a native Codex schema, task database or execution state. Goal scope is in the linked proposal; after activation its accepted copy is authoritative.",
-  "roadmap_revision": "proposal-1",
+  "roadmap_revision": "proposal-2",
   "baseline_zip_sha256": "97a9c94e9b3c1289992d6f870d3f8e43115a5ced22cdbeec3a14be7f33975a29",
   "milestones": [
     {
@@ -114,7 +114,7 @@
       "criteria": [
         {
           "id": "G-0001-AC01",
-          "text": "Record the exact output of git agent --version and verify the reviewed version is exactly 0.2.0 before invoking the current wrapper; reject look-alike/prerelease versions. Run preview and application against this worktree root, retaining actual exit codes and proposed adoption gaps.",
+          "text": "Record the exact output of git agent --version and verify the reviewed version is exactly 0.2.0 before invoking the current wrapper; reject look-alike/prerelease versions. Run a fresh preview and safe rerun against this worktree root, retaining exit codes and adoption gaps. Link the historical first application separately.",
           "artifact_id": "G-0001-A01"
         },
         {
@@ -129,7 +129,7 @@
         },
         {
           "id": "G-0001-AC04",
-          "text": "The accepted PLANS guidance points to this roadmap and one canonical active-goal location. No .env, private executable or secret enters tracked files, and every remote write remains blocked until current privacy is verified.",
+          "text": "The accepted PLANS guidance points to this roadmap and one canonical active-goal location. No .env, private executable or secret enters tracked files. Record the actual public repository, protected-branch, CI, and human-review controls before claiming remote recovery or release safety.",
           "artifact_id": "G-0001-A03"
         }
       ],
@@ -166,29 +166,29 @@
     {
       "id": "G-0002",
       "milestone": "M0",
-      "title": "Repair exact-version matching through one real red/green goal",
+      "title": "Validate the existing version guard with a red/green challenge",
       "depends_on": [
         "G-0001"
       ],
       "criteria": [
         {
           "id": "G-0002-AC01",
-          "text": "Before the fix, independently reproduce rejection failures for 0.2.01, 10.2.0 and 0.2.0-rc.1 in disposable worktrees with a mock command. Preserve the expected-failing run and its exit status; the planning discovery is context, not a substitute for the goal run.",
+          "text": "In a disposable worktree, commit a deliberately restored old substring check on a local-only challenge branch and show that the existing mock tests fail for 0.2.01, 10.2.0 and 0.2.0-rc.1. Retain that exact challenge commit, failing assertions and exit status. Archived pre-fix evidence is historical context, not a new goal run or a new product defect.",
           "artifact_id": "G-0002-A01"
         },
         {
           "id": "G-0002-AC02",
-          "text": "After the fix, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked.",
+          "text": "On the unchanged current source, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked. Also run a preview with the reviewed real initializer on the current worktree; distinguish that observation from mock coverage.",
           "artifact_id": "G-0002-A02"
         },
         {
           "id": "G-0002-AC03",
-          "text": "All existing tooling checks remain selected and passing, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Add explicit assertions instead of only updating expected snapshots.",
+          "text": "All existing tooling checks remain selected and passing on the intended host, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Record any host-specific skipped check explicitly; do not replace assertions with snapshots.",
           "artifact_id": "G-0002-A02"
         },
         {
           "id": "G-0002-AC04",
-          "text": "Obtain independent contract and adversarial reviews of fixed candidate S; a fix or relevant test change invalidates stale review coverage. Record the diff and actual acceptance separately; no reviewer, tag or approval is fabricated.",
+          "text": "Obtain independent contract and adversarial reviews of fixed candidate S, including the challenge method and any actual product diff. A relevant source or test change invalidates stale review coverage. Record actual acceptance separately; no reviewer, tag or approval is fabricated.",
           "artifact_id": "G-0002-A03"
         }
       ],
@@ -212,7 +212,8 @@
       "commands": [
         "TOOLING",
         "CORE",
-        "ROADMAP_LINT"
+        "ROADMAP_LINT",
+        "INIT_PREVIEW"
       ],
       "requirements": [
         "TOOL-01",
@@ -294,7 +295,7 @@
         },
         {
           "id": "G-0004-AC02",
-          "text": "Generate and review real Angular/Vaadin frontend lockfiles. A second clean dependency installation/build uses retained locks and succeeds without an unexplained lockfile change.",
+          "text": "Review the existing Angular lockfile and resolve the Vaadin frontend lock strategy from actual generated inputs. A second clean dependency installation/build uses retained inputs and succeeds without an unexplained lockfile change.",
           "artifact_id": "G-0004-A02"
         },
         {
@@ -328,7 +329,7 @@
       "commands": [
         "JAVA",
         "UI_BUILD",
-        "ANGULAR_FIRST_BUILD",
+        "ANGULAR_LOCKED_BUILD",
         "STATE_TESTS",
         "CORE",
         "TOOLING"
@@ -349,7 +350,7 @@
       "criteria": [
         {
           "id": "G-0005-AC01",
-          "text": "Execute all currently defined database integration tests (the foundation contains 12). Record selected/executed/skipped counts per suite and fail the gate if required suites are empty or skipped.",
+          "text": "Execute all database integration tests selected at the accepted source revision. Record selected/executed/skipped counts per suite and fail the gate if required suites are empty or skipped; historical foundation counts are not the current expected count.",
           "artifact_id": "G-0005-A01"
         },
         {
@@ -411,7 +412,7 @@
       "criteria": [
         {
           "id": "G-0006-AC01",
-          "text": "Compose services become healthy and all existing live HTTP assertions execute (13 in the foundation), including role checks, ownership, price-version preservation and competing holds.",
+          "text": "Compose services become healthy and all live HTTP assertions selected at the accepted source revision execute, including role checks, ownership, price-version preservation and competing holds. Record the actual count rather than using the foundation count.",
           "artifact_id": "G-0006-A01"
         },
         {
@@ -1265,7 +1266,7 @@
         },
         {
           "id": "G-0020-AC03",
-          "text": "Credentials are least-privilege and untrusted changes cannot access publishing/deployment secrets; record actual private-repository and applicable branch/environment control observations.",
+          "text": "Credentials are least-privilege and untrusted changes cannot access publishing/deployment secrets; record the actual public-repository, protected-branch, workflow-permission and applicable environment-control observations.",
           "artifact_id": "G-0020-A03"
         },
         {
@@ -1884,20 +1885,20 @@
     {
       "id": "INIT_VERSION",
       "command": "git agent --version",
-      "availability": "existing",
-      "preconditions": "Reviewed private initializer must already be installed; manually verify exact 0.2.0."
+      "availability": "existing_after_path_setup",
+      "preconditions": "Reviewed local initializer must be discoverable in Git Bash; manually verify exact 0.2.0."
     },
     {
       "id": "INIT_PREVIEW",
       "command": "bash scripts/init-agent.sh --preview",
       "availability": "existing",
-      "preconditions": "Requires the intended Git worktree and exact reviewed initializer; wrapper defect G-0002 remains until repaired."
+      "preconditions": "Requires the intended Git worktree and exact reviewed initializer; current guard rejects look-alike versions."
     },
     {
       "id": "INIT_APPLY",
       "command": "bash scripts/init-agent.sh --apply",
       "availability": "existing",
-      "preconditions": "Writes actual guidance locally; only after manual exact-version and preview review."
+      "preconditions": "Reruns the initializer after preview review; inspect proposals/conflicts before adoption."
     },
     {
       "id": "CORE",
@@ -1974,14 +1975,14 @@
     {
       "id": "ANGULAR_FIRST_BUILD",
       "command": "(cd storefront && npm install && npm run build)",
-      "availability": "existing",
-      "preconditions": "Node 24 baseline; generate/review real lockfile; package scripts need normal dependency trust review."
+      "availability": "historical_bootstrap",
+      "preconditions": "The committed lockfile now exists; use npm ci for clean reproduction."
     },
     {
       "id": "ANGULAR_LOCKED_BUILD",
       "command": "(cd storefront && npm ci && npm run build)",
-      "availability": "planned_until_G-0004",
-      "preconditions": "Use only after the real lockfile exists and is reviewed; not executed by this roadmap."
+      "availability": "existing",
+      "preconditions": "Node 24 baseline; committed lockfile and hosted CI have exercised this command."
     },
     {
       "id": "ANGULAR_RUN",

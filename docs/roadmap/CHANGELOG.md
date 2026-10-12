@@ -1,4 +1,10 @@
-# Planning change record — proposal-1
+# Planning change record
+
+## Proposal-2 — 12 October 2026 public-checkout audit
+
+Reconciled the first-trial plan with the public checkout: the generated guidance, exact-version guard, Angular lockfile, Windows local stack and hosted CI already exist. Reframed G-0002 as a disposable red/green regression challenge; updated G-0001 and the affected M1/G-0020 criteria, catalog and unfilled templates. Replaced the stale private-ZIP start instructions and documented the remaining adoption, native discovery, Vaadin/browser, review and recovery gaps in [current state](CURRENT-STATE-2026-10-12.md). These corrections do not accept a goal or claim new product evidence.
+
+## Proposal-1 — historical planning package
 
 ## Added
 

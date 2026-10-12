@@ -36,7 +36,7 @@
     {
       "id": "G-0005-AC01",
       "result": "not_run",
-      "independent_expected_result": "Execute all currently defined database integration tests (the foundation contains 12). Record selected/executed/skipped counts per suite and fail the gate if required suites are empty or skipped.",
+      "independent_expected_result": "Execute all database integration tests selected at the accepted source revision. Record selected/executed/skipped counts per suite and fail the gate if required suites are empty or skipped; historical foundation counts are not the current expected count.",
       "check_ids": [],
       "artifact_ids": [
         "G-0005-A01"

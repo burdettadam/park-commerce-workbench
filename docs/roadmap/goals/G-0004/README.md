@@ -2,7 +2,7 @@
 
 Milestone: M1
 Depends on: G-0003
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: medium
 
@@ -16,7 +16,7 @@ Intended-use validation owner: Adam Burdett, proposed; record the actual respons
 
 ## Scope
 
-Resolve the candidate dependency/toolchain baseline; repair compilation issues; generate real frontend locks; retain the dependency tree and build commands.
+Recheck the existing dependency/toolchain baseline from clean inputs; repair remaining compilation issues, including the optional Vaadin path; retain dependency trees, lockfile provenance and build commands.
 
 ## Exclusions
 
@@ -45,7 +45,7 @@ Required evidence: `G-0004-A01` plus the relevant raw check, source S and indepe
 
 ### G-0004-AC02
 
-Generate and review real Angular/Vaadin frontend lockfiles. A second clean dependency installation/build uses retained locks and succeeds without an unexplained lockfile change.
+Review the existing Angular lockfile and resolve the Vaadin frontend lock strategy from actual generated inputs. A second clean dependency installation/build uses retained inputs and succeeds without an unexplained lockfile change.
 
 Required evidence: `G-0004-A02` plus the relevant raw check, source S and independent review coverage.
 
@@ -77,7 +77,7 @@ The common manifest, environment, raw checks, independent contract/adversarial r
 
 - `bash scripts/verify.sh --java` — existing. Maven/JDK/repository access required; does NOT execute *IT suites.
 - `mvn -B -ntp -Pui -pl admin-console -am verify` — proposed_validation. Uses existing Maven profile; must be executed and repaired in G-0004. Do not skip required tests.
-- `(cd storefront && npm install && npm run build)` — existing. Node 24 baseline; generate/review real lockfile; package scripts need normal dependency trust review.
+- `(cd storefront && npm ci && npm run build)` — existing. Node 24 baseline and committed lockfile; package scripts need normal dependency trust review.
 - `node --test storefront/src/app/checkout-state.test.mjs` — existing. Existing dependency-free client-state tests, not Angular browser tests.
 - `bash scripts/test-core.sh --demo` — existing. JDK 21 and Bash; in-memory domain adapters only.
 - `bash scripts/test-tooling.sh` — existing. Disposable fixtures/mock initializer only; not real upstream adoption.
