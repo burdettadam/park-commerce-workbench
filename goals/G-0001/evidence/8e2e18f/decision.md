@@ -1,0 +1,5 @@
+# G-0001 readiness decision record
+
+Status: **not ready for a readiness decision yet**. Source S is fixed at `8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e`. Adam Burdett adopted the project choices and directed the current agent to perform the fresh-session check. Both configured native reviewers filed independent round-1 reports, but they raised current evidence-package blockers. The agent has since gathered fresh role-discovery, delegated validation, environment/configuration and timed-check evidence; reviewer reassessment remains to be done.
+
+The integration record maintainer will make an explicit ready/not-ready decision only after the four accepted criteria, filled candidate manifest, two independent current-candidate role reviews with zero open blockers, intended-use validation, and remote evidence retrieval are checked together. This record cannot grant a version-producing merge approval. The unresolved eligible human approval route remains a blocker to a later version-producing merge, not an exception or approval for this local goal.

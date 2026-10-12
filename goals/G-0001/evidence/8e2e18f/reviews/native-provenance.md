@@ -1,0 +1,12 @@
+# Native role and independent review provenance
+
+Fixed S: `8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e`; base P: `c8c46a2824f558e33c9e640fe6fc82dfdf705399`. Client: `codex-cli 0.162.0-alpha.17.2` on Windows. Parent review session `01a1323e-d0bd-7d72-9da5-1e97e45d4652` ran read-only from 22:32:20–22:33:45 UTC on 12 October 2026. Its local rollout SHA-256 is `c660e3a334082f13e85c81fb1b20838159160aeec6ed3f590910ff4545c437cd`. The recorded native `spawn_agent` tool calls used **different** `agent_type` values, not just task labels:
+
+| Task label | Native `agent_type` | Child session | Child window UTC | Local raw rollout SHA-256 | Retained first report |
+| --- | --- | --- | --- | --- | --- |
+| `contract_review` | `contract-reviewer` | `01a1323f-01d1-7aa3-91f9-6da04a6fdafe` | 22:32:32–22:33:15 | `bc2fccad304306388d1f94d0e25651133a5dff0d9b57195b3bf3486113a53964` | [contract](round1-contract.md) |
+| `adversarial_review` | `adversarial-reviewer` | `01a1323f-10b4-7aa2-93bb-8bcd3ca59e28` | 22:32:36–22:33:30 | `66f525d0c068ba5176a189e1d08611ca3065230c1a2bfe67dafa9c3417a6717e` | [adversarial](round1-adversarial.md) |
+
+The independent first reports were extracted from each child session's final assistant message before reconciliation. Their only publication change was to replace absolute local repository links with relative links and normalize line endings. The raw extracted first reports remain in ignored `.tmp/`, with SHA-256 `5afde94837ac8fcf5097b68858b283dc6944bf5a2265bf314c6d986a31058d3e` (contract) and `93359d282436d1759e0032352ec4b24396b365fb9b4b0e91489f3a94f5ccb328` (adversarial). Neither reviewer edited S or saw the other's findings before filing its first report. Both found evidence/readiness blockers. Round 1 is **not a pass**; retain the blockers until the missing evidence is gathered and independently rechecked.
+
+A separate fresh discovery session `01a13240-efb6-79e2-92a6-4d80ac900ef3` ran 22:34:39–22:34:57 UTC and again made native `spawn_agent` calls with `agent_type` `contract-reviewer` and `adversarial-reviewer`. Its sanitized final result is [native-discovery.txt](../native-discovery.txt). Its local rollout SHA-256 is `96a6d4af4fb07649b97e117c4d16cdda876f8ff40235b7e9322732e25e825835`; the redacted final-result text SHA-256 was `095f0e48f6ffacd86a4694eb625fe02e525f648cf2d1c262aece97542975d3fb`. The local rollouts may contain unrelated private prompt/context data and are not published wholesale.

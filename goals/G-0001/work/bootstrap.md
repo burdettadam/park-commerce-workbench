@@ -10,4 +10,6 @@ Adam Burdett adopted all seven [first-local-goal choices](owner-decisions.md) on
 
 Current local-only material: unredacted initializer outputs, resolved executable path and Codex prompt input under ignored `.tmp/`; sanitized observations will be committed and pushed. Public evidence omits the workstation path and unrelated private prompt contents.
 
-Next: observe a supported native reviewer-role path in a fresh session, obtain current-candidate N=2 native reviews and Adam's intended-use validation, confirm this source/evidence remotely, then decide readiness against the four ACs. Keep secrets and machine-specific private data out of this public branch. Recheck affected evidence after any relevant candidate change.
+The project was trusted in the native Codex CLI after its interactive trust prompt. A fresh session then selected both configured reviewer roles, and two independent round-1 native reviews were retained. Their evidence and readiness blockers are recorded in the current candidate's review directory. On Adam's instruction to perform the fresh-session check, the agent recorded its delegated intended-use result and limits in `validation.md`.
+
+Next: complete the timed evidence package and candidate manifest, obtain round-2 native reviewer dispositions, verify remote retrieval of the final evidence increment, then decide readiness against the four ACs. Keep secrets and machine-specific private data out of this public branch. Recheck affected evidence after any relevant candidate change.
