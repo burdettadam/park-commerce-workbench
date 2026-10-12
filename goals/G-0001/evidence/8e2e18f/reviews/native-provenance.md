@@ -19,3 +19,12 @@ Round 2 used read-only native parent session `01a13247-50bf-73e1-a4c2-a76937d394
 | `adversarial-reviewer` | `01a13247-9369-7090-aec7-e4ad3c46305c` | `ab28cf3b74fa8461a5e6233e601fdd13d51d6525f050f7071d69e84ea3a5f807` | [round 2 adversarial](round2-adversarial.md) |
 
 Both found the prior native-discovery and delegated-validation blockers resolved. They found no substantive defect in S or AC01-AC04, but correctly withheld a present readiness pass while the manifest, final report/decision and final Git retrieval were pending. The reports remain unedited apart from UTF-8 file extraction from each child final message.
+
+Round 3 used read-only native parent session `01a1324a-5f27-7dd1-8a4a-96ff0d85b329`. Native `SubAgentActivity` recorded distinct child sessions and `spawn_agent` selected `agent_type` `contract-reviewer` and `adversarial-reviewer`. Each result was retained before coordinator synthesis. The reviewers passed fixed S and the presently available AC01-AC04 evidence with zero substantive reviewer blockers, while leaving integration finalization to the writer.
+
+| Role | Child session | Local raw rollout SHA-256 | Final independent report |
+| --- | --- | --- | --- |
+| `contract-reviewer` | `01a1324a-b0b9-7fe1-b019-bc72b877fcd9` | `bdb8036252855e619d2ac4c4eec6a1336915499b794ecd233a884f07e1c86206` | [contract](contract.md) |
+| `adversarial-reviewer` | `01a1324a-bf13-7f01-81e2-0c24df802057` | `847057258494ab5bdfe4c9fd1ffcd052c18b1d2cf519ae605ac72862c4e7bb8e` | [adversarial](adversarial.md) |
+
+The UTF-8 final reports preserve each child's final text, adding only a trailing line feed. Raw rollouts remain local; no human merge approval is inferred from these reviews.

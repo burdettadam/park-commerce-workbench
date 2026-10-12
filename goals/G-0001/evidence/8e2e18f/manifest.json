@@ -247,7 +247,7 @@
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "f6c612de4e59cecaeffbcebd5a7f682d737cf7867948525a971f6bc52ee09643",
+      "sha256": "e1a54132d2725de4683cf003861b14c2f4cffb691be50d2da7031644a6e18893",
       "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
     },
     {
@@ -307,7 +307,19 @@
     {
       "id": "ROLE-PROVENANCE",
       "path": "reviews/native-provenance.md",
-      "sha256": "eb21b24828b8d1516472f27bcc2343a4cbdda248bc08b5a685df0b7cec49620b",
+      "sha256": "a782d36ab1f7d4877e87e5afa5369af2c726248437bcd6b22a497cec923e2598",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": "1dbbde5367f99e40222bf3520d3eb2a0d7b6e12b2d68e43673ac96feb82fa86a",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": "c5a10a6537a0e6e1de0a5daa8d0fb0b049ddbcfbef63c131a4c85ad9f564ef19",
       "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
     }
   ],
