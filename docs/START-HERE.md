@@ -12,9 +12,7 @@
 
 This repository contains source and local development guidance. A clone does not include `.env`, Maven caches, application binaries, `node_modules`, or an external `git-agent` executable.
 
-To keep your GitHub history, clone the existing repository locally, make a development branch, and copy this archive's **contents** into that checkout. Inspect any changed README/planning files before staging. Do not create a second nested repository inside the checkout.
-
-Alternatively, work in the extracted directory without Git initially; the code checks do not require Git. Before agent initialization, initialize that directory with `git init -b main`, or move its content into your existing clone. Do not force-push an unrelated new history over the existing repository.
+Clone the repository and work from its root. Create a development branch for changes. The source, guidance, and checks are already present in this checkout.
 
 ## 2. Run the checks that need no downloaded Java libraries
 
@@ -62,6 +60,8 @@ Review the generated adoption record and governance before treating it as accept
 ## 4. Generate local secrets and validate Compose
 
 Requirements: Docker with Compose v2, registry access, and sufficient disk/memory for three services, two MySQL instances, and MongoDB. All host ports bind to loopback.
+
+On Windows, use Git for Windows Bash explicitly from PowerShell (`& "$env:ProgramFiles\Git\bin\bash.exe" scripts/configure-local.sh`). Plain `bash` may launch WSL instead. The generated `.env` receives an explicit Windows ACL for the current account; on Unix it uses mode 600. Keep `.env` local and ignored.
 
 ```bash
 bash scripts/configure-local.sh
