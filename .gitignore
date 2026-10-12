@@ -3,6 +3,7 @@
 .mvn/wrapper/maven-wrapper.jar
 **/node_modules/
 **/dist/
+admin-console/src/main/frontend/generated/
 **/.angular/
 **/coverage/
 .idea/
