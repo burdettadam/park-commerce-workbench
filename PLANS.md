@@ -1,6 +1,6 @@
 # Accepted plans and living goal records
 
-The [10-milestone roadmap](docs/roadmap/README.md) contains **proposed** goals and acceptance criteria. Its [current-state audit](docs/roadmap/CURRENT-STATE-2026-10-12.md) reconciles the public checkout, existing implementation and first trial path. [G-0001](docs/roadmap/goals/G-0001/README.md) is the proposed adoption goal. No active accepted goal record or release approval is created by these documents.
+The [10-milestone roadmap](docs/roadmap/README.md) contains goal proposals. Its [current-state audit](docs/roadmap/CURRENT-STATE-2026-10-12.md) reconciles the public checkout and first trial path. The owner's 12 October 2026 request activated [G-0001](goals/G-0001/README.md) from its [proposal-2 contract](docs/roadmap/goals/G-0001/README.md); `goal/G-0001` is the canonical integration ref. This accepts work scope, not the still-proposed project governance or a release.
 
 This is a project convention informed by OpenAI's ExecPlan pattern. It is not a
 native Codex database or parsed configuration schema. Reuse existing issue/plan

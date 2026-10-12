@@ -4,7 +4,7 @@
 
 **10 milestones · 30 goal proposals · 120 acceptance criteria · 90 goal-specific artifact requirements**
 
-Revision: `proposal-2`, updated 12 October 2026 for the public checkout. See [current state and trial blockers](CURRENT-STATE-2026-10-12.md). **No milestone is claimed complete.** Earlier source, local runs and hosted CI are reusable evidence only when their inputs and limits match an accepted goal; they do not establish independent reviews or human acceptance.
+Revision: `proposal-2`, updated 12 October 2026 for the public checkout. The owner has since activated [G-0001](../../goals/G-0001/README.md) from this proposal. See [the starting audit](CURRENT-STATE-2026-10-12.md). **No milestone is claimed complete.** Earlier source, local runs and hosted CI are reusable evidence only when their inputs and limits match an accepted goal; they do not establish independent reviews or human acceptance.
 
 This roadmap serves two purposes: build a credible Java/Spring commerce portfolio and test whether the existing goal-driven workflow produces correct, reviewable, recoverable work. Each goal has a bounded outcome, prerequisites, exclusions, expected results and named evidence. Existing source is a candidate to validate or extend, not a reason to regenerate everything.
 
@@ -103,7 +103,7 @@ The public checkout already contains generated `AGENTS.md`, `PLANS.md`, `.codex/
 
 The original ZIP reports 77 JDK core scenarios, 10 Node client-state tests and 11 tooling checks. Those observations are scoped to the original candidate and mostly use test-only in-memory stores/mocks; they do not establish Spring/UI/database/runtime success. The original manifest and ZIP digest are retained in [baseline provenance](baseline/provenance.json). See [original verification](../verification.md) and [proposal-1 delivery checks](DELIVERY-VERIFICATION.md) for historical limits; the [current-state audit](CURRENT-STATE-2026-10-12.md) names later evidence.
 
-All goals remain unaccepted proposals until the owner adopts them. The project repository is public and its original history is in a separate private archive. A public source snapshot and later Windows-fix branch were pushed; no release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
+G-0001 is active at [its canonical record](../../goals/G-0001/README.md); the other roadmap goals remain proposals until adopted. The project repository is public and its original history is in a separate private archive. A public source snapshot and later Windows-fix branch were pushed; no release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
 
 ## Navigation
 

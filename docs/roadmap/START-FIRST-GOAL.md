@@ -1,5 +1,7 @@
 > **Current public checkout:** the version guard, Windows local setup, Angular lockfile, and hosted CI already exist. The original red commit is historical evidence in the private archive, not a new goal run. See [the current-state audit](CURRENT-STATE-2026-10-12.md) before starting a trial.
 
+> **Active goal:** [G-0001](../../goals/G-0001/README.md) is now the canonical scope and progress record. The proposal card below remains a historical input; follow the active record for actual status.
+
 # Start the roadmap locally
 
 ## Use the existing checkout
@@ -17,9 +19,9 @@ node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs
 
 These check the proposed roadmap/evidence-contract structure using offline fixtures. They do not adopt a plan, execute a native agent or pass a product milestone.
 
-## Bootstrap G-0001 with actual authority
+## Work G-0001 under its active record
 
-Read `goals/G-0001/README.md` under this roadmap, `GOVERNANCE.md`, and `docs/development-bootstrap.md`. On this Windows host, the reviewed local `../git-agent/bin/git-agent` reports `git-agent 0.2.0`, but `git agent` is not on the normal shell `PATH`. Install the reviewed command following the sibling repository's instructions or temporarily add its `bin` directory to Git Bash `PATH` for this session. Then verify:
+Read the [active G-0001 contract](../../goals/G-0001/README.md), `GOVERNANCE.md`, and `docs/development-bootstrap.md`. On this Windows host, the reviewed local `../git-agent/bin/git-agent` reports `git-agent 0.2.0`, but `git agent` is not on the normal shell `PATH`. Install the reviewed command following the sibling repository's instructions or temporarily add its `bin` directory to Git Bash `PATH` for this session. Then verify:
 
 ```bash
 git agent --version
@@ -34,7 +36,7 @@ bash scripts/init-agent.sh --preview
 git status --short
 ```
 
-Review actual generated guidance and adoption gaps. If rerunning `--apply`, inspect the preview file plan first: this checkout already has guidance, and rerun proposals are not automatic adoption. Native discovery and human acceptance must be real observations. `PLANS.md` already links the roadmap; create an active goal record only after its scope, owner, and governing baseline are accepted.
+Review actual generated guidance and adoption gaps. If rerunning `--apply`, inspect the preview file plan first: this checkout already has guidance, and rerun proposals are not automatic adoption. Native discovery and human acceptance must be real observations. `PLANS.md` links the active G-0001 record; project-wide governing policy adoption is still one of that goal's open human decisions.
 
 ## First bounded post-adoption work-goal: G-0002
 
