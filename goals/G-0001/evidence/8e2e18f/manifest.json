@@ -295,19 +295,19 @@
     {
       "id": "REVIEW-ROUND2-CONTRACT",
       "path": "reviews/round2-contract.md",
-      "sha256": "b9ef700610e676e2a5b1612b215f28d71340e30d69cf77b73465bcd670ec6c75",
+      "sha256": "5e1085736a2e5258c8bf3740fe086812e7f090782f6c9e1bfb8dd5cb2d9f74c0",
       "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
     },
     {
       "id": "REVIEW-ROUND2-ADVERSARIAL",
       "path": "reviews/round2-adversarial.md",
-      "sha256": "3213a5d0e314d93dfbaedf7a3c747399cc835c4309cbe1c97af70f4ea2a1c187",
+      "sha256": "ac0b41c1eaf957c1825e1f3a84215b9a71b29a00e3089b6e2e2c67d45cae049d",
       "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
     },
     {
       "id": "ROLE-PROVENANCE",
       "path": "reviews/native-provenance.md",
-      "sha256": "b6a3c10f766fe33fb255b55598d74d41e91ae6b6472fc6d6197990e9cb887cae",
+      "sha256": "eb21b24828b8d1516472f27bcc2343a4cbdda248bc08b5a685df0b7cec49620b",
       "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
     }
   ],

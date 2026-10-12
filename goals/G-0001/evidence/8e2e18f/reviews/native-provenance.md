@@ -18,4 +18,4 @@ Round 2 used read-only native parent session `01a13247-50bf-73e1-a4c2-a76937d394
 | `contract-reviewer` | `01a13247-8598-7730-ab43-5f1de5795b5a` | `75d86d39d3c4eea76122884367a9ac809ee8705221c9671aab322891b70779db` | [round 2 contract](round2-contract.md) |
 | `adversarial-reviewer` | `01a13247-9369-7090-aec7-e4ad3c46305c` | `ab28cf3b74fa8461a5e6233e601fdd13d51d6525f050f7071d69e84ea3a5f807` | [round 2 adversarial](round2-adversarial.md) |
 
-Both found the prior native-discovery and delegated-validation blockers resolved. They found no substantive defect in S or AC01?AC04, but correctly withheld a present readiness pass while the manifest, final report/decision and final Git retrieval were pending. The reports remain unedited apart from UTF-8 file extraction from each child final message.
+Both found the prior native-discovery and delegated-validation blockers resolved. They found no substantive defect in S or AC01-AC04, but correctly withheld a present readiness pass while the manifest, final report/decision and final Git retrieval were pending. The reports remain unedited apart from UTF-8 file extraction from each child final message.
