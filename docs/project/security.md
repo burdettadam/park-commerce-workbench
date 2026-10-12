@@ -10,7 +10,7 @@ The Vaadin console is intentionally a localhost-only tool without a login gatewa
 
 ## Secrets and data
 
-The ZIP contains no usable credentials. Clearly labeled fixed credentials in integration-test source are only for disposable Testcontainers applications. `configure-local.sh` creates fresh random credentials in a restrictive `.env`, refuses existing files/symlinks, and does not print secrets. Never commit `.env`, private keys, account exports, real customer data, or private `git-agent` source. `.gitignore` is a convenience, not a security scanner.
+The repository contains no usable credentials. Clearly labeled fixed credentials in integration-test source are only for disposable Testcontainers applications. `configure-local.sh` creates fresh random credentials in a restrictive `.env`, refuses existing files/symlinks, and does not print secrets. It uses mode 600 on Unix and a current-account-only ACL on Windows. Never commit `.env`, private keys, account exports, real customer data, or external initializer source. `.gitignore` is a convenience, not a security scanner.
 
 Only synthetic people/product/price data are permitted. Do not add actual payment cards or payment-provider keys. No paid monitoring subscription or cloud resource is provisioned.
 

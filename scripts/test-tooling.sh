@@ -23,9 +23,21 @@ while IFS='=' read -r name value; do
 done < "$WORK/project/.env"
 [[ $count == 9 ]] || fail 'Expected nine credentials'
 pass 'Nine distinct random credentials are generated without printing them'
-if [[ $(uname -s) == Darwin ]]; then mode=$(stat -f '%Lp' "$WORK/project/.env"); else mode=$(stat -c '%a' "$WORK/project/.env"); fi
-[[ $mode == 600 ]] || fail 'Expected restrictive .env permissions (host must support Unix permissions)'
-pass 'Generated local credentials have mode 600'
+case "$(uname -s)" in
+  MINGW*|MSYS*|CYGWIN*)
+    win_path=$(cygpath -w "$WORK/project/.env")
+    identity=$(whoami.exe | tr -d '\r')
+    acl=$(MSYS_NO_PATHCONV=1 icacls.exe "$win_path" | tr -d '\r')
+    [[ $acl == *"${identity}:(F)"* && $acl != *'(I)'* ]] || fail 'Expected a private Windows ACL on .env'
+    [[ $(printf '%s\n' "$acl" | grep -Ec ':\([^)]+\)') == 1 ]] || fail 'Unexpected additional Windows ACL entry on .env'
+    pass 'Generated local credentials have a private Windows ACL'
+    ;;
+  *)
+    if [[ $(uname -s) == Darwin ]]; then mode=$(stat -f '%Lp' "$WORK/project/.env"); else mode=$(stat -c '%a' "$WORK/project/.env"); fi
+    [[ $mode == 600 ]] || fail 'Expected restrictive .env permissions'
+    pass 'Generated local credentials have mode 600'
+    ;;
+esac
 cp "$WORK/project/.env" "$WORK/original"
 if bash "$WORK/project/scripts/configure-local.sh" > "$WORK/output" 2>&1; then fail 'Overwrote existing configuration'; fi
 cmp -s "$WORK/project/.env" "$WORK/original" || fail 'Configuration changed'
@@ -41,7 +53,7 @@ mkdir "$WORK/bin"
 cat > "$WORK/bin/git-agent" <<'MOCK'
 #!/usr/bin/env bash
 if [[ ${1:-} == --version ]]; then
- if [[ ${MOCK_OUTPUT+x} ]]; then printf '%s\n' "$MOCK_OUTPUT"; else printf 'git-agent %s\n' "${MOCK_VERSION:-0.2.0}"; fi
+ if [[ ${MOCK_OUTPUT+x} ]]; then printf '%s' "$MOCK_OUTPUT"; else printf 'git-agent %s\n' "${MOCK_VERSION:-0.2.0}"; fi
  exit "${MOCK_VERSION_EXIT:-0}"
 fi
 printf '%s\n' "$@" > "$MOCK_CAPTURE"
@@ -50,12 +62,10 @@ MOCK
 chmod +x "$WORK/bin/git-agent"
 export PATH="$WORK/bin:$PATH" MOCK_CAPTURE="$WORK/args"
 bash "$WORK/project/scripts/init-agent.sh" --preview
-printf 'init\n%s\n--dry-run\n' "$WORK/project" > "$WORK/expected"
-cmp -s "$WORK/args" "$WORK/expected" || fail 'Preview arguments incorrect'
+[[ $(wc -l < "$WORK/args") == 3 && $(sed -n '1p' "$WORK/args") == init && $(sed -n '2p' "$WORK/args") -ef "$WORK/project" && $(sed -n '3p' "$WORK/args") == --dry-run ]] || fail 'Preview arguments incorrect'
 pass 'Preview forwards the project root and dry-run to a mock initializer'
 bash "$WORK/project/scripts/init-agent.sh" --apply
-printf 'init\n%s\n' "$WORK/project" > "$WORK/expected"
-cmp -s "$WORK/args" "$WORK/expected" || fail 'Apply arguments incorrect'
+[[ $(wc -l < "$WORK/args") == 2 && $(sed -n '1p' "$WORK/args") == init && $(sed -n '2p' "$WORK/args") -ef "$WORK/project" ]] || fail 'Apply arguments incorrect'
 pass 'Apply forwards only the project root to a mock initializer'
 if MOCK_VERSION=9.0.0 bash "$WORK/project/scripts/init-agent.sh" --preview > "$WORK/output" 2>&1; then fail 'Accepted unreviewed version'; fi
 pass 'Unreviewed initializer versions are rejected'
