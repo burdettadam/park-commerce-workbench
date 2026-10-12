@@ -1,6 +1,6 @@
 # G-0001 fresh-session intended-use validation
 
-Status: **requested from Adam Burdett; result pending**. The owner adopted the first-local-goal choices, but has not reported an intended-use validation result. Do not infer this result from project files or an agent's self-report.
+Status: **requested from Adam Burdett; result pending**. The owner adopted the first-local-goal choices, but has not reported an intended-use validation result. The available computer-use inventory exposed no IDE or browser surface for an agent-side UI check. Do not infer a human result from project files or an agent's self-report.
 
 On a fresh IDE/Codex session opened at the `park-commerce-workbench` repository root, ask the session to identify:
 
