@@ -1,0 +1,4 @@
+
+> park-commerce-storefront@0.1.0 test:types
+> tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext --lib ES2022,DOM type-tests/checkout-recovery.mts
+

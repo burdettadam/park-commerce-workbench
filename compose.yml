@@ -1,0 +1,96 @@
+x-local-auth: &local-auth
+  SPRING_PROFILES_ACTIVE: local
+  DEMO_EMPLOYEE_TOKEN: ${DEMO_EMPLOYEE_TOKEN:?Run scripts/configure-local.sh}
+  DEMO_GUEST_TOKEN: ${DEMO_GUEST_TOKEN:?Run scripts/configure-local.sh}
+  DEMO_OTHER_GUEST_TOKEN: ${DEMO_OTHER_GUEST_TOKEN:?Run scripts/configure-local.sh}
+  DEMO_SERVICE_TOKEN: ${DEMO_SERVICE_TOKEN:?Run scripts/configure-local.sh}
+
+services:
+  mongo:
+    image: mongo:8.0.26
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?Run scripts/configure-local.sh}
+      MONGO_INITDB_DATABASE: catalog
+      MONGO_APP_PASSWORD: ${MONGO_APP_PASSWORD:?Run scripts/configure-local.sh}
+    ports: ["127.0.0.1:${MONGO_PORT:-27017}:27017"]
+    volumes: ["mongo-data:/data/db", "./ops/mongo/01-app-user.js:/docker-entrypoint-initdb.d/01-app-user.js:ro"]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "quit(db.adminCommand({ping:1}).ok ? 0 : 2)"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  mysql-pricing:
+    image: mysql:8.4.11
+    environment:
+      MYSQL_DATABASE: pricing
+      MYSQL_USER: pricing
+      MYSQL_PASSWORD: ${PRICING_DB_PASSWORD:?Run scripts/configure-local.sh}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Run scripts/configure-local.sh}
+    ports: ["127.0.0.1:${PRICING_MYSQL_PORT:-3307}:3306"]
+    volumes: ["pricing-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_PASSWORD mysql -h 127.0.0.1 -u pricing -D pricing -e 'SELECT 1' >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+  mysql-booking:
+    image: mysql:8.4.11
+    environment:
+      MYSQL_DATABASE: booking
+      MYSQL_USER: booking
+      MYSQL_PASSWORD: ${BOOKING_DB_PASSWORD:?Run scripts/configure-local.sh}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Run scripts/configure-local.sh}
+    ports: ["127.0.0.1:${BOOKING_MYSQL_PORT:-3308}:3306"]
+    volumes: ["booking-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_PASSWORD mysql -h 127.0.0.1 -u booking -D booking -e 'SELECT 1' >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+  catalog:
+    build: {context: ., args: {SERVICE: catalog-service}}
+    environment:
+      <<: *local-auth
+      MONGODB_URI: mongodb://catalog:${MONGO_APP_PASSWORD}@mongo:27017/catalog?authSource=catalog
+    ports: ["127.0.0.1:${CATALOG_PORT:-8081}:8081"]
+    depends_on: {mongo: {condition: service_healthy}}
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8081/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  pricing:
+    build: {context: ., args: {SERVICE: pricing-service}}
+    environment:
+      <<: *local-auth
+      JDBC_URL: jdbc:mysql://mysql-pricing:3306/pricing?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
+      DB_USER: pricing
+      DB_PASSWORD: ${PRICING_DB_PASSWORD}
+      CATALOG_URL: http://catalog:8081
+    ports: ["127.0.0.1:${PRICING_PORT:-8082}:8082"]
+    depends_on: {catalog: {condition: service_healthy}, mysql-pricing: {condition: service_healthy}}
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8082/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  booking:
+    build: {context: ., args: {SERVICE: booking-service}}
+    environment:
+      <<: *local-auth
+      JDBC_URL: jdbc:mysql://mysql-booking:3306/booking?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
+      DB_USER: booking
+      DB_PASSWORD: ${BOOKING_DB_PASSWORD}
+      PRICING_URL: http://pricing:8082
+    ports: ["127.0.0.1:${BOOKING_PORT:-8083}:8083"]
+    depends_on: {pricing: {condition: service_healthy}, mysql-booking: {condition: service_healthy}}
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8083/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+volumes:
+  mongo-data:
+  pricing-data:
+  booking-data:

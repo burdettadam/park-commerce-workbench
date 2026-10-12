@@ -1,0 +1,68 @@
+// All records and identities below are SYNTHETIC validation fixtures.
+// They are not product runs, actual reviewers, actual decisions or Git identities.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import crypto from 'node:crypto';
+import { validateEvidence } from './validate-evidence.mjs';
+import { projectRoot } from './validate-roadmap.mjs';
+const digest=x=>crypto.createHash('sha256').update(x).digest('hex');
+const S='a'.repeat(40), B='b'.repeat(40), P='c'.repeat(40);
+function fixture() {
+  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'pcw evidence fixtures '));
+  const manifest=JSON.parse(fs.readFileSync(path.join(projectRoot,'docs/roadmap/goals/G-0002/manifest.template.json'),'utf8'));
+  manifest.claim='ready';
+  Object.assign(manifest.candidate,{source_commit:S,base_commit:B,accepted_plan_commit:P,working_tree_clean:true});
+  for(const a of manifest.artifacts) {
+    const file=path.join(directory,a.path); fs.mkdirSync(path.dirname(file),{recursive:true});
+    const bytes=Buffer.from(`SYNTHETIC OFFLINE VALIDATOR FIXTURE — ${a.id}\nNot a real product run, review, human approval or retained Git source.\n`);
+    fs.writeFileSync(file,bytes); a.sha256=digest(bytes);a.candidate_commit=S;
+  }
+  const art=id=>manifest.artifacts.find(a=>a.id===id);
+  manifest.candidate.accepted_plan_sha256=art('PLAN').sha256;
+  manifest.candidate.configuration_sha256=art('CONFIGURATION').sha256;
+  Object.assign(manifest.checks[0],{candidate_commit:S,command:'synthetic fixture command — not executed',started_at:'2026-10-11T12:00:00Z',finished_at:'2026-10-11T12:00:01Z',observed_exit_code:0,selected:1,passed:1,failed:0,skipped:0,status:'passed',observed_result:'SYNTHETIC fixture outcome, not an actual test observation.'});
+  for(const c of manifest.criteria){c.result='passed';c.check_ids=['CHECK-01'];}
+  for(const r of manifest.reviews)Object.assign(r,{reviewer_id:`synthetic-${r.role}`,session_id:`synthetic-${r.role}-session`,independent_of_writer:true,candidate_commit:S,round:1,open_blockers:0,decision:'pass'});
+  Object.assign(manifest.intended_use_validation,{validator_id:'synthetic-observer',candidate_commit:S,decision:'accept'});
+  Object.assign(manifest.readiness_decision,{authority_id:'synthetic-owner',candidate_commit:S,decision:'ready'});
+  Object.assign(manifest.retention,{owner_id:'synthetic-owner',retrieval_verified:true});
+  return {directory,manifest,art,save(){const file=path.join(directory,'manifest.json');fs.writeFileSync(file,JSON.stringify(manifest));return file;},clean(){fs.rmSync(directory,{recursive:true,force:true});}};
+}
+function withFixture(fn){const f=fixture();try{return fn(f);}finally{f.clean();}}
+function rejects(title,change,pattern){test(title,()=>withFixture(f=>{change(f);const r=validateEvidence(f.save());assert.ok(r.errors.some(x=>pattern.test(x)),JSON.stringify(r.errors));}));}
+test('complete synthetic evidence shape passes without authenticating its claims',()=>withFixture(f=>assert.deepEqual(validateEvidence(f.save()).errors,[])));
+test('all 30 unfilled output templates fail readiness as intended',()=>{
+  for(let n=1;n<=30;n++){const id=`G-${String(n).padStart(4,'0')}`;const p=path.join(projectRoot,`docs/roadmap/goals/${id}/manifest.template.json`);const r=validateEvidence(p);assert.ok(r.errors.some(x=>/Template\/incomplete/.test(x)),id);}
+});
+rejects('stale ordinary check cannot satisfy a new candidate',f=>f.manifest.checks[0].candidate_commit=B,/Stale check candidate/);
+rejects('stale reviewer coverage is rejected',f=>f.manifest.reviews[0].candidate_commit=B,/Stale review candidate/);
+rejects('changed artifact bytes invalidate recorded hash',f=>fs.appendFileSync(path.join(f.directory,f.art('G-0002-A01').path),'changed'),/Artifact digest mismatch/);
+rejects('missing artifact output is rejected',f=>fs.unlinkSync(path.join(f.directory,f.art('G-0002-A01').path)),/Missing\/unsafe artifact/);
+rejects('dropping a criterion cannot make the goal ready',f=>f.manifest.criteria.pop(),/criterion coverage/);
+rejects('omitting a mandatory goal artifact is rejected',f=>f.manifest.artifacts=f.manifest.artifacts.filter(x=>x.id!=='G-0002-A01'),/Missing mandatory artifact/);
+rejects('empty selected suite is rejected',f=>Object.assign(f.manifest.checks[0],{selected:0,passed:0}),/Empty\/invalid selected/);
+rejects('required skipped tests are rejected',f=>Object.assign(f.manifest.checks[0],{selected:2,skipped:1}),/Required checks were skipped/);
+rejects('open valid review blockers prevent structural readiness',f=>f.manifest.reviews[1].open_blockers=1,/open blockers/);
+rejects('same reviewer session cannot be counted twice',f=>f.manifest.reviews[1].session_id=f.manifest.reviews[0].session_id,/distinct independent sessions/);
+rejects('artifact path traversal is refused',f=>f.art('G-0002-A01').path='../outside.txt',/Missing\/unsafe artifact/);
+rejects('symlinked artifacts are refused',f=>{const a=f.art('G-0002-A01');fs.unlinkSync(path.join(f.directory,a.path));fs.symlinkSync(path.join(f.directory,f.art('ENVIRONMENT').path),path.join(f.directory,a.path));},/Symlink refused/);
+rejects('dirty source is not identified as a frozen candidate',f=>f.manifest.candidate.working_tree_clean=false,/not declared clean/);
+rejects('missing intended-use validation is not a pass',f=>f.manifest.intended_use_validation.decision='not_run',/intended-use validation/);
+rejects('placeholder Git identity is rejected',f=>f.manifest.candidate.source_commit='NOT_A_COMMIT',/Git identities/);
+rejects('configuration snapshot must match the declared digest',f=>f.manifest.candidate.configuration_sha256='d'.repeat(64),/Configuration digest mismatch/);
+rejects('round four requires a decision rather than silent acceptance',f=>f.manifest.reviews[0].round=4,/Review round outside/);
+rejects('template flag cannot be accepted as ready',f=>f.manifest.claim='not_ready',/Template\/incomplete/);
+rejects('missing decision authority is rejected',f=>f.manifest.readiness_decision.authority_id=null,/readiness decision/);
+rejects('unretrieved artifact retention is not recoverability',f=>f.manifest.retention.retrieval_verified=false,/Retention\/retrieval/);
+rejects('criterion must retain its specified goal artifact',f=>f.manifest.criteria[0].artifact_ids=['ENVIRONMENT'],/Criterion artifact coverage/);
+rejects('expected red failure cannot replace all green candidate checks',f=>{Object.assign(f.manifest.checks[0],{type:'expected_failure',expected_exit_code:1,observed_exit_code:1,passed:0,failed:1});},/No current-candidate acceptance check/);
+test('a separate pre-fix red run retains its true base source alongside current green',()=>withFixture(f=>{
+  const red=structuredClone(f.manifest.checks[0]);Object.assign(red,{id:'RED-BASE',type:'expected_failure',candidate_commit:B,expected_exit_code:1,observed_exit_code:1,passed:0,failed:1,output_artifact_id:'G-0002-A01'});
+  f.art('G-0002-A01').candidate_commit=B;f.manifest.checks.push(red);f.manifest.criteria[0].check_ids=['RED-BASE'];assert.deepEqual(validateEvidence(f.save()).errors,[]);
+}));
+test('manual checks record observations without invented automated test counts',()=>withFixture(f=>{
+  Object.assign(f.manifest.checks[0],{type:'manual',selected:null,passed:null,failed:null,skipped:null,expected_exit_code:null,observed_exit_code:null});assert.deepEqual(validateEvidence(f.save()).errors,[]);
+}));

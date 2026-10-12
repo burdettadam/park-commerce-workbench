@@ -1,0 +1,60 @@
+name: Candidate checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  java:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: bash scripts/test-core.sh
+      - run: node --test scripts/pricing-contract.test.mjs
+      - run: bash scripts/verify.sh --integration
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: java-test-reports
+          path: |
+            **/target/surefire-reports/
+            **/target/failsafe-reports/
+  client-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: storefront/package-lock.json
+      - run: npm ci
+        working-directory: storefront
+      - run: npm run test:types
+        working-directory: storefront
+      - run: npm run build
+        working-directory: storefront
+      - run: node --test storefront/src/app/*.test.mjs
+      - run: node scripts/validate-roadmap.mjs
+      - run: node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs
+# Review/pin actions to verified immutable SHAs before enabling as a release gate.
+# No external initializer access, credentials, deployments, or automatic releases.

@@ -1,0 +1,256 @@
+TAP version 13
+# Subtest: complete synthetic evidence shape passes without authenticating its claims
+ok 1 - complete synthetic evidence shape passes without authenticating its claims
+  ---
+  duration_ms: 7.634274
+  type: 'test'
+  ...
+# Subtest: all 30 unfilled output templates fail readiness as intended
+ok 2 - all 30 unfilled output templates fail readiness as intended
+  ---
+  duration_ms: 18.798784
+  type: 'test'
+  ...
+# Subtest: stale ordinary check cannot satisfy a new candidate
+ok 3 - stale ordinary check cannot satisfy a new candidate
+  ---
+  duration_ms: 1.878007
+  type: 'test'
+  ...
+# Subtest: stale reviewer coverage is rejected
+ok 4 - stale reviewer coverage is rejected
+  ---
+  duration_ms: 1.441771
+  type: 'test'
+  ...
+# Subtest: changed artifact bytes invalidate recorded hash
+ok 5 - changed artifact bytes invalidate recorded hash
+  ---
+  duration_ms: 1.604346
+  type: 'test'
+  ...
+# Subtest: missing artifact output is rejected
+ok 6 - missing artifact output is rejected
+  ---
+  duration_ms: 1.641441
+  type: 'test'
+  ...
+# Subtest: dropping a criterion cannot make the goal ready
+ok 7 - dropping a criterion cannot make the goal ready
+  ---
+  duration_ms: 1.342831
+  type: 'test'
+  ...
+# Subtest: omitting a mandatory goal artifact is rejected
+ok 8 - omitting a mandatory goal artifact is rejected
+  ---
+  duration_ms: 1.747401
+  type: 'test'
+  ...
+# Subtest: empty selected suite is rejected
+ok 9 - empty selected suite is rejected
+  ---
+  duration_ms: 1.826951
+  type: 'test'
+  ...
+# Subtest: required skipped tests are rejected
+ok 10 - required skipped tests are rejected
+  ---
+  duration_ms: 1.616093
+  type: 'test'
+  ...
+# Subtest: open valid review blockers prevent structural readiness
+ok 11 - open valid review blockers prevent structural readiness
+  ---
+  duration_ms: 1.428271
+  type: 'test'
+  ...
+# Subtest: same reviewer session cannot be counted twice
+ok 12 - same reviewer session cannot be counted twice
+  ---
+  duration_ms: 1.291855
+  type: 'test'
+  ...
+# Subtest: artifact path traversal is refused
+ok 13 - artifact path traversal is refused
+  ---
+  duration_ms: 1.573068
+  type: 'test'
+  ...
+# Subtest: symlinked artifacts are refused
+ok 14 - symlinked artifacts are refused
+  ---
+  duration_ms: 1.625818
+  type: 'test'
+  ...
+# Subtest: dirty source is not identified as a frozen candidate
+ok 15 - dirty source is not identified as a frozen candidate
+  ---
+  duration_ms: 1.347119
+  type: 'test'
+  ...
+# Subtest: missing intended-use validation is not a pass
+ok 16 - missing intended-use validation is not a pass
+  ---
+  duration_ms: 1.233027
+  type: 'test'
+  ...
+# Subtest: placeholder Git identity is rejected
+ok 17 - placeholder Git identity is rejected
+  ---
+  duration_ms: 1.451235
+  type: 'test'
+  ...
+# Subtest: configuration snapshot must match the declared digest
+ok 18 - configuration snapshot must match the declared digest
+  ---
+  duration_ms: 1.310023
+  type: 'test'
+  ...
+# Subtest: round four requires a decision rather than silent acceptance
+ok 19 - round four requires a decision rather than silent acceptance
+  ---
+  duration_ms: 1.290073
+  type: 'test'
+  ...
+# Subtest: template flag cannot be accepted as ready
+ok 20 - template flag cannot be accepted as ready
+  ---
+  duration_ms: 1.529483
+  type: 'test'
+  ...
+# Subtest: missing decision authority is rejected
+ok 21 - missing decision authority is rejected
+  ---
+  duration_ms: 1.338104
+  type: 'test'
+  ...
+# Subtest: unretrieved artifact retention is not recoverability
+ok 22 - unretrieved artifact retention is not recoverability
+  ---
+  duration_ms: 1.492237
+  type: 'test'
+  ...
+# Subtest: criterion must retain its specified goal artifact
+ok 23 - criterion must retain its specified goal artifact
+  ---
+  duration_ms: 1.176101
+  type: 'test'
+  ...
+# Subtest: expected red failure cannot replace all green candidate checks
+ok 24 - expected red failure cannot replace all green candidate checks
+  ---
+  duration_ms: 1.439537
+  type: 'test'
+  ...
+# Subtest: a separate pre-fix red run retains its true base source alongside current green
+ok 25 - a separate pre-fix red run retains its true base source alongside current green
+  ---
+  duration_ms: 1.674971
+  type: 'test'
+  ...
+# Subtest: manual checks record observations without invented automated test counts
+ok 26 - manual checks record observations without invented automated test counts
+  ---
+  duration_ms: 1.238425
+  type: 'test'
+  ...
+# Subtest: valid catalog resolves every milestone, goal, criterion and artifact contract
+ok 27 - valid catalog resolves every milestone, goal, criterion and artifact contract
+  ---
+  duration_ms: 10.707131
+  type: 'test'
+  ...
+# Subtest: duplicate goal IDs are rejected
+ok 28 - duplicate goal IDs are rejected
+  ---
+  duration_ms: 4.842451
+  type: 'test'
+  ...
+# Subtest: unknown dependency is rejected
+ok 29 - unknown dependency is rejected
+  ---
+  duration_ms: 3.983548
+  type: 'test'
+  ...
+# Subtest: dependency cycles are rejected
+ok 30 - dependency cycles are rejected
+  ---
+  duration_ms: 4.591643
+  type: 'test'
+  ...
+# Subtest: criterion with no matching artifact is rejected
+ok 31 - criterion with no matching artifact is rejected
+  ---
+  duration_ms: 3.635484
+  type: 'test'
+  ...
+# Subtest: missing goal file is rejected
+ok 32 - missing goal file is rejected
+  ---
+  duration_ms: 3.673972
+  type: 'test'
+  ...
+# Subtest: criterion text drifting from its proposal is rejected
+ok 33 - criterion text drifting from its proposal is rejected
+  ---
+  duration_ms: 3.522163
+  type: 'test'
+  ...
+# Subtest: empty acceptance contract is rejected
+ok 34 - empty acceptance contract is rejected
+  ---
+  duration_ms: 4.453886
+  type: 'test'
+  ...
+# Subtest: unsafe future artifact path is rejected
+ok 35 - unsafe future artifact path is rejected
+  ---
+  duration_ms: 3.80576
+  type: 'test'
+  ...
+# Subtest: unknown claimed command is rejected
+ok 36 - unknown claimed command is rejected
+  ---
+  duration_ms: 3.510716
+  type: 'test'
+  ...
+# Subtest: milestone membership drift is rejected
+ok 37 - milestone membership drift is rejected
+  ---
+  duration_ms: 5.039818
+  type: 'test'
+  ...
+# Subtest: coverage table drift is rejected
+ok 38 - coverage table drift is rejected
+  ---
+  duration_ms: 2.840848
+  type: 'test'
+  ...
+# Subtest: uncovered original requirement is rejected
+ok 39 - uncovered original requirement is rejected
+  ---
+  duration_ms: 3.635794
+  type: 'test'
+  ...
+# Subtest: duplicate artifact output paths are rejected
+ok 40 - duplicate artifact output paths are rejected
+  ---
+  duration_ms: 2.827767
+  type: 'test'
+  ...
+# Subtest: path validation refuses traversal, Windows paths, backslashes and controls
+ok 41 - path validation refuses traversal, Windows paths, backslashes and controls
+  ---
+  duration_ms: 0.119129
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 124.365651

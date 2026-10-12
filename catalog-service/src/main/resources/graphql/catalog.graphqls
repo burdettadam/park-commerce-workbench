@@ -1,0 +1,4 @@
+type Query { products: [Product!]! product(id: ID!): Product }
+type Product { id: ID! revision: String! name: String! kind: ProductKind! variants: [Variant!]! }
+enum ProductKind { ADMISSION EVENT }
+enum Variant { ADULT CHILD }

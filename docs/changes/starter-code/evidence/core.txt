@@ -1,0 +1,118 @@
+PASS Money parses exact cents
+PASS Money renders two decimals
+PASS Money rejects fractional cents
+PASS Money rejects negative amounts
+PASS Money rejects NaN
+PASS Money rejects overflow
+PASS Money permits zero
+PASS Discount rounds half-up per line
+PASS Money addition and subtraction conserve cents
+PASS Discount rejects more than 100 percent
+PASS Multiplication rejects negative quantity
+PASS Catalog rejects unsafe identifier
+PASS Catalog rejects empty variants
+PASS Catalog accepts immutable variant input
+PASS Catalog defensively copies variants
+PASS Catalog preserves earlier revision
+PASS Catalog rejects skipped revision
+PASS Catalog rejects duplicate publication
+PASS Catalog latest list has one entry per product
+PASS Catalog missing product returns not found
+PASS Rates reject reversed dates
+PASS Rates reject excessive unit price
+PASS Price book rejects overlapping ranges
+PASS Adjacent nonoverlapping ranges allowed
+PASS Shared inclusive date boundary is an overlap
+PASS Pricing rejects skipped version
+PASS Pricing rejects missing catalog revision
+PASS Pricing rejects variant outside pinned catalog
+PASS Quote calculates adult and child totals
+PASS Family offer applies at four tickets
+PASS Family offer absent below threshold
+PASS Quote duration is fifteen minutes
+PASS Quote expires at exact boundary
+PASS Quote remains immutable after repricing
+PASS Quote retains old product revision and name
+PASS Quote cannot be read by another owner
+PASS Quote requires authenticated owner
+PASS Quote rejects zero tickets
+PASS Quote rejects negative tickets
+PASS Quote rejects more than twenty tickets
+PASS Quote rejects past visit dates
+PASS Quote past-date check uses park timezone
+PASS Quote cannot price an uncovered day
+PASS All line totals reconcile across 230 party shapes
+PASS Event rejects zero capacity
+PASS Duplicate event cannot reset capacity
+PASS Hold reduces availability
+PASS Hold retries reuse same quote allocation
+PASS Hold caps expiration at quote expiration
+PASS Hold cannot use expired quote
+PASS Hold cannot use another owner's quote
+PASS Hold requires matching event date
+PASS Admission quote cannot reserve an event
+PASS Mixed adult and child variants share capacity
+PASS Expired hold frees capacity exactly once
+PASS Expired allocation cannot be recycled with same quote
+PASS Confirmation consumes held capacity once
+PASS Repeated checkout returns identical order
+PASS Successful checkout replay survives later expiry
+PASS Checkout key cannot change hold
+PASS Confirmed hold rejects a different key
+PASS Checkout keys are scoped to owner
+PASS Checkout key reuse across events conflicts
+PASS Checkout rejects expired hold at exact boundary
+PASS Checkout cannot use another owner's hold
+PASS Checkout rejects unsafe idempotency key
+PASS Order retrieval enforces ownership
+PASS Missing inventory never creates capacity
+PASS Rollback preserves ledger after failed operation
+PASS State reconstruction preserves checkout identity
+PASS 32 concurrent reservations allocate exactly 3 tickets
+PASS 24 concurrent checkout retries produce one order
+PASS One quote cannot reserve two event instances
+PASS Missing upstream quote fails closed before allocating
+PASS Mismatched upstream quote ID fails closed
+PASS Invalid upstream quantity cannot increase capacity
+PASS Order lookup requires an ID
+PASS Preview: family fixture is independently $340 - $34 = $306
+PASS Preview: below offer threshold applies no discount
+PASS Preview: zero-percent offer is not reported as applied
+PASS Preview: 100 percent discount never produces negative money
+PASS Preview: rounds each variant subtotal half-up
+PASS Preview: maximum 20-ticket party computes exactly
+PASS Preview: publication and quote reuse the same monetary lines
+PASS Preview: never reads or writes the pricing store
+PASS Preview: works before any price has been published
+PASS Preview: keeps published prices, prior quotes, orders and capacity unchanged
+PASS Preview: response has no purchasable identity, owner or expiration
+PASS Preview: candidate content identity is deterministic
+PASS Preview: identity includes candidate amount, version, offer, dates and catalog reference
+PASS Preview: candidate identity is separate from party inputs
+PASS Preview: stale pricing version can be inspected but not republished
+PASS Preview: rejects mismatched product request
+PASS Preview: rejects null candidate, request or envelope
+PASS Preview: rejects overlapping candidate dates
+PASS Preview: inclusive start and end date rates apply
+PASS Preview: no uncovered-date or missing-variant best guess
+PASS Preview: rejects out-of-range and empty parties
+PASS Preview: validates unused candidate variants against pinned catalog
+PASS Preview: park timezone determines the past-date boundary
+PASS Preview: rejects missing or mismatched upstream catalog snapshots
+PASS Preview: pinned catalog revision is not replaced by latest
+PASS Preview: published quote also fails closed on a mismatched catalog response
+PASS Preview: candidate and line collections are immutable
+PASS Preview: concurrent publication cannot silently replace submitted candidate
+PASS Preview: fingerprint matches independent binary-encoding fixture
+PASS Preview: rate list order is explicitly part of exact input identity
+RESULT: 107 passed, 0 failed; JDK-only core tests with in-memory test stores.
+UNPUBLISHED WHAT-IF - not a purchasable quote or reservation.
+Family preview: $420.00 - $42.00 = $378.00
+Candidate: sha256:ef49ff444213d841856d58c8c997f27d1740012a3bc39614494825fba15e22fc
+Published version after preview: 1
+CORE-ONLY WALKTHROUGH - in-memory test fixtures, not a Spring/database deployment.
+Original quote: $100.00, pricing version 1
+New quote after publication: $125.00, version 2
+Confirmed original price: $100.00
+Checkout replay returns same order: true
+Remaining event capacity: 2

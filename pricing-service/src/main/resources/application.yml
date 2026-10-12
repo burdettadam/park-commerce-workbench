@@ -1,0 +1,54 @@
+server:
+  port: 8082
+  shutdown: graceful
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: pricing-service
+  jackson:
+    deserialization:
+      accept-float-as-int: false
+      fail-on-unknown-properties: true
+  datasource:
+    url: ${JDBC_URL:jdbc:mysql://127.0.0.1:3307/pricing?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true}
+    username: ${DB_USER:pricing}
+    password: ${DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 5000
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    clean-disabled: true
+  graphql:
+    graphiql:
+      enabled: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 0.0
+  otlp:
+    metrics:
+      export:
+        enabled: false
+logging:
+  structured:
+    format:
+      console: ecs
+
+park:
+  catalog-url: ${CATALOG_URL:http://127.0.0.1:8081}

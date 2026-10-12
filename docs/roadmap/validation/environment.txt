@@ -1,0 +1,10 @@
+Local planning-package validation environment (not a product deployment)
+Observed UTC: 2026-10-12T01:38:16Z
+openjdk version "21.0.12.1" 2026-08-18
+OpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)
+OpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)
+v22.16.0
+GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)
+git version 2.47.3
+Maven: not installed
+Docker: not installed

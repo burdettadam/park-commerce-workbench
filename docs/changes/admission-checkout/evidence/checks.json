@@ -1,0 +1,150 @@
+{
+  "source": "8e646771f3617f6dea974ddf9271203175d48099",
+  "clean_source_at_start": true,
+  "checks": [
+    {
+      "name": "core",
+      "command": "bash scripts/test-core.sh --demo",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:47:51.317557+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "core.txt",
+      "sha256": "dd660eb0f157dbf9aa5634c92eaa9aedab65ffde4f7ff2afdb3cdae1065ee9e0"
+    },
+    {
+      "name": "pricing-contract",
+      "command": "node --test scripts/pricing-contract.test.mjs",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:47:55.431228+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "pricing-contract.txt",
+      "sha256": "9f170986f90843c128ef84287780b7278125eb97aea5944c925cd93bef70cecd"
+    },
+    {
+      "name": "client",
+      "command": "node --test storefront/src/app/*.test.mjs",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:47:58.744740+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "client.txt",
+      "sha256": "f31700c53631e3a2cc61d382d469d90dd60f1fb74977f18d927c42cb767992bb"
+    },
+    {
+      "name": "tooling",
+      "command": "bash scripts/test-tooling.sh",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:47:58.950531+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "tooling.txt",
+      "sha256": "e65614654f59afcfd0b60d9965bda711c4071f1cc22309c7d4bbe8da9f0be930"
+    },
+    {
+      "name": "roadmap",
+      "command": "node scripts/validate-roadmap.mjs",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:47:59.516132+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "roadmap.txt",
+      "sha256": "45e00959a6b3a09674d78338582f1b94269794619165a749a963f299cf7a3993"
+    },
+    {
+      "name": "validators",
+      "command": "node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:47:59.591990+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "validators.txt",
+      "sha256": "d97915455bcdc44c74948a647c72ab7da0cf999141b4f529e2e1689f29337190"
+    },
+    {
+      "name": "types",
+      "command": "tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext --lib ES2022,DOM storefront/type-tests/checkout-recovery.mts",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:47:59.849607+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "types.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "java-parse",
+      "command": "java -cp /mnt/data/development JavaSyntaxCheck .",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:48:01.236778+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "java-parse.txt",
+      "sha256": "8387280237677ad6b4a50f933bcf0d74303cad205e2b71e6991cf7fae96261fe"
+    },
+    {
+      "name": "shell-syntax",
+      "command": "for file in scripts/*.sh; do bash -n \"$file\" || exit; done",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:48:02.199887+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "shell-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "js-syntax",
+      "command": "node --check scripts/demo-http.mjs",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:48:02.218435+00:00",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "status": "passed",
+      "log": "js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "integration-preflight",
+      "command": "bash scripts/verify.sh --integration",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:48:02.257335+00:00",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "status": "blocked",
+      "log": "integration-preflight.txt",
+      "sha256": "ea7aaf187849f1048d0451b6c4601d667ea706b3eb031dfd16ef6d2deb4877b4"
+    },
+    {
+      "name": "dependency-network",
+      "command": "curl --head --max-time 5 https://repo.maven.apache.org/maven2/",
+      "cwd": "/mnt/data/development/park-commerce-workbench",
+      "source": "8e646771f3617f6dea974ddf9271203175d48099",
+      "started_at": "2026-10-12T17:48:02.269172+00:00",
+      "exit_code": 6,
+      "expected_exit": 6,
+      "status": "blocked",
+      "log": "dependency-network.txt",
+      "sha256": "e36a00e03e5f6e52a35e6fb26d6d8936e06b4510d927ca4e0ebcf0beb26f5abe"
+    }
+  ]
+}

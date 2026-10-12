@@ -1,0 +1,61 @@
+{
+  "kind": "independently expected fixtures with assertion evidence, not captured HTTP responses",
+  "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+  "observed_in": "core.txt",
+  "cases": [
+    {
+      "name": "Family fixture",
+      "unit_cents": {
+        "ADULT": 10000,
+        "CHILD": 7000
+      },
+      "quantity": {
+        "ADULT": 2,
+        "CHILD": 2
+      },
+      "minimum_tickets": 4,
+      "discount_basis_points": 1000,
+      "expected_subtotal_cents": 34000,
+      "expected_discount_cents": 3400,
+      "expected_total_cents": 30600,
+      "observed_assertions": "passed"
+    },
+    {
+      "name": "Per-variant half-up rounding",
+      "unit_cents": {
+        "ADULT": 5,
+        "CHILD": 5
+      },
+      "quantity": {
+        "ADULT": 1,
+        "CHILD": 1
+      },
+      "minimum_tickets": 1,
+      "discount_basis_points": 1000,
+      "expected_subtotal_cents": 10,
+      "expected_discount_cents": 2,
+      "expected_total_cents": 8,
+      "observed_assertions": "passed"
+    },
+    {
+      "name": "One variant subtotal, not per-ticket rounding",
+      "unit_cents": {
+        "ADULT": 5
+      },
+      "quantity": {
+        "ADULT": 2
+      },
+      "minimum_tickets": 1,
+      "discount_basis_points": 1000,
+      "expected_subtotal_cents": 10,
+      "expected_discount_cents": 1,
+      "expected_total_cents": 9,
+      "observed_assertions": "passed"
+    }
+  ],
+  "candidate_fingerprint_fixture": {
+    "expected": "sha256:0cea663b21d35d72cc9ea7bf166890e2195a5fff54fe5649cb7a08ff49b69e3f",
+    "encoding": "docs/project/pricing-preview.md",
+    "observed_assertion": "passed"
+  }
+}

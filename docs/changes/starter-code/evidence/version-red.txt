@@ -1,0 +1,30 @@
+PASS Fresh local configuration is generated
+PASS Nine distinct random credentials are generated without printing them
+PASS Generated local credentials have mode 600
+PASS Existing local configuration is preserved
+PASS Agent wrapper refuses non-repository targets
+PASS Agent wrapper refuses to initialize a parent worktree
+PASS Preview forwards the project root and dry-run to a mock initializer
+PASS Apply forwards only the project root to a mock initializer
+PASS Unreviewed initializer versions are rejected
+PASS Initializer proposal exit status is preserved
+PASS Extra initializer-wrapper arguments are rejected
+FAIL reject patch look-alike 0.2.01: exit=0 init_called=yes
+FAIL reject major look-alike 10.2.0: exit=0 init_called=yes
+FAIL reject prerelease 0.2.0-rc.1: exit=0 init_called=yes
+FAIL reject build suffix: exit=0 init_called=yes
+PASS Reject empty output before calling init
+FAIL reject missing command name: exit=0 init_called=yes
+FAIL reject wrong command name: exit=0 init_called=yes
+FAIL reject leading space: exit=0 init_called=yes
+FAIL reject trailing space: exit=0 init_called=yes
+FAIL reject banner before version: exit=0 init_called=yes
+FAIL reject banner after version: exit=0 init_called=yes
+FAIL reject carriage return: exit=0 init_called=yes
+PASS An unsuccessful version probe fails before init even with correct output
+PASS Initializer exit 2 is preserved
+PASS Initializer exit 3 is preserved
+PASS Initializer exit 130 is preserved
+PASS Initializer exit 143 is preserved
+PASS Agent checks preserve existing local configuration bytes
+RESULT: 11 rejected-output regressions failed.

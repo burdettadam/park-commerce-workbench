@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0023",
+  "claim": "not_ready",
+  "candidate": {
+    "source_commit": null,
+    "base_commit": null,
+    "accepted_plan_commit": null,
+    "accepted_plan_path": "goals/G-0023/README.md",
+    "accepted_plan_sha256": null,
+    "working_tree_clean": null,
+    "configuration_sha256": null,
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CHECK-01",
+      "type": "automated",
+      "candidate_commit": null,
+      "command": null,
+      "working_directory": ".",
+      "started_at": null,
+      "finished_at": null,
+      "expected_exit_code": 0,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "not_run",
+      "observed_result": null,
+      "output_artifact_id": "CHECK-OUTPUT"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0023-AC01",
+      "result": "not_run",
+      "independent_expected_result": "Actual inventory matches the authorized account/region/resource/exposure plan; record private access and absence of unintended public application/database endpoints.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0023-A01"
+      ]
+    },
+    {
+      "id": "G-0023-AC02",
+      "result": "not_run",
+      "independent_expected_result": "Execute the purchase and transactional checks against Aurora and the approved MongoDB deployment; record differences from local MySQL rather than asserting drop-in equivalence.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0023-A02"
+      ]
+    },
+    {
+      "id": "G-0023-AC03",
+      "result": "not_run",
+      "independent_expected_result": "Promote one reviewed image change with real probes/multiple replicas and retain cloud metrics, logs and health checks tied to S and D.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0023-A02"
+      ]
+    },
+    {
+      "id": "G-0023-AC04",
+      "result": "not_run",
+      "independent_expected_result": "Exercise credential delivery/rotation and a cost stop/cleanup procedure on owned resources; preserve evidence without leaking secrets or misrepresenting billing delays.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0023-A03"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0023-A01",
+      "path": "aws-inventory.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "G-0023-A02",
+      "path": "aws-functional-and-rollout.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "G-0023-A03",
+      "path": "aws-operations.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "CHECK-OUTPUT",
+      "path": "checks/command.txt",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": null,
+      "candidate_commit": null
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": null,
+    "candidate_commit": null,
+    "decision": "not_run",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": null,
+    "candidate_commit": null,
+    "decision": "not_requested",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": null,
+    "retrieval_verified": null,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}

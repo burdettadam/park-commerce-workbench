@@ -1,0 +1,69 @@
+{
+  "slice": "catalog-publication",
+  "roadmap_proposal": "G-0007",
+  "status": "implementation_candidate_not_goal_ready",
+  "source_identity": "See VERIFICATION.md; separate source S and report E.",
+  "authority": "User-directed local development; prerequisite goal adoption and release approval not implied.",
+  "criteria": [
+    {
+      "id": "G-0007-AC01",
+      "implemented": [
+        "immutable drafts",
+        "exact-draft publication",
+        "unchanged guest product DTO/GraphQL"
+      ],
+      "executed": "JDK-only domain tests with in-memory stores",
+      "unverified": [
+        "Spring/MongoDB behavior",
+        "Vaadin/browser walkthrough"
+      ]
+    },
+    {
+      "id": "G-0007-AC02",
+      "implemented": [
+        "compare-and-append draft versions",
+        "unique publication revisions",
+        "pinned published base",
+        "embedded audit"
+      ],
+      "executed": "JDK-only forced 24-writer races and deterministic interleavings",
+      "unverified": [
+        "real Mongo contention/indexes",
+        "multi-process race"
+      ]
+    },
+    {
+      "id": "G-0007-AC03",
+      "implemented": [
+        "revision-ordered bounded keyset history",
+        "pinned upper revision",
+        "strict product-bound cursor"
+      ],
+      "executed": "JDK-only pagination/cursor/reconstruction scenarios",
+      "unverified": [
+        "Mongo range query/serialization",
+        "HTTP browser traversal"
+      ]
+    },
+    {
+      "id": "G-0007-AC04",
+      "implemented": [
+        "server Principal in HTTP writes",
+        "audit in same record",
+        "legacy audit unknown",
+        "no token in audit"
+      ],
+      "executed": "core actor/audit fixture; not actual authentication",
+      "unverified": [
+        "real security filter/HTTP actor tests",
+        "production identity"
+      ]
+    }
+  ],
+  "independent_contract_review": "not_performed",
+  "independent_adversarial_review": "not_performed",
+  "human_validation": "not_performed",
+  "release_approval": "not_granted",
+  "recovery": "local_source_zip_patch_bundle_only; no remote/privacy verification",
+  "next_action": "Run G-0004/G-0005 full-stack validation, then obtain actual reviews and intended-use validation under adopted governance."
+}

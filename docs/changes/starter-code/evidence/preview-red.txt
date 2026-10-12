@@ -1,0 +1,101 @@
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:20: error: cannot find symbol
+    private static Pricing.Preview preview(ScenarioFixture f, Pricing.PriceBook book, int adults, int children) {
+                          ^
+  symbol:   class Preview
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:23: error: cannot find symbol
+    private static void totals(Pricing.Preview p, long subtotal, long discount, long total) {
+                                      ^
+  symbol:   class Preview
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:21: error: cannot find symbol
+        return f.pricing.preview(new Pricing.PreviewRequest(book, request(f, adults, children)));
+                                            ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:31: error: cannot find symbol
+            equal(Pricing.PreviewMode.UNPUBLISHED_INPUT, p.mode()); equal(book, p.candidate());
+                         ^
+  symbol:   variable PreviewMode
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:67: error: cannot find symbol
+            totals(service.preview(new Pricing.PreviewRequest(candidate(f), request(f, 2, 2))), 34000, 3400, 30600);
+                                              ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:72: error: cannot find symbol
+            totals(service.preview(new Pricing.PreviewRequest(candidate(f), request(f, 2, 2))), 34000, 3400, 30600);
+                                              ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:84: error: cannot find symbol
+            var names = Arrays.stream(Pricing.Preview.class.getRecordComponents()).map(c -> c.getName()).toList();
+                                             ^
+  symbol:   class Preview
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:86: error: cannot find symbol
+            check(!Pricing.Quote.class.isAssignableFrom(Pricing.Preview.class));
+                                                               ^
+  symbol:   class Preview
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:119: error: cannot find symbol
+            var f = new ScenarioFixture(); failure(INVALID_INPUT, () -> f.pricing.preview(new Pricing.PreviewRequest(candidate(f), new Pricing.Request("park-day", f.visit, 1, 0))));
+                                                                                                     ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:122: error: cannot find symbol
+            var f = new ScenarioFixture(); failure(INVALID_INPUT, () -> new Pricing.PreviewRequest(null, request(f, 1, 0)));
+                                                                                   ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:123: error: cannot find symbol
+            failure(INVALID_INPUT, () -> new Pricing.PreviewRequest(candidate(f), null)); failure(INVALID_INPUT, () -> f.pricing.preview(null));
+                                                    ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:123: error: cannot find symbol
+            failure(INVALID_INPUT, () -> new Pricing.PreviewRequest(candidate(f), null)); failure(INVALID_INPUT, () -> f.pricing.preview(null));
+                                                                                                                                ^
+  symbol:   method preview(<null>)
+  location: variable pricing of type Service
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:133: error: cannot find symbol
+            totals(f.pricing.preview(new Pricing.PreviewRequest(b, new Pricing.Request("lantern-evening", f.visit.plusDays(1), 1, 0))), 1000, 0, 1000);
+                                                ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:136: error: cannot find symbol
+            var f = new ScenarioFixture(); failure(NOT_FOUND, () -> f.pricing.preview(new Pricing.PreviewRequest(candidate(f), new Pricing.Request("lantern-evening", f.visit.plusDays(1), 1, 0))));
+                                                                                                 ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:152: error: cannot find symbol
+            totals(first.preview(new Pricing.PreviewRequest(candidate(f), request(f, 1, 0))), 10000, 0, 10000);
+                                            ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:154: error: cannot find symbol
+            failure(INVALID_INPUT, () -> after.preview(new Pricing.PreviewRequest(candidate(f), request(f, 1, 0))));
+                                                                  ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:158: error: cannot find symbol
+            failure(DEPENDENCY_UNAVAILABLE, () -> missing.preview(new Pricing.PreviewRequest(candidate(f), request(f, 1, 0))));
+                                                                             ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:160: error: cannot find symbol
+            failure(DEPENDENCY_UNAVAILABLE, () -> wrong.preview(new Pricing.PreviewRequest(candidate(f), request(f, 1, 0))));
+                                                                           ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:188: error: cannot find symbol
+            var future = pool.submit(() -> service.preview(new Pricing.PreviewRequest(book, request(f, 2, 2))));
+                                                                      ^
+  symbol:   class PreviewRequest
+  location: class Pricing
+/mnt/data/work/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java:193: error: cannot find symbol
+            var result = future.get(5, TimeUnit.SECONDS); equal(book, result.candidate()); totals(result, 34000, 3400, 30600);
+                                                                            ^
+  symbol:   method candidate()
+  location: variable result of type Object
+20 errors

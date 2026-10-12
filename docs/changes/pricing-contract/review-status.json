@@ -1,0 +1,10 @@
+{
+  "candidate": "67817658b211c5ae56b7ed4f3a4f688723c1d6b5",
+  "contract_review": "pending",
+  "adversarial_review": "pending",
+  "human_validation": "pending",
+  "prerequisite_adoption": "pending",
+  "goal_ready": false,
+  "release_approved": false,
+  "retention": "local_only"
+}

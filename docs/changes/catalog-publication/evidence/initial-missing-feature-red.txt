@@ -1,0 +1,25 @@
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:14: error: package CatalogEditorial does not exist
+    static CatalogEditorial.Content content(String name) {
+                           ^
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:21: error: package CatalogEditorial does not exist
+        final CatalogEditorial.Service editor = new CatalogEditorial.Service(store, clock);
+                              ^
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:22: error: package CatalogEditorial does not exist
+        CatalogEditorial.Draft save(long expected, long base, String name) {
+                        ^
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:25: error: package CatalogEditorial does not exist
+        CatalogEditorial.Publication publish(long draft, long base) {
+                        ^
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:15: error: package CatalogEditorial does not exist
+        return new CatalogEditorial.Content(name, Kind.EVENT, EnumSet.allOf(Variant.class));
+                                   ^
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:21: error: package CatalogEditorial does not exist
+        final CatalogEditorial.Service editor = new CatalogEditorial.Service(store, clock);
+                                                                    ^
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:23: error: package CatalogEditorial does not exist
+            return editor.saveDraft("night", new CatalogEditorial.SaveDraft(expected, base, content(name)), "employee-a");
+                                                                 ^
+/mnt/data/development-next/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/CatalogEditorialScenarios.java:26: error: package CatalogEditorial does not exist
+            return editor.publishDraft("night", new CatalogEditorial.PublishDraft(draft, base), "employee-b");
+                                                                    ^
+8 errors

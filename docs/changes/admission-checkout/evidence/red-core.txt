@@ -1,0 +1,103 @@
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:37: error: package Admission does not exist
+    static Admission.Service withQuote(Fixture x, Pricing.Quote q) {
+                    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:7: error: package Admission does not exist
+public final class MemoryAdmissionStore implements Admission.Store {
+                                                            ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:17: error: package Admission does not exist
+        final Admission.Service service = new Admission.Service(store, f.pricing::internal, f.clock, ZoneId.of("America/New_York"));
+                       ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:21: error: package Admission does not exist
+        Admission.Order buy(Pricing.Quote q, String key) { return service.confirm(q.id(), q.owner(), key); }
+                 ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:8: error: package Admission does not exist
+    private final Map<UUID, Admission.Order> orders = new LinkedHashMap<>();
+                                     ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:11: error: package Admission does not exist
+    @Override public synchronized Optional<Admission.Order> order(UUID id) { return Optional.ofNullable(orders.get(id)); }
+                                                    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:12: error: package Admission does not exist
+    @Override public synchronized Optional<Admission.Order> byKey(String owner, String key) {
+                                                    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:15: error: package Admission does not exist
+    @Override public synchronized Optional<Admission.Order> byQuote(UUID quoteId) {
+                                                    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:18: error: package Admission does not exist
+    @Override public synchronized Admission.Order create(UUID quoteId,String owner,String key,Supplier<Admission.Order> factory) {
+                                                                                                                ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:18: error: package Admission does not exist
+    @Override public synchronized Admission.Order create(UUID quoteId,String owner,String key,Supplier<Admission.Order> factory) {
+                                           ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:17: error: package Admission does not exist
+        final Admission.Service service = new Admission.Service(store, f.pricing::internal, f.clock, ZoneId.of("America/New_York"));
+                                                       ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:38: error: package Admission does not exist
+        return new Admission.Service(x.store,id->q,x.f.clock,ZoneId.of("America/New_York"));
+                            ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:50: error: package Admission does not exist
+            equal(3,o.entitlements().stream().mapToInt(Admission.Entitlement::quantity).sum());
+                                                                ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:51: error: package Admission does not exist
+            equal(2L,o.entitlements().stream().map(Admission.Entitlement::id).distinct().count());
+                                                            ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:52: error: package Admission does not exist
+            for(var e:o.entitlements()){equal(o.id(),e.orderId());equal(o.confirmedAt(),e.issuedAt());equal(Admission.State.ACTIVE,e.state());}
+                                                                                                                     ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:69: error: package Admission does not exist
+            var replay=new Admission.Service(x.store,id->{throw new AssertionError("Pricing called");},x.f.clock,ZoneId.of("America/New_York"));
+                                    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:93: error: package Admission does not exist
+            var x=new Fixture();var s=new Admission.Service(x.store,id->{throw new AssertionError("Network called");},x.f.clock,ZoneId.of("America/New_York"));
+                                                   ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:104: error: package Admission does not exist
+            var x=new Fixture();var q=x.quote("alice",1,0);var s=new Admission.Service(x.store,id->{x.f.clock.advance(Duration.ofMinutes(15));return q;},x.f.clock,ZoneId.of("America/New_York"));
+                                                                              ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:114: error: package Admission does not exist
+            var snapshot=q;var s=new Admission.Service(x.store,id->snapshot,Clock.fixed(start.plusSeconds(60),ZoneOffset.UTC),ZoneId.of("America/New_York"));
+                                              ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:127: error: package Admission does not exist
+            var x=new Fixture();var s=new Admission.Service(x.store,id->{throw new AssertionError("Pricing called");},x.f.clock,ZoneId.of("America/New_York"));
+                                                   ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:128: error: package Admission does not exist
+            var r=s.recover(UUID.randomUUID(),"alice","unknown");equal(Admission.RecoveryState.NOT_CONFIRMED,r.state());equal(null,r.order());equal(0,x.store.size());
+                                                                                ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:132: error: package Admission does not exist
+            equal(Admission.RecoveryState.CONFIRMED,r.state());equal(o,r.order());
+                           ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:135: error: package Admission does not exist
+            var x=new Fixture();var q=x.quote("alice",1,0);x.buy(q,"key");equal(Admission.RecoveryState.NOT_CONFIRMED,x.service.recover(q.id(),"bob","key").state());
+                                                                                         ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:153: error: package Admission does not exist
+            var s=new Admission.Service(x.store.restartCopy(),id->{throw new AssertionError("Pricing called");},x.f.clock,ZoneId.of("America/New_York"));equal(o,s.confirm(q.id(),"alice","key"));
+                               ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:201: error: package Admission does not exist
+        var s=new Admission.Service(x.store,id->{try{barrier.await(10,TimeUnit.SECONDS);}catch(Exception e){throw new AssertionError(e);}return x.f.pricing.internal(id);},x.f.clock,ZoneId.of("America/New_York"));
+                           ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java:202: error: package Admission does not exist
+        var jobs=new ArrayList<Callable<Admission.Order>>();
+                                                 ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:11: error: method does not override or implement a method from a supertype
+    @Override public synchronized Optional<Admission.Order> order(UUID id) { return Optional.ofNullable(orders.get(id)); }
+    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:12: error: method does not override or implement a method from a supertype
+    @Override public synchronized Optional<Admission.Order> byKey(String owner, String key) {
+    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:15: error: method does not override or implement a method from a supertype
+    @Override public synchronized Optional<Admission.Order> byQuote(UUID quoteId) {
+    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:18: error: method does not override or implement a method from a supertype
+    @Override public synchronized Admission.Order create(UUID quoteId,String owner,String key,Supplier<Admission.Order> factory) {
+    ^
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:19: error: cannot find symbol
+        var prior=byKey(owner,key);if(prior.isPresent())return Admission.sameRequest(prior.get(),quoteId,owner,key);
+                                                               ^
+  symbol:   variable Admission
+  location: class MemoryAdmissionStore
+/mnt/data/development/park-commerce-workbench/core/src/test/java/dev/parkcommerce/core/MemoryAdmissionStore.java:21: error: cannot find symbol
+        beforeCreate.run();var candidate=Admission.sameRequest(factory.get(),quoteId,owner,key);
+                                         ^
+  symbol:   variable Admission
+  location: class MemoryAdmissionStore
+32 errors
+
+Exit status: 1

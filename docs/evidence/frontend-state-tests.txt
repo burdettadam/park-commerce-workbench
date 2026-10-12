@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: requires a hold before checkout
+ok 1 - requires a hold before checkout
+  ---
+  duration_ms: 0.848919
+  type: 'test'
+  ...
+# Subtest: first hold gets a key
+ok 2 - first hold gets a key
+  ---
+  duration_ms: 0.712412
+  type: 'test'
+  ...
+# Subtest: retries keep the same key
+ok 3 - retries keep the same key
+  ---
+  duration_ms: 0.108294
+  type: 'test'
+  ...
+# Subtest: a different hold gets a different key
+ok 4 - a different hold gets a different key
+  ---
+  duration_ms: 0.108184
+  type: 'test'
+  ...
+# Subtest: success does not change retry identity
+ok 5 - success does not change retry identity
+  ---
+  duration_ms: 0.119661
+  type: 'test'
+  ...
+# Subtest: wrong hold response is rejected
+ok 6 - wrong hold response is rejected
+  ---
+  duration_ms: 0.116036
+  type: 'test'
+  ...
+# Subtest: reset clears the order and request
+ok 7 - reset clears the order and request
+  ---
+  duration_ms: 0.116257
+  type: 'test'
+  ...
+# Subtest: returned request mutation cannot change stored identity
+ok 8 - returned request mutation cannot change stored identity
+  ---
+  duration_ms: 0.168636
+  type: 'test'
+  ...
+# Subtest: empty holds are rejected
+ok 9 - empty holds are rejected
+  ---
+  duration_ms: 0.280125
+  type: 'test'
+  ...
+# Subtest: switching holds clears the displayed order
+ok 10 - switching holds clears the displayed order
+  ---
+  duration_ms: 0.298092
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 69.406791

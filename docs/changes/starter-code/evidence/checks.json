@@ -1,0 +1,203 @@
+{
+  "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+  "source_clean_before_and_after": true,
+  "checks": [
+    {
+      "name": "core",
+      "command": [
+        "bash",
+        "scripts/test-core.sh",
+        "--demo"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:42.373201+00:00",
+      "finished_at": "2026-10-12T03:30:44.614731+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "107 core scenarios with in-memory test stores; includes 30 new preview scenarios",
+      "output": "core.txt",
+      "sha256": "a6d8559495f9994c0a857b457ad0ceb23aa9b6df67303dbf79a35dcadfc9e6c0"
+    },
+    {
+      "name": "tooling",
+      "command": [
+        "bash",
+        "scripts/test-tooling.sh"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:44.615315+00:00",
+      "finished_at": "2026-10-12T03:30:44.969881+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "29 offline wrapper/setup checks; mock initializer",
+      "output": "tooling.txt",
+      "sha256": "e65614654f59afcfd0b60d9965bda711c4071f1cc22309c7d4bbe8da9f0be930"
+    },
+    {
+      "name": "client",
+      "command": [
+        "node",
+        "--test",
+        "storefront/src/app/checkout-state.test.mjs"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:44.970203+00:00",
+      "finished_at": "2026-10-12T03:30:45.086417+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "10 client-state tests; not Angular browser tests",
+      "output": "client.txt",
+      "sha256": "6c8d7602b9bdb187b235ce207ca17edce4f1ee79f77d0eac5624cdc570b6521e"
+    },
+    {
+      "name": "roadmap",
+      "command": [
+        "node",
+        "scripts/validate-roadmap.mjs"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.086694+00:00",
+      "finished_at": "2026-10-12T03:30:45.131541+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "Structural roadmap checks; no acceptance authority",
+      "output": "roadmap.txt",
+      "sha256": "45e00959a6b3a09674d78338582f1b94269794619165a749a963f299cf7a3993"
+    },
+    {
+      "name": "validators",
+      "command": [
+        "node",
+        "--test",
+        "scripts/validate-roadmap.test.mjs",
+        "scripts/validate-evidence.test.mjs"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.132021+00:00",
+      "finished_at": "2026-10-12T03:30:45.355612+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "41 validator tests",
+      "output": "validators.txt",
+      "sha256": "f3f943f672f5ed44c4cad55b0b9a0c4e325ba368813898313f3b9fcd18146583"
+    },
+    {
+      "name": "shell-syntax",
+      "command": [
+        "bash",
+        "-c",
+        "for file in scripts/*.sh; do bash -n \"$file\" || exit; done"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.356155+00:00",
+      "finished_at": "2026-10-12T03:30:45.368639+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "Bash parser checks",
+      "output": "shell-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "http-script-syntax",
+      "command": [
+        "node",
+        "--check",
+        "scripts/demo-http.mjs"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.368906+00:00",
+      "finished_at": "2026-10-12T03:30:45.392349+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "Node parser check only; live HTTP not executed",
+      "output": "http-script-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-manifest",
+      "command": [
+        "sha256sum",
+        "-c",
+        "SOURCE-MANIFEST.sha256"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.392797+00:00",
+      "finished_at": "2026-10-12T03:30:45.403275+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "Source candidate file hashes",
+      "output": "source-manifest.txt",
+      "sha256": "4a5c66e477f60521e073d8b4a2eff2c44b86dc07f8d2e00c087fc25760bb4c76"
+    },
+    {
+      "name": "whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.403541+00:00",
+      "finished_at": "2026-10-12T03:30:45.406902+00:00",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "outcome": "pass",
+      "scope": "Git whitespace check",
+      "output": "whitespace.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "java-build-unavailable",
+      "command": [
+        "bash",
+        "scripts/verify.sh",
+        "--java"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.407220+00:00",
+      "finished_at": "2026-10-12T03:30:45.411436+00:00",
+      "observed_exit": 2,
+      "expected_exit": 2,
+      "outcome": "blocked",
+      "scope": "Blocked: Maven unavailable; not an application-build pass",
+      "output": "java-build-unavailable.txt",
+      "sha256": "b2d66113b2f0257c9fce4dd76339959c9216e1989ccc5555f9106a86432af23b"
+    },
+    {
+      "name": "integration-unavailable",
+      "command": [
+        "bash",
+        "scripts/verify.sh",
+        "--integration"
+      ],
+      "working_directory": "/mnt/data/work/park-commerce-workbench",
+      "source_commit": "210ae99f7b9b7294180990f10584d1e58f12971d",
+      "started_at": "2026-10-12T03:30:45.411707+00:00",
+      "finished_at": "2026-10-12T03:30:45.415198+00:00",
+      "observed_exit": 2,
+      "expected_exit": 2,
+      "outcome": "blocked",
+      "scope": "Blocked: Maven and Docker unavailable; no database/HTTP test pass",
+      "output": "integration-unavailable.txt",
+      "sha256": "ea7aaf187849f1048d0451b6c4601d667ea706b3eb031dfd16ef6d2deb4877b4"
+    }
+  ]
+}

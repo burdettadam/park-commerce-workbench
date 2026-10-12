@@ -1,0 +1,10 @@
+Captured UTC: 2026-10-11T21:27:34Z
+openjdk version "21.0.12.1" 2026-08-18
+OpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)
+OpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)
+javac 21.0.12.1
+GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)
+git version 2.47.3
+v22.16.0
+Maven: not installed
+Docker: not installed

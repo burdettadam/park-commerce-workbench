@@ -1,0 +1,39 @@
+server:
+  port: 8081
+  shutdown: graceful
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: catalog-service
+  jackson:
+    deserialization:
+      accept-float-as-int: false
+      fail-on-unknown-properties: true
+  mongodb:
+    uri: ${MONGODB_URI:mongodb://127.0.0.1:27017/catalog}
+  graphql:
+    graphiql:
+      enabled: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 0.0
+  otlp:
+    metrics:
+      export:
+        enabled: false
+logging:
+  structured:
+    format:
+      console: ecs

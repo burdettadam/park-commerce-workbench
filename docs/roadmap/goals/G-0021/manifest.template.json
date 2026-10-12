@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0021",
+  "claim": "not_ready",
+  "candidate": {
+    "source_commit": null,
+    "base_commit": null,
+    "accepted_plan_commit": null,
+    "accepted_plan_path": "goals/G-0021/README.md",
+    "accepted_plan_sha256": null,
+    "working_tree_clean": null,
+    "configuration_sha256": null,
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CHECK-01",
+      "type": "automated",
+      "candidate_commit": null,
+      "command": null,
+      "working_directory": ".",
+      "started_at": null,
+      "finished_at": null,
+      "expected_exit_code": 0,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "not_run",
+      "observed_result": null,
+      "output_artifact_id": "CHECK-OUTPUT"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0021-AC01",
+      "result": "not_run",
+      "independent_expected_result": "Deploy by artifact digest with at least two replicas of one stateless service; readiness/liveness and service routing behave correctly under a restarted replica.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0021-A01"
+      ]
+    },
+    {
+      "id": "G-0021-AC02",
+      "result": "not_run",
+      "independent_expected_result": "Run the authenticated purchase exercise during a rolling update and report all unexpected errors plus invariant reconciliation; actual deployment health is recorded separately from pipeline success.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0021-A02"
+      ]
+    },
+    {
+      "id": "G-0021-AC03",
+      "result": "not_run",
+      "independent_expected_result": "Roll back a deliberately bad application candidate or execute the accepted forward-repair path when schema compatibility prevents rollback; retain the actual source/artifact/environment identities.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0021-A02"
+      ]
+    },
+    {
+      "id": "G-0021-AC04",
+      "result": "not_run",
+      "independent_expected_result": "Recreate the local deployment from retained manifests/configuration/secrets references without copying live credentials into Git; demonstrate cleanup confined to the owned namespace/resources.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0021-A03"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0021-A01",
+      "path": "kubernetes-baseline.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "G-0021-A02",
+      "path": "rollout-and-rollback.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "G-0021-A03",
+      "path": "cluster-recreation.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "CHECK-OUTPUT",
+      "path": "checks/command.txt",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": null,
+      "candidate_commit": null
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": null,
+    "candidate_commit": null,
+    "decision": "not_run",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": null,
+    "candidate_commit": null,
+    "decision": "not_requested",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": null,
+    "retrieval_verified": null,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}

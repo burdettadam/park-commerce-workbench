@@ -1,0 +1,58 @@
+{
+  "kind": "candidate-evidence-map-not-acceptance-manifest",
+  "goal": "G-0014",
+  "source_candidate": "d991a2ebe564ac340b46d7b54ea785d2512cd0ca",
+  "goal_accepted": false,
+  "ready": false,
+  "independent_reviews": [],
+  "human_validation": null,
+  "scope": "Same-tab recovery for the current one-event checkout; no combined cart or production identity.",
+  "criteria": [
+    {
+      "id": "G-0014-AC01",
+      "status": "not_satisfied",
+      "reason": "Combined cart/server-driven selection and real browser journey remain outstanding."
+    },
+    {
+      "id": "G-0014-AC02",
+      "status": "partially_evidenced",
+      "observed": [
+        "123-scenario Java suite includes recovery checks",
+        "56 Node recovery tests including dropped-response contract double"
+      ],
+      "unverified": [
+        "real Angular/browser/sessionStorage reload",
+        "real Spring/MySQL HTTP run"
+      ],
+      "artifacts": [
+        "evidence/final-core.txt",
+        "evidence/final-client.txt",
+        "reload-and-retry-matrix.md"
+      ]
+    },
+    {
+      "id": "G-0014-AC03",
+      "status": "partially_evidenced",
+      "observed": [
+        "Owner isolation, expiration and outage handling in Java/Node fixtures"
+      ],
+      "unverified": [
+        "actual browser logout and identity switch",
+        "framework filter/database enforcement"
+      ],
+      "artifacts": [
+        "evidence/final-core.txt",
+        "evidence/final-client.txt",
+        "reload-and-retry-matrix.md"
+      ]
+    },
+    {
+      "id": "G-0014-AC04",
+      "status": "not_satisfied",
+      "reason": "No actual browser keyboard/narrow viewport/accessibility validation."
+    }
+  ],
+  "native_agent_adoption": "pending on user workstation",
+  "remote_publication": "none",
+  "recovery_coverage": "local artifacts only"
+}

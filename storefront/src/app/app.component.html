@@ -1,0 +1,41 @@
+<main>
+ <header><p class="eyebrow">Independent engineering portfolio</p><h1>A visit, a quote,<br>a dependable checkout.</h1><p>Fictional park commerce. Real service contracts. No actual payment.</p></header>
+ <section class="notice"><strong>Local development only.</strong> This application uses demo credentials and is not connected to a payment provider.</section>
+ <div class="columns">
+  <section class="card">
+   <h2>01 · Sign in and plan</h2>
+   <label>Guest demo token<input type="password" autocomplete="off" [(ngModel)]="token" (ngModelChange)="credentialChanged()" [disabled]="busy()" placeholder="Paste DEMO_GUEST_TOKEN"></label>
+   <button (click)="connect()" [disabled]="busy() || !token">Authenticate and recover saved checkout</button>
+   @if(authenticated();as subject){<p class="small">Authenticated as {{subject}}. Tokens stay in memory only.</p><button class="secondary" (click)="logout()" [disabled]="busy()">Sign out</button>}
+   <button class="secondary" (click)="load()" [disabled]="busy()">Load published products</button>
+   <label>Product<select [(ngModel)]="productId" (ngModelChange)="resetQuote()" [disabled]="busy() || pending()"><option value="">Select a product</option>@for(product of products();track product.id){<option [value]="product.id">{{product.name}} · {{product.kind}}</option>}</select></label>
+   <label>Visit date<input type="date" [(ngModel)]="visitDate" (ngModelChange)="resetQuote()" [disabled]="busy() || pending()"></label>
+   <div class="pair"><label>Adults<input type="number" min="0" max="20" [(ngModel)]="adults" (ngModelChange)="resetQuote()" [disabled]="busy() || pending()"></label><label>Children<input type="number" min="0" max="20" [(ngModel)]="children" (ngModelChange)="resetQuote()" [disabled]="busy() || pending()"></label></div>
+   <button (click)="createQuote()" [disabled]="busy() || !productId || !authenticated() || pending()">Get itemized quote</button>
+  </section>
+  <section class="card">
+   <h2>02 · Review the price</h2>
+   @if(quote();as q){
+    <h3>{{q.productName}}</h3><p>Visit {{q.visitDate}} · Price version {{q.pricingVersion}}</p>
+    <dl>@for(line of q.lines;track line.variant){<div><dt>{{line.quantity}} × {{line.variant}}</dt><dd>${{line.total.amount}}</dd></div>}<div><dt>Subtotal</dt><dd>${{q.subtotal.amount}}</dd></div><div><dt>Discount {{q.appliedOffer || ''}}</dt><dd>−${{q.discount.amount}}</dd></div><div class="total"><dt>Total</dt><dd>${{q.total.amount}} {{q.total.currency}}</dd></div></dl>
+    <p class="small">Quote expires {{q.expiresAt | date:'medium'}}. The server determines expiration and final availability.</p>
+   }@else{<p class="empty">A recovered checkout uses the original server-held price, not a newly calculated quote.</p>}
+   <h2>03 · Reserve and confirm</h2>
+   <label>Evening-event occurrence ID<input [(ngModel)]="eventId" [disabled]="busy() || pending()" placeholder="From employee console or demo script"></label>
+   <button class="secondary" (click)="reserve()" [disabled]="busy() || !quote() || !eventId || !authenticated() || pending()">Hold event capacity</button>
+   @if(pending()){
+    <section aria-labelledby="recovery-title">
+     <h3 id="recovery-title">Saved checkout</h3>
+     <p class="small">This tab retains only the account, hold and retry key. A reload requires sign-in again. A timeout is not proof of failure.</p>
+     @if(hold();as h){<p class="small">Hold {{h.id}} · {{h.status}}<br>Server deadline {{h.expiresAt | date:'medium'}}<br>Held amount ${{(h.total.cents / 100).toFixed(2)}}</p>}
+     <button class="secondary" (click)="recover()" [disabled]="busy()">Check server checkout status</button>
+     <button (click)="confirm()" [disabled]="busy() || expired()">{{order()?'Retry same checkout':'Confirm saved simulated purchase'}}</button>
+     @if(resolved()){<button class="secondary" (click)="startOver()" [disabled]="busy()">Clear resolved checkout and start another purchase</button>}
+    </section>
+   }
+   @if(order();as o){<section class="receipt"><strong>Server confirmed</strong><p>Order {{o.id}}</p><p>Amount ${{(o.total.cents / 100).toFixed(2)}} · {{o.quantity}} ticket(s)</p><p>No payment was taken.</p></section>}
+  </section>
+ </div>
+ <section class="status" role="status" aria-live="polite">{{busy()?'Request in progress…':status()}}</section>
+ <footer>Development candidate · Same-tab session recovery, not a tab-close backup · Framework/browser verification remains pending</footer>
+</main>

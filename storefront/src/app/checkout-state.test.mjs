@@ -1,0 +1,13 @@
+import test from 'node:test'; import assert from 'node:assert/strict';
+import {CheckoutState} from './checkout-state.mjs';
+const fixture=()=>{let n=0;return new CheckoutState(()=>`key-${++n}`);};
+test('requires a hold before checkout',()=>assert.throws(()=>fixture().request()));
+test('first hold gets a key',()=>assert.deepEqual(fixture().begin('hold-a'),{holdId:'hold-a',key:'key-1'}));
+test('retries keep the same key',()=>{const s=fixture(),a=s.begin('hold-a');assert.deepEqual(s.request(),a);assert.deepEqual(s.begin('hold-a'),a);});
+test('a different hold gets a different key',()=>{const s=fixture();s.begin('hold-a');assert.equal(s.begin('hold-b').key,'key-2');});
+test('success does not change retry identity',()=>{const s=fixture();const r=s.begin('hold-a');s.complete({id:'order-a',holdId:'hold-a'});assert.deepEqual(s.request(),r);});
+test('wrong hold response is rejected',()=>{const s=fixture();s.begin('hold-a');assert.throws(()=>s.complete({holdId:'hold-b'}));});
+test('reset clears the order and request',()=>{const s=fixture();s.begin('hold-a');s.complete({holdId:'hold-a'});s.reset();assert.equal(s.order(),null);assert.throws(()=>s.request());});
+test('returned request mutation cannot change stored identity',()=>{const s=fixture();const r=s.begin('hold-a');r.key='bad';assert.equal(s.request().key,'key-1');});
+test('empty holds are rejected',()=>assert.throws(()=>fixture().begin('')));
+test('switching holds clears the displayed order',()=>{const s=fixture();s.begin('hold-a');s.complete({holdId:'hold-a'});s.begin('hold-b');assert.equal(s.order(),null);});

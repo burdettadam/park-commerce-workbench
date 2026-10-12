@@ -1,0 +1,260 @@
+PASS Money parses exact cents
+PASS Money renders two decimals
+PASS Money rejects fractional cents
+PASS Money rejects negative amounts
+PASS Money rejects NaN
+PASS Money rejects overflow
+PASS Money permits zero
+PASS Discount rounds half-up per line
+PASS Money addition and subtraction conserve cents
+PASS Discount rejects more than 100 percent
+PASS Multiplication rejects negative quantity
+PASS Catalog rejects unsafe identifier
+PASS Catalog rejects empty variants
+PASS Catalog accepts immutable variant input
+PASS Catalog defensively copies variants
+PASS Catalog preserves earlier revision
+PASS Catalog rejects skipped revision
+PASS Catalog rejects duplicate publication
+PASS Catalog latest list has one entry per product
+PASS Catalog missing product returns not found
+PASS Rates reject reversed dates
+PASS Rates reject excessive unit price
+PASS Price book rejects overlapping ranges
+PASS Adjacent nonoverlapping ranges allowed
+PASS Shared inclusive date boundary is an overlap
+PASS Pricing rejects skipped version
+PASS Pricing rejects missing catalog revision
+PASS Pricing rejects variant outside pinned catalog
+PASS Quote calculates adult and child totals
+PASS Family offer applies at four tickets
+PASS Family offer absent below threshold
+PASS Quote duration is fifteen minutes
+PASS Quote expires at exact boundary
+PASS Quote remains immutable after repricing
+PASS Quote retains old product revision and name
+PASS Quote cannot be read by another owner
+PASS Quote requires authenticated owner
+PASS Quote rejects zero tickets
+PASS Quote rejects negative tickets
+PASS Quote rejects more than twenty tickets
+PASS Quote rejects past visit dates
+PASS Quote past-date check uses park timezone
+PASS Quote cannot price an uncovered day
+PASS All line totals reconcile across 230 party shapes
+PASS Event rejects zero capacity
+PASS Duplicate event cannot reset capacity
+PASS Hold reduces availability
+PASS Hold retries reuse same quote allocation
+PASS Hold caps expiration at quote expiration
+PASS Hold cannot use expired quote
+PASS Hold cannot use another owner's quote
+PASS Hold requires matching event date
+PASS Admission quote cannot reserve an event
+PASS Mixed adult and child variants share capacity
+PASS Expired hold frees capacity exactly once
+PASS Expired allocation cannot be recycled with same quote
+PASS Confirmation consumes held capacity once
+PASS Repeated checkout returns identical order
+PASS Successful checkout replay survives later expiry
+PASS Checkout key cannot change hold
+PASS Confirmed hold rejects a different key
+PASS Checkout keys are scoped to owner
+PASS Checkout key reuse across events conflicts
+PASS Checkout rejects expired hold at exact boundary
+PASS Checkout cannot use another owner's hold
+PASS Checkout rejects unsafe idempotency key
+PASS Order retrieval enforces ownership
+PASS Missing inventory never creates capacity
+PASS Rollback preserves ledger after failed operation
+PASS State reconstruction preserves checkout identity
+PASS 32 concurrent reservations allocate exactly 3 tickets
+PASS 24 concurrent checkout retries produce one order
+PASS One quote cannot reserve two event instances
+PASS Missing upstream quote fails closed before allocating
+PASS Mismatched upstream quote ID fails closed
+PASS Invalid upstream quantity cannot increase capacity
+PASS Order lookup requires an ID
+PASS Preview: family fixture is independently $340 - $34 = $306
+PASS Preview: below offer threshold applies no discount
+PASS Preview: zero-percent offer is not reported as applied
+PASS Preview: 100 percent discount never produces negative money
+PASS Preview: rounds each variant subtotal half-up
+PASS Preview: maximum 20-ticket party computes exactly
+PASS Preview: publication and quote reuse the same monetary lines
+PASS Preview: never reads or writes the pricing store
+PASS Preview: works before any price has been published
+PASS Preview: keeps published prices, prior quotes, orders and capacity unchanged
+PASS Preview: response has no purchasable identity, owner or expiration
+PASS Preview: candidate content identity is deterministic
+PASS Preview: identity includes candidate amount, version, offer, dates and catalog reference
+PASS Preview: candidate identity is separate from party inputs
+PASS Preview: stale pricing version can be inspected but not republished
+PASS Preview: rejects mismatched product request
+PASS Preview: rejects null candidate, request or envelope
+PASS Preview: rejects overlapping candidate dates
+PASS Preview: inclusive start and end date rates apply
+PASS Preview: no uncovered-date or missing-variant best guess
+PASS Preview: rejects out-of-range and empty parties
+PASS Preview: validates unused candidate variants against pinned catalog
+PASS Preview: park timezone determines the past-date boundary
+PASS Preview: rejects missing or mismatched upstream catalog snapshots
+PASS Preview: pinned catalog revision is not replaced by latest
+PASS Preview: published quote also fails closed on a mismatched catalog response
+PASS Preview: candidate and line collections are immutable
+PASS Preview: concurrent publication cannot silently replace submitted candidate
+PASS Preview: fingerprint matches independent binary-encoding fixture
+PASS Preview: rate list order is explicitly part of exact input identity
+PASS Recovery: an active hold does not confirm or allocate again
+PASS Recovery: returns exactly the original confirmed order
+PASS Recovery: confirmed order survives quote and hold expiration
+PASS Recovery: expiry releases an active allocation exactly once
+PASS Recovery: one millisecond before expiry remains active
+PASS Recovery: another guest cannot read an active hold
+PASS Recovery: another guest cannot read a confirmed receipt
+PASS Recovery: unknown hold has the same not-found outcome
+PASS Recovery: a key cannot be rebound to another hold
+PASS Recovery: a different key cannot read a confirmed result
+PASS Recovery: keys remain case sensitive
+PASS Recovery: invalid identity is rejected before any mutation
+PASS Recovery: never consults the pricing dependency
+PASS Recovery: reconstructed service returns persisted identity
+PASS Recovery: concurrent observations and confirmations still create one order
+PASS Recovery: repeated active observations do not refresh the deadline
+PASS Catalog draft is invisible to guest reads
+PASS Catalog publication selects the exact retained draft
+PASS Catalog draft save rejects a stale predecessor
+PASS Catalog publication rejects an already-used published base
+PASS Catalog history traversal excludes later publications
+PASS Catalog audit comes from explicit actor and server clock
+PASS Catalog draft keeps prior published product guest-visible
+PASS Catalog historical drafts cannot be rewritten
+PASS Catalog publication preserves prior name and variants
+PASS Catalog publication pins its stored base not a caller rebase
+PASS Catalog explicit rebase requires a new saved draft version
+PASS Catalog saving against stale published base is rejected
+PASS Catalog save and publication streams can safely interleave
+PASS Catalog concurrent edit does not change reviewed publication content
+PASS Catalog losing publication cannot write an orphan audit event
+PASS Catalog 24 simultaneous saves retain exactly one new draft
+PASS Catalog 24 simultaneous publications retain one revision and audit
+PASS Catalog unknown product history is empty without creating records
+PASS Catalog draft-only product has empty published history
+PASS Catalog one-row history has no next cursor
+PASS Catalog history supports page-size changes without duplicates
+PASS Catalog history cursor replay is stable after new writes
+PASS Catalog history is ordered by revision even with backwards clocks
+PASS Catalog history result collections are immutable
+PASS Catalog rejects history limit -1
+PASS Catalog rejects history limit 0
+PASS Catalog rejects history limit 51
+PASS Catalog rejects history limit 2147483647
+PASS Catalog rejects malformed or unrelated cursor 
+PASS Catalog rejects malformed or unrelated cursor not:a:cursor
+PASS Catalog rejects malformed or unrelated cursor xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+PASS Catalog rejects malformed or unrelated cursor djI6bmlnaHQ6Mzoy
+PASS Catalog rejects malformed or unrelated cursor djE6b3RoZXI6Mzoy
+PASS Catalog rejects malformed or unrelated cursor djE6bmlnaHQ6MDM6Mg
+PASS Catalog rejects malformed or unrelated cursor djE6bmlnaHQ6Mzow
+PASS Catalog rejects malformed or unrelated cursor djE6bmlnaHQ6Mjoz
+PASS Catalog rejects malformed or unrelated cursor djE6bmlnaHQ6OTk5OjI
+PASS Catalog rejects malformed or unrelated cursor djE6bmlnaHQ6Mzo5MjIzMzcyMDM2ODU0Nzc1
+PASS Catalog rejects malformed or unrelated cursor djE6bmlnaHQ6Mzoy=
+PASS Catalog history cursor at last retained row yields empty tail
+PASS Catalog cursor survives service and fixture-store reconstruction
+PASS Catalog old snapshots expose missing audit without fabrication
+PASS Catalog direct publication remains compatible and records actor
+PASS Catalog audit records stream-specific old and new revisions
+PASS Catalog timestamps normalize to Mongo-compatible millisecond precision
+PASS Catalog rejects invalid actor null
+PASS Catalog rejects invalid actor 
+PASS Catalog rejects invalid actor  
+PASS Catalog rejects invalid actor xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+PASS Catalog rejects invalid actor employee\nforged
+PASS Catalog draft validates content and defensive variant copies
+PASS Catalog rejects invalid identifiers and negative input versions
+PASS Catalog null commands fail as invalid input
+PASS Catalog missing drafts and revisions do not create publications
+PASS Catalog missing published base cannot be forged
+PASS Catalog exhausted revision counter cannot wrap
+PASS Catalog exhausted draft counter cannot wrap
+PASS Quote contract: one clock instant binds date, creation and deadline
+PASS Quote contract: a request cannot change park date midway through issuance
+PASS Quote contract: slow catalog response does not extend the quote lifetime
+PASS Quote contract: preview date validation uses one instant
+PASS Quote status: one nanosecond before expiry is unexpired
+PASS Quote status: exact expiry is expired but historical reads remain available
+PASS Quote status: repeated reads never renew the original deadline
+PASS Quote status: authenticated owner is checked before status is exposed
+PASS Quote status: observation needs only one quote read and one clock sample
+PASS Quote status: expiry is evaluated after a slow snapshot read
+PASS Quote status: existing confirmed order still recovers after expiry
+PASS Quote status: new catalog and price publications do not rewrite its snapshot
+PASS Quote status: missing owner and ID fail explicitly
+PASS Quote contract: slow response can return an expired quote but cannot renew it
+PASS Quote contract: rejects yesterday before any dependency access
+PASS Quote date: 2030-03-10T04:59:59.999Z for 2030-03-09 allowed=yes
+PASS Quote date: 2030-03-10T05:00:00Z for 2030-03-09 allowed=no
+PASS Quote date: 2030-03-10T06:59:59Z for 2030-03-10 allowed=yes
+PASS Quote date: 2030-03-10T07:00:00Z for 2030-03-10 allowed=yes
+PASS Quote date: 2030-07-01T03:59:59.999Z for 2030-06-30 allowed=yes
+PASS Quote date: 2030-07-01T04:00:00Z for 2030-06-30 allowed=no
+PASS Quote date: 2030-11-03T05:59:59Z for 2030-11-03 allowed=yes
+PASS Quote date: 2030-11-03T06:00:00Z for 2030-11-03 allowed=yes
+PASS Quote date: 2030-11-04T04:59:59.999Z for 2030-11-03 allowed=yes
+PASS Quote date: 2030-11-04T05:00:00Z for 2030-11-03 allowed=no
+PASS Quote TTL: DST transition retains 900 elapsed seconds at 2030-03-10T06:55:00Z
+PASS Quote TTL: DST transition retains 900 elapsed seconds at 2030-11-03T05:55:00Z
+PASS Quote calendar: both range endpoints are included and a gap is not priced
+PASS Quote calendar: next-day rates may be adjacent but not share an endpoint
+PASS Quote calendar: unrequested variant does not require a rate
+PASS Quote input rejects malformed date: 2030-02-29
+PASS Quote input rejects malformed date: 2030-2-03
+PASS Quote input rejects malformed date: 2030-02-3
+PASS Quote input rejects malformed date: 2030-10-01T00:00:00Z
+PASS Quote input rejects malformed date:  2030-10-01
+PASS Quote input rejects malformed date: 2030-10-01 
+PASS Quote input rejects malformed date: +10000-01-01
+PASS Quote input rejects malformed date: 0000-01-01
+PASS Quote input rejects malformed date: 2030-13-01
+PASS Quote input rejects malformed date: 2030-01-32
+PASS Quote input rejects malformed date: 20301001
+PASS Quote input: valid leap day and four-digit year boundaries parse strictly
+PASS Quote input rejects malformed ID: 1-1-1-1-1
+PASS Quote input rejects malformed ID: not-a-uuid
+PASS Quote input rejects malformed ID: 00000000000000000000000000000000
+PASS Quote input rejects malformed ID: {00000000-0000-0000-0000-000000000000}
+PASS Quote input rejects malformed ID: 00000000-0000-0000-0000-00000000000g
+PASS Quote input rejects malformed ID: 00000000-0000-0000-0000-000000000000 
+PASS Quote input: full UUID accepts either hexadecimal case without changing identity
+PASS Quote input: absent quantities differ from explicit zero
+PASS Quote contract: legacy snapshot record shape and immutable lines remain unchanged
+RESULT: 231 passed, 0 failed; JDK-only core tests with in-memory test stores.
+UNPUBLISHED WHAT-IF - not a purchasable quote or reservation.
+Family preview: $420.00 - $42.00 = $378.00
+Candidate: sha256:ef49ff444213d841856d58c8c997f27d1740012a3bc39614494825fba15e22fc
+Published version after preview: 1
+CORE-ONLY WALKTHROUGH - in-memory test fixtures, not a Spring/database deployment.
+Original quote: $100.00, pricing version 1
+New quote after publication: $125.00, version 2
+Confirmed original price: $100.00
+Checkout replay returns same order: true
+Remaining event capacity: 2
+RECOVERY WALKTHROUGH - reconstructed in-memory store, not a browser or database test.
+Recovered state after quote expiry: CONFIRMED
+Recovered original order: true
+Orders after recovery: 1
+Pricing calls during recovery: 0
+QUOTE CONTRACT WALKTHROUGH - core fixtures, not HTTP/GraphQL execution.
+Original quote observed state: EXPIRED
+Observed park time zone: America/New_York
+Expired quote retains original amount: $100.00
+Confirmed order still recovers: true
+CATALOG EDITORIAL WALKTHROUGH - in-memory fixtures, not Mongo/HTTP/UI evidence.
+Guest-visible products before publication: 0
+Published exact draft: 1
+Guest sees: Reviewed evening
+Later draft retained: Later unpublished edit
+Publication actor: employee-b
+AUDIT_FIXTURE_JSON {"actor":"employee-b","operation":"PUBLISH_DRAFT","productId":"reviewed-evening","previousVersion":0,"version":1,"occurredAt":"2026-10-11T19:00:00Z"}
+Retained published revisions: 1

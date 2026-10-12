@@ -1,0 +1,17 @@
+type Query { quote(id: ID!): Quote quoteStatus(id: ID!): QuoteStatus }
+type Mutation { createQuote(input: QuoteInput!): Quote! }
+input QuoteInput { productId: ID! visitDate: String! adults: Int! children: Int! }
+type Quote {
+ id: ID! productId: ID! productName: String! catalogRevision: String!
+ pricingVersion: String! visitDate: String! quantity: Int! expiresAt: String! createdAt: String! kind: ProductKind!
+ appliedOffer: String subtotal: Money! discount: Money! total: Money! lines: [QuoteLine!]!
+}
+type QuoteLine { variant: Variant! quantity: Int! unitPrice: Money! subtotal: Money! discount: Money! total: Money! }
+type Money { cents: String! amount: String! currency: String! }
+enum Variant { ADULT CHILD }
+
+# Additive observation; Quote's existing fields and historical reads are preserved.
+# UNEXPIRED does not mean an event has capacity or this quote has not been used.
+type QuoteStatus { quote: Quote! state: QuoteState! evaluatedAt: String! parkTimeZone: String! }
+enum QuoteState { UNEXPIRED EXPIRED }
+enum ProductKind { ADMISSION EVENT }

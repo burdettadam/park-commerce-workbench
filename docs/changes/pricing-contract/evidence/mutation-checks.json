@@ -1,0 +1,28 @@
+[
+  {
+    "name": "rounding-down",
+    "source": "67817658b211c5ae56b7ed4f3a4f688723c1d6b5",
+    "scope": "isolated modified copy; original source unchanged",
+    "file": "core/src/main/java/dev/parkcommerce/core/Money.java",
+    "replace": "RoundingMode.HALF_UP",
+    "with_value": "RoundingMode.DOWN",
+    "command": "node --test scripts/pricing-contract.test.mjs",
+    "exit_code": 1,
+    "target_failure": "actual Java preview disagrees with expected values",
+    "log": "mutant-rounding-down.txt",
+    "sha256": "6e8b3137518637c5383ff66f717d8be9eb0dae4c98cbe1c09e82ed0e3012c15b"
+  },
+  {
+    "name": "money-wire-integer",
+    "source": "67817658b211c5ae56b7ed4f3a4f688723c1d6b5",
+    "scope": "isolated modified copy; original source unchanged",
+    "file": "pricing-service/src/main/resources/graphql/pricing.graphqls",
+    "replace": "type Money { cents: String!",
+    "with_value": "type Money { cents: Int!",
+    "command": "node --test scripts/pricing-contract.test.mjs",
+    "exit_code": 1,
+    "target_failure": "Money.cents",
+    "log": "mutant-money-wire-integer.txt",
+    "sha256": "0c647ba1cc52f445f65edb96002e213b3135bb61b212515fdbc2a96aa0dfab27"
+  }
+]

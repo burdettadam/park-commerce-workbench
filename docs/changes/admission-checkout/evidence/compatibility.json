@@ -1,0 +1,36 @@
+{
+  "base": "48bcaa5529085cc8640ea602a4f125aac681776d",
+  "candidate": "8e646771f3617f6dea974ddf9271203175d48099",
+  "prior_zip_matches_base": true,
+  "prior_zip_files": 360,
+  "unchanged_files": [
+    {
+      "path": "core/src/main/java/dev/parkcommerce/core/Booking.java",
+      "sha256": "1118c3fa3dcc9fec9045301f90d9162af3b21a27e8a2fd290f72a0affcd7202e"
+    },
+    {
+      "path": "booking-service/src/main/java/dev/parkcommerce/booking/BookingApi.java",
+      "sha256": "de93419d30a9cdcee5278f21e3b8cfd7a00687b4c83a5dcef27e3d11bd4c9f36"
+    },
+    {
+      "path": "booking-service/src/main/java/dev/parkcommerce/booking/JdbcBookingStore.java",
+      "sha256": "e518ce233fecb5798d1689707edc4bbe66979cf0b142d5c5a6ff2d958928d50b"
+    },
+    {
+      "path": "booking-service/src/main/resources/db/migration/V1__event_booking.sql",
+      "sha256": "b4419105082946a073100334972004b9b857038cd32e11195a3fbd44b37138af"
+    },
+    {
+      "path": "pom.xml",
+      "sha256": "160a8240d1f5cba0b53b7ab935a64a954b99a9cd88be02505071f715db50386e"
+    },
+    {
+      "path": "booking-service/pom.xml",
+      "sha256": "0471d3b2e8019b3d685a71b742e37f9e7dd2e7885cfde143dec1c297b3d19208"
+    },
+    {
+      "path": "storefront/package.json",
+      "sha256": "a2ce2a14b74ded6645349f794343304a83e431a40d97553e1ff5482042d46c70"
+    }
+  ]
+}

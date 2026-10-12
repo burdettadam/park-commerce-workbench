@@ -1,0 +1,53 @@
+{
+  "revision": "quote-api-1",
+  "quoteRecordFields": [
+    "id",
+    "owner",
+    "productId",
+    "productName",
+    "kind",
+    "catalogRevision",
+    "visitDate",
+    "pricingVersion",
+    "quantity",
+    "lines",
+    "appliedOffer",
+    "subtotal",
+    "discount",
+    "total",
+    "createdAt",
+    "expiresAt"
+  ],
+  "graphqlFields": {
+    "id": "ID!",
+    "productId": "ID!",
+    "productName": "String!",
+    "catalogRevision": "String!",
+    "pricingVersion": "String!",
+    "visitDate": "String!",
+    "quantity": "Int!",
+    "expiresAt": "String!",
+    "createdAt": "String!",
+    "kind": "ProductKind!",
+    "appliedOffer": "String",
+    "subtotal": "Money!",
+    "discount": "Money!",
+    "total": "Money!",
+    "lines": "[QuoteLine!]!"
+  },
+  "moneyFields": {
+    "cents": "String!",
+    "amount": "String!",
+    "currency": "String!"
+  },
+  "statusFields": {
+    "quote": "Quote!",
+    "state": "QuoteState!",
+    "evaluatedAt": "String!",
+    "parkTimeZone": "String!"
+  },
+  "statusStates": [
+    "UNEXPIRED",
+    "EXPIRED"
+  ]
+}

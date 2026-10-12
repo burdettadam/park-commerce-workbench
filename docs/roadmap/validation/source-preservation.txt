@@ -1,0 +1,4 @@
+83 preexisting non-document source/configuration files compared byte-for-byte with the foundation ZIP.
+Changed: 0.
+Original initializer-wrapper defect remains scoped to proposed G-0002.
+No native agent scaffold, private executable, .git or remote changes created.

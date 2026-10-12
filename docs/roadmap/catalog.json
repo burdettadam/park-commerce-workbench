@@ -1,0 +1,2199 @@
+{
+  "schema_version": 1,
+  "purpose": "Static proposed roadmap index, not a native Codex schema, task database or execution state. Goal scope is in the linked proposal; after activation its accepted copy is authoritative.",
+  "roadmap_revision": "proposal-1",
+  "baseline_zip_sha256": "97a9c94e9b3c1289992d6f870d3f8e43115a5ced22cdbeec3a14be7f33975a29",
+  "milestones": [
+    {
+      "id": "M0",
+      "title": "Prove the goal-driven workflow",
+      "path": "docs/roadmap/milestones/M0.md",
+      "goal_ids": [
+        "G-0001",
+        "G-0002",
+        "G-0003"
+      ]
+    },
+    {
+      "id": "M1",
+      "title": "Verify the full-stack baseline",
+      "path": "docs/roadmap/milestones/M1.md",
+      "goal_ids": [
+        "G-0004",
+        "G-0005",
+        "G-0006"
+      ]
+    },
+    {
+      "id": "M2",
+      "title": "Complete catalog and pricing administration",
+      "path": "docs/roadmap/milestones/M2.md",
+      "goal_ids": [
+        "G-0007",
+        "G-0008",
+        "G-0009"
+      ]
+    },
+    {
+      "id": "M3",
+      "title": "Complete a bounded commerce journey",
+      "path": "docs/roadmap/milestones/M3.md",
+      "goal_ids": [
+        "G-0010",
+        "G-0011",
+        "G-0012"
+      ]
+    },
+    {
+      "id": "M4",
+      "title": "Make both interfaces usable and safely deployable",
+      "path": "docs/roadmap/milestones/M4.md",
+      "goal_ids": [
+        "G-0013",
+        "G-0014",
+        "G-0015"
+      ]
+    },
+    {
+      "id": "M5",
+      "title": "Prove observable failure behavior",
+      "path": "docs/roadmap/milestones/M5.md",
+      "goal_ids": [
+        "G-0016",
+        "G-0017",
+        "G-0018"
+      ]
+    },
+    {
+      "id": "M6",
+      "title": "Deliver and promote identifiable artifacts",
+      "path": "docs/roadmap/milestones/M6.md",
+      "goal_ids": [
+        "G-0019",
+        "G-0020",
+        "G-0021"
+      ]
+    },
+    {
+      "id": "M7",
+      "title": "Operate a controlled private AWS demonstration",
+      "path": "docs/roadmap/milestones/M7.md",
+      "goal_ids": [
+        "G-0022",
+        "G-0023",
+        "G-0024"
+      ]
+    },
+    {
+      "id": "M8",
+      "title": "Demonstrate the remaining named tools",
+      "path": "docs/roadmap/milestones/M8.md",
+      "goal_ids": [
+        "G-0025",
+        "G-0026",
+        "G-0027"
+      ]
+    },
+    {
+      "id": "M9",
+      "title": "Assess the workflow and prepare a private release candidate",
+      "path": "docs/roadmap/milestones/M9.md",
+      "goal_ids": [
+        "G-0028",
+        "G-0029",
+        "G-0030"
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "id": "G-0001",
+      "milestone": "M0",
+      "title": "Adopt the actual initializer and accepted project rules",
+      "depends_on": [],
+      "criteria": [
+        {
+          "id": "G-0001-AC01",
+          "text": "Record the exact output of git agent --version and verify the reviewed version is exactly 0.2.0 before invoking the current wrapper; reject look-alike/prerelease versions. Run preview and application against this worktree root, retaining actual exit codes and proposed adoption gaps.",
+          "artifact_id": "G-0001-A01"
+        },
+        {
+          "id": "G-0001-AC02",
+          "text": "A fresh native agent/editor session identifies the generated instruction entry point, work-goal/worktree-flow skills and two reviewer roles; retain observable discovery output rather than merely listing files.",
+          "artifact_id": "G-0001-A02"
+        },
+        {
+          "id": "G-0001-AC03",
+          "text": "The human adopts or explicitly rejects each product-command, owner, review, isolation and release-control choice. No required UNCONFIGURED field remains for the first local goal; unresolved hosted controls are recorded as remote-work blockers.",
+          "artifact_id": "G-0001-A01"
+        },
+        {
+          "id": "G-0001-AC04",
+          "text": "The accepted PLANS guidance points to this roadmap and one canonical active-goal location. No .env, private executable or secret enters tracked files, and every remote write remains blocked until current privacy is verified.",
+          "artifact_id": "G-0001-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0001-A01",
+          "path": "adoption.md",
+          "purpose": "Initializer invocation, actual output, gap decisions and accepted authority."
+        },
+        {
+          "id": "G-0001-A02",
+          "path": "discovery.txt",
+          "purpose": "Observed native instruction/skill/role discovery, with unavailable checks stated."
+        },
+        {
+          "id": "G-0001-A03",
+          "path": "controls-and-privacy.md",
+          "purpose": "Local-only boundary, required external controls and current privacy observation when available."
+        }
+      ],
+      "commands": [
+        "INIT_VERSION",
+        "INIT_PREVIEW",
+        "INIT_APPLY",
+        "TOOLING"
+      ],
+      "requirements": [
+        "TOOL-01",
+        "WORKFLOW-01"
+      ],
+      "path": "docs/roadmap/goals/G-0001/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0001/manifest.template.json"
+    },
+    {
+      "id": "G-0002",
+      "milestone": "M0",
+      "title": "Repair exact-version matching through one real red/green goal",
+      "depends_on": [
+        "G-0001"
+      ],
+      "criteria": [
+        {
+          "id": "G-0002-AC01",
+          "text": "Before the fix, independently reproduce rejection failures for 0.2.01, 10.2.0 and 0.2.0-rc.1 in disposable worktrees with a mock command. Preserve the expected-failing run and its exit status; the planning discovery is context, not a substitute for the goal run.",
+          "artifact_id": "G-0002-A01"
+        },
+        {
+          "id": "G-0002-AC02",
+          "text": "After the fix, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked.",
+          "artifact_id": "G-0002-A02"
+        },
+        {
+          "id": "G-0002-AC03",
+          "text": "All existing tooling checks remain selected and passing, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Add explicit assertions instead of only updating expected snapshots.",
+          "artifact_id": "G-0002-A02"
+        },
+        {
+          "id": "G-0002-AC04",
+          "text": "Obtain independent contract and adversarial reviews of fixed candidate S; a fix or relevant test change invalidates stale review coverage. Record the diff and actual acceptance separately; no reviewer, tag or approval is fabricated.",
+          "artifact_id": "G-0002-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0002-A01",
+          "path": "red-before.txt",
+          "purpose": "Actual defect reproduction with the expected failing assertion."
+        },
+        {
+          "id": "G-0002-A02",
+          "path": "green-after.txt",
+          "purpose": "Post-fix regression matrix and retained tooling suite."
+        },
+        {
+          "id": "G-0002-A03",
+          "path": "scope-and-review.md",
+          "purpose": "Bounded source diff, candidate identity and reviewer dispositions."
+        }
+      ],
+      "commands": [
+        "TOOLING",
+        "CORE",
+        "ROADMAP_LINT"
+      ],
+      "requirements": [
+        "TOOL-01",
+        "WORKFLOW-02"
+      ],
+      "path": "docs/roadmap/goals/G-0002/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0002/manifest.template.json"
+    },
+    {
+      "id": "G-0003",
+      "milestone": "M0",
+      "title": "Recover a goal across two worktrees and a session interruption",
+      "depends_on": [
+        "G-0002"
+      ],
+      "criteria": [
+        {
+          "id": "G-0003-AC01",
+          "text": "Two named worktrees have nonconflicting ports, Compose project names and data volumes; each has one identified writer and progress record based on the same accepted plan revision.",
+          "artifact_id": "G-0003-A01"
+        },
+        {
+          "id": "G-0003-AC02",
+          "text": "Record at least two included branch commits, one explicit nonincluded alternative or change proposal, and the assembled candidate. An unaccepted scope change must not silently modify success criteria.",
+          "artifact_id": "G-0003-A01"
+        },
+        {
+          "id": "G-0003-AC03",
+          "text": "Interrupt the authoring session, preserve a checkpoint, and resume in a fresh directory/session using only retained records. Retrieve every indispensable artifact and match its digest before reporting complete recovery.",
+          "artifact_id": "G-0003-A02"
+        },
+        {
+          "id": "G-0003-AC04",
+          "text": "Deliberately present one stale review and one missing required artifact to the review process. Both remain blockers. Record actual gate observations, handoff duration and unresolved items without pretending this is a statistical model evaluation.",
+          "artifact_id": "G-0003-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0003-A01",
+          "path": "branch-map.md",
+          "purpose": "Owners, worktree resources, input revisions and included/excluded branch commits."
+        },
+        {
+          "id": "G-0003-A02",
+          "path": "restore-drill.md",
+          "purpose": "Fresh reconstruction steps, digests, timing and remaining local-only state."
+        },
+        {
+          "id": "G-0003-A03",
+          "path": "workflow-observations.md",
+          "purpose": "Scope-change, stale-review and missing-evidence controls observed in the drill."
+        }
+      ],
+      "commands": [
+        "CORE",
+        "STATE_TESTS",
+        "TOOLING"
+      ],
+      "requirements": [
+        "WORKFLOW-01",
+        "WORKFLOW-03"
+      ],
+      "path": "docs/roadmap/goals/G-0003/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0003/manifest.template.json"
+    },
+    {
+      "id": "G-0004",
+      "milestone": "M1",
+      "title": "Resolve and lock the actual Java and UI builds",
+      "depends_on": [
+        "G-0003"
+      ],
+      "criteria": [
+        {
+          "id": "G-0004-AC01",
+          "text": "Maven compiles all backend modules and optional Vaadin module; Angular production build completes. Record the actual JDK/Maven/Node/npm and framework versions rather than assuming candidate pins are compatible.",
+          "artifact_id": "G-0004-A01"
+        },
+        {
+          "id": "G-0004-AC02",
+          "text": "Generate and review real Angular/Vaadin frontend lockfiles. A second clean dependency installation/build uses retained locks and succeeds without an unexplained lockfile change.",
+          "artifact_id": "G-0004-A02"
+        },
+        {
+          "id": "G-0004-AC03",
+          "text": "Existing core, client-state and tooling suites run with actual result/selected-test counts. Skipped application tests during a packaging command are not recorded as acceptance passes.",
+          "artifact_id": "G-0004-A01"
+        },
+        {
+          "id": "G-0004-AC04",
+          "text": "Document every candidate version correction and dependency decision; retain unresolved vulnerability or compatibility findings with owner and disposition before this goal becomes ready.",
+          "artifact_id": "G-0004-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0004-A01",
+          "path": "build-results.md",
+          "purpose": "Commands, logs, exact versions and observed build outcomes for each module/UI."
+        },
+        {
+          "id": "G-0004-A02",
+          "path": "dependency-locks.md",
+          "purpose": "Lockfile provenance, clean rebuild and dependency-tree references."
+        },
+        {
+          "id": "G-0004-A03",
+          "path": "compatibility-decisions.md",
+          "purpose": "Verified compatibility choices and unresolved findings."
+        }
+      ],
+      "commands": [
+        "JAVA",
+        "UI_BUILD",
+        "ANGULAR_FIRST_BUILD",
+        "STATE_TESTS",
+        "CORE",
+        "TOOLING"
+      ],
+      "requirements": [
+        "BUILD-01"
+      ],
+      "path": "docs/roadmap/goals/G-0004/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0004/manifest.template.json"
+    },
+    {
+      "id": "G-0005",
+      "milestone": "M1",
+      "title": "Verify persistence against real MongoDB and MySQL",
+      "depends_on": [
+        "G-0004"
+      ],
+      "criteria": [
+        {
+          "id": "G-0005-AC01",
+          "text": "Execute all currently defined database integration tests (the foundation contains 12). Record selected/executed/skipped counts per suite and fail the gate if required suites are empty or skipped.",
+          "artifact_id": "G-0005-A01"
+        },
+        {
+          "id": "G-0005-AC02",
+          "text": "Prove round-trip preservation of catalog/price/quote versions, exact monetary values, date boundaries and case-sensitive idempotency identifiers in the actual datastores.",
+          "artifact_id": "G-0005-A02"
+        },
+        {
+          "id": "G-0005-AC03",
+          "text": "Exercise transaction rollback and uniqueness conflicts using separate real connections. No partial hold/order/capacity mutation remains after an expected conflict.",
+          "artifact_id": "G-0005-A02"
+        },
+        {
+          "id": "G-0005-AC04",
+          "text": "Apply migrations to empty disposable databases and verify the resulting constraints; demonstrate that missing Docker fails the required integration command rather than turning it green.",
+          "artifact_id": "G-0005-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0005-A01",
+          "path": "database-tests.md",
+          "purpose": "JUnit/Failsafe raw-report references and nonempty suite counts."
+        },
+        {
+          "id": "G-0005-A02",
+          "path": "persistence-invariants.md",
+          "purpose": "Round-trip, rollback, unique-index and connection-level evidence."
+        },
+        {
+          "id": "G-0005-A03",
+          "path": "migration-and-fail-closed.md",
+          "purpose": "Schema provenance and missing-runtime negative check."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "JAVA"
+      ],
+      "requirements": [
+        "CAT-01",
+        "PRICE-02",
+        "MONEY-01",
+        "INV-02",
+        "ORDER-01",
+        "ORDER-02",
+        "BUILD-01"
+      ],
+      "path": "docs/roadmap/goals/G-0005/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0005/manifest.template.json"
+    },
+    {
+      "id": "G-0006",
+      "milestone": "M1",
+      "title": "Demonstrate the original live event purchase flow",
+      "depends_on": [
+        "G-0005"
+      ],
+      "criteria": [
+        {
+          "id": "G-0006-AC01",
+          "text": "Compose services become healthy and all existing live HTTP assertions execute (13 in the foundation), including role checks, ownership, price-version preservation and competing holds.",
+          "artifact_id": "G-0006-A01"
+        },
+        {
+          "id": "G-0006-AC02",
+          "text": "Through the real Vaadin interface publish a product/rate/event, and through Angular obtain a quote and confirm an order. Record the browser steps and corresponding API/order identifiers.",
+          "artifact_id": "G-0006-A02"
+        },
+        {
+          "id": "G-0006-AC03",
+          "text": "Publish a new price after an earlier quote and prove that the still-valid earlier quote keeps its original total. Retry the same checkout and observe one order and one capacity consumption.",
+          "artifact_id": "G-0006-A01"
+        },
+        {
+          "id": "G-0006-AC04",
+          "text": "Stop the local stack without deleting volumes; restart and retrieve the confirmed order. Record framework/binding repairs and any remaining demo-only auth limitations.",
+          "artifact_id": "G-0006-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0006-A01",
+          "path": "live-http.txt",
+          "purpose": "Executed live HTTP assertions and synthetic request/order IDs."
+        },
+        {
+          "id": "G-0006-A02",
+          "path": "browser-walkthrough.md",
+          "purpose": "Actual Vaadin/Angular steps with screenshots/video references."
+        },
+        {
+          "id": "G-0006-A03",
+          "path": "restart-and-limitations.md",
+          "purpose": "Volume-preserving restart and current local-only limitations."
+        }
+      ],
+      "commands": [
+        "CONFIGURE",
+        "COMPOSE_CHECK",
+        "COMPOSE_UP",
+        "HTTP",
+        "UI_RUN",
+        "ANGULAR_RUN",
+        "COMPOSE_DOWN"
+      ],
+      "requirements": [
+        "CAT-01",
+        "PRICE-02",
+        "PRICE-03",
+        "HOLD-01",
+        "ORDER-01",
+        "AUTH-01",
+        "AUTH-02"
+      ],
+      "path": "docs/roadmap/goals/G-0006/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0006/manifest.template.json"
+    },
+    {
+      "id": "G-0007",
+      "milestone": "M2",
+      "title": "Add reviewable catalog drafts and publication history",
+      "depends_on": [
+        "G-0006"
+      ],
+      "criteria": [
+        {
+          "id": "G-0007-AC01",
+          "text": "Draft changes are invisible to guest reads until an authorized publication; publication creates one new immutable revision and retains the previous revision.",
+          "artifact_id": "G-0007-A01"
+        },
+        {
+          "id": "G-0007-AC02",
+          "text": "Two employee writes based on the same revision cannot silently overwrite one another; one receives a documented conflict and no duplicate published revision is created.",
+          "artifact_id": "G-0007-A02"
+        },
+        {
+          "id": "G-0007-AC03",
+          "text": "History pagination has a stable documented ordering/cursor and deterministic behavior while new revisions arrive; exercise first/last/empty pages and invalid cursors.",
+          "artifact_id": "G-0007-A02"
+        },
+        {
+          "id": "G-0007-AC04",
+          "text": "Audit records identify authenticated actor, operation, product, old/new revisions and timestamp without storing bearer tokens or full sensitive payloads.",
+          "artifact_id": "G-0007-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0007-A01",
+          "path": "publication-scenarios.md",
+          "purpose": "Draft/publish/guest-visibility examples and tests."
+        },
+        {
+          "id": "G-0007-A02",
+          "path": "history-and-conflicts.md",
+          "purpose": "Concurrent publication and pagination evidence."
+        },
+        {
+          "id": "G-0007-A03",
+          "path": "audit-example.json",
+          "purpose": "Sanitized representative audit events, with provenance."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "CAT-01",
+        "AUTH-01",
+        "CAT-02"
+      ],
+      "path": "docs/roadmap/goals/G-0007/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0007/manifest.template.json"
+    },
+    {
+      "id": "G-0008",
+      "milestone": "M2",
+      "title": "Preview unpublished prices with the production calculation path",
+      "depends_on": [
+        "G-0007"
+      ],
+      "criteria": [
+        {
+          "id": "G-0008-AC01",
+          "text": "A known fixture produces the independently calculated subtotal, discount and final amount in preview; preview explicitly labels unpublished input/version state.",
+          "artifact_id": "G-0008-A01"
+        },
+        {
+          "id": "G-0008-AC02",
+          "text": "Publishing exactly the previewed candidate makes a subsequent real quote agree on all monetary lines under identical date/party inputs; quote issuance additionally assigns actual identity/expiry.",
+          "artifact_id": "G-0008-A01"
+        },
+        {
+          "id": "G-0008-AC03",
+          "text": "Invalid or overlapping effective-date rules and out-of-range party inputs are rejected with actionable messages, not a best-guess price.",
+          "artifact_id": "G-0008-A02"
+        },
+        {
+          "id": "G-0008-AC04",
+          "text": "No preview mutates price publication, issued quotes, orders or inventory. Concurrent preview/publication keeps candidate identity explicit; previous unexpired quotes remain unchanged.",
+          "artifact_id": "G-0008-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0008-A01",
+          "path": "preview-fixtures.json",
+          "purpose": "Hand-calculated input/expected-output fixture set and observed results."
+        },
+        {
+          "id": "G-0008-A02",
+          "path": "preview-errors.md",
+          "purpose": "Boundary/overlap validation and employee-facing errors."
+        },
+        {
+          "id": "G-0008-A03",
+          "path": "preview-side-effects.md",
+          "purpose": "Read-only preview and version-isolation evidence."
+        }
+      ],
+      "commands": [
+        "CORE",
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "PRICE-01",
+        "PRICE-02",
+        "PRICE-03",
+        "MONEY-01",
+        "PRICE-04"
+      ],
+      "path": "docs/roadmap/goals/G-0008/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0008/manifest.template.json"
+    },
+    {
+      "id": "G-0009",
+      "milestone": "M2",
+      "title": "Freeze the price and quote contract with independent examples",
+      "depends_on": [
+        "G-0008"
+      ],
+      "criteria": [
+        {
+          "id": "G-0009-AC01",
+          "text": "A reviewed fixture pack covers no offer, exact threshold, one-below threshold, mixed adult/child quantities and every applicable rounding boundary using expected cents calculated independently of implementation.",
+          "artifact_id": "G-0009-A01"
+        },
+        {
+          "id": "G-0009-AC02",
+          "text": "Test date-range endpoints, invalid dates, park-local timezone transitions, exact quote-expiry instant and expired/unknown quote errors through the public API.",
+          "artifact_id": "G-0009-A02"
+        },
+        {
+          "id": "G-0009-AC03",
+          "text": "A quote identifies catalog and pricing versions and cannot be rewritten by new publications. Own/other-user/service-role access behaves consistently across REST and GraphQL.",
+          "artifact_id": "G-0009-A02"
+        },
+        {
+          "id": "G-0009-AC04",
+          "text": "Publish contract examples and explicit exclusions; retain schema/consumer tests that fail for an incompatible quote or error-shape change.",
+          "artifact_id": "G-0009-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0009-A01",
+          "path": "pricing-contract-fixtures.json",
+          "purpose": "Independent price inputs and expected outputs."
+        },
+        {
+          "id": "G-0009-A02",
+          "path": "quote-boundary-tests.md",
+          "purpose": "Actual time/ownership/version and API boundary results."
+        },
+        {
+          "id": "G-0009-A03",
+          "path": "contract-examples.md",
+          "purpose": "Documented public request/response/error examples and compatibility tests."
+        }
+      ],
+      "commands": [
+        "CORE",
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "PRICE-01",
+        "PRICE-02",
+        "PRICE-03",
+        "MONEY-01",
+        "HOLD-01",
+        "AUTH-02"
+      ],
+      "path": "docs/roadmap/goals/G-0009/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0009/manifest.template.json"
+    },
+    {
+      "id": "G-0010",
+      "milestone": "M3",
+      "title": "Prove capacity and idempotency under real contention",
+      "depends_on": [
+        "G-0009"
+      ],
+      "criteria": [
+        {
+          "id": "G-0010-AC01",
+          "text": "Race at least 100 real hold requests for 10 available seats. Exactly 10 or fewer seats may be held/sold, never more; reconcile final ledger totals and expected rejections.",
+          "artifact_id": "G-0010-A01"
+        },
+        {
+          "id": "G-0010-AC02",
+          "text": "Replay the same authenticated checkout key concurrently and after an uncertain response. Observe one order, one transition and one capacity consumption; different payload under that key returns a conflict.",
+          "artifact_id": "G-0010-A01"
+        },
+        {
+          "id": "G-0010-AC03",
+          "text": "Exercise hold-expiry versus checkout, rollback, and an actual process interruption around commit/response. Restart and reconcile confirmed, expired and available counts without manual database edits.",
+          "artifact_id": "G-0010-A02"
+        },
+        {
+          "id": "G-0010-AC04",
+          "text": "Trace/inspect lock scope and prove dependency fetches complete before the booking database lock. Retain transaction isolation/locking rationale and real SQL evidence.",
+          "artifact_id": "G-0010-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0010-A01",
+          "path": "contention-results.json",
+          "purpose": "Workload, request outcomes and reconciled ledger counts."
+        },
+        {
+          "id": "G-0010-A02",
+          "path": "interruption-recovery.md",
+          "purpose": "Kill/restart and expiry/confirmation-race evidence."
+        },
+        {
+          "id": "G-0010-A03",
+          "path": "transaction-design.md",
+          "purpose": "Isolation, lock scope, query and constraint analysis."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "INV-01",
+        "INV-02",
+        "HOLD-01",
+        "ORDER-01",
+        "ORDER-02",
+        "DEP-01"
+      ],
+      "path": "docs/roadmap/goals/G-0010/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0010/manifest.template.json"
+    },
+    {
+      "id": "G-0011",
+      "milestone": "M3",
+      "title": "Purchase admission as a separate entitlement type",
+      "depends_on": [
+        "G-0010"
+      ],
+      "criteria": [
+        {
+          "id": "G-0011-AC01",
+          "text": "An admission-only quote confirms an owner-scoped order and one defined entitlement set; repeating the key returns the original result.",
+          "artifact_id": "G-0011-A01"
+        },
+        {
+          "id": "G-0011-AC02",
+          "text": "Admission checkout never reads or decrements an unrelated event capacity pool. Invalid product/date/version and another owner's quote are rejected before mutation.",
+          "artifact_id": "G-0011-A02"
+        },
+        {
+          "id": "G-0011-AC03",
+          "text": "Document active/void entitlement states and audit links to order/quote; the future cancellation contract is explicit and old event clients remain compatible.",
+          "artifact_id": "G-0011-A03"
+        },
+        {
+          "id": "G-0011-AC04",
+          "text": "Migrate existing event-only data in a disposable upgrade fixture and demonstrate both old event and new admission orders can be retrieved correctly.",
+          "artifact_id": "G-0011-A02"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0011-A01",
+          "path": "admission-examples.json",
+          "purpose": "Synthetic quote/order/entitlement examples and expected counts."
+        },
+        {
+          "id": "G-0011-A02",
+          "path": "admission-isolation-tests.md",
+          "purpose": "No event-capacity consumption, ownership and upgrade evidence."
+        },
+        {
+          "id": "G-0011-A03",
+          "path": "entitlement-contract.md",
+          "purpose": "Bounded entitlement lifecycle and audit rules."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "ADMISSION-01",
+        "ORDER-01",
+        "AUTH-02"
+      ],
+      "path": "docs/roadmap/goals/G-0011/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0011/manifest.template.json"
+    },
+    {
+      "id": "G-0012",
+      "milestone": "M3",
+      "title": "Buy and cancel one bounded admission/event cart",
+      "depends_on": [
+        "G-0011"
+      ],
+      "criteria": [
+        {
+          "id": "G-0012-AC01",
+          "text": "Freeze a reviewed state diagram and expected totals for admission-only, event-only and combined cart cases; versioned price snapshots survive later publication.",
+          "artifact_id": "G-0012-A01"
+        },
+        {
+          "id": "G-0012-AC02",
+          "text": "Failure to allocate the optional event prevents partial final confirmation of the bounded cart. Confirming retries return one order with the intended admission entitlements and event allocation.",
+          "artifact_id": "G-0012-A02"
+        },
+        {
+          "id": "G-0012-AC03",
+          "text": "Owner-authorized cancellation voids synthetic admission entitlements and releases event capacity exactly once. Repeated or concurrent cancellation/confirmation follows documented conflict rules.",
+          "artifact_id": "G-0012-A02"
+        },
+        {
+          "id": "G-0012-AC04",
+          "text": "Separate connections and restart fixtures demonstrate all-or-none booking mutation, no negative capacity, no orphan entitlements and preserved older API compatibility or an explicit reviewed version boundary.",
+          "artifact_id": "G-0012-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0012-A01",
+          "path": "cart-state-machine.md",
+          "purpose": "Accepted transitions, independent expected amounts and conflict rules."
+        },
+        {
+          "id": "G-0012-A02",
+          "path": "cart-and-cancellation-tests.md",
+          "purpose": "Positive, failure, replay and ownership scenarios."
+        },
+        {
+          "id": "G-0012-A03",
+          "path": "cart-migration-and-recovery.md",
+          "purpose": "Upgrade, rollback/forward-repair and restart evidence."
+        }
+      ],
+      "commands": [
+        "CORE",
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "CART-01",
+        "CANCEL-01",
+        "PRICE-02",
+        "MONEY-01",
+        "INV-02",
+        "ORDER-01"
+      ],
+      "path": "docs/roadmap/goals/G-0012/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0012/manifest.template.json"
+    },
+    {
+      "id": "G-0013",
+      "milestone": "M4",
+      "title": "Finish the Vaadin employee workbench",
+      "depends_on": [
+        "G-0012"
+      ],
+      "criteria": [
+        {
+          "id": "G-0013-AC01",
+          "text": "A recorded browser test drafts a product, previews a price, publishes a revision, configures an event and finds the resulting audit entry.",
+          "artifact_id": "G-0013-A01"
+        },
+        {
+          "id": "G-0013-AC02",
+          "text": "Demonstrate stale-edit conflict, invalid input, unavailable service and forbidden action with recoverable UI state and no silent data loss.",
+          "artifact_id": "G-0013-A02"
+        },
+        {
+          "id": "G-0013-AC03",
+          "text": "Core tasks are operable by keyboard with labeled controls and useful focus/error feedback. Record tested viewport sizes and actual accessibility findings.",
+          "artifact_id": "G-0013-A03"
+        },
+        {
+          "id": "G-0013-AC04",
+          "text": "The UI displays preview/published identities distinctly and does not report success before the backend confirms it; API tests still deny unauthorized writes.",
+          "artifact_id": "G-0013-A02"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0013-A01",
+          "path": "employee-browser-tests.md",
+          "purpose": "Executed browser flow and recording references."
+        },
+        {
+          "id": "G-0013-A02",
+          "path": "employee-error-cases.md",
+          "purpose": "Conflict, service-failure and permission evidence."
+        },
+        {
+          "id": "G-0013-A03",
+          "path": "employee-accessibility.md",
+          "purpose": "Manual keyboard and automated findings with disposition."
+        }
+      ],
+      "commands": [
+        "UI_BUILD",
+        "UI_RUN",
+        "INTEGRATION"
+      ],
+      "requirements": [
+        "UI-01",
+        "CAT-02",
+        "PRICE-04",
+        "AUTH-01"
+      ],
+      "path": "docs/roadmap/goals/G-0013/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0013/manifest.template.json"
+    },
+    {
+      "id": "G-0014",
+      "milestone": "M4",
+      "title": "Finish the Angular journey and uncertain-checkout recovery",
+      "depends_on": [
+        "G-0012"
+      ],
+      "criteria": [
+        {
+          "id": "G-0014-AC01",
+          "text": "A real browser selects a valid event from server data, purchases the bounded cart and renders the backend's itemized quote and confirmed order.",
+          "artifact_id": "G-0014-A01"
+        },
+        {
+          "id": "G-0014-AC02",
+          "text": "Drop the checkout response, reload, restore owner/hold/key-bound nonsecret state after authentication and resolve the same outcome; no second order or extra allocation occurs.",
+          "artifact_id": "G-0014-A02"
+        },
+        {
+          "id": "G-0014-AC03",
+          "text": "Switch user, expire the hold, log out and simulate an unavailable backend. No cross-user recovery or stale-price confirmation occurs, and retry state is cleared/retained according to explicit rules.",
+          "artifact_id": "G-0014-A02"
+        },
+        {
+          "id": "G-0014-AC04",
+          "text": "Complete the main flow by keyboard and at a narrow viewport; retain automated accessibility findings and manual observations rather than claiming certification.",
+          "artifact_id": "G-0014-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0014-A01",
+          "path": "guest-browser-tests.md",
+          "purpose": "Actual selection/cart/confirmation path and recording."
+        },
+        {
+          "id": "G-0014-A02",
+          "path": "reload-and-retry-matrix.md",
+          "purpose": "Response-loss, reload, identity switch and expiry scenarios."
+        },
+        {
+          "id": "G-0014-A03",
+          "path": "guest-accessibility.md",
+          "purpose": "Keyboard, viewport and accessibility checks."
+        }
+      ],
+      "commands": [
+        "ANGULAR_LOCKED_BUILD",
+        "ANGULAR_RUN",
+        "STATE_TESTS",
+        "HTTP"
+      ],
+      "requirements": [
+        "UI-02",
+        "ORDER-01",
+        "AUTH-02",
+        "CART-01"
+      ],
+      "path": "docs/roadmap/goals/G-0014/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0014/manifest.template.json"
+    },
+    {
+      "id": "G-0015",
+      "milestone": "M4",
+      "title": "Replace demo tokens with a deployable identity boundary",
+      "depends_on": [
+        "G-0013",
+        "G-0014"
+      ],
+      "criteria": [
+        {
+          "id": "G-0015-AC01",
+          "text": "Validate issuer, audience, signature, expiry and role/subject claims against a real test issuer. Wrong issuer/audience, expired credentials and forged role/owner inputs are denied.",
+          "artifact_id": "G-0015-A01"
+        },
+        {
+          "id": "G-0015-AC02",
+          "text": "Employee, guest and service-to-service permissions pass a negative access matrix over REST, GraphQL and both UIs, including cross-owner order/quote reads.",
+          "artifact_id": "G-0015-A01"
+        },
+        {
+          "id": "G-0015-AC03",
+          "text": "Review TLS boundaries, cookies/CSRF/CORS/logout and credential lifetime. Nonlocal deployment refuses demo credentials/profile and prevents management endpoints from public exposure.",
+          "artifact_id": "G-0015-A02"
+        },
+        {
+          "id": "G-0015-AC04",
+          "text": "Retain a threat model, dependency/security findings and secret scan; no open high-impact blocker is hidden by a successful happy-path login.",
+          "artifact_id": "G-0015-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0015-A01",
+          "path": "identity-test-matrix.md",
+          "purpose": "Actual issuer/user/service positive and negative checks."
+        },
+        {
+          "id": "G-0015-A02",
+          "path": "deployment-security-profile.md",
+          "purpose": "TLS/session/CSRF/CORS and fail-closed configuration."
+        },
+        {
+          "id": "G-0015-A03",
+          "path": "threat-model-and-findings.md",
+          "purpose": "Trust boundaries, scans, findings and residual risk."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "AUTH-01",
+        "AUTH-02",
+        "SEC-01"
+      ],
+      "path": "docs/roadmap/goals/G-0015/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0015/manifest.template.json"
+    },
+    {
+      "id": "G-0016",
+      "milestone": "M5",
+      "title": "Verify cross-service contracts and bounded dependency failures",
+      "depends_on": [
+        "G-0015"
+      ],
+      "criteria": [
+        {
+          "id": "G-0016-AC01",
+          "text": "Consumer/provider tests reject incompatible quote fields, bad identity/date/quantity/amount and error shapes before booking mutation; retain negative fixtures.",
+          "artifact_id": "G-0016-A01"
+        },
+        {
+          "id": "G-0016-AC02",
+          "text": "Timeout, disconnect, malformed response and dependency 5xx exercises complete within the accepted timeout budget and leave inventory/order state unchanged when confirmation is not committed.",
+          "artifact_id": "G-0016-A02"
+        },
+        {
+          "id": "G-0016-AC03",
+          "text": "Retry policy identifies retryable/idempotent operations and preserves keys. Large bodies and excessive GraphQL complexity are rejected under reviewed numeric limits without leaking internal exceptions.",
+          "artifact_id": "G-0016-A02"
+        },
+        {
+          "id": "G-0016-AC04",
+          "text": "Relevant provider changes invalidate dependent consumer evidence; retain a compatibility diff and the exact dependent revisions rerun.",
+          "artifact_id": "G-0016-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0016-A01",
+          "path": "contract-suite.md",
+          "purpose": "Provider/consumer results and known-invalid payload fixtures."
+        },
+        {
+          "id": "G-0016-A02",
+          "path": "dependency-faults.json",
+          "purpose": "Injected failure, expected state, observed timing and outcome."
+        },
+        {
+          "id": "G-0016-A03",
+          "path": "compatibility-impact.md",
+          "purpose": "API diffs, dependencies and refreshed evidence coverage."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "DEP-01",
+        "CONTRACT-01",
+        "SEC-01"
+      ],
+      "path": "docs/roadmap/goals/G-0016/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0016/manifest.template.json"
+    },
+    {
+      "id": "G-0017",
+      "milestone": "M5",
+      "title": "Make requests traceable through the observability stack",
+      "depends_on": [
+        "G-0016"
+      ],
+      "criteria": [
+        {
+          "id": "G-0017-AC01",
+          "text": "Execute one successful purchase and one injected dependency failure; retain real trace IDs spanning the intended service boundaries and matching backend operations.",
+          "artifact_id": "G-0017-A01"
+        },
+        {
+          "id": "G-0017-AC02",
+          "text": "Dashboard queries display actual request counts, latency distributions, error rates and booking conflicts for a declared time window; exported configuration recreates the view.",
+          "artifact_id": "G-0017-A02"
+        },
+        {
+          "id": "G-0017-AC03",
+          "text": "An operator identifies the induced bottleneck/failure from retained traces and queries without reading the test script's hidden answer first; record the investigation and uncertainty.",
+          "artifact_id": "G-0017-A03"
+        },
+        {
+          "id": "G-0017-AC04",
+          "text": "Check telemetry for secrets/high-cardinality owner identifiers and exercise collector unavailability; application correctness does not depend on successful telemetry export.",
+          "artifact_id": "G-0017-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0017-A01",
+          "path": "trace-examples.md",
+          "purpose": "Real trace IDs, export references and candidate/input identity."
+        },
+        {
+          "id": "G-0017-A02",
+          "path": "dashboard-evidence.md",
+          "purpose": "Dashboard JSON/query references and captured workload window."
+        },
+        {
+          "id": "G-0017-A03",
+          "path": "investigation-and-safety.md",
+          "purpose": "Operator diagnosis, redaction and collector-failure observations."
+        }
+      ],
+      "commands": [
+        "HTTP",
+        "COMPOSE_CHECK"
+      ],
+      "requirements": [
+        "OBS-01",
+        "OBS-02"
+      ],
+      "path": "docs/roadmap/goals/G-0017/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0017/manifest.template.json"
+    },
+    {
+      "id": "G-0018",
+      "milestone": "M5",
+      "title": "Measure SQL contention and process-level recovery",
+      "depends_on": [
+        "G-0017"
+      ],
+      "criteria": [
+        {
+          "id": "G-0018-AC01",
+          "text": "Retain EXPLAIN/query-plan output and indexes for a representative operational report and the critical booking path; document examined cardinalities and lock waits.",
+          "artifact_id": "G-0018-A01"
+        },
+        {
+          "id": "G-0018-AC02",
+          "text": "Run a fixed concurrent workload with declared dataset, machine, client count and duration; retain raw counts/latency/error distributions, including expected sellouts separately from unexpected errors.",
+          "artifact_id": "G-0018-A02"
+        },
+        {
+          "id": "G-0018-AC03",
+          "text": "Interrupt a local application process and a disposable database at specified points, restore service, and reconcile orders/holds/entitlements/capacity against an independent ledger oracle.",
+          "artifact_id": "G-0018-A03"
+        },
+        {
+          "id": "G-0018-AC04",
+          "text": "A proposed performance change is compared against the same inputs, with correctness suites rerun. Negative/no-improvement results remain reported rather than selectively discarded.",
+          "artifact_id": "G-0018-A02"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0018-A01",
+          "path": "sql-analysis.md",
+          "purpose": "Queries, indexes, actual plans and lock-wait observations."
+        },
+        {
+          "id": "G-0018-A02",
+          "path": "reference-workload.json",
+          "purpose": "Fixed workload inputs and measured results, including failed attempts."
+        },
+        {
+          "id": "G-0018-A03",
+          "path": "process-recovery.md",
+          "purpose": "Actual interruption, restoration and invariant reconciliation."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "HTTP"
+      ],
+      "requirements": [
+        "SQL-01",
+        "PERF-01",
+        "RECOVERY-01",
+        "INV-02",
+        "ORDER-01"
+      ],
+      "path": "docs/roadmap/goals/G-0018/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0018/manifest.template.json"
+    },
+    {
+      "id": "G-0019",
+      "milestone": "M6",
+      "title": "Build traceable distributable artifacts from clean source",
+      "depends_on": [
+        "G-0018"
+      ],
+      "criteria": [
+        {
+          "id": "G-0019-AC01",
+          "text": "Build all selected deployable artifacts from clean source S with recorded toolchain/configuration inputs; record image digest D and source relationship, not only a mutable tag.",
+          "artifact_id": "G-0019-A01"
+        },
+        {
+          "id": "G-0019-AC02",
+          "text": "Generate real dependency/SBOM and vulnerability reports for the produced binaries/images; retain findings and required dispositions under accepted policy.",
+          "artifact_id": "G-0019-A02"
+        },
+        {
+          "id": "G-0019-AC03",
+          "text": "Rebuild/retrieve in a clean environment and compare the defined reproducibility properties. Explain nondeterministic metadata rather than asserting bit-identical output without measuring it.",
+          "artifact_id": "G-0019-A01"
+        },
+        {
+          "id": "G-0019-AC04",
+          "text": "Retained artifacts have digest, owner, retrieval steps and expiry/retention commitment; independently retrieve at least one image and one nonimage artifact and verify their identities.",
+          "artifact_id": "G-0019-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0019-A01",
+          "path": "build-provenance.json",
+          "purpose": "Source S, build inputs, artifact D and reproducibility observations."
+        },
+        {
+          "id": "G-0019-A02",
+          "path": "supply-chain-review.md",
+          "purpose": "Real SBOM/scan paths, verified pins and risk dispositions."
+        },
+        {
+          "id": "G-0019-A03",
+          "path": "artifact-retrieval.md",
+          "purpose": "Storage, retention and tested retrieval for all required outputs."
+        }
+      ],
+      "commands": [
+        "JAVA",
+        "UI_BUILD",
+        "ANGULAR_LOCKED_BUILD",
+        "INTEGRATION"
+      ],
+      "requirements": [
+        "DELIVERY-01",
+        "SEC-01",
+        "RECOVERY-01"
+      ],
+      "path": "docs/roadmap/goals/G-0019/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0019/manifest.template.json"
+    },
+    {
+      "id": "G-0020",
+      "milestone": "M6",
+      "title": "Execute the GitHub and Jenkins delivery checks",
+      "depends_on": [
+        "G-0019"
+      ],
+      "criteria": [
+        {
+          "id": "G-0020-AC01",
+          "text": "Execute both pipelines and retain run URLs/IDs, source S, selected test counts and artifact digests. A required missing/failed/skipped suite makes the actual run fail.",
+          "artifact_id": "G-0020-A01"
+        },
+        {
+          "id": "G-0020-AC02",
+          "text": "Inject a harmless known test failure on a scoped branch and demonstrate that promotion is blocked; retain the failed run as well as the repaired run.",
+          "artifact_id": "G-0020-A02"
+        },
+        {
+          "id": "G-0020-AC03",
+          "text": "Credentials are least-privilege and untrusted changes cannot access publishing/deployment secrets; record actual private-repository and applicable branch/environment control observations.",
+          "artifact_id": "G-0020-A03"
+        },
+        {
+          "id": "G-0020-AC04",
+          "text": "Human review for a version-producing merge remains external to agent/model agreement. Pipeline evidence and artifact retrieval are linked from the canonical goal record only after retention is confirmed.",
+          "artifact_id": "G-0020-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0020-A01",
+          "path": "pipeline-runs.md",
+          "purpose": "Actual GitHub/Jenkins runs, counts, source and artifacts."
+        },
+        {
+          "id": "G-0020-A02",
+          "path": "negative-gate-test.md",
+          "purpose": "Known failed check and observed promotion denial."
+        },
+        {
+          "id": "G-0020-A03",
+          "path": "pipeline-controls.md",
+          "purpose": "Permissions, trust boundaries, private status and human gates."
+        }
+      ],
+      "commands": [
+        "INTEGRATION",
+        "ROADMAP_LINT"
+      ],
+      "requirements": [
+        "DELIVERY-02",
+        "WORKFLOW-02",
+        "SEC-01"
+      ],
+      "path": "docs/roadmap/goals/G-0020/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0020/manifest.template.json"
+    },
+    {
+      "id": "G-0021",
+      "milestone": "M6",
+      "title": "Roll forward and back on local Kubernetes",
+      "depends_on": [
+        "G-0020"
+      ],
+      "criteria": [
+        {
+          "id": "G-0021-AC01",
+          "text": "Deploy by artifact digest with at least two replicas of one stateless service; readiness/liveness and service routing behave correctly under a restarted replica.",
+          "artifact_id": "G-0021-A01"
+        },
+        {
+          "id": "G-0021-AC02",
+          "text": "Run the authenticated purchase exercise during a rolling update and report all unexpected errors plus invariant reconciliation; actual deployment health is recorded separately from pipeline success.",
+          "artifact_id": "G-0021-A02"
+        },
+        {
+          "id": "G-0021-AC03",
+          "text": "Roll back a deliberately bad application candidate or execute the accepted forward-repair path when schema compatibility prevents rollback; retain the actual source/artifact/environment identities.",
+          "artifact_id": "G-0021-A02"
+        },
+        {
+          "id": "G-0021-AC04",
+          "text": "Recreate the local deployment from retained manifests/configuration/secrets references without copying live credentials into Git; demonstrate cleanup confined to the owned namespace/resources.",
+          "artifact_id": "G-0021-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0021-A01",
+          "path": "kubernetes-baseline.md",
+          "purpose": "Cluster/configuration/artifact identity and replica/probe evidence."
+        },
+        {
+          "id": "G-0021-A02",
+          "path": "rollout-and-rollback.md",
+          "purpose": "Promotion, failure, health and recovery observations."
+        },
+        {
+          "id": "G-0021-A03",
+          "path": "cluster-recreation.md",
+          "purpose": "Reconstruction inputs and scoped cleanup."
+        }
+      ],
+      "commands": [
+        "HTTP"
+      ],
+      "requirements": [
+        "K8S-01",
+        "DELIVERY-01",
+        "RECOVERY-01"
+      ],
+      "path": "docs/roadmap/goals/G-0021/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0021/manifest.template.json"
+    },
+    {
+      "id": "G-0022",
+      "milestone": "M7",
+      "title": "Approve a bounded private AWS experiment",
+      "depends_on": [
+        "G-0021"
+      ],
+      "criteria": [
+        {
+          "id": "G-0022-AC01",
+          "text": "Document actual account/region/network/resource inventory and reviewed compatible versions, including the MongoDB hosting choice; dependency access and licensing are explicit.",
+          "artifact_id": "G-0022-A01"
+        },
+        {
+          "id": "G-0022-AC02",
+          "text": "Record priced assumptions with date, resource limits, maximum authorized spend, stop condition, owner and teardown steps; alerts alone are not represented as a guaranteed hard spending cap.",
+          "artifact_id": "G-0022-A02"
+        },
+        {
+          "id": "G-0022-AC03",
+          "text": "Specify measurable RPO/RTO and restoration consistency requirements across catalog, pricing and booking; explain backup retention and the consequences of deleting demo data.",
+          "artifact_id": "G-0022-A01"
+        },
+        {
+          "id": "G-0022-AC04",
+          "text": "The human records a scoped authorization with approved account, region, resource set, exposure and budget before G-0023 is active. Unapproved or insufficient access remains needs-decision/blocked, not a pass.",
+          "artifact_id": "G-0022-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0022-A01",
+          "path": "cloud-design.md",
+          "purpose": "Resources, topology, database choice, identities and recovery targets."
+        },
+        {
+          "id": "G-0022-A02",
+          "path": "cost-and-teardown-plan.md",
+          "purpose": "Dated estimate, limits, stop conditions and teardown inventory."
+        },
+        {
+          "id": "G-0022-A03",
+          "path": "cloud-authorization.md",
+          "purpose": "Actual human decision for scoped cloud operations."
+        }
+      ],
+      "commands": [],
+      "requirements": [
+        "AWS-01",
+        "RECOVERY-01",
+        "SEC-01"
+      ],
+      "path": "docs/roadmap/goals/G-0022/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0022/manifest.template.json"
+    },
+    {
+      "id": "G-0023",
+      "milestone": "M7",
+      "title": "Deploy the approved private EKS/Aurora environment",
+      "depends_on": [
+        "G-0022"
+      ],
+      "criteria": [
+        {
+          "id": "G-0023-AC01",
+          "text": "Actual inventory matches the authorized account/region/resource/exposure plan; record private access and absence of unintended public application/database endpoints.",
+          "artifact_id": "G-0023-A01"
+        },
+        {
+          "id": "G-0023-AC02",
+          "text": "Execute the purchase and transactional checks against Aurora and the approved MongoDB deployment; record differences from local MySQL rather than asserting drop-in equivalence.",
+          "artifact_id": "G-0023-A02"
+        },
+        {
+          "id": "G-0023-AC03",
+          "text": "Promote one reviewed image change with real probes/multiple replicas and retain cloud metrics, logs and health checks tied to S and D.",
+          "artifact_id": "G-0023-A02"
+        },
+        {
+          "id": "G-0023-AC04",
+          "text": "Exercise credential delivery/rotation and a cost stop/cleanup procedure on owned resources; preserve evidence without leaking secrets or misrepresenting billing delays.",
+          "artifact_id": "G-0023-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0023-A01",
+          "path": "aws-inventory.md",
+          "purpose": "Authorized-vs-actual resources and network exposure checks."
+        },
+        {
+          "id": "G-0023-A02",
+          "path": "aws-functional-and-rollout.md",
+          "purpose": "Aurora/Mongo tests, image rollout and measured health."
+        },
+        {
+          "id": "G-0023-A03",
+          "path": "aws-operations.md",
+          "purpose": "Secret rotation, monitoring, cost observation and scoped cleanup exercise."
+        }
+      ],
+      "commands": [
+        "HTTP",
+        "INTEGRATION"
+      ],
+      "requirements": [
+        "AWS-01",
+        "K8S-01",
+        "SEC-01",
+        "ORDER-01",
+        "INV-02"
+      ],
+      "path": "docs/roadmap/goals/G-0023/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0023/manifest.template.json"
+    },
+    {
+      "id": "G-0024",
+      "milestone": "M7",
+      "title": "Restore the platform and verify cloud teardown",
+      "depends_on": [
+        "G-0023"
+      ],
+      "criteria": [
+        {
+          "id": "G-0024-AC01",
+          "text": "Restore the selected catalog, price/quote and booking checkpoints into an isolated approved target and reconcile cross-service identities and order/capacity/entitlement totals.",
+          "artifact_id": "G-0024-A01"
+        },
+        {
+          "id": "G-0024-AC02",
+          "text": "Measure actual data loss/recovery time against accepted G-0022 RPO/RTO; a missed target is a failed criterion or a separately approved changed plan, not silently redefined success.",
+          "artifact_id": "G-0024-A01"
+        },
+        {
+          "id": "G-0024-AC03",
+          "text": "Rebuild application configuration and artifact identity from retained references without chat history or workstation-local-only state; verify indispensable artifact downloads/digests.",
+          "artifact_id": "G-0024-A02"
+        },
+        {
+          "id": "G-0024-AC04",
+          "text": "After human-authorized teardown, enumerate remaining compute, database, load balancer, storage, snapshots/logs and identity resources, with intentional retained items and billing follow-up owner.",
+          "artifact_id": "G-0024-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0024-A01",
+          "path": "restore-results.md",
+          "purpose": "Observed recovery time/data loss and invariant reconciliation."
+        },
+        {
+          "id": "G-0024-A02",
+          "path": "environment-reconstruction.md",
+          "purpose": "Fresh restoration of configuration/artifact references."
+        },
+        {
+          "id": "G-0024-A03",
+          "path": "teardown-inventory.md",
+          "purpose": "Removed/retained resources, cost consequences and follow-up."
+        }
+      ],
+      "commands": [],
+      "requirements": [
+        "RECOVERY-01",
+        "AWS-01"
+      ],
+      "path": "docs/roadmap/goals/G-0024/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0024/manifest.template.json"
+    },
+    {
+      "id": "G-0025",
+      "milestone": "M8",
+      "title": "Investigate commerce failures in Splunk",
+      "depends_on": [
+        "G-0017"
+      ],
+      "criteria": [
+        {
+          "id": "G-0025-AC01",
+          "text": "Ingest real sanitized logs for a fixed purchase/failure workload and record time window, source revision, index/source configuration and actual searchable events.",
+          "artifact_id": "G-0025-A01"
+        },
+        {
+          "id": "G-0025-AC02",
+          "text": "Execute saved SPL searches for failed checkout, repeated idempotency keys and a service-error trend; compare returned counts/events with the known workload oracle.",
+          "artifact_id": "G-0025-A02"
+        },
+        {
+          "id": "G-0025-AC03",
+          "text": "An independent operator follows the search runbook and identifies the induced failure using only retained queries/logs, with uncertainty and false positives documented.",
+          "artifact_id": "G-0025-A03"
+        },
+        {
+          "id": "G-0025-AC04",
+          "text": "Record license/access/retention constraints and verify tokens, sensitive headers and real personal data are absent. Missing access keeps this goal blocked.",
+          "artifact_id": "G-0025-A01"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0025-A01",
+          "path": "splunk-ingestion.md",
+          "purpose": "Actual ingestion/configuration and access/retention boundary."
+        },
+        {
+          "id": "G-0025-A02",
+          "path": "saved-search-results.md",
+          "purpose": "Versioned .spl source, real results and workload reconciliation."
+        },
+        {
+          "id": "G-0025-A03",
+          "path": "splunk-investigation.md",
+          "purpose": "Independent investigation steps and observations."
+        }
+      ],
+      "commands": [
+        "HTTP"
+      ],
+      "requirements": [
+        "SPLUNK-01",
+        "OBS-02"
+      ],
+      "path": "docs/roadmap/goals/G-0025/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0025/manifest.template.json"
+    },
+    {
+      "id": "G-0026",
+      "milestone": "M8",
+      "title": "Diagnose a Java business transaction in AppDynamics",
+      "depends_on": [
+        "G-0017"
+      ],
+      "criteria": [
+        {
+          "id": "G-0026-AC01",
+          "text": "Verify the selected Java agent/controller combination against the actual JDK/service baseline, then retain a successful connection and detected application transaction.",
+          "artifact_id": "G-0026-A01"
+        },
+        {
+          "id": "G-0026-AC02",
+          "text": "Generate a declared slow/failing workload and locate the corresponding business transaction with actual timing and downstream diagnostics.",
+          "artifact_id": "G-0026-A02"
+        },
+        {
+          "id": "G-0026-AC03",
+          "text": "Compare the diagnosed cause with the independent injected-fault oracle and record the investigation, overhead observation and any instrumentation conflicts.",
+          "artifact_id": "G-0026-A02"
+        },
+        {
+          "id": "G-0026-AC04",
+          "text": "Record licensing/access/credentials/retention decisions and a reversible uninstall/disable procedure; unavailable access remains a visible blocker, not equivalent-tool coverage.",
+          "artifact_id": "G-0026-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0026-A01",
+          "path": "appdynamics-setup.md",
+          "purpose": "Actual compatibility, controller access and transaction discovery."
+        },
+        {
+          "id": "G-0026-A02",
+          "path": "transaction-diagnosis.md",
+          "purpose": "Measured business transaction and induced-fault investigation."
+        },
+        {
+          "id": "G-0026-A03",
+          "path": "agent-lifecycle.md",
+          "purpose": "Access/retention, reversible installation and residual limitations."
+        }
+      ],
+      "commands": [
+        "HTTP"
+      ],
+      "requirements": [
+        "APPDYNAMICS-01"
+      ],
+      "path": "docs/roadmap/goals/G-0026/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0026/manifest.template.json"
+    },
+    {
+      "id": "G-0027",
+      "milestone": "M8",
+      "title": "Demonstrate graph-data compatibility separately",
+      "depends_on": [
+        "G-0009"
+      ],
+      "criteria": [
+        {
+          "id": "G-0027-AC01",
+          "text": "Seed the same dataset twice without duplicate nodes/relationships and apply documented uniqueness/relationship constraints or validated equivalents.",
+          "artifact_id": "G-0027-A01"
+        },
+        {
+          "id": "G-0027-AC02",
+          "text": "Queries return the independently specified compatible/incompatible results for direct, transitive, missing-node and conflict cases, with traversal bounded deliberately.",
+          "artifact_id": "G-0027-A02"
+        },
+        {
+          "id": "G-0027-AC03",
+          "text": "Run real Neo4j tests and retain query text, plan/diagnostics, dataset identity and observed results, not only mocked graph responses.",
+          "artifact_id": "G-0027-A02"
+        },
+        {
+          "id": "G-0027-AC04",
+          "text": "The graph service can be stopped without affecting existing checkout correctness; explain what GraphQL and graph storage demonstrate separately.",
+          "artifact_id": "G-0027-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0027-A01",
+          "path": "graph-model.md",
+          "purpose": "Fictional dataset, constraints and idempotent import evidence."
+        },
+        {
+          "id": "G-0027-A02",
+          "path": "graph-query-results.md",
+          "purpose": "Executed queries/tests and independent expected result sets."
+        },
+        {
+          "id": "G-0027-A03",
+          "path": "graph-boundary.md",
+          "purpose": "Isolation from checkout and separate capability explanation."
+        }
+      ],
+      "commands": [],
+      "requirements": [
+        "GRAPH-01"
+      ],
+      "path": "docs/roadmap/goals/G-0027/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0027/manifest.template.json"
+    },
+    {
+      "id": "G-0028",
+      "milestone": "M9",
+      "title": "Benchmark the fixed release candidate honestly",
+      "depends_on": [
+        "G-0021"
+      ],
+      "criteria": [
+        {
+          "id": "G-0028-AC01",
+          "text": "Before execution, accept hardware/dataset/warm-up and workload limits. Proposed starting target: 20 concurrent clients for 10 minutes after warm-up; quote p95 <=500 ms, checkout p95 <=1000 ms and unexpected error rate <0.1%. These are proposed project targets, not production SLAs.",
+          "artifact_id": "G-0028-A01"
+        },
+        {
+          "id": "G-0028-AC02",
+          "text": "Retain raw samples/counts for three runs with identical inputs, including p50/p95/p99, throughput and errors. Expected sellouts/conflicts are reported separately rather than hidden in the error denominator.",
+          "artifact_id": "G-0028-A02"
+        },
+        {
+          "id": "G-0028-AC03",
+          "text": "After every run independently reconcile orders, entitlements, holds and capacity: zero oversell, duplicate confirmation or cross-owner leakage is mandatory regardless of latency.",
+          "artifact_id": "G-0028-A02"
+        },
+        {
+          "id": "G-0028-AC04",
+          "text": "Publish all run results, limitations and any target miss. A changed workload/target/hardware requires a new accepted plan revision and new evidence, not relabeling the old result.",
+          "artifact_id": "G-0028-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0028-A01",
+          "path": "benchmark-plan.md",
+          "purpose": "Accepted workload, hardware, independent targets and expected outcomes."
+        },
+        {
+          "id": "G-0028-A02",
+          "path": "benchmark-results.md",
+          "purpose": "Raw dataset references and complete observed distributions/invariant checks."
+        },
+        {
+          "id": "G-0028-A03",
+          "path": "benchmark-analysis.md",
+          "purpose": "Reproducibility, limitations and all failed or revised attempts."
+        }
+      ],
+      "commands": [
+        "HTTP"
+      ],
+      "requirements": [
+        "PERF-01",
+        "INV-02",
+        "ORDER-01"
+      ],
+      "path": "docs/roadmap/goals/G-0028/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0028/manifest.template.json"
+    },
+    {
+      "id": "G-0029",
+      "milestone": "M9",
+      "title": "Evaluate goal-driven development using retained evidence",
+      "depends_on": [
+        "G-0003",
+        "G-0006",
+        "G-0012",
+        "G-0020",
+        "G-0024"
+      ],
+      "criteria": [
+        {
+          "id": "G-0029-AC01",
+          "text": "Audit at least five materially different executed goals, including the small defect, database/full-stack validation, commerce change, delivery and recovery. Trace every accepted criterion to actual current-candidate evidence.",
+          "artifact_id": "G-0029-A01"
+        },
+        {
+          "id": "G-0029-AC02",
+          "text": "Run the defined stale-review, missing-evidence, known-defect and interrupted-handoff checks under the adopted policy. All must produce the intended blocked/needs-decision or recoverable outcome; retain negative observations.",
+          "artifact_id": "G-0029-A02"
+        },
+        {
+          "id": "G-0029-AC03",
+          "text": "Report actual review rounds, blockers found, regressions, reopened goals, lost/unretrievable artifacts, handoff restoration time and costs where observable. Unknown/missing measurements stay unknown.",
+          "artifact_id": "G-0029-A01"
+        },
+        {
+          "id": "G-0029-AC04",
+          "text": "Document process changes as proposals reviewed under the previous rules; retain a human decision and calibration needs for any model/guide change. Do not allow the candidate to weaken its own acceptance conditions.",
+          "artifact_id": "G-0029-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0029-A01",
+          "path": "workflow-audit.md",
+          "purpose": "Goal-by-goal traceability, measured process outcomes and missing data."
+        },
+        {
+          "id": "G-0029-A02",
+          "path": "control-experiments.md",
+          "purpose": "Known-good/bad, stale review, missing artifact and handoff trials."
+        },
+        {
+          "id": "G-0029-A03",
+          "path": "workflow-decision.md",
+          "purpose": "Human evaluation, limitations and separately governed improvement proposals."
+        }
+      ],
+      "commands": [
+        "ROADMAP_LINT"
+      ],
+      "requirements": [
+        "WORKFLOW-01",
+        "WORKFLOW-02",
+        "WORKFLOW-03",
+        "WORKFLOW-04"
+      ],
+      "path": "docs/roadmap/goals/G-0029/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0029/manifest.template.json"
+    },
+    {
+      "id": "G-0030",
+      "milestone": "M9",
+      "title": "Prepare a truthful private release-candidate dossier",
+      "depends_on": [
+        "G-0024",
+        "G-0025",
+        "G-0026",
+        "G-0027",
+        "G-0028",
+        "G-0029"
+      ],
+      "criteria": [
+        {
+          "id": "G-0030-AC01",
+          "text": "From a clean supported machine, follow the retained instructions and reproduce the accepted demonstration using the exact source/artifact versions. Record required private/licensed dependencies separately.",
+          "artifact_id": "G-0030-A01"
+        },
+        {
+          "id": "G-0030-AC02",
+          "text": "Every portfolio capability claim points to a completed goal and executed evidence; all remaining access, deployment, security and scope limitations remain visible. The full role-complete label requires M0-M9 gates, including Splunk/AppDynamics/Neo4j.",
+          "artifact_id": "G-0030-A02"
+        },
+        {
+          "id": "G-0030-AC03",
+          "text": "Inspect source/assets, secrets, logs, license/provenance and downloadable artifacts for a potential future public release; retain findings and actual owner decisions without publishing.",
+          "artifact_id": "G-0030-A02"
+        },
+        {
+          "id": "G-0030-AC04",
+          "text": "Record current independent reviews, human authorization before any version-producing merge, actual merged revision/artifact/tag only if performed, and retrieval/rollback ownership. Public publication remains a separate explicit decision.",
+          "artifact_id": "G-0030-A03"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "G-0030-A01",
+          "path": "reproduction-and-demo.md",
+          "purpose": "Fresh-machine result, runbook and actual demo recording."
+        },
+        {
+          "id": "G-0030-A02",
+          "path": "portfolio-claims-and-audit.md",
+          "purpose": "Capability-to-evidence map and privacy/license/source audit."
+        },
+        {
+          "id": "G-0030-A03",
+          "path": "release-decision.md",
+          "purpose": "Actual private-candidate review/approval and separate publication decision status."
+        }
+      ],
+      "commands": [
+        "CORE",
+        "STATE_TESTS",
+        "TOOLING",
+        "INTEGRATION",
+        "HTTP",
+        "ROADMAP_LINT"
+      ],
+      "requirements": [
+        "RELEASE-01",
+        "WORKFLOW-04",
+        "DELIVERY-01"
+      ],
+      "path": "docs/roadmap/goals/G-0030/README.md",
+      "manifest_template": "docs/roadmap/goals/G-0030/manifest.template.json"
+    }
+  ],
+  "commands": [
+    {
+      "id": "INIT_VERSION",
+      "command": "git agent --version",
+      "availability": "existing",
+      "preconditions": "Reviewed private initializer must already be installed; manually verify exact 0.2.0."
+    },
+    {
+      "id": "INIT_PREVIEW",
+      "command": "bash scripts/init-agent.sh --preview",
+      "availability": "existing",
+      "preconditions": "Requires the intended Git worktree and exact reviewed initializer; wrapper defect G-0002 remains until repaired."
+    },
+    {
+      "id": "INIT_APPLY",
+      "command": "bash scripts/init-agent.sh --apply",
+      "availability": "existing",
+      "preconditions": "Writes actual guidance locally; only after manual exact-version and preview review."
+    },
+    {
+      "id": "CORE",
+      "command": "bash scripts/test-core.sh --demo",
+      "availability": "existing",
+      "preconditions": "JDK 21 and Bash; in-memory domain adapters only."
+    },
+    {
+      "id": "STATE_TESTS",
+      "command": "node --test storefront/src/app/checkout-state.test.mjs",
+      "availability": "existing",
+      "preconditions": "Existing dependency-free client-state tests, not Angular browser tests."
+    },
+    {
+      "id": "TOOLING",
+      "command": "bash scripts/test-tooling.sh",
+      "availability": "existing",
+      "preconditions": "Disposable fixtures/mock initializer only; not real upstream adoption."
+    },
+    {
+      "id": "JAVA",
+      "command": "bash scripts/verify.sh --java",
+      "availability": "existing",
+      "preconditions": "Maven/JDK/repository access required; does NOT execute *IT suites."
+    },
+    {
+      "id": "INTEGRATION",
+      "command": "bash scripts/verify.sh --integration",
+      "availability": "existing",
+      "preconditions": "Maven/JDK/Docker required; real database tests must not silently skip."
+    },
+    {
+      "id": "CONFIGURE",
+      "command": "bash scripts/configure-local.sh",
+      "availability": "existing",
+      "preconditions": "Generates local secrets; refuses existing .env; do not log or commit secrets."
+    },
+    {
+      "id": "COMPOSE_CHECK",
+      "command": "docker compose config --quiet",
+      "availability": "existing",
+      "preconditions": "Validate without printing rendered secrets; runtime still unverified."
+    },
+    {
+      "id": "COMPOSE_UP",
+      "command": "docker compose up --build -d --wait",
+      "availability": "existing",
+      "preconditions": "Local containers/downloads; own project/ports/volumes required."
+    },
+    {
+      "id": "COMPOSE_DOWN",
+      "command": "docker compose down",
+      "availability": "existing",
+      "preconditions": "Stops project without intentionally deleting named volumes; never add -v casually."
+    },
+    {
+      "id": "HTTP",
+      "command": "node scripts/demo-http.mjs",
+      "availability": "existing",
+      "preconditions": "Requires running local services and .env; creates synthetic data."
+    },
+    {
+      "id": "UI_BUILD",
+      "command": "mvn -B -ntp -Pui -pl admin-console -am verify",
+      "availability": "proposed_validation",
+      "preconditions": "Uses existing Maven profile; must be executed and repaired in G-0004. Do not skip required tests."
+    },
+    {
+      "id": "UI_RUN",
+      "command": "mvn -Pui -pl admin-console spring-boot:run",
+      "availability": "existing",
+      "preconditions": "Requires installed sibling modules/running APIs as documented in START-HERE."
+    },
+    {
+      "id": "ANGULAR_FIRST_BUILD",
+      "command": "(cd storefront && npm install && npm run build)",
+      "availability": "existing",
+      "preconditions": "Node 24 baseline; generate/review real lockfile; package scripts need normal dependency trust review."
+    },
+    {
+      "id": "ANGULAR_LOCKED_BUILD",
+      "command": "(cd storefront && npm ci && npm run build)",
+      "availability": "planned_until_G-0004",
+      "preconditions": "Use only after the real lockfile exists and is reviewed; not executed by this roadmap."
+    },
+    {
+      "id": "ANGULAR_RUN",
+      "command": "(cd storefront && npm run start)",
+      "availability": "existing",
+      "preconditions": "Real services and reviewed dependencies required; loopback development server."
+    },
+    {
+      "id": "ROADMAP_LINT",
+      "command": "node scripts/validate-roadmap.mjs",
+      "availability": "added_by_this_delivery",
+      "preconditions": "Read-only structural checks; no execution or adoption of goals."
+    },
+    {
+      "id": "ROADMAP_TESTS",
+      "command": "node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs",
+      "availability": "added_by_this_delivery",
+      "preconditions": "Offline validator fixtures only; no product/framework tests or actual reviewers."
+    },
+    {
+      "id": "EVIDENCE_CHECK",
+      "command": "node scripts/validate-evidence.mjs PATH_TO_CANDIDATE_MANIFEST",
+      "availability": "added_by_this_delivery",
+      "preconditions": "Replace path with actual collected manifest; rejects unfilled templates; does not grant approval."
+    }
+  ],
+  "requirement_coverage": {
+    "TOOL-01": [
+      "G-0001",
+      "G-0002"
+    ],
+    "WORKFLOW-01": [
+      "G-0001",
+      "G-0003",
+      "G-0029"
+    ],
+    "WORKFLOW-02": [
+      "G-0002",
+      "G-0020",
+      "G-0029"
+    ],
+    "WORKFLOW-03": [
+      "G-0003",
+      "G-0029"
+    ],
+    "BUILD-01": [
+      "G-0004",
+      "G-0005"
+    ],
+    "CAT-01": [
+      "G-0005",
+      "G-0006",
+      "G-0007"
+    ],
+    "PRICE-02": [
+      "G-0005",
+      "G-0006",
+      "G-0008",
+      "G-0009",
+      "G-0012"
+    ],
+    "MONEY-01": [
+      "G-0005",
+      "G-0008",
+      "G-0009",
+      "G-0012"
+    ],
+    "INV-02": [
+      "G-0005",
+      "G-0010",
+      "G-0012",
+      "G-0018",
+      "G-0023",
+      "G-0028"
+    ],
+    "ORDER-01": [
+      "G-0005",
+      "G-0006",
+      "G-0010",
+      "G-0011",
+      "G-0012",
+      "G-0014",
+      "G-0018",
+      "G-0023",
+      "G-0028"
+    ],
+    "ORDER-02": [
+      "G-0005",
+      "G-0010"
+    ],
+    "PRICE-03": [
+      "G-0006",
+      "G-0008",
+      "G-0009"
+    ],
+    "HOLD-01": [
+      "G-0006",
+      "G-0009",
+      "G-0010"
+    ],
+    "AUTH-01": [
+      "G-0006",
+      "G-0007",
+      "G-0013",
+      "G-0015"
+    ],
+    "AUTH-02": [
+      "G-0006",
+      "G-0009",
+      "G-0011",
+      "G-0014",
+      "G-0015"
+    ],
+    "CAT-02": [
+      "G-0007",
+      "G-0013"
+    ],
+    "PRICE-01": [
+      "G-0008",
+      "G-0009"
+    ],
+    "PRICE-04": [
+      "G-0008",
+      "G-0013"
+    ],
+    "INV-01": [
+      "G-0010"
+    ],
+    "DEP-01": [
+      "G-0010",
+      "G-0016"
+    ],
+    "ADMISSION-01": [
+      "G-0011"
+    ],
+    "CART-01": [
+      "G-0012",
+      "G-0014"
+    ],
+    "CANCEL-01": [
+      "G-0012"
+    ],
+    "UI-01": [
+      "G-0013"
+    ],
+    "UI-02": [
+      "G-0014"
+    ],
+    "SEC-01": [
+      "G-0015",
+      "G-0016",
+      "G-0019",
+      "G-0020",
+      "G-0022",
+      "G-0023"
+    ],
+    "CONTRACT-01": [
+      "G-0016"
+    ],
+    "OBS-01": [
+      "G-0017"
+    ],
+    "OBS-02": [
+      "G-0017",
+      "G-0025"
+    ],
+    "SQL-01": [
+      "G-0018"
+    ],
+    "PERF-01": [
+      "G-0018",
+      "G-0028"
+    ],
+    "RECOVERY-01": [
+      "G-0018",
+      "G-0019",
+      "G-0021",
+      "G-0022",
+      "G-0024"
+    ],
+    "DELIVERY-01": [
+      "G-0019",
+      "G-0021",
+      "G-0030"
+    ],
+    "DELIVERY-02": [
+      "G-0020"
+    ],
+    "K8S-01": [
+      "G-0021",
+      "G-0023"
+    ],
+    "AWS-01": [
+      "G-0022",
+      "G-0023",
+      "G-0024"
+    ],
+    "SPLUNK-01": [
+      "G-0025"
+    ],
+    "APPDYNAMICS-01": [
+      "G-0026"
+    ],
+    "GRAPH-01": [
+      "G-0027"
+    ],
+    "WORKFLOW-04": [
+      "G-0029",
+      "G-0030"
+    ],
+    "RELEASE-01": [
+      "G-0030"
+    ]
+  }
+}

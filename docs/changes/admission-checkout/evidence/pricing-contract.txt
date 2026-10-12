@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: pricing fixture: no-offer
+ok 1 - pricing fixture: no-offer
+  ---
+  duration_ms: 1.959235
+  type: 'test'
+  ...
+# Subtest: pricing fixture: below-threshold
+ok 2 - pricing fixture: below-threshold
+  ---
+  duration_ms: 0.181493
+  type: 'test'
+  ...
+# Subtest: pricing fixture: exact-threshold
+ok 3 - pricing fixture: exact-threshold
+  ---
+  duration_ms: 0.171415
+  type: 'test'
+  ...
+# Subtest: pricing fixture: above-threshold
+ok 4 - pricing fixture: above-threshold
+  ---
+  duration_ms: 0.268611
+  type: 'test'
+  ...
+# Subtest: pricing fixture: child-only
+ok 5 - pricing fixture: child-only
+  ---
+  duration_ms: 0.145646
+  type: 'test'
+  ...
+# Subtest: pricing fixture: zero-percent
+ok 6 - pricing fixture: zero-percent
+  ---
+  duration_ms: 0.150341
+  type: 'test'
+  ...
+# Subtest: pricing fixture: full-discount
+ok 7 - pricing fixture: full-discount
+  ---
+  duration_ms: 0.088114
+  type: 'test'
+  ...
+# Subtest: pricing fixture: below-half-cent
+ok 8 - pricing fixture: below-half-cent
+  ---
+  duration_ms: 0.304316
+  type: 'test'
+  ...
+# Subtest: pricing fixture: exact-half-cent
+ok 9 - pricing fixture: exact-half-cent
+  ---
+  duration_ms: 0.279719
+  type: 'test'
+  ...
+# Subtest: pricing fixture: above-half-cent
+ok 10 - pricing fixture: above-half-cent
+  ---
+  duration_ms: 0.250036
+  type: 'test'
+  ...
+# Subtest: pricing fixture: split-variant-rounding
+ok 11 - pricing fixture: split-variant-rounding
+  ---
+  duration_ms: 0.1352
+  type: 'test'
+  ...
+# Subtest: pricing fixture: grouped-variant-rounding
+ok 12 - pricing fixture: grouped-variant-rounding
+  ---
+  duration_ms: 0.073588
+  type: 'test'
+  ...
+# Subtest: pricing fixture: fractional-percent
+ok 13 - pricing fixture: fractional-percent
+  ---
+  duration_ms: 0.088838
+  type: 'test'
+  ...
+# Subtest: pricing fixture: free-product-with-offer
+ok 14 - pricing fixture: free-product-with-offer
+  ---
+  duration_ms: 0.063329
+  type: 'test'
+  ...
+# Subtest: pricing fixture: maximum-party-and-unit
+ok 15 - pricing fixture: maximum-party-and-unit
+  ---
+  duration_ms: 0.061623
+  type: 'test'
+  ...
+# Subtest: pricing fixture: threshold-twenty-not-met
+ok 16 - pricing fixture: threshold-twenty-not-met
+  ---
+  duration_ms: 0.079046
+  type: 'test'
+  ...
+# Subtest: pricing fixture: threshold-twenty-met
+ok 17 - pricing fixture: threshold-twenty-met
+  ---
+  duration_ms: 0.058524
+  type: 'test'
+  ...
+# Subtest: pricing fixture: one-basis-point-below-half
+ok 18 - pricing fixture: one-basis-point-below-half
+  ---
+  duration_ms: 0.05346
+  type: 'test'
+  ...
+# Subtest: pricing fixture: one-basis-point-at-half
+ok 19 - pricing fixture: one-basis-point-at-half
+  ---
+  duration_ms: 0.050031
+  type: 'test'
+  ...
+# Subtest: pricing fixture: one-basis-point-above-half
+ok 20 - pricing fixture: one-basis-point-above-half
+  ---
+  duration_ms: 0.05292
+  type: 'test'
+  ...
+# Subtest: pricing fixture: near-full-single-cent
+ok 21 - pricing fixture: near-full-single-cent
+  ---
+  duration_ms: 0.089592
+  type: 'test'
+  ...
+# Subtest: pricing fixture: odd-price-mixed-party
+ok 22 - pricing fixture: odd-price-mixed-party
+  ---
+  duration_ms: 0.065855
+  type: 'test'
+  ...
+# Subtest: 384 deterministic parties agree on every line and conserved total
+ok 23 - 384 deterministic parties agree on every line and conserved total
+  ---
+  duration_ms: 10.307416
+  type: 'test'
+  ...
+# Subtest: an altered fixture expectation is detected, not regenerated from Java
+ok 24 - an altered fixture expectation is detected, not regenerated from Java
+  ---
+  duration_ms: 3.460519
+  type: 'test'
+  ...
+# Subtest: per-ticket and whole-cart discount policies would fail the selected fixtures
+ok 25 - per-ticket and whole-cart discount policies would fail the selected fixtures
+  ---
+  duration_ms: 0.295361
+  type: 'test'
+  ...
+# Subtest: SDL source: Quote retains the pinned field names and representations
+ok 26 - SDL source: Quote retains the pinned field names and representations
+  ---
+  duration_ms: 0.817429
+  type: 'test'
+  ...
+# Subtest: SDL source: Money retains the pinned field names and representations
+ok 27 - SDL source: Money retains the pinned field names and representations
+  ---
+  duration_ms: 0.236646
+  type: 'test'
+  ...
+# Subtest: SDL source: QuoteStatus retains the pinned field names and representations
+ok 28 - SDL source: QuoteStatus retains the pinned field names and representations
+  ---
+  duration_ms: 0.158647
+  type: 'test'
+  ...
+# Subtest: SDL source: historical quote query remains and status query is additive
+ok 29 - SDL source: historical quote query remains and status query is additive
+  ---
+  duration_ms: 0.368941
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3260.555666

@@ -1,0 +1,2 @@
+Parsed JSON: 42 POM XML: 7 YAML: 9
+Syntax/structure only, not framework/runtime validation.

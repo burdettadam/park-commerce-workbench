@@ -1,0 +1,86 @@
+{
+  "revision": "admission-examples-1",
+  "status": "literal expected fixtures, not runtime HTTP output",
+  "currency": "USD",
+  "cases": [
+    {
+      "id": "adult-child-party",
+      "adults": 2,
+      "children": 1,
+      "adultUnitCents": 8000,
+      "childUnitCents": 5000,
+      "offer": null,
+      "expectedTotalCents": 21000,
+      "expectedEntitlements": [
+        {
+          "variant": "ADULT",
+          "quantity": 2
+        },
+        {
+          "variant": "CHILD",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "family-discount",
+      "adults": 2,
+      "children": 1,
+      "adultUnitCents": 8000,
+      "childUnitCents": 5000,
+      "offer": {
+        "threshold": 3,
+        "basisPoints": 1000
+      },
+      "expectedTotalCents": 18900,
+      "expectedEntitlements": [
+        {
+          "variant": "ADULT",
+          "quantity": 2
+        },
+        {
+          "variant": "CHILD",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "child-only",
+      "adults": 0,
+      "children": 2,
+      "adultUnitCents": 8000,
+      "childUnitCents": 5000,
+      "offer": null,
+      "expectedTotalCents": 10000,
+      "expectedEntitlements": [
+        {
+          "variant": "CHILD",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "zero-dollar",
+      "adults": 20,
+      "children": 0,
+      "adultUnitCents": 0,
+      "childUnitCents": 0,
+      "offer": null,
+      "expectedTotalCents": 0,
+      "expectedEntitlements": [
+        {
+          "variant": "ADULT",
+          "quantity": 20
+        }
+      ]
+    }
+  ],
+  "replay": {
+    "sameOwnerQuoteRouteAndKey": "same order and entitlement IDs",
+    "sameOwnerAndKeyDifferentQuote": "CONFLICT",
+    "sameOwnerQuoteDifferentKey": "CONFLICT",
+    "differentOwner": "independent key namespace",
+    "eventRouteSameKey": "separate unchanged event scope"
+  },
+  "core_case_source": "core/src/test/java/dev/parkcommerce/core/AdmissionScenarios.java"
+}

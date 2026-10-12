@@ -1,0 +1,36 @@
+PASS XML pom.xml
+PASS XML core/pom.xml
+PASS XML catalog-service/pom.xml
+PASS XML service-support/pom.xml
+PASS XML booking-service/pom.xml
+PASS XML admin-console/pom.xml
+PASS XML pricing-service/pom.xml
+PASS JSON storefront/tsconfig.json
+PASS JSON storefront/angular.json
+PASS JSON storefront/package.json
+PASS JSON storefront/tsconfig.app.json
+PASS YAML syntax compose.yml
+PASS YAML syntax pricing-service/src/main/resources/application-telemetry.yml
+PASS YAML syntax pricing-service/src/main/resources/application.yml
+PASS YAML syntax admin-console/src/main/resources/application.yml
+PASS YAML syntax booking-service/src/main/resources/application-telemetry.yml
+PASS YAML syntax booking-service/src/main/resources/application.yml
+PASS YAML syntax catalog-service/src/main/resources/application-telemetry.yml
+PASS YAML syntax catalog-service/src/main/resources/application.yml
+PASS YAML syntax .github/workflows/verify.yml
+PASS Bash syntax scripts/test-tooling.sh
+PASS Bash syntax scripts/init-agent.sh
+PASS Bash syntax scripts/configure-local.sh
+PASS Bash syntax scripts/verify.sh
+PASS Bash syntax scripts/test-core.sh
+PASS JavaScript syntax scripts/demo-http.mjs
+PASS JavaScript syntax storefront/src/app/checkout-state.test.mjs
+PASS JavaScript syntax storefront/src/app/checkout-state.mjs
+PASS JavaScript syntax storefront/proxy.conf.cjs
+PASS JavaScript syntax ops/mongo/01-app-user.js
+PASS Maven module paths exist
+PASS Docker artifact filenames match Maven finalName
+PASS Compose host ports bind only to loopback
+PASS No credentials, Git administration, or imitation native initializer files
+PASS No private git-agent executable vendored
+RESULT: 35 structural checks passed. Syntax/static validation is not dependency compilation or runtime verification.

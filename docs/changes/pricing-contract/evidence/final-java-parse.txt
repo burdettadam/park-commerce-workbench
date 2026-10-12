@@ -1,0 +1,1 @@
+PARSE ONLY: 46 Java files, 0 syntax errors. No symbol/type/framework validation.

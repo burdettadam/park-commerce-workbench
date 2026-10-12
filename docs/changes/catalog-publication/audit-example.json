@@ -1,0 +1,19 @@
+{
+  "provenance": {
+    "kind": "executed_in_memory_domain_fixture_not_HTTP_or_MongoDB",
+    "source_commit": "7a306aa579e2559853c8a3a37b03f4c3ff6dfbbb",
+    "command": "bash scripts/test-core.sh --demo",
+    "raw_evidence": "evidence/final-core.txt",
+    "raw_evidence_sha256": "3b88bfec42a7d904ef6b5c4b090083b93b251b35c24014fe98be929acd52e0d8",
+    "actor_is_synthetic": true,
+    "timestamp_is_controlled_fixture_time": true
+  },
+  "audit": {
+    "actor": "employee-b",
+    "operation": "PUBLISH_DRAFT",
+    "productId": "reviewed-evening",
+    "previousVersion": 0,
+    "version": 1,
+    "occurredAt": "2026-10-11T19:00:00Z"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "candidate": "8e646771f3617f6dea974ddf9271203175d48099",
+  "status": "candidate_only",
+  "independent_reviews_required": 2,
+  "independent_reviews_completed": 0,
+  "contract_review": "pending",
+  "adversarial_review": "pending",
+  "writer_self_checks": "executed; not independent review",
+  "human_acceptance": "not recorded",
+  "prerequisite_adoption": "outstanding",
+  "release": "not performed",
+  "deployment": "not performed",
+  "remote_publication": "not performed",
+  "recovery_scope": "local_only"
+}

@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0003",
+  "claim": "not_ready",
+  "candidate": {
+    "source_commit": null,
+    "base_commit": null,
+    "accepted_plan_commit": null,
+    "accepted_plan_path": "goals/G-0003/README.md",
+    "accepted_plan_sha256": null,
+    "working_tree_clean": null,
+    "configuration_sha256": null,
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CHECK-01",
+      "type": "automated",
+      "candidate_commit": null,
+      "command": null,
+      "working_directory": ".",
+      "started_at": null,
+      "finished_at": null,
+      "expected_exit_code": 0,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "not_run",
+      "observed_result": null,
+      "output_artifact_id": "CHECK-OUTPUT"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0003-AC01",
+      "result": "not_run",
+      "independent_expected_result": "Two named worktrees have nonconflicting ports, Compose project names and data volumes; each has one identified writer and progress record based on the same accepted plan revision.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0003-A01"
+      ]
+    },
+    {
+      "id": "G-0003-AC02",
+      "result": "not_run",
+      "independent_expected_result": "Record at least two included branch commits, one explicit nonincluded alternative or change proposal, and the assembled candidate. An unaccepted scope change must not silently modify success criteria.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0003-A01"
+      ]
+    },
+    {
+      "id": "G-0003-AC03",
+      "result": "not_run",
+      "independent_expected_result": "Interrupt the authoring session, preserve a checkpoint, and resume in a fresh directory/session using only retained records. Retrieve every indispensable artifact and match its digest before reporting complete recovery.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0003-A02"
+      ]
+    },
+    {
+      "id": "G-0003-AC04",
+      "result": "not_run",
+      "independent_expected_result": "Deliberately present one stale review and one missing required artifact to the review process. Both remain blockers. Record actual gate observations, handoff duration and unresolved items without pretending this is a statistical model evaluation.",
+      "check_ids": [],
+      "artifact_ids": [
+        "G-0003-A03"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0003-A01",
+      "path": "branch-map.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "G-0003-A02",
+      "path": "restore-drill.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "G-0003-A03",
+      "path": "workflow-observations.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "CHECK-OUTPUT",
+      "path": "checks/command.txt",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": null,
+      "candidate_commit": null
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": null,
+      "candidate_commit": null
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": null,
+    "candidate_commit": null,
+    "decision": "not_run",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": null,
+    "candidate_commit": null,
+    "decision": "not_requested",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": null,
+    "retrieval_verified": null,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}
