@@ -1,6 +1,6 @@
 # G-0001 — Adopt the actual initializer and accepted project rules
 
-Status: **active**. Milestone: M0. Dependencies: none; human bootstrap authority is required.
+Status: **ready** for the accepted first local goal. Milestone: M0. Dependencies: none; human bootstrap authority was supplied.
 
 ## Accepted work contract
 
@@ -16,7 +16,7 @@ Status: **active**. Milestone: M0. Dependencies: none; human bootstrap authority
 
 ## Acceptance criteria and expected results
 
-These four criteria are copied from the accepted proposal; all remain open until supported by candidate-specific evidence.
+These four criteria are copied from the accepted proposal; all passed against fixed S with candidate-specific evidence and two independent native reviewer passes. See the [ready evidence manifest](evidence/8e2e18f/manifest.json) and [integration decision](evidence/8e2e18f/decision.md).
 
 ### G-0001-AC01
 
@@ -60,10 +60,10 @@ Source candidate S: `8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e`; base and accepte
 
 ## Progress, review and recovery
 
-- **Current state:** active. The owner [adopted the first-local-goal choices](work/owner-decisions.md) and they are represented in S. AC01 has fresh fixed-source command observations, AC02 has a successful [fresh native discovery result](evidence/8e2e18f/discovery.txt), and AC04 has public controls and remote retrieval observations. The accepted evidence package and reviewer blocker dispositions remain open before readiness.
-- **Verification/validation:** exact reviewed executable/version output, real preview/rerun exits 0 and 29 mock tooling checks were observed on S and again in a timed clean S clone. The earlier exit-3 proposal is resolved by the owner-adopted digest line. On the owner's instruction to perform the check, a fresh trusted Codex CLI session loaded `AGENTS.md`, both skills and both native reviewer roles; [delegated intended-use result](evidence/8e2e18f/validation.md) records the scope and limits. S was independently retrieved from the remote. The manifest/readiness gate has not passed.
-- **Reviews:** 2 of 2 required native-role current-candidate first reports were collected independently in round 1 of at most 3, with [role provenance and separate reports](evidence/8e2e18f/reviews/native-provenance.md). Both contain evidence/readiness blockers; neither is a pass yet. Earlier [generic collaboration reviews](evidence/8e2e18f/preliminary-reviews.md) remain preliminary and are not counted.
+- **Current state:** ready for G-0001's local initializer and guidance outcome. The owner [adopted the first-local-goal choices](work/owner-decisions.md) and they are represented in S. AC01-AC04 have fixed-source observations, delegated intended-use validation, and independent reviewer coverage. The ready manifest passed its structural/digest validator locally and again in a fresh public clone.
+- **Verification/validation:** exact reviewed executable/version output, real preview/rerun exits 0 and 29 mock tooling checks were observed on S and again in a timed clean S clone. The earlier exit-3 proposal is resolved by the owner-adopted digest line. On the owner's instruction to perform the check, a fresh trusted Codex CLI session loaded `AGENTS.md`, both skills and both native reviewer roles; [delegated intended-use result](evidence/8e2e18f/validation.md) records the scope and limits. S and the final ready evidence checkpoint were independently retrieved from the remote. The ready manifest passed locally and in that clone with 7 declared checks and 21 local artifacts; the validator is structural and does not authenticate authority or grant release approval.
+- **Reviews:** 2 of 2 required native-role reviewers passed S and the available AC01-AC04 evidence in round 3 of 3, with zero substantive reviewer blockers. [Role provenance and all independent reports](evidence/8e2e18f/reviews/native-provenance.md) retain the round-1 blockers, round-2 dispositions and final passes. Earlier [generic collaboration reviews](evidence/8e2e18f/preliminary-reviews.md) remain preliminary and are not counted.
 - **Exceptions/debt:** no waiver. Adam Burdett owns the adopted first-local-goal policy. Native custom-role selection was observed after the local trust step. An eligible hosted human approval route remains open for a later version-producing merge, with no enforcement claim.
 - **Release:** no version-producing merge approval requested; no merge M, distributable D, tag, deployment or health claim.
-- **Recovery:** S `8e2e18f`, report commit `9ff6fb9`, and handoff commit `becd323` were pushed. Separate clean public clones retrieved their tracked content with respectively 425, 433 and 434 manifest entries matching. The adopted one-hour active-work RPO and one-working-day RTO are targets, not measured achievements; private settings are not covered by the public clone.
-- **Next action:** finish the candidate evidence package and manifest, retain and resolve both round-1 findings, then seek round-2 native reviewer dispositions. Check all four criteria and actual remote retrieval before a readiness decision; no version-producing merge is in scope.
+- **Recovery:** S `8e2e18f`, report `9ff6fb9`, handoff `becd323`, and final ready evidence `eef7703ff1d7ed82d65a4fff77c24ccfd4e2dd7b` were pushed. A fresh public HTTPS clone of `eef7703` matched all 453 source-manifest entries with no `.env`; its ready evidence manifest also passed locally in that clone. The adopted one-hour active-work RPO and one-working-day RTO are targets, not measured achievements; private settings are not covered by the public clone.
+- **Next action:** retain the goal branch and evidence for the adopted 30-day period. Resolve an eligible distinct human reviewer and enforceable hosted approval route before any later version-producing merge. No such merge, release or deployment is part of G-0001.
