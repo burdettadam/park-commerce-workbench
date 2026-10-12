@@ -45,7 +45,7 @@ node --test scripts/pricing-contract.test.mjs
 cd storefront && npm ci && npm run test:types && npm run build
 ```
 
-The GitHub Actions workflow runs Java integration and client contract checks on pushes to `main` and on pull requests. The last verified private candidate passed 344 Java tests, including 64 database integration tests, plus the client and contract checks. Public CI must run on this new history before those results can be attributed to it. See [verification details](docs/import-verification-2026-10-12.md).
+The GitHub Actions workflow runs Java integration and client contract checks on pushes to `main` and on pull requests. Both jobs passed on the [public source snapshot](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38297197722). The previously verified Java suite passed 344 tests, including 64 database integration tests; see [verification details](docs/import-verification-2026-10-12.md).
 
 Local demo security is intentionally limited to loopback development. Review [security boundaries](docs/project/security.md) before running services. No production identity, payment processing, cloud deployment, or browser acceptance is claimed.
 
