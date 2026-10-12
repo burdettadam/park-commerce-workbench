@@ -1,0 +1,61 @@
+git agent init - DRY RUN
+Target: <worktree-root>
+Kind: existing repository
+Template: 0.2.0 / git-blob-sha1:bc235dc1d6759efc018e38c02cda10cc4ffae5a4
+Runtime: git version 2.53.0.windows.2; Bash 5.2.37(1)-release
+
+Inspected project guidance/setup (bounded, no execution):
+  .agents/skills/work-goal/SKILL.md
+  .agents/skills/work-goal/references/release-lifecycle.md
+  .agents/skills/work-goal/references/review-guide.md
+  .agents/skills/work-goal/references/state-report.md
+  .agents/skills/worktree-flow/SKILL.md
+  .agents/skills/worktree-flow/references/isolation-and-recovery.md
+  .codex/agents/adversarial-reviewer.toml
+  .codex/agents/contract-reviewer.toml
+  .codex/config.toml
+  .gitattributes
+  .github/workflows/verify.yml
+  AGENTS.md
+  ARCHITECTURE.md
+  DEVELOPMENT.md
+  Dockerfile
+  GOVERNANCE.md
+  PLANS.md
+  compose.yml
+  docs/project/architecture.md
+  storefront/package.json
+
+File plan:
+  unchanged: AGENTS.md
+  adopted: GOVERNANCE.md
+  adopted: DEVELOPMENT.md
+  adopted: ARCHITECTURE.md
+  adopted: PLANS.md
+  unchanged: docs/agent-init/README.md
+  unchanged: .codex/config.toml
+  unchanged: .codex/agents/contract-reviewer.toml
+  unchanged: .codex/agents/adversarial-reviewer.toml
+  unchanged: .agents/skills/work-goal/SKILL.md
+  unchanged: .agents/skills/work-goal/references/review-guide.md
+  unchanged: .agents/skills/work-goal/references/release-lifecycle.md
+  unchanged: .agents/skills/work-goal/references/state-report.md
+  unchanged: .agents/skills/worktree-flow/SKILL.md
+  unchanged: .agents/skills/worktree-flow/references/isolation-and-recovery.md
+
+Gaps / not yet verified:
+  - Codex TOML syntax and effective configuration are unverified; validate with the installed Codex client.
+  - Syntax and command declarations in storefront/package.json are unverified. Bash does not parse JSON/TOML; use the maintained product validators.
+  - Review GOVERNANCE.md for GOVERNANCE.md responsibilities; existing guidance was preserved, not certified.
+  - Review DEVELOPMENT.md for DEVELOPMENT.md responsibilities; existing guidance was preserved, not certified.
+  - Review ARCHITECTURE.md for ARCHITECTURE.md responsibilities; existing guidance was preserved, not certified.
+  - Review PLANS.md for PLANS.md responsibilities; existing guidance was preserved, not certified.
+  - Git LFS detected: source refs alone do not retain LFS objects; prove retrieval and retention.
+  - Accept/adapt governing guidance and ownership before goal execution; presence does not prove coverage.
+  - Verify the installed Codex client, effective instruction chain, models, reviewer roles and actual permissions.
+  - Record real product commands, isolated ports/data/effects, runtime limits and applicable local/CI differences.
+  - Verify GitHub required checks, eligible human premerge approval and release/tag identities in GitHub.
+  - Set recovery objectives, retain/push whole-goal checkpoints and artifacts, and perform a clean restore drill.
+  - Run applicable upgrade/health/support and acceptance demonstrations; scaffold creation is not product evidence.
+
+No target directories, Git metadata, files, refs or settings were changed.

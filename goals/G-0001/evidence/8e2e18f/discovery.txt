@@ -1,0 +1,10 @@
+G-0001 native discovery observation — 12 October 2026
+
+Fixed source candidate: 8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e
+Client: codex-cli 0.162.0-alpha.17.2 on Windows
+
+`codex debug prompt-input "Inspect project instruction discovery only"` exited 0 from this worktree. Its fresh model-visible input contained project AGENTS.md and both work-goal and worktree-flow skill names. The raw prompt JSON remains local-only in ignored `.tmp/g0001-adopted-prompt-input.json` because it includes unrelated private instructions; SHA-256 0afc872a0bd5e40d92db173d0413312e86ea1997fc64def54e22626d020ed4f3. `codex doctor --summary --ascii` exited 0 and reported project configuration loaded and authentication configured.
+
+The prompt input did not contain contract-reviewer or adversarial-reviewer. Both role files are in `.codex/agents/`, but this only establishes filesystem presence. The prior fresh non-ephemeral `codex exec` attempt on installed `0.162.0-alpha.17.2` reported that its available spawn tool had no custom-role selector. Two isolated local CLI trials installed only under ignored `.tmp/` reached the same result: official package `@openai/codex@0.162.1` (stable) and `@openai/codex@0.163.0-alpha.5` each completed a fresh read-only `codex exec` and reported that no project-role selector was available. Their final messages and raw JSONL are retained locally in `.tmp/g0001-stable-role-selection.*` and `.tmp/g0001-alpha-role-selection.*`; no repository file or normal Codex installation was changed by these trials.
+
+Two generic collaboration reviewers inspected S independently as preliminary reviews; neither claimed the project custom role had loaded. A fresh IDE session with a supported custom-role selector, or a native client exposing the configured roles, is still required to close AC02. No reviewer-role or human validation result is invented.
