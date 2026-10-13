@@ -10,9 +10,9 @@ import { validateEvidence } from './validate-evidence.mjs';
 import { projectRoot } from './validate-roadmap.mjs';
 const digest=x=>crypto.createHash('sha256').update(x).digest('hex');
 const S='a'.repeat(40), B='b'.repeat(40), P='c'.repeat(40), R='d'.repeat(40);
-function fixture() {
+function fixture(goalId='G-0002') {
   const directory=fs.mkdtempSync(path.join(os.tmpdir(),'pcw evidence fixtures '));
-  const manifest=JSON.parse(fs.readFileSync(path.join(projectRoot,'docs/roadmap/goals/G-0002/manifest.template.json'),'utf8'));
+  const manifest=JSON.parse(fs.readFileSync(path.join(projectRoot,`docs/roadmap/goals/${goalId}/manifest.template.json`),'utf8'));
   manifest.claim='ready';
   Object.assign(manifest.candidate,{source_commit:S,base_commit:B,accepted_plan_commit:P,working_tree_clean:true});
   for(const a of manifest.artifacts) {
@@ -64,6 +64,42 @@ rejects('missing intended-use validation is not a pass',f=>f.manifest.intended_u
 rejects('placeholder Git identity is rejected',f=>f.manifest.candidate.source_commit='NOT_A_COMMIT',/Git identities/);
 rejects('configuration snapshot must match the declared digest',f=>f.manifest.candidate.configuration_sha256='d'.repeat(64),/Configuration digest mismatch/);
 rejects('round four requires a decision rather than silent acceptance',f=>f.manifest.reviews[0].round=4,/Review round outside/);
+test('G-0007 round four accepts only a hashed owner decision artifact',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    const bytes=Buffer.from('SYNTHETIC owner decision fixture; not actual approval.\n');
+    fs.writeFileSync(path.join(f.directory,'review-exception.md'),bytes);
+    f.manifest.artifacts.push({id:'REVIEW-EXCEPTION',path:'review-exception.md',sha256:digest(bytes),candidate_commit:S});
+    f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
+    assert.deepEqual(validateEvidence(f.save()).errors,[]);
+    fs.appendFileSync(path.join(f.directory,'review-exception.md'),'changed');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Artifact digest mismatch: REVIEW-EXCEPTION/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0007 round four without the decision artifact is rejected',()=>{
+  const f=fixture('G-0007');
+  try {f.manifest.reviews[0].round=4;f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
+    const errors=validateEvidence(f.save()).errors;
+    assert.ok(errors.some(x=>/Review policy exception/.test(x)),JSON.stringify(errors));
+    assert.ok(errors.some(x=>/Review round outside/.test(x)),JSON.stringify(errors));
+  } finally {f.clean();}
+});
+rejects('G-0002 cannot borrow the fourth-round exception',f=>{
+  f.manifest.reviews[0].round=4;
+  f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
+},/Review round outside/);
+test('a documented G-0007 exception still rejects round five',()=>{
+  const f=fixture('G-0007');
+  try {
+    f.manifest.reviews[0].round=5;
+    const bytes=Buffer.from('SYNTHETIC owner decision fixture; not actual approval.\n');
+    fs.writeFileSync(path.join(f.directory,'review-exception.md'),bytes);
+    f.manifest.artifacts.push({id:'REVIEW-EXCEPTION',path:'review-exception.md',sha256:digest(bytes),candidate_commit:S});
+    f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
+  } finally {f.clean();}
+});
 rejects('template flag cannot be accepted as ready',f=>f.manifest.claim='not_ready',/Template\/incomplete/);
 rejects('missing decision authority is rejected',f=>f.manifest.readiness_decision.authority_id=null,/readiness decision/);
 rejects('unretrieved artifact retention is not recoverability',f=>f.manifest.retention.retrieval_verified=false,/Retention\/retrieval/);

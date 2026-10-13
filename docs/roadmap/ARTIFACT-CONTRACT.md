@@ -69,6 +69,8 @@ After adoption, use the upstream goal states: `planned`, `active`, `blocked`, `p
 
 The supplied validators implement the proposal-2 catalog and the proposed two-reviewer/three-round baseline. A later accepted policy or material criterion change requires an explicit reviewed update to the coverage catalog/validator contract under the prior rules; the active accepted goal remains the authority. They are not a general automatic parser of native governance.
 
+G-0007 has one owner-authorized exception to the round ceiling after its third round found a privacy blocker. A ready G-0007 manifest may report round four only with `review_policy_exception: {"max_round":4,"decision_artifact_id":"REVIEW-EXCEPTION","authority_id":"Adam Burdett"}` and a nonempty, digest-checked `REVIEW-EXCEPTION` artifact recording that decision and the preceding-baseline control assessment. The exception permits exactly one additional independent contract/adversarial pair; it changes no criterion, check, privacy, or release rule. Other goals retain the three-round ceiling, and G-0007 round five is invalid. The checker verifies the declaration and artifact bytes, not the owner's identity or the decision's authority; reviewers inspect those claims.
+
 The manifest checker verifies structure, declared candidate consistency, coverage, counts and local file digests. It does **not** authenticate reviewers/owners, verify Git objects against a remote, prove that commands really ran, read the semantics of every report, enforce hosted controls or grant an approval. Synthetic validator fixtures can pass structural checks; this is why independent review and actual authority remain necessary.
 
 ## Retention, privacy and recovery
