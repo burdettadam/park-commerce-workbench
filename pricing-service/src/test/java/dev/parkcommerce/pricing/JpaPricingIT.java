@@ -135,6 +135,19 @@ class JpaPricingIT {
         assertPreviewError(token,fractional,"whole-number ticket counts");
         assertEquals(0,books.count()); assertEquals(0,quotes.count());
     }
+    @Test void httpPreviewPastVisitReturnsTheEmployeeRepairMessageWithoutWrites() throws Exception {
+        // The UI can submit this date: Pricing.Request accepts it, while the
+        // service's park-local clock rejects it after the HTTP request arrives.
+        var past=new Pricing.Request("night",LocalDate.of(2030,9,30),1,0);
+        var input=new Pricing.PreviewRequest(book(1,10000),past);
+        var response=post("/api/admin/price-books/preview","test_employee_123456789012345678901234",
+            json.writeValueAsString(input));
+        assertEquals(400,response.statusCode(),response.body());
+        var problem=json.readValue(response.body(),Map.class);
+        assertEquals("INVALID_INPUT",problem.get("code"));
+        assertEquals("Visit date is in the past in the park time zone",problem.get("detail"));
+        assertEquals(0,books.count()); assertEquals(0,quotes.count());
+    }
     private void assertPreviewError(String token,String payload,String expectedDetail) throws Exception {
         var response=post("/api/admin/price-books/preview",token,payload);
         assertEquals(400,response.statusCode(),response.body());
