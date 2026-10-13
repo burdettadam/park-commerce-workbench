@@ -6,6 +6,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.bind.MissingRequestHeaderException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +22,17 @@ public class ApiErrors {
         problem.setTitle(error.code().name());problem.setProperty("code",error.code().name());return problem;
     }
     @ExceptionHandler({HttpMessageNotReadableException.class,MethodArgumentTypeMismatchException.class,MissingRequestHeaderException.class})
-    public ProblemDetail invalid(Exception error){return business(Failure.invalid("Malformed or incomplete request"));}
+    public ProblemDetail invalid(Exception error, HttpServletRequest request){
+        // Jackson wraps failures from validated pricing records. Preserve their
+        // safe domain messages so an employee can repair an unpublished rule.
+        if ("/api/admin/price-books/preview".equals(request.getRequestURI())) {
+            for (Throwable cause=error.getCause(); cause!=null; cause=cause.getCause())
+                if (cause instanceof Failure failure && failure.code()==Failure.Code.INVALID_INPUT)
+                    return business(failure);
+            return business(Failure.invalid("Provide a complete price-book candidate and party with valid dates and whole-number ticket counts"));
+        }
+        return business(Failure.invalid("Malformed or incomplete request"));
+    }
     @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class) public ProblemDetail denied(Exception error){return business(new Failure(Failure.Code.FORBIDDEN,"Access denied"));}
     @ExceptionHandler(Exception.class) public ProblemDetail unexpected(Exception error){
         // Do not echo payloads, credentials, SQL, or stack traces to the caller.
