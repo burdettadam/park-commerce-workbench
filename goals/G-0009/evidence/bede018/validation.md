@@ -1,0 +1,3 @@
+# G-0009 intended-use validation — pending
+
+Source candidate: `bede01801a1c489982edbe688ac87f68c7ba7396`. Adam Burdett is the proposed owner in the accepted plan. Explicit G-0009 delegation was requested; no answer is recorded in this bundle. Earlier G-0008 delegation does not automatically cover this goal. The eventual validator must compare independent cents/rounding expectations, date and expiry boundaries, immutable versioned quotes, REST/GraphQL ownership, and documented consumer/error examples against actual fixed-source evidence. This provisional record makes no intended-use acceptance claim.
