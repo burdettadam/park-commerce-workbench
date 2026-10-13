@@ -1,0 +1,15 @@
+G-0007 source S: 15c70f15154997f6eda7b72ad70aa3eba76e5fdd
+Working directory: .tmp/g0007-verify (clean detached worktree at S)
+Command: node scripts/demo-http.mjs
+Observed exit code: 0
+43 live HTTP acceptance checks passed; no payment was taken.
+Relevant named passes:
+PASS catalog drafts and audit history are employee-only
+PASS saved catalog draft is invisible to guests
+PASS stale catalog draft write conflicts
+PASS publication uses the reviewed version and server audit actor
+PASS later draft survives another version being published
+PASS publication rejects a now-stale draft base
+PASS catalog history traversal stays pinned while new publications arrive
+Synthetic product ID: lantern-d9eb6145
+Original unsanitized transcript retained locally at .tmp/g0007-http-raw.txt, excluded from Git.

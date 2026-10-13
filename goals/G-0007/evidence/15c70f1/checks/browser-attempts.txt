@@ -1,0 +1,11 @@
+G-0007 source S: 15c70f15154997f6eda7b72ad70aa3eba76e5fdd
+Working directory: park-commerce-workbench; browser against isolated local Vaadin 8680 and catalog 8581.
+Command: node .tmp/g0006-browser/g7-flow.cjs
+Attempts: 2, both failed at first Save new draft version; no browser acceptance pass.
+UI result: Response unavailable; a write may already have succeeded. Inspect latest draft/history before retrying.
+Observed Java catalog read timeout: approximately 5 seconds on each attempt.
+Follow-up direct Node POST: TimeoutError after 20 seconds.
+Follow-up direct GET /api/products/missing: TimeoutError after 5 seconds.
+Follow-up GET /actuator/health: HTTP 200 in 45 ms.
+Docker Desktop Linux engine subsequently failed to answer Compose/version commands.
+Original browser script and unsanitized transcripts remain under ignored .tmp; they are not represented as passing evidence.

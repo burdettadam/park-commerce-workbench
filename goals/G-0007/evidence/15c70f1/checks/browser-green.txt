@@ -1,0 +1,7 @@
+G-0007 source S: 15c70f15154997f6eda7b72ad70aa3eba76e5fdd
+Working directory: park-commerce-workbench
+Command: NODE_PATH=.tmp/g0006-browser/node_modules node goals/G-0007/evidence/15c70f1/checks/browser-flow.cjs
+Observed exit code: 0
+{"productId":"g7-ui-fec28026","guestDraftStatus":404,"unsavedFormRejected":true,"publishedRevisions":[1,2],"historyPageRevisions":[2,1],"auditStatus":"RECORDED","staleEmployeeConflict":true,"winningDraftVersion":3,"guestRevisionAfterDraft":2,"tokenMasked":true}
+Browser script: checks/browser-flow.cjs; it reads ignored local .env without logging token values. NODE_PATH points to the existing local Playwright installation.
+Original stdout retained locally at .tmp/g0007-browser-final-raw.txt. The earlier successful shorter script at .tmp/g0007-browser-green-raw.txt used another synthetic product and did not exercise the second employee's conflict.
