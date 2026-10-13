@@ -1,0 +1,33 @@
+{
+  "observed_at": "2026-10-13T00:35:37.593213+00:00",
+  "requests": [
+    {
+      "owner": "implementation",
+      "target": "implementation",
+      "product_id": "lantern-a7a047a6",
+      "status": 200,
+      "returned_id": "lantern-a7a047a6"
+    },
+    {
+      "owner": "implementation",
+      "target": "validation",
+      "product_id": "lantern-a7a047a6",
+      "status": 404,
+      "returned_id": null
+    },
+    {
+      "owner": "validation",
+      "target": "implementation",
+      "product_id": "lantern-fb95be11",
+      "status": 404,
+      "returned_id": null
+    },
+    {
+      "owner": "validation",
+      "target": "validation",
+      "product_id": "lantern-fb95be11",
+      "status": 200,
+      "returned_id": "lantern-fb95be11"
+    }
+  ]
+}

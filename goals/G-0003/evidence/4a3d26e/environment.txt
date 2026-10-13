@@ -1,0 +1,11 @@
+G-0003 local drill host and toolchain, 12 October 2026 America/Denver / 13 October UTC
+OS: Windows-10-10.0.26200-SP0
+Git: git version 2.53.0.windows.2
+Docker server: 29.7.2
+Docker Compose: Docker Compose version v5.4.0
+Node: v24.14.1
+Codex CLI: codex-cli 0.162.0-alpha.17.2
+Windows host javac: 17.0.10, which failed the Java 21 core check before compilation.
+Java 21 rerun: maven:3.9.11-eclipse-temurin-21 image ID sha256:6fdc855a6ed81d288ca7ca37ac6ff5e9308b612485c0801d70b25a858c83d237, read-only source bind/no network/tmpfs /tmp.
+Source S: 4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6; clean integration checkout for selected S checks.
+Private .env files are ignored, generated per worktree with Windows ACLs. No production, cloud, paid service, real customer or payment data was used.
