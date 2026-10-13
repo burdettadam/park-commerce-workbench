@@ -5,6 +5,7 @@
   "candidate": {
     "source_commit": null,
     "base_commit": null,
+    "negative_control": null,
     "accepted_plan_commit": null,
     "accepted_plan_path": "goals/G-0002/README.md",
     "accepted_plan_sha256": null,
