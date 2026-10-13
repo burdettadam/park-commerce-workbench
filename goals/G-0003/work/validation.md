@@ -35,6 +35,42 @@ still need comparison.
 120 criteria and 90 goal-specific artifact requirements. Neither result
 establishes live isolation or acceptance.
 
+## Assigned validation runtime, 13 October 2026 UTC
+
+The validation writer ran
+`docker compose --env-file .env up --build -d --wait --wait-timeout 240`
+from this worktree, from `00:33:06.9337883Z` to `00:34:26.0770068Z`.
+Exit was 0. The private raw output is
+`.tmp/g0003-validation-compose-up.raw.txt` (35,858 bytes, SHA-256
+`8a6af055af06ea5d0edf8c48267dc64c9d496450caec65ae730f2c925cfb3375`).
+That file is ignored and remains local-only; it is not a remotely retained
+artifact.
+
+`docker compose --env-file .env ps -q` returned six IDs. Docker inspection
+showed each running, healthy and labeled `com.docker.compose.project` =
+`pcw-g0003-validation`: `catalog` `5ea7c0ad5aed`, `pricing`
+`4fe997e1ae3b`, `booking` `b3aac265d9fc`, `mongo` `425fa05de956`,
+`mysql-pricing` `dd2c0675b34a`, and `mysql-booking` `0b502bc04a93`.
+The three named database mounts were
+`pcw-g0003-validation_mongo-data`,
+`pcw-g0003-validation_pricing-data`, and
+`pcw-g0003-validation_booking-data`. Mongo also has an image-declared
+anonymous mount; it is not treated as one of the three named project volumes.
+Native `docker compose port` mapped catalog, pricing, booking, Mongo,
+pricing MySQL and booking MySQL to `127.0.0.1:8281`, `8282`, `8283`,
+`27217`, `3327`, and `3328`, respectively. HTTP GET to each application
+`/actuator/health` returned 200 and application status `UP`.
+
+The writer ran `node scripts/demo-http.mjs` here from
+`00:35:00.9579862Z` to `00:35:03.5137313Z`; exit 0 and **43** maintained
+live HTTP acceptance checks passed. It created synthetic catalog product
+`lantern-fb95be11`. Private raw output is
+`.tmp/g0003-validation-demo-http.raw.txt` (2,698 bytes, SHA-256
+`e8244229c6bb30ebc4149778b6a807f68b9d1292dacd6704e5f73a37e4f6dc42`).
+This is this project's own live behavior. The implementation project's
+endpoint identity and cross-project absence of this ID remain coordinated
+follow-up checks; no two-project data-isolation result is claimed here.
+
 Selected follow-up commands: `docker compose config --quiet`, sanitized
 `docker compose config --format json`, `docker compose up --build -d --wait`,
 `docker compose ps --all`, `docker compose port`, `docker inspect`, scoped
@@ -44,9 +80,9 @@ owner must retain actual exits/times and inspect process ownership before any
 cleanup. Goal-wide selected product and evidence checks are the integration
 owner's responsibility after candidate S is assembled.
 
-Next action: hand this committed procedure and its exact revision to the
-integration writer. After both runtime owners establish their projects, execute
-the live identity and cross-data checks against fixed inputs; then participate
-in fresh-session retrieval using retained records. No G-0003 acceptance,
-runtime isolation, independent review, or intended-use validation is claimed
-by this initial slice.
+Next action: hand this committed runtime observation and exact revision to
+the integration writer. Under the integration writer's coordination, compare
+both projects' identities and perform own/other catalog reads for each
+synthetic product ID; then participate in fresh-session retrieval using
+retained records. No G-0003 acceptance, cross-project data isolation,
+independent review, or intended-use validation is claimed by this slice.
