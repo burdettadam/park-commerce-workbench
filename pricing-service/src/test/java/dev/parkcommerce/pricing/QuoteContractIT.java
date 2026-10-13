@@ -186,6 +186,28 @@ class QuoteContractIT {
         }
         assertEquals(4L,quotes.count(),"Failed endpoints must not persist quotes");
     }
+    @Test void publicApiUsesParkDatesAndElapsedExpiryAcrossDstTransitions() throws Exception {
+        quotes.deleteAll();books.deleteAll();
+        service.publish(new Pricing.PriceBook("night",1,1,List.of(
+            new Pricing.Rate(Catalog.Variant.ADULT,LocalDate.of(2030,3,9),LocalDate.of(2030,11,3),new Money(5)),
+            new Pricing.Rate(Catalog.Variant.CHILD,LocalDate.of(2030,3,9),LocalDate.of(2030,11,3),new Money(5))),null));
+        clock.now.set(Instant.parse("2030-03-10T04:59:59.999Z"));
+        assertEquals(201,send("/api/quotes",GUEST,input("2030-03-09")).statusCode());
+        clock.now.set(Instant.parse("2030-03-10T05:00:00Z"));
+        assertEquals(400,send("/api/quotes",GUEST,input("2030-03-09")).statusCode());
+        clock.now.set(Instant.parse("2030-03-10T06:55:00Z"));
+        var response=send("/api/quotes",GUEST,input("2030-03-10"));assertEquals(201,response.statusCode());
+        var quote=json.readValue(response.body(),Pricing.Quote.class);
+        assertEquals(Duration.ofSeconds(900),Duration.between(quote.createdAt(),quote.expiresAt()));
+        clock.now.set(quote.expiresAt());
+        assertEquals("EXPIRED",body(send("/api/quotes/"+quote.id()+"/status",GUEST,null)).get("state"));
+        assertEquals("EXPIRED",map(map(graph(STATUS,Map.of("id",quote.id().toString()),GUEST),"data"),"quoteStatus").get("state"));
+        clock.now.set(Instant.parse("2030-11-04T04:59:59.999Z"));
+        assertEquals(201,send("/api/quotes",GUEST,input("2030-11-03")).statusCode());
+        clock.now.set(Instant.parse("2030-11-04T05:00:00Z"));
+        assertEquals(400,send("/api/quotes",GUEST,input("2030-11-03")).statusCode());
+        assertEquals(3L,quotes.count());
+    }
     @Test void serializedQuoteAndDomainErrorsKeepConsumerShape() throws Exception {
         var response=send("/api/quotes",GUEST,input(DAY.toString()));assertEquals(201,response.statusCode(),response.body());
         var rest=body(response);
