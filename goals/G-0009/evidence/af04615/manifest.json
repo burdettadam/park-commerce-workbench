@@ -253,25 +253,25 @@
     {
       "id": "CHECK-PRICING",
       "path": "checks/pricing-junit-summary.txt",
-      "sha256": "f10035dc5a75555da5be1e33b0ede55c394089aabcd3df47ffee1448a9be1c60",
+      "sha256": "23e6c3b8ef9f3c1716ac4f9d1ec83049af2adf8cc34053ff8d4f6bc646a1dc87",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
       "id": "CHECK-BOOKING",
       "path": "checks/booking-junit-summary.txt",
-      "sha256": "8727231079e94888a2a0b97159d46a7990bc59cbfbdeca6c4b2dd5312b248009",
+      "sha256": "1d12f4a47415c4ab0f1703aa325c1facba9b8176d17b3a71db9667d17b2b7d6c",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
       "id": "CHECK-HOSTED-JUNIT",
       "path": "checks/hosted-junit.txt",
-      "sha256": "20147a0d108cdb8a3da58011a2613c23d368b8ef5294e3493def8644dc436cef",
+      "sha256": "8fc40c1aaf76641b2cfdfb408bbf617bf3cdd7b8b3248cb877eb25f737d1bdcf",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
       "id": "CHECK-HOSTED-LIVE",
       "path": "checks/hosted-live-stack.txt",
-      "sha256": "c3de1e00753d90a85abcbb34733361d7bf800d54be35934bdb1cbab8683dbafe",
+      "sha256": "75aa4837de953c29b9155c7a812601ffb18c449914280473baabd24cd81fb6ee",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
