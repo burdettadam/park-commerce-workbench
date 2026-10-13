@@ -1,0 +1,17 @@
+# G-0007 review-control proposal — pending Adam's decision
+
+**Status: proposed, not adopted.** The accepted G-0007 plan allows two independent configured native reviewers and at most three rounds. The final accepted round found a privacy blocker in a compressed integration transcript. The writer replaced the archive and withdrew the affected commits from the active public PR branch. The branch tip `c1a308f30826762ae6122d021d15c4668c256088` was retrieved in a fresh public clone: all 25 draft-manifest artifact hashes matched, and none of the five decompressed archives contained the known local username or Windows user-path prefix. This writer check does not replace independent review. The current goal remains `needs-decision`; [round-three disposition](../evidence/15c70f1/reviews/round3-disposition.md) and [decision](../evidence/15c70f1/decision.md) retain the failed review.
+
+## Proposed one-goal exception
+
+Adam Burdett may authorize **one additional review round (R=4 for G-0007 only)** after independent assessment of this proposal under the preceding accepted baseline. The additional round would use one new `contract-reviewer` and one new `adversarial-reviewer`, with distinct native sessions and independent first findings. They would review the fixed product source S `15c70f15154997f6eda7b72ad70aa3eba76e5fdd`, the accepted four AC01–AC04 outcomes, the sanitized branch checkpoint and its actual artifact bytes, the prior findings, the full available check output, draft/ready manifest claims, architecture and DRY boundaries, and the known retention limitations. Neither reviewer may inherit a pass from the previous rounds. The replaced archive and final evidence package need current review coverage. A valid blocker from either reviewer keeps the goal at `needs-decision` after this one additional round.
+
+This proposal changes only the G-0007 maximum review count from three to four. It does not change the required two roles, accepted criteria, selected real Mongo/API/browser checks, delegated intended-use scope, privacy requirements, source S, or the distinct human tagged-release rule. It does not grant release or merge approval. The first failed browser attempt's raw output and the audit sample's exact originating API response are unavailable; reviewers must assess those disclosed evidence limits rather than treat them as recovered. The cleaned active branch does not prove erasure from GitHub's unreachable objects or third-party caches.
+
+## Authority and end of exception
+
+- **Owner:** Adam Burdett, as G-0007 scope and repository-administration owner.
+- **Reason:** a required privacy correction changed public evidence after the last permitted acceptance round; calling it ready without renewed independent review would violate the accepted plan.
+- **Mitigation:** retain the failed round-three reports, review the replacement with both roles, verify artifact digests from a clean remote retrieval, keep PR #9 draft until gates pass, and publish no unfiltered local logs.
+- **Expiry:** this exception ends after the one new pair returns final reports, or if source/criteria/review configuration changes materially before then. A remaining blocker needs a new owner decision; it does not start unlimited rounds.
+- **Adoption:** only Adam's explicit acceptance of this exact proposal after the preceding-baseline control assessment makes R=4 effective. Until then, no fourth acceptance review, ready claim, or merge may proceed.
