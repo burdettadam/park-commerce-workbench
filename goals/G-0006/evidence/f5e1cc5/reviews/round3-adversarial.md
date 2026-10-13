@@ -6,8 +6,8 @@ Native child `01a135b3-ea18-7942-b09d-40da150f89d8`; parent `01a135b3-78f8-7583-
 
 — adversarial reviewer
 
-**Task path:** `/root/g0006_r3_adversarial`  
-**Role:** `adversarial-reviewer`  
+**Task path:** `/root/g0006_r3_adversarial`
+**Role:** `adversarial-reviewer`
 **Result:** No demonstrated product or architecture blocker in S. **Final readiness is blocked** by the incomplete, unpublished manifest and unverified retrieval of the final report checkpoint.
 
 The reviewer independently inspected the accepted baseline and architecture, full base-to-S diff, round-two findings and disposition, prior defect, browser and order evidence, HTTP and restart records, artifact contract, three uncommitted reports, and named draft manifest. Git ancestry confirms base → P → S → E4. Checks were read-only; no service was started.

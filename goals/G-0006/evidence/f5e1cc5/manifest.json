@@ -226,13 +226,13 @@
     {
       "id": "REVIEW-CONTRACT",
       "path": "reviews/round3-contract.md",
-      "sha256": "d263997bcaa67d1b369babf6288d0171dfa0a97b129d0e888432f281d0ecb36d",
+      "sha256": "e9fd39d8b3e148380166ee581f20f0c1b989f5601fdf02e0c78527af9ad08c16",
       "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
     },
     {
       "id": "REVIEW-ADVERSARIAL",
       "path": "reviews/round3-adversarial.md",
-      "sha256": "ad9defcf4243465bfbd84dfa819c6624bd1841044e274174cf15404114358f22",
+      "sha256": "b71b60ef41876a88fc77fd5053b5bba1175e4a1fa4c2731771330861f68d3bf3",
       "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
     },
     {

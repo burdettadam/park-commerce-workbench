@@ -6,8 +6,8 @@ Native child `01a135b3-cc71-7423-868d-2ad2a1a9f4b6`; parent `01a135b3-78f8-7583-
 
 — contract reviewer
 
-**Task path:** `/root/g0006_r3_contract`  
-**Role:** `contract-reviewer`  
+**Task path:** `/root/g0006_r3_contract`
+**Role:** `contract-reviewer`
 **Result:** AC01–AC04 have coherent retained evidence at S; final readiness remains blocked.
 
 The reviewer read the governing instructions, accepted goal, architecture and review guide; compared base with S; and inspected the round-two reviews, browser script and output, HTTP and restart records, artifact contract, current uncommitted reports, and named manifest draft. Inspection and hash checks were read-only.
