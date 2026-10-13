@@ -1,0 +1,15 @@
+# G-0005 recoverable handoff (pre-readiness)
+
+Integration and sole branch writer: current Codex session on `goal/G-0005`; Adam Burdett owns scope, intended-use validation and repository administration. The branch remains draft PR #7. No G-0005 process is left running by this slice; the temporary Maven runners and Testcontainers databases exited. The existing six-service development Compose project and other worktrees were left untouched.
+
+| Component | Identity and location | Retrieval observed |
+| --- | --- | --- |
+| Accepted plan P | `30ffac8304f0ddf40a4845bb19e32393b1f0a516`, `goals/G-0005/README.md` at P, SHA-256 `98888b8e7e345b959de19769d6788fd639fe215564b58ec8e033027b23424bc7` | Activation P retrieved in a fresh public clone; exact plan bytes also retained as [accepted-plan.md](accepted-plan.md). |
+| Source S | `1dd1ef28d3d5db6bcd4e47255c074ed6205c1627` on public `origin/goal/G-0005` | Fresh public S clone had clean Git status and passed the required database command, 67/67. |
+| Preflight evidence E1 | `a98fb15946f0c5abf6d9f8fb79a15465e346932b` | Fresh public clone matched 17/17 committed evidence blobs; [transcript](checks/retrieval-e1.txt). |
+| First-review checkpoint E2 | `5974a4102e2cc7817df96bf20f34e462268dc272` | Fresh public clone matched 22/22 committed evidence blobs; [transcript](checks/retrieval-e2.txt). |
+| Hosted candidate run | [run 38342100003](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38342100003) at S | All three jobs passed; Java job selected 67/67 database tests. |
+
+The indispensable source, accepted plan, bounded sanitized check output, raw Failsafe text summaries, first independent reviews and current goal state are in public Git. Full local Maven/Spring logs remain **local-only** because they include generated development security passwords. The positive full log SHA-256 is `65a3bc9c6bea197fd8e4ae1f648b063552fae4aa79aff7a178b2d0e9236e7935`; local-only negative captures are named in [fail-closed.txt](checks/fail-closed.txt). Maven cache, Docker images, test database containers, `.env` and machine account configuration are reconstructable or separately local and are not Git evidence. Adam's existing retention commitment covers indispensable goal evidence through closure plus 30 days; local-only full logs are not claimed as off-device backups.
+
+The goal is **active**, not ready. First reviews found no AC source blocker and one handoff-table correction was made. A filled manifest, applicable final review coverage, intended-use validation, final decision and final public retrieval are still required. No version tag, release artifact or deployment exists. Resume from the current `goal/G-0005` head; check `git status`, `PLANS.md`, this goal record and PR #7 before work. Do not use E2 retrieval as proof of a future final report.
