@@ -1,6 +1,6 @@
 # G-0004 — Resolve and lock the actual Java and UI builds
 
-Status: **active**. Milestone: M1. Dependency: [G-0003 ready](../G-0003/README.md), now included in `main` at `d7ed805158bd6a239480ce7ae03312c139f2acc7`.
+Status: **ready** for the accepted build scope. Milestone: M1. Dependency: [G-0003 ready](../G-0003/README.md), included in `main` at `d7ed805158bd6a239480ce7ae03312c139f2acc7`.
 
 ## Accepted work contract
 
@@ -10,12 +10,12 @@ Status: **active**. Milestone: M1. Dependency: [G-0003 ready](../G-0003/README.m
 - **Scope:** recheck the actual dependency and toolchain baseline, repair remaining compilation issues, resolve the Vaadin frontend lock strategy from generated inputs, and retain dependency trees, lockfile provenance, exact versions and build results. Search existing dependency declarations and build behavior before adding new configuration; keep native manifests authoritative.
 - **Conditions and exclusions:** local synthetic-data development. No fake lockfiles, unreviewed stack replacement, new product feature, cloud deployment, or successful-build claim from core-only tests. No material architecture or public-contract change is preapproved. No release, tag or version-producing merge is part of activation.
 - **Quality and review:** medium risk because this goal changes build inputs and reproducibility across Java, Vaadin and Angular. Use the adopted two independent native reviewers (`contract-reviewer`, `adversarial-reviewer`), with at most three rounds. Freeze a source candidate before selected checks and reviews; changed relevant inputs reopen coverage. Record dependency security and compatibility findings with owner/disposition.
-- **Validation:** Adam Burdett owns intended-use validation. No G-0004 validation or delegation has occurred. Show the exact clean-build and reinstall results before requesting his validation or explicit delegation.
+- **Validation:** Adam Burdett owns intended-use validation and explicitly delegated the G-0004 check to Codex after the clean-build results were shown. The bounded [validation](evidence/e7c1e7f/validation.md) passed; release approval remains separate.
 - **Canonical repository/ref/path:** public `burdettadam/park-commerce-workbench`, `goal/G-0004`, this file. The current Codex session is the initial integration writer and sole branch writer. Adam retains scope, architecture and repository-administration authority. Additional worktrees are assigned only if actual work benefits from them.
 
 ## Acceptance criteria and independent expected results
 
-The four outcomes are accepted from proposal-2. All are **open**; their text is not an execution result.
+The four outcomes are accepted from proposal-2 and passed for fixed source S `e7c1e7f309bd976b6bb92e575374c1bb1add316d`. The [filled evidence manifest](evidence/e7c1e7f/manifest.json) records actual checks, artifacts, reviews and limits.
 
 ### G-0004-AC01
 
@@ -47,10 +47,10 @@ The [artifact contract](../../docs/roadmap/ARTIFACT-CONTRACT.md) and [unfilled G
 
 | Slice | Ref | Writer | Included revision | Record |
 | --- | --- | --- | --- | --- |
-| Canonical integration and initial implementation | `goal/G-0004` | Current Codex session | None beyond merged base; no G-0004 candidate yet | [bootstrap](work/bootstrap.md) |
+| Canonical integration and implementation | `goal/G-0004` | Codex integration writer | S `e7c1e7f309bd976b6bb92e575374c1bb1add316d` from merged base; final report E `3eff0a06f02110f19f871084ccbe003c9beaa52a` | [bootstrap](work/bootstrap.md), [build investigation](work/build-investigation.md), [final retrieval](work/final-retrieval.md) |
 
-Planned checks, to be selected and run against fixed inputs: `bash scripts/verify.sh --java`, `mvn -B -ntp -Pui -pl admin-console -am verify`, `cd storefront && npm ci && npm run build`, `node --test storefront/src/app/checkout-state.test.mjs`, `bash scripts/test-core.sh --demo`, and `bash scripts/test-tooling.sh`. Record exact commands, working directories, tool versions, selected counts, exit codes, skipped tests and raw outputs. Add focused checks where the actual fixes require them. No command is claimed passed at activation.
+**Verification:** [S CI run](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38336113859) passed Java integration, Angular client and forced Vaadin frontend jobs. The selected suites include 280 core, 64 database integration, 29 pricing, 66 client state and 29 tooling checks, with zero failures; the optional admin module has no application tests. Two separate clean S checkouts ran Vaadin `npm ci` and Vite with unchanged retained locks; the later run captured checkout and volume provenance. A fresh public clone also passed storefront `npm ci`, strict types, production build and 66 state tests. [A01](evidence/e7c1e7f/build-results.md), [A02](evidence/e7c1e7f/dependency-locks.md) and [A03](evidence/e7c1e7f/compatibility-decisions.md) retain exact versions, security/compatibility dispositions and raw outputs.
 
-**Current state:** active plan only. The merged base contains the G-0001–G-0003 ready records and prior CI, but no G-0004 source candidate, clean reinstall proof, final reviews or intended-use validation. The known Windows host JDK 17 versus required JDK 21 gap and optional Vaadin/UI build path are initial investigation targets; the Java 21 container core pass from G-0003 is historical, narrower evidence.
+**Review, validation and recovery:** Two configured native reviewers closed the first-round provenance findings and found zero open blockers in the third and final round. The interrupted third-round contract thread was resumed and returned its own final report. Adam delegated the bounded intended-use check, which passed. The manifest validator passed with six declared checks and 29 local artifacts. Final report E `3eff0a06f02110f19f871084ccbe003c9beaa52a` was pushed and freshly retrieved: 35/35 committed evidence files matched, S was present, the validator passed in that clone, and no `.env` was tracked. [Final retrieval](work/final-retrieval.md) and [handoff](evidence/e7c1e7f/handoff.md) distinguish remotely retained files from local-only toolchains, caches and raw rollouts.
 
-**Next action:** inventory local and clean-container toolchain versions, dependency/lock inputs and current build failures; choose the smallest repair slice, then run the maintained builds and suites. Preserve the accepted four criteria. No release or deployment is requested.
+**Next action:** preserve the ready branch and draft PR for a distinct eligible human review before any version-producing merge. No G-0004 merge, release, tag, artifact or deployment has occurred; activation of a later roadmap goal is a separate decision.
