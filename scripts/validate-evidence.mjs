@@ -90,19 +90,23 @@ export function validateEvidence(filename, root = projectRoot) {
   }
   const reviews = Array.isArray(x.reviews) ? x.reviews : [];
   const reviewException = x.review_policy_exception;
-  const fourthRoundAllowed = x.goal_id === 'G-0007' &&
-    reviewException?.max_round === 4 &&
+  const scopedReviewException = x.goal_id === 'G-0007' &&
     reviewException?.decision_artifact_id === 'REVIEW-EXCEPTION' &&
     map.has('REVIEW-EXCEPTION') &&
     reviewException?.authority_id === 'Adam Burdett';
-  if (reviewException != null && !fourthRoundAllowed) fail('Review policy exception is missing, invalid or outside G-0007.');
-  if (fourthRoundAllowed && reviews.some(r => r.round !== 4)) fail('G-0007 exception requires both final reviews from round four.');
+  const fourthRoundAllowed = scopedReviewException && reviewException.max_round === 4 && reviewException.lost_attempt_exception_artifact_id == null;
+  const fifthRoundAllowed = scopedReviewException && reviewException.max_round === 5 &&
+    reviewException.lost_attempt_exception_artifact_id === 'LOST-TRANSCRIPT-EXCEPTION' &&
+    map.has('LOST-TRANSCRIPT-EXCEPTION');
+  const allowedRound = fifthRoundAllowed ? 5 : fourthRoundAllowed ? 4 : 3;
+  if (reviewException != null && !(fourthRoundAllowed || fifthRoundAllowed)) fail('Review policy exception is missing, invalid or outside G-0007.');
+  if (allowedRound > 3 && reviews.some(r => r.round !== allowedRound)) fail(`G-0007 exception requires both final reviews from round ${allowedRound}.`);
   if (reviews.length !== 2 || !['contract','adversarial'].every(role => reviews.filter(r => r.role === role).length === 1)) fail('Two independent roles are required: contract and adversarial.');
   if (!unique(reviews.map(r => r.session_id))) fail('Review assignments must have distinct independent sessions.');
   for (const r of reviews) {
     if (!filled(r.reviewer_id) || !filled(r.session_id) || r.independent_of_writer !== true) fail(`Review independence not recorded: ${r.role}`);
     if (r.candidate_commit !== s) fail(`Stale review candidate: ${r.role}`);
-    if (!Number.isInteger(r.round) || r.round < 1 || r.round > (fourthRoundAllowed ? 4 : 3)) fail(`Review round outside adopted proposal limit: ${r.role}`);
+    if (!Number.isInteger(r.round) || r.round < 1 || r.round > allowedRound) fail(`Review round outside adopted proposal limit: ${r.role}`);
     if (r.decision !== 'pass' || r.open_blockers !== 0) fail(`Review has open blockers or no pass: ${r.role}`);
     if (r.report_artifact_id !== `REVIEW-${String(r.role).toUpperCase()}` || !map.has(r.report_artifact_id)) fail(`Missing role-specific review report: ${r.role}`);
   }
