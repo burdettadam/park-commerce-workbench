@@ -1,3 +1,6 @@
+START_UTC=2026-10-13T02:30:47.6178516Z
+SOURCE=e7c1e7f309bd976b6bb92e575374c1bb1add316d
+COMMAND=bash scripts/test-tooling.sh
 PASS Fresh local configuration is generated
 PASS Nine distinct random credentials are generated without printing them
 PASS Generated local credentials have a private Windows ACL
@@ -29,3 +32,4 @@ PASS Initializer exit 143 is preserved
 PASS Agent checks preserve existing local configuration bytes
 RESULT: 29 tooling checks passed. Initializer calls used a mock, not git-agent.
 EXIT_CODE=0
+FINISH_UTC=2026-10-13T02:30:53.1348635Z

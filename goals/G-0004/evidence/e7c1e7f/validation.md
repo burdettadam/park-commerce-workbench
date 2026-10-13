@@ -1,0 +1,11 @@
+# G-0004 delegated intended-use validation
+
+Validator: Codex integration writer, explicitly delegated by Adam Burdett in this conversation after seeing the Windows and hosted clean-build result. Validated fixed build source S `e7c1e7f309bd976b6bb92e575374c1bb1add316d` under accepted plan P `5ec839681f563b4267a912e66f5969c1f1d9ac24`. Validation occurred 2026-10-13 02:25-02:29 UTC. Decision: **accept the bounded G-0004 intended use**, subject to the independent review and readiness record, which are separate gates.
+
+I checked the developer path from two independent clean inputs:
+
+1. A detached S checkout was clean before and after an empty-node_modules Vaadin build with a previously absent Maven repository volume. The exact [provenance transcript](checks/clean-provenance.txt) and [build output](checks/clean-provenance-build.txt) show JDK 21/Maven 3.9.11, `npm ci`, Vite, 280 core tests, exit 0, and unchanged admin lock SHA-256.
+2. A fresh public HTTPS clone retrieved report E2 `5e6f9b2c99596e5d74f65ce957f72e7534b147b0` and contained S. In its storefront directory, `npm ci`, `npm run test:types`, `npm run build`, and `npm run test:state` each exited 0; 406 packages installed, Angular production bundle completed, 66 state tests passed, and the tracked package/lock files did not change. [Command transcript](checks/intended-use-storefront.txt) retains the observed output with the private host path redacted.
+3. The hosted S [run provenance](checks/ci-provenance.json) confirms all three jobs passed against exact S. Its Java job executed core 280, pricing 29, and 64 database integration tests; the UI job compiled the optional module and forced the retained frontend lock path. The [build report](build-results.md) points to each command-step log.
+
+This validates a clean developer build and reinstall from reviewed inputs on the observed Windows/Ubuntu/container toolchains. It does not validate browser behavior, deployment, payment processing, production identity/security, a Java advisory-free dependency graph, or a release. Independent reviewers still must close their findings; the final report E and artifact manifest must be remotely retrievable before the goal can be ready.
