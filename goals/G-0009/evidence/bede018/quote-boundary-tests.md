@@ -1,6 +1,6 @@
 # G-0009-A02 — quote calendar, expiry, version and access boundaries
 
-Fixed source S: `bede01801a1c489982edbe688ac87f68c7ba7396`. These observations come from real MySQL/Testcontainers with Spring HTTP/GraphQL tests at S on Windows, plus the in-memory core and independent fixture checks. Raw local command output and JUnit-derived test lists are retained in `checks/`; the full Maven logs remain local-only with recorded digests. Public PR-head CI run `38481693801` passed all four free jobs, with 356/356 JUnit tests and 43/43 live HTTP acceptance checks.
+Fixed source S: `bede01801a1c489982edbe688ac87f68c7ba7396`. These observations come from real MySQL/Testcontainers with Spring HTTP/GraphQL tests at S on Windows, plus the in-memory core and independent fixture checks. Raw local command output and JUnit-derived test lists are retained in `checks/`; the full Maven logs remain local-only with recorded digests. Public PR-head CI run `38482621889` passed all four free jobs, with 356/356 JUnit tests and 43/43 live HTTP acceptance checks.
 
 | Accepted boundary | Executed assertion at S | Result |
 | --- | --- | --- |
