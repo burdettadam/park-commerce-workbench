@@ -275,13 +275,13 @@
     {
       "id": "DECISION",
       "path": "decision.md",
-      "sha256": "5fc7b4208dd13d6ced922d4d62ac2127dc38a76c2e58c48a3b01462621bcf75d",
+      "sha256": "59e7fdf18f38209c8905fd0d77243ef780f2f3319ff22515ab562d1c95d6b38b",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     },
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "1a70ddcaae3bbd9f6a006eb74e2a86672870668c6a1f7611e5d68a04433ea6a1",
+      "sha256": "685e594a08eb24046247b9d65eb2faf196de9d28a0364bd47413e089d4083f79",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     },
     {
@@ -372,13 +372,13 @@
   "readiness_decision": {
     "authority_id": "Codex integration writer",
     "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
-    "decision": "needs-decision",
+    "decision": "ready",
     "report_artifact_id": "DECISION"
   },
   "retention": {
     "scope": "local_only",
     "owner_id": "Adam Burdett",
-    "retrieval_verified": false,
+    "retrieval_verified": true,
     "report_artifact_id": "HANDOFF"
   },
   "release": {
