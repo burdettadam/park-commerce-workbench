@@ -77,7 +77,7 @@ The common manifest, environment, raw checks, independent contract/adversarial r
 ## Validation commands and new tests
 
 - `bash scripts/test-core.sh --demo` — existing; in-memory domain adapters only.
-- `node --test scripts/pricing-contract.test.mjs` — existing candidate fixture and SDL-source checks; not an executed G-0009 check yet.
+- `node --test scripts/pricing-contract.test.mjs` — existing fixture and SDL-source checks; G-0009 fixed-source observations are in [evidence](evidence/af04615/).
 - `bash scripts/verify.sh --integration` — existing; Maven/JDK/Docker required and real database tests must not silently skip.
 - `node scripts/demo-http.mjs` — existing; requires an owned running local stack and `.env`; creates synthetic data.
 
@@ -88,13 +88,13 @@ These baseline commands prove only their actual selections. Add focused public A
 | Slice | Ref | Writer | Included revision |
 | --- | --- | --- | --- |
 | Canonical planning and later integration | `goal/G-0009` | Assigned G-0009 subagent | Base `bd26cfbd062228c228223518d3800cd125c4e9b1`; P in [bootstrap](work/bootstrap.md) |
-| Product implementation and verification | `goal/G-0009` | Assigned G-0009 subagent | G-0008 main input `50bbbdedb4928d2127cc6a950d8eaa9f70d77b48`; candidate pending |
+| Product implementation and verification | `goal/G-0009` | Assigned G-0009 subagent | G-0008 main input `50bbbdedb4928d2127cc6a950d8eaa9f70d77b48`; current candidate and evidence in [handoff](evidence/af04615/handoff.md) |
 
 One writer owns each future worktree. The integration owner records included revisions and dispositions before claiming a combined candidate.
 
 ## State, review and recovery
 
-G-0009 is **active** after accepting the fixed G-0008 input above. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. No G-0009 product check, independent review, intended-use validation, ready decision, merge, tag, release or deployment is claimed by this status update.
+G-0009 is **active** after accepting the fixed G-0008 input above. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. Fixed-source product checks and prior blocked reviews are recorded in [evidence](evidence/af04615/); final independent review, intended-use validation and a readiness decision remain pending. No merge, tag, release or deployment is claimed.
 
 At execution, publish source and indispensable artifacts before updating this canonical record. Verify retrieval and report local-only remainder. Source S, later evidence E, merge M and release/deployment observations are separate facts. A version-producing merge still requires distinct eligible human review.
 

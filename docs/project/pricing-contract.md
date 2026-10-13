@@ -1,8 +1,10 @@
-# Pricing and quote contract — candidate revision 1
+# Pricing and quote contract — local G-0009 candidate
 
-This is implemented local candidate behavior toward **G-0009**, not an accepted
-roadmap goal or verified framework deployment. It uses synthetic USD amounts and
-an explicit park zone (`America/New_York` in the current service wiring).
+This documents implemented local behavior under the accepted **G-0009** plan.
+The [G-0009 evidence](../../goals/G-0009/README.md) identifies the fixed source,
+real framework checks, reviews and remaining acceptance gates. No version release
+or deployment is claimed. The contract uses synthetic USD amounts and an explicit
+park zone (`America/New_York` in the current service wiring).
 
 ## Evaluation time and calendar
 
@@ -180,9 +182,11 @@ not promised to be byte-identical.
   preview and quote calculation. The Java stores are test-only in-memory fixtures.
 - SDL-source field checks retain pinned names/types from `quote-api-v1.json`.
   These are not a GraphQL engine, resolver build, serialization or browser test.
-- `QuoteContractIT`: candidate real MySQL/Spring HTTP/GraphQL tests with an explicit
-  test catalogue and mutable clock. `scripts/demo-http.mjs` exercises the actual
-  three-service stack when available. Neither is claimed executed here.
+- `QuoteContractIT`: real MySQL/Spring HTTP/GraphQL tests with an explicit test
+  catalogue and mutable clock. `scripts/demo-http.mjs` exercises the actual
+  three-service stack. Both were executed for the fixed G-0009 source recorded
+  in [G-0009 evidence](../../goals/G-0009/evidence/af04615/); local targeted and
+  public hosted results, source identities and limits are retained there.
 
 ## Primary implementation references
 

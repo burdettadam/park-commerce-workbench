@@ -2,7 +2,7 @@
 
 # API contracts
 
-The following describes the candidate source. Confirm runtime serialization and authorization by running the integration and HTTP checks; those were not executed here.
+The following describes the local candidate source. G-0009 has executed real MySQL/Spring integration and live HTTP checks for the quote boundary; their exact source, coverage and limits are in [G-0009 evidence](../../goals/G-0009/evidence/af04615/). Other interfaces still require the checks selected by their own goals.
 
 ## Authentication
 
