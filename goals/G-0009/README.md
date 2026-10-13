@@ -1,12 +1,12 @@
 # G-0009 — Freeze the price and quote contract with independent examples
 
-Status: **blocked** (planning active; product execution awaits G-0008). Milestone: M2.
+Status: **active** (G-0008 accepted and merged; G-0009 verification pending). Milestone: M2.
 
 ## Accepted work contract
 
 - **Authority and revision:** The user's 2026-10-13 instruction to make an active goal for subagents on the next three goals adopts the unchanged [G-0009 proposal-1](../../docs/roadmap/goals/G-0009/README.md), SHA-256 `f506c61802cc81355f76ba7132ef57e1042022506df2b2f84699bd8b4fcc4a67`. This record is `G-0009-active-1`. Its activation commit P and exact file digest belong in [bootstrap](work/bootstrap.md) after P exists. Material scope or criterion changes require the owner's decision.
 - **Governing baseline:** Root `AGENTS.md`, `GOVERNANCE.md`, `DEVELOPMENT.md`, `ARCHITECTURE.md`, `PLANS.md`, `.agents/skills/work-goal/`, `.agents/skills/worktree-flow/`, and native contract/adversarial reviewer roles at base `bd26cfbd062228c228223518d3800cd125c4e9b1`. Check applicable instructions and effective permissions again at execution. Proposed control changes do not weaken this baseline.
-- **Dependency gate:** G-0008 must first have an accepted fixed candidate and exact relevant input revision. Record that revision, its source/plan identities, and any changed price or preview contract here before product execution. A G-0008 implementation branch alone is not acceptance. Refresh G-0009's base and affected checks when those inputs change.
+- **Dependency gate:** G-0008 is accepted and squash-merged to public `main` as PR #12 at `50bbbdedb4928d2127cc6a950d8eaa9f70d77b48`. Its fixed product source S is `56141ae40f05704ff0ae30b232ef878e2943b6c6`, accepted plan P is `717c31b04eca3f6478efa50c25dd666d3de73057`, and final evidence E is `cc3835464469979b3940627abf7a358696779229`. The G-0009 branch merged that exact main revision at `82934e30bc0ed33019745d2ed8f5f197c2ae36a0`. The retained original G-0008 ref permits retrieval of S/P/E; main contains the squash result and evidence. Relevant changes added preview error API/UI tests and HTTP error sanitization while preserving the canonical core calculation. Changed relevant inputs reopen G-0009 checks.
 - **Canonical repository/ref/path:** Public `burdettadam/park-commerce-workbench`, `goal/G-0009`, this file. The assigned G-0009 subagent is integration owner and sole writer of this branch/worktree. Adam Burdett retains scope, architecture and repository administration authority. No additional writer is assigned.
 - **Risk and review:** High risk for monetary totals, calendar/expiry rules, persisted quote identity and access. Two independent native reviewers, `contract-reviewer` and `adversarial-reviewer`, at most three rounds. Freeze source candidate S before acceptance checks and review; relevant changes reopen coverage.
 - **Intended-use validation:** Adam Burdett is the owner proposed by the adopted roadmap. Record the actual validation method and outcome or explicit delegation when execution reaches that gate. Reviewer reports and release approval are distinct.
@@ -88,13 +88,13 @@ These baseline commands prove only their actual selections. Add focused public A
 | Slice | Ref | Writer | Included revision |
 | --- | --- | --- | --- |
 | Canonical planning and later integration | `goal/G-0009` | Assigned G-0009 subagent | Base `bd26cfbd062228c228223518d3800cd125c4e9b1`; P in [bootstrap](work/bootstrap.md) |
-| Product implementation and verification | Not assigned | Not assigned | Blocked on accepted G-0008 input |
+| Product implementation and verification | `goal/G-0009` | Assigned G-0009 subagent | G-0008 main input `50bbbdedb4928d2127cc6a950d8eaa9f70d77b48`; candidate pending |
 
 One writer owns each future worktree. The integration owner records included revisions and dispositions before claiming a combined candidate.
 
 ## State, review and recovery
 
-G-0009 is **blocked** for product execution. The dependency owner must deliver G-0008 acceptance at a fixed revision; the G-0009 integration owner then records that input, refreshes the candidate and selects a bounded work slice. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. No G-0009 product check, independent review, intended-use validation, ready decision, merge, tag, release or deployment is claimed.
+G-0009 is **active** after accepting the fixed G-0008 input above. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. No G-0009 product check, independent review, intended-use validation, ready decision, merge, tag, release or deployment is claimed by this status update.
 
 At execution, publish source and indispensable artifacts before updating this canonical record. Verify retrieval and report local-only remainder. Source S, later evidence E, merge M and release/deployment observations are separate facts. A version-producing merge still requires distinct eligible human review.
 

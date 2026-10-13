@@ -164,6 +164,58 @@ class QuoteContractIT {
         assertEquals("INVALID_INPUT",graphCode(graph("mutation($input:QuoteInput!){createQuote(input:$input){id}}",Map.of("input",input(DAY.toString())),GUEST)));
         assertEquals(1L,quotes.count());
     }
+    @Test void inclusiveCalendarEndpointsAndGapAreVisibleThroughBothPublicApis() throws Exception {
+        quotes.deleteAll();books.deleteAll();
+        var first=LocalDate.of(2030,10,2);var last=first.plusDays(2);
+        service.publish(new Pricing.PriceBook("night",1,1,List.of(
+            new Pricing.Rate(Catalog.Variant.ADULT,first,last,new Money(101)),
+            new Pricing.Rate(Catalog.Variant.CHILD,first,last,new Money(51))),null));
+        for(var day:List.of(first,first.plusDays(1),last)){
+            var response=send("/api/quotes",GUEST,input(day.toString()));assertEquals(201,response.statusCode(),response.body());
+            var quote=json.readValue(response.body(),Pricing.Quote.class);
+            assertEquals(day,quote.visitDate());assertEquals(152L,quote.total().cents());
+        }
+        var graphQuote=graph("mutation($input:QuoteInput!){createQuote(input:$input){visitDate total{cents}}}",Map.of("input",input(last.toString())),GUEST);
+        assertFalse(graphQuote.containsKey("errors"),graphQuote.toString());
+        assertEquals(last.toString(),map(map(graphQuote,"data"),"createQuote").get("visitDate"));
+        assertEquals("152",map(map(map(graphQuote,"data"),"createQuote"),"total").get("cents"));
+        for(var gap:List.of(first.minusDays(1),last.plusDays(1))){
+            var response=send("/api/quotes",GUEST,input(gap.toString()));assertEquals(404,response.statusCode());
+            assertEquals("NOT_FOUND",body(response).get("code"));
+            assertEquals("NOT_FOUND",graphCode(graph("mutation($input:QuoteInput!){createQuote(input:$input){id}}",Map.of("input",input(gap.toString())),GUEST)));
+        }
+        assertEquals(4L,quotes.count(),"Failed endpoints must not persist quotes");
+    }
+    @Test void serializedQuoteAndDomainErrorsKeepConsumerShape() throws Exception {
+        var response=send("/api/quotes",GUEST,input(DAY.toString()));assertEquals(201,response.statusCode(),response.body());
+        var rest=body(response);
+        assertEquals(Set.of("id","owner","productId","productName","kind","catalogRevision","visitDate","pricingVersion",
+            "quantity","lines","appliedOffer","subtotal","discount","total","createdAt","expiresAt"),rest.keySet());
+        assertInstanceOf(String.class,rest.get("id"));assertEquals("guest",rest.get("owner"));
+        assertInstanceOf(Number.class,rest.get("catalogRevision"));assertInstanceOf(Number.class,rest.get("pricingVersion"));
+        assertInstanceOf(Number.class,map(rest,"total").get("cents"));
+        var lines=assertInstanceOf(List.class,rest.get("lines"));assertEquals(2,lines.size());
+        var line=assertInstanceOf(Map.class,lines.get(0));
+        assertEquals(Set.of("variant","quantity","unitPrice","subtotal","discount","total"),line.keySet());
+        String query="mutation($input:QuoteInput!){createQuote(input:$input){id owner productId productName kind catalogRevision visitDate pricingVersion quantity appliedOffer createdAt expiresAt subtotal{cents amount currency} discount{cents amount currency} total{cents amount currency} lines{variant quantity unitPrice{cents} subtotal{cents} discount{cents} total{cents}}}}";
+        // GraphQL deliberately does not expose owner; the rejected selection is a compatibility/security check.
+        var forbiddenSelection=graph(query,Map.of("input",input(DAY.toString())),GUEST);
+        assertTrue(forbiddenSelection.containsKey("errors"));assertEquals(1L,quotes.count(),"Invalid selection must not issue a quote");
+        var graphQuote=graph(query.replace(" owner",""),Map.of("input",input(DAY.toString())),GUEST);
+        assertFalse(graphQuote.containsKey("errors"),graphQuote.toString());
+        var gql=map(map(graphQuote,"data"),"createQuote");
+        assertEquals(Set.of("id","productId","productName","kind","catalogRevision","visitDate","pricingVersion",
+            "quantity","appliedOffer","createdAt","expiresAt","subtotal","discount","total","lines"),gql.keySet());
+        assertEquals("1",gql.get("catalogRevision"));assertEquals("1",gql.get("pricingVersion"));
+        assertEquals("8",map(gql,"total").get("cents"));assertEquals("0.08",map(gql,"total").get("amount"));
+        assertEquals("USD",map(gql,"total").get("currency"));
+        assertEquals(2L,quotes.count());
+        var missing=send("/api/quotes/"+UUID.randomUUID(),GUEST,null);assertEquals(404,missing.statusCode());
+        var problem=body(missing);assertEquals("NOT_FOUND",problem.get("code"));
+        assertEquals("NOT_FOUND",problem.get("title"));assertEquals(404,((Number)problem.get("status")).intValue());
+        assertInstanceOf(String.class,problem.get("detail"));
+        assertEquals("NOT_FOUND",graphCode(graph("query($id:ID!){quote(id:$id){id}}",Map.of("id",UUID.randomUUID().toString()),GUEST)));
+    }
     private HttpResponse<String> send(String path,String token,Object payload) throws Exception {
         var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+environment.getRequiredProperty("local.server.port")+path)).timeout(Duration.ofSeconds(10));
         if(token!=null)builder.header("Authorization","Bearer "+token);

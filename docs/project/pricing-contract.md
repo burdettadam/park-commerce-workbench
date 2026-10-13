@@ -116,6 +116,38 @@ string and `currency` is USD. Existing GraphQL Quote fields are retained; `creat
 and `kind` are additive. The status query is additive. Do not assume the two
 transports have identical envelopes or number representations.
 
+### Synthetic consumer examples
+
+An owner creates a one-adult/one-child quote from a published 5-cent rate per
+variant with a 10% offer. The following fields are excerpts; the service also
+returns the other documented quote snapshot fields. IDs and timestamps below
+illustrate shape rather than a reusable quote:
+
+```http
+POST /api/quotes
+Authorization: Bearer <guest token>
+Content-Type: application/json
+
+{"productId":"night","visitDate":"2030-10-31","adults":1,"children":1}
+```
+
+```json
+{"id":"00000000-0000-0000-0000-000000000001","owner":"guest","catalogRevision":1,"pricingVersion":1,"subtotal":{"cents":10},"discount":{"cents":2},"total":{"cents":8},"createdAt":"2030-10-01T12:00:00Z","expiresAt":"2030-10-01T12:15:00Z"}
+```
+
+For an unknown or another owner's full quote ID, REST returns HTTP 404 with a
+problem detail carrying `{"title":"NOT_FOUND","status":404,"code":"NOT_FOUND"}`.
+The same resolver condition can have HTTP 200 but carries
+`{"errors":[{"extensions":{"code":"NOT_FOUND"}}]}` in GraphQL. A GraphQL
+quote selection exposes string `catalogRevision`, `pricingVersion` and
+`Money.cents`, plus `Money.amount` and `Money.currency`; it does not expose the
+stored owner. Invalid GraphQL selections fail before quote issuance.
+
+These examples and [the pinned shape](../../contracts/pricing/quote-api-v1.json)
+are compatibility inputs. Real MySQL/Spring consumer tests check serialized
+field names, number/string representations, role boundaries and domain error
+codes; source-only SDL inspection is a narrower check.
+
 ## Error contract and disclosure boundaries
 
 | Condition | REST behavior | GraphQL resolver behavior |
