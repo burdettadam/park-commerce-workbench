@@ -10,6 +10,7 @@ case "${1:---core}" in
     command -v mvn >/dev/null || { echo 'Install Maven 3.9+.' >&2; exit 2; }
     command -v docker >/dev/null || { echo 'Docker is required; integration tests are NOT skipped.' >&2; exit 2; }
     docker info >/dev/null
-    exec mvn -B -ntp -Pintegration verify ;;
+    mvn -B -ntp -Pintegration clean verify
+    exec java scripts/CheckIntegrationReports.java ;;
   *) echo 'Usage: bash scripts/verify.sh --core|--java|--integration' >&2; exit 2 ;;
 esac

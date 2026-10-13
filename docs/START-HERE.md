@@ -103,9 +103,9 @@ bash scripts/verify.sh --java
 bash scripts/verify.sh --integration
 ```
 
-`--java` compiles the backend reactor and runs the JUnit wrapper over the 180 core scenarios. It also compiles integration-test source, but **does not execute `*IT` classes**.
+`--java` compiles the backend reactor and runs the core JUnit suite. It also compiles integration-test source, but **does not execute `*IT` classes**.
 
-`--integration` enables Maven Failsafe and runs the 64 MongoDB/MySQL integration tests as well. Each Testcontainers suite owns disposable test databases; it does not require the Compose stack. Docker absence is an error, not an automatic skip. Results go to each module's `target/surefire-reports` and `target/failsafe-reports`.
+`--integration` starts from a clean Maven build, enables Failsafe, and requires every selected MongoDB/MySQL `*IT` suite to report executed tests with no skips, failures or errors. The current seven suites contain 67 tests; the command prints the actual per-suite counts. Each Testcontainers suite owns disposable test databases; it does not require the Compose stack. Docker absence is an error, not an automatic skip. Results go to each module's `target/surefire-reports` and `target/failsafe-reports`.
 
 On Windows, select JDK 21 and Maven 3.9+ in the current PowerShell terminal before Maven or Node tests that call `javac`. This leaves other projects' toolchains alone:
 
