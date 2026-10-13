@@ -35,7 +35,7 @@ Accept all prerequisite candidates and the exact relevant input revisions before
 
 ## Acceptance criteria
 
-Expected outcomes below are proposed contractual tests, not observations. Accept them **before** coding. Do not weaken or delete a criterion because the current implementation fails it.
+The outcomes below are accepted contractual tests, not observations of completed work. Do not weaken or delete a criterion because the current implementation fails it.
 
 ### G-0010-AC01
 
