@@ -142,7 +142,7 @@
     {
       "id": "VALIDATION",
       "path": "validation.md",
-      "sha256": "c1dcc52e444c56b1bd27c723f33b31607947e02615dee33abf5aa8eb2b382814",
+      "sha256": "58d9545f943567e6328fd8249e0c37579f155032a08c73c55930680d4daf79bd",
       "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
     },
     {
@@ -239,6 +239,30 @@
       "id": "REVIEW-DISPOSITION",
       "path": "reviews/round1-disposition.md",
       "sha256": "ce9e91fb70aa14e476fbea07f6c6a2aee0a1e91e1d5a1a48aeeaf7368975016c",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "REVIEW-ROUND2-CONTRACT",
+      "path": "reviews/round2-contract.md",
+      "sha256": "86618a729323e0300bd77399440331066fcf6bf6c7f3449d3f609ae6490e9362",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "REVIEW-ROUND2-ADVERSARIAL",
+      "path": "reviews/round2-adversarial.md",
+      "sha256": "aac3e1a3ead9b112d2320dc9f42c2d477479c1047313c49389ebc38acebeacec",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "REVIEW-ROUND2-DISPOSITION",
+      "path": "reviews/round2-disposition.md",
+      "sha256": "b4aa907ea1de1557fb4af096ed2578da9c0d24c6ae3868b482b16f8e1fa2d450",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "REVIEW-ROUND2-PROVENANCE",
+      "path": "reviews/round2-provenance.md",
+      "sha256": "48c2c8a8f77ec9271f0aaee8253ac718cfe53a70af211933e053ea833c83ea92",
       "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
     }
   ],
