@@ -11,3 +11,7 @@ This document records no tagged-release approval, merge, deployment or paid work
 Adam Burdett authorized one additional independent review round. The [scoped exception](review-exception.md) was assessed under the preceding control baseline and adopted in the canonical G-0007 plan. That changed the interim workflow state to active without reversing the third-round privacy finding.
 
 The [fourth-round disposition](reviews/round4-disposition.md) now records two blocked native reviews. The sanitized archive passed their privacy checks, but the first failed browser attempt's raw transcript was irretrievably overwritten. Because the accepted evidence contract requires retention of failed attempts and the one authorized round is exhausted, the current decision is **needs-decision, not ready**. The ready manifest, merge and tagged release remain withheld. Adam may decide whether to accept a narrowly documented evidence exception and separately authorize further review; neither decision is implied by prior delegation.
+
+## Subsequent owner decision (2026-10-13)
+
+Adam explicitly authorized the [single lost-transcript exception](lost-transcript-exception.md) and one further independent reviewer pair. The change was assessed under the accepted R=4 control and adopted in the canonical plan. The workflow state is now **active, pending the fifth and final pair**; the fourth-round blockers remain historical findings and are not relabeled as passes. No readiness, merge, tagged-release or deployment decision is made here.

@@ -275,7 +275,7 @@
     {
       "id": "DECISION",
       "path": "decision.md",
-      "sha256": "850bf2ba8ee1a2187ea859a4306068851b04106e3bdc07cb3ddde89e5299a610",
+      "sha256": "96ae51ebb3f8286369c1e2a103943ff309c8962c6cef7ed66185e49ecedee1f9",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     },
     {
@@ -306,6 +306,18 @@
       "id": "ROUND4-DISPOSITION",
       "path": "reviews/round4-disposition.md",
       "sha256": "79ab76fb80fd1cb5b1037ce1f9f62a296273a1af45b70e92294254a4793f95bc",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "LOST-TRANSCRIPT-EXCEPTION",
+      "path": "lost-transcript-exception.md",
+      "sha256": "b72c4846260029ef396b27b102e1b56cc593d337db33ec8ba6d41d8a128f0e48",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND4-HASH-RECONCILIATION",
+      "path": "reviews/round4-hash-reconciliation.md",
+      "sha256": "c7d7a36747d58a7532fedaa2e53c94b9272b33c2ce2b57865faa0e02d2d30f2b",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     }
   ],
@@ -359,8 +371,9 @@
     "tag": null
   },
   "review_policy_exception": {
-    "max_round": 4,
+    "max_round": 5,
     "decision_artifact_id": "REVIEW-EXCEPTION",
-    "authority_id": "Adam Burdett"
+    "authority_id": "Adam Burdett",
+    "lost_attempt_exception_artifact_id": "LOST-TRANSCRIPT-EXCEPTION"
   }
 }

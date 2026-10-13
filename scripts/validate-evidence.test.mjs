@@ -96,6 +96,24 @@ test('fifth round without the lost transcript decision is rejected',()=>{
     assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
   } finally {f.clean();}
 });
+test('fifth round without the original review decision is rejected',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticLostException(f);
+    f.manifest.artifacts=f.manifest.artifacts.filter(a=>a.id!=='REVIEW-EXCEPTION');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review policy exception/.test(x)));
+  } finally {f.clean();}
+});
+test('fifth round with a tampered original review decision is rejected',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticLostException(f);
+    fs.appendFileSync(path.join(f.directory,'review-exception.md'),'changed');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Artifact digest mismatch: REVIEW-EXCEPTION/.test(x)));
+  } finally {f.clean();}
+});
 test('fifth round cannot pair with an older final review',()=>{
   const f=fixture('G-0007');
   try {

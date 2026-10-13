@@ -1,6 +1,6 @@
 # G-0007 — Add reviewable catalog drafts and publication history
 
-Status: **needs-decision** (fourth review exhausted with an evidence blocker). Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
+Status: **active** (owner-authorized fifth and final review pending). Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
 
 ## Accepted work contract
 
@@ -125,3 +125,7 @@ The accepted final independent review round found local username paths in a publ
 The owner-authorized fourth pair inspected the fixed product S and sanitized replacement at public evidence checkpoint `e7108e16b50fcb8baff61d4340ddc951dba52186`. Both configured native reviewers blocked readiness because the first failed browser attempt's raw transcript was overwritten; the accepted evidence contract requires retaining failed attempts and that output cannot be recreated from the later runs. The [round-four disposition](evidence/15c70f1/reviews/round4-disposition.md) retains each finding and the retrieval limits. The one additional round is consumed. G-0007 is `needs-decision`, PR #9 remains draft, and there is no fifth round, ready claim, merge or release approval.
 
 The [owner decision proposal](work/lost-browser-transcript-decision.md) describes the narrow evidence exception and one further review pair that would be required to pursue readiness. It is not adopted.
+
+## Fifth-round scoped exception
+
+Adam Burdett authorized a one-time waiver for the irretrievably overwritten raw output of the first exploratory browser failure and one further independent contract/adversarial pair. The [decision artifact](evidence/15c70f1/lost-transcript-exception.md), [control assessments](work/lost-browser-transcript-decision.md), and [artifact-contract amendment](../../docs/roadmap/ARTIFACT-CONTRACT.md) were reviewed under the preceding accepted R=4 control and are adopted for G-0007 only. The final pair must both report round five against the fixed product S and current evidence. AC01?AC04, selected checks, privacy, DRY/architecture review, intended-use validation and the distinct human tagged-release rule remain in force. The waiver applies to that single past raw transcript only. A remaining valid blocker returns the goal to `needs-decision`; no sixth round is authorized. PR #9 remains draft until the gate passes.
