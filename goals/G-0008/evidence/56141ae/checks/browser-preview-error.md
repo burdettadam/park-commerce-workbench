@@ -17,4 +17,3 @@ Selected accessibility snapshot lines:
       - heading "Operation result" [level=2] [ref=e160]
       - status [ref=e162]: PREVIEW INPUT — Visit date is in the past in the park time zone
 ```
-
