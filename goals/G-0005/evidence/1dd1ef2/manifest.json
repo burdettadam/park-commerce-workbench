@@ -154,7 +154,7 @@
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "58df3fb38ef8dcdb2108828bb41cf5ed96fc952cc34ec9d21b63b9f5191f543d",
+      "sha256": "222389c3b0214200a9857b0e51b630dcfcb808e14e2ede9940cacaf4518ada80",
       "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
     },
     {
@@ -293,6 +293,12 @@
       "id": "RETRIEVAL-E5",
       "path": "checks/retrieval-e5.txt",
       "sha256": "f5dfc37413a27f0daa6255e9ba47f86b4f3ec31c74c6a8cc71017c2fce4511da",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RETRIEVAL-E6",
+      "path": "checks/retrieval-e6.txt",
+      "sha256": "62d2217094aed926ad0cef196dff1ece02f988460de3a39b54f3559563f32a40",
       "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
     }
   ],
