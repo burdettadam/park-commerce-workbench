@@ -6,4 +6,6 @@ The adversarial reviewer correctly found that hosted CI ran `scripts/test-core.s
 
 The contract reviewer asked about full public CI logs containing generated security-password lines. `checks/public-log-classification.md` records six Spring Boot auto-configuration messages from disposable integration test contexts, without reproducing their values. They were public in the full job log; no real `DEMO_*` token or customer data was found. This resolves the evidence classification request without claiming that the log lines were hidden.
 
-The final manifest, retention check and readiness decision were not present at E2. Those administrative gates remain open until complete. A final independent review pair on the completed evidence at the same S will be round three, the last ordinary round under the accepted plan.
+At E4, the adversarial reviewer independently closed its named-check finding and returned pass with zero blockers. The contract reviewer closed its public-log question but found a contradiction in the prior-failure note. E5 corrected that note without changing S; the same native contract session reviewed the correction and returned pass with zero blockers. Its original finding, blocked interim follow-up, and final closure are all retained. These are continuations of round two, not a new reviewer pair or a third review round.
+
+The final manifest, final retention check and readiness decision remain separate administrative gates. Neither review response grants release approval.

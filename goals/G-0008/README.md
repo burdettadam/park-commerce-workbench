@@ -1,6 +1,6 @@
 # G-0008 — Preview unpublished prices with the production calculation path
 
-Status: **active**. Milestone: M2. Dependency: [G-0007 ready and merged](../G-0007/README.md) on `main` at `bd26cfbd062228c228223518d3800cd125c4e9b1`.
+Status: **ready for main integration**, pending final remote retrieval and PR-head checks. Milestone: M2. Dependency: [G-0007 ready and merged](../G-0007/README.md) on `main` at `bd26cfbd062228c228223518d3800cd125c4e9b1`.
 
 ## Accepted work contract
 
@@ -43,12 +43,12 @@ Candidate checks include `bash scripts/test-core.sh --demo`, `bash scripts/verif
 
 | Slice | Ref | Writer | Dependency and state |
 | --- | --- | --- | --- |
-| Canonical integration and accepted record | `goal/G-0008` | Primary Codex session | Fixed source S `56141ae40f05704ff0ae30b232ef878e2943b6c6`; evidence and review in progress |
+| Canonical integration and accepted record | `goal/G-0008` | Primary Codex session | Fixed source S `56141ae40f05704ff0ae30b232ef878e2943b6c6`; manifest validates, remote retrieval pending |
 | Pricing preview implementation and focused tests | `goal/G-0008-implementation` | G-0008 subagent | Implementation and UI repair merged; real HTTP past-date assertion selected at S |
-| Independent contract/adversarial review | Separate native reviewer assignments | Primary Codex session coordinates | Round one at old source and independent round-two first findings at S retained; final disposition pending |
+| Independent contract/adversarial review | Separate native reviewer assignments | Primary Codex session coordinates | Both native roles passed round two at S with zero open blockers; original findings and follow-ups retained |
 
 Publish implementation and required artifacts before updating this canonical record. Preserve old failed attempts. Confirm exact remote revisions and artifact retrieval before claiming recovery. A version-producing merge requires distinct eligible-human review; goal readiness, merge, release, and deployment remain separate observations.
 
-At S, free public CI run `38478861553` passed all four jobs: 280 core cases, 68 real database integration cases with zero skips, three admin helper cases, and 43 six-service HTTP checks. The separately named Git Bash `scripts/test-core.sh --demo` check passed 280/280 at S. The employee browser displayed the past-date repair message from a controlled loopback 400 response; a separate real HTTP integration case passed at S. The fixture, side-effect and error records are under [evidence/56141ae](evidence/56141ae/). The earlier Windows Linux `bash` and local Docker attempts failed and are retained as gaps. Codex performed the intended-use check under Adam Burdett's explicit G-0008 delegation. Independent review closure, final manifest, final retrieval and readiness decision remain open.
+At S, free public CI run `38478861553` passed all four jobs: 280 core cases, 68 real database integration cases with zero skips, three admin helper cases, and 43 six-service HTTP checks. The separately named Git Bash `scripts/test-core.sh --demo` check passed 280/280 at S. The employee browser displayed the past-date repair message from a controlled loopback 400 response; a separate real HTTP integration case passed at S. The fixture, side-effect and error records are under [evidence/56141ae](evidence/56141ae/). The earlier Windows Linux `bash` and local Docker attempts failed and are retained as gaps. Codex performed the intended-use check under Adam Burdett's explicit G-0008 delegation. Both native reviewers passed at S, and `scripts/validate-evidence.mjs` passed the completed manifest with seven declared checks and 26 local artifacts. A fresh remote retrieval after the final evidence push and PR-head checks remain before merge.
 
-Next action: close the independent review findings at S and finish the evidence contract. G-0009 and G-0010 may prepare independently but cannot claim implementation acceptance until their predecessor input is fixed and accepted.
+Next action: verify the final pushed evidence and PR checks, then merge G-0008 without a version tag. G-0009 can then refresh against its accepted exact predecessor input; G-0010 waits for G-0009 acceptance.
