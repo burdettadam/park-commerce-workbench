@@ -1,6 +1,6 @@
 # Accepted plans and living goal records
 
-The [10-milestone roadmap](docs/roadmap/README.md) contains goal proposals. Its [current-state audit](docs/roadmap/CURRENT-STATE-2026-10-12.md) reconciles the public checkout and first trial path. [G-0001](goals/G-0001/README.md) is ready on retained `goal/G-0001`, with the [owner-adopted first-local-goal choices](goals/G-0001/work/owner-decisions.md). [G-0002](goals/G-0002/README.md) is now ready on retained `goal/G-0002` after its accepted red/green challenge, delegated intended-use check and two independent native reviews. Its branch remains stacked on the G-0001 ready checkpoint. No version-producing merge or release has been approved.
+The [10-milestone roadmap](docs/roadmap/README.md) contains goal proposals. Its [current-state audit](docs/roadmap/CURRENT-STATE-2026-10-12.md) reconciles the public checkout and first trial path. [G-0001](goals/G-0001/README.md) and [G-0002](goals/G-0002/README.md) are ready on their retained branches. Adam Burdett's 12 October 2026 instruction has activated [G-0003](goals/G-0003/README.md) from unchanged proposal-1; `goal/G-0003` is the canonical integration ref, stacked on G-0002's ready checkpoint. No version-producing merge or release has been approved.
 
 This is a project convention informed by OpenAI's ExecPlan pattern. It is not a
 native Codex database or parsed configuration schema. Reuse existing issue/plan
