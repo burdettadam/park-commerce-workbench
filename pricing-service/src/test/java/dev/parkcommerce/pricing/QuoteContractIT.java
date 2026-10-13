@@ -109,6 +109,23 @@ class QuoteContractIT {
         assertEquals("FORBIDDEN",graphCode(graph(STATUS,Map.of("id",q.id().toString()),INTERNAL)));
         assertTrue(graph(STATUS,Map.of("id",q.id().toString()),null).containsKey("errors"));
     }
+    @Test void ordinaryQuoteReadsUseTheSameOwnerAndRoleBoundaryAcrossTransports() throws Exception {
+        var q=quote();String path="/api/quotes/"+q.id();String query="query($id:ID!){quote(id:$id){id pricingVersion total{cents}}}";
+        assertEquals(200,send(path,GUEST,null).statusCode());
+        assertEquals(q.id().toString(),map(map(graph(query,Map.of("id",q.id().toString()),GUEST),"data"),"quote").get("id"));
+        assertEquals(401,send(path,null,null).statusCode());
+        assertTrue(graph(query,Map.of("id",q.id().toString()),null).containsKey("errors"));
+        for(String token:List.of(OTHER,EMPLOYEE)){
+            var response=send(path,token,null);assertEquals(404,response.statusCode());assertEquals("NOT_FOUND",body(response).get("code"));
+            assertEquals("NOT_FOUND",graphCode(graph(query,Map.of("id",q.id().toString()),token)));
+        }
+        assertEquals(403,send(path,INTERNAL,null).statusCode());
+        assertEquals("FORBIDDEN",graphCode(graph(query,Map.of("id",q.id().toString()),INTERNAL)));
+        var unknown=UUID.randomUUID().toString();
+        assertEquals(404,send("/api/quotes/"+unknown,GUEST,null).statusCode());
+        assertEquals("NOT_FOUND",graphCode(graph(query,Map.of("id",unknown),GUEST)));
+        assertEquals(1L,quotes.count(),"Read attempts must not issue or rewrite quotes");
+    }
     @Test void malformedDatesAndIdsShareDomainErrorCodeAcrossTransports() throws Exception {
         for(String day:List.of("2030-02-29","2030-2-03","2030-10-31T00:00:00Z","+10000-01-01","0000-01-01")){
             var response=send("/api/quotes",GUEST,input(day));assertEquals(400,response.statusCode(),response.body());assertEquals("INVALID_INPUT",body(response).get("code"));
