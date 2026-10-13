@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0004",
+  "claim": "ready",
+  "candidate": {
+    "source_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+    "base_commit": "d7ed805158bd6a239480ce7ae03312c139f2acc7",
+    "accepted_plan_commit": "5ec839681f563b4267a912e66f5969c1f1d9ac24",
+    "accepted_plan_path": "goals/G-0004/README.md",
+    "accepted_plan_sha256": "203b8b5e365c7626e68611fb49921d07e96e1a0b872c203e9294b43bae2b36df",
+    "working_tree_clean": true,
+    "configuration_sha256": "3b5821dd6d716337a14e41862c63f58c8e0fbb2a61ae54a01600dc872b6f7bc9",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CI-JAVA",
+      "type": "automated",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "command": "CI java: bash scripts/test-core.sh; node --test scripts/pricing-contract.test.mjs; bash scripts/verify.sh --integration",
+      "working_directory": ".",
+      "started_at": "2026-10-13T02:16:48Z",
+      "finished_at": "2026-10-13T02:18:58Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 653,
+      "passed": 653,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "653/653 selected tests passed; associated build steps exited 0",
+      "output_artifact_id": "CHECK-CI-JAVA"
+    },
+    {
+      "id": "CI-ADMIN",
+      "type": "automated",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "command": "CI admin-ui: mvn -B -ntp -Pui,production -pl admin-console -am verify; git diff --exit-code -- admin-console/package.json admin-console/package-lock.json; cd admin-console && npm audit --audit-level=high",
+      "working_directory": ".",
+      "started_at": "2026-10-13T02:16:42Z",
+      "finished_at": "2026-10-13T02:17:11Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 280,
+      "passed": 280,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280/280 selected tests passed; associated build steps exited 0",
+      "output_artifact_id": "CHECK-CI-ADMIN"
+    },
+    {
+      "id": "CI-CLIENT",
+      "type": "automated",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "command": "CI client-contracts: cd storefront && npm ci && npm audit --audit-level=high && npm run test:types && npm run build; node --test storefront/src/app/*.test.mjs; node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs",
+      "working_directory": ".",
+      "started_at": "2026-10-13T02:16:43Z",
+      "finished_at": "2026-10-13T02:17:07Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 113,
+      "passed": 113,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "113/113 selected tests passed; associated build steps exited 0",
+      "output_artifact_id": "CHECK-CI-CLIENT"
+    },
+    {
+      "id": "CLEAN-VAADIN",
+      "type": "automated",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "command": "Fresh detached S checkout and absent-before Maven volume: docker run maven:3.9.11-eclipse-temurin-21 mvn -B -ntp -Pui,production -pl admin-console -am verify; git diff --exit-code -- admin-console/package.json admin-console/package-lock.json",
+      "working_directory": ".",
+      "started_at": "2026-10-13T02:25:29.3737894Z",
+      "finished_at": "2026-10-13T02:27:22.0111361Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 280,
+      "passed": 280,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280/280 selected tests passed; associated build steps exited 0",
+      "output_artifact_id": "CHECK-CLEAN-VAADIN"
+    },
+    {
+      "id": "TOOLING",
+      "type": "automated",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "command": "bash scripts/test-tooling.sh",
+      "working_directory": ".",
+      "started_at": "2026-10-13T02:30:47.6178516Z",
+      "finished_at": "2026-10-13T02:30:53.1348635Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "29/29 selected tests passed; associated build steps exited 0",
+      "output_artifact_id": "CHECK-TOOLING"
+    },
+    {
+      "id": "INTENDED-CLIENT",
+      "type": "automated",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "command": "Fresh public clone: cd storefront && npm ci && npm run test:types && npm run build && npm run test:state; git diff --exit-code -- storefront/package.json storefront/package-lock.json",
+      "working_directory": ".",
+      "started_at": "2026-10-13T02:28:48.6753603Z",
+      "finished_at": "2026-10-13T02:29:16.3537788Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 66,
+      "passed": 66,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "66/66 selected tests passed; associated build steps exited 0",
+      "output_artifact_id": "CHECK-INTENDED-CLIENT"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0004-AC01",
+      "result": "passed",
+      "independent_expected_result": "Maven compiles all backend modules and optional Vaadin module; Angular production build completes. Record the actual JDK/Maven/Node/npm and framework versions rather than assuming candidate pins are compatible.",
+      "check_ids": [
+        "CI-JAVA",
+        "CI-ADMIN",
+        "CI-CLIENT",
+        "CLEAN-VAADIN"
+      ],
+      "artifact_ids": [
+        "G-0004-A01",
+        "CHECK-CI-JAVA",
+        "CHECK-CI-ADMIN",
+        "CHECK-CI-CLIENT",
+        "CHECK-CLEAN-VAADIN"
+      ]
+    },
+    {
+      "id": "G-0004-AC02",
+      "result": "passed",
+      "independent_expected_result": "Review the existing Angular lockfile and resolve the Vaadin frontend lock strategy from actual generated inputs. A second clean dependency installation/build uses retained inputs and succeeds without an unexplained lockfile change.",
+      "check_ids": [
+        "CI-ADMIN",
+        "CLEAN-VAADIN",
+        "INTENDED-CLIENT"
+      ],
+      "artifact_ids": [
+        "G-0004-A02",
+        "CHECK-CI-ADMIN",
+        "CHECK-CLEAN-PROVENANCE",
+        "CHECK-CLEAN-VAADIN",
+        "CHECK-INTENDED-CLIENT"
+      ]
+    },
+    {
+      "id": "G-0004-AC03",
+      "result": "passed",
+      "independent_expected_result": "Existing core, client-state and tooling suites run with actual result/selected-test counts. Skipped application tests during a packaging command are not recorded as acceptance passes.",
+      "check_ids": [
+        "CI-JAVA",
+        "CI-CLIENT",
+        "TOOLING",
+        "INTENDED-CLIENT"
+      ],
+      "artifact_ids": [
+        "G-0004-A01",
+        "CHECK-CI-JAVA",
+        "CHECK-CI-CLIENT",
+        "CHECK-TOOLING",
+        "CHECK-INTENDED-CLIENT"
+      ]
+    },
+    {
+      "id": "G-0004-AC04",
+      "result": "passed",
+      "independent_expected_result": "Document every candidate version correction and dependency decision; retain unresolved vulnerability or compatibility findings with owner and disposition before this goal becomes ready.",
+      "check_ids": [
+        "CI-ADMIN",
+        "CI-CLIENT"
+      ],
+      "artifact_ids": [
+        "G-0004-A03",
+        "CHECK-CI-ADMIN",
+        "CHECK-CI-CLIENT",
+        "CHECK-DEPENDENCY-TREE"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0004-A01",
+      "path": "build-results.md",
+      "sha256": "0534c4efa70e55e5254f1ab1a6817c6f0036f4f9c1b96700ff3c423e758d3f33",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "G-0004-A02",
+      "path": "dependency-locks.md",
+      "sha256": "62cd44c9b700a3ec79defe3a7069a94186f968bc516e9c674fe6857aeb5cb1ee",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "G-0004-A03",
+      "path": "compatibility-decisions.md",
+      "sha256": "c5472deb14cb89ebfc3d09ddaafc2a83e4269b8340e424a28c139381bf96b0a2",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "9787631f13874b6a36880cae55b3d1fb19278686d5143ea6198c58cece6b8d5b",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "203b8b5e365c7626e68611fb49921d07e96e1a0b872c203e9294b43bae2b36df",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "3b5821dd6d716337a14e41862c63f58c8e0fbb2a61ae54a01600dc872b6f7bc9",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-CI-JAVA",
+      "path": "checks/ci-java.txt",
+      "sha256": "d625f3ee8201f2fc36b00366ec199fd0cc83a2c084f91112801f6151639245a8",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-CI-ADMIN",
+      "path": "checks/ci-admin-ui.txt",
+      "sha256": "bf65b86834a871417a3d27f2b7628229b4b17fdb7f4d8e87fc7f8030ad36bac3",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-CI-CLIENT",
+      "path": "checks/ci-client.txt",
+      "sha256": "17bb3ee38c6d7cb6263dcdcdb358fc8e7a40fe3bb536d0f586fe0a7cff5571dd",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-CI-PROVENANCE",
+      "path": "checks/ci-provenance.json",
+      "sha256": "c80c91429b910f532d554edb3f7b0d2dd15cf38e0029cc2a6ec3a8d2b1173b08",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-CLEAN-VAADIN",
+      "path": "checks/clean-provenance-build.txt",
+      "sha256": "a01e487d67583271a7db87bfc2994f6a21b5326f5176519986a7b91041735dda",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-CLEAN-PROVENANCE",
+      "path": "checks/clean-provenance.txt",
+      "sha256": "e3e99668e821e21f1382a0e2c5ec18f2cc56f570fdba685a6fe04ff4ab266051",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-CLEAN-LOCK",
+      "path": "checks/clean-lock.txt",
+      "sha256": "c384d6a7c27e51728f9df8a98f658fe0f5a1977296ce99a6ac842cb92ae6fa2b",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-TOOLING",
+      "path": "checks/tooling.txt",
+      "sha256": "588c9e67e27d15e7709070b38577530677e3731ced266b28ac217f74f543a211",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-INTENDED-CLIENT",
+      "path": "checks/intended-use-storefront.txt",
+      "sha256": "775a09598ea7afbc719d6bb85f62a823cd3425f64681556f4b729489828e6ee4",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-DEPENDENCY-TREE",
+      "path": "checks/dependency-tree.txt",
+      "sha256": "b306cddf27633fb0fbcfdb0ae504cf2824084b0dec30751c0870d84b2e83960d",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-RETRIEVAL-E2",
+      "path": "checks/retrieval-round2.txt",
+      "sha256": "e8bd1915ae09fa1ab8287fd47238787a066604f41d7bbef49683dccad31bcb63",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "CHECK-RETRIEVAL-E3",
+      "path": "checks/retrieval-e3.txt",
+      "sha256": "138c8e0e0577d8ab554ea3c4db3a6e2fe602ba18c54b75b8879f010d95be4c13",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-FIRST-CONTRACT",
+      "path": "reviews/round1-contract.md",
+      "sha256": "00928a5b702868a17cd3c47df659fe073b79ff3b47a2bf5739814ab15bd14f35",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-FIRST-ADVERSARIAL",
+      "path": "reviews/round1-adversarial.md",
+      "sha256": "6777a5d5d7e917e7f9fe79b482556ffb35717347303aef1579be638eefefacec",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-ROUND2-CONTRACT",
+      "path": "reviews/round2-contract.md",
+      "sha256": "47d08e1a99e4a81f32e4af40d3eb863ea564e8c50b13cffcaab1af1ca586825a",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-ROUND2-ADVERSARIAL",
+      "path": "reviews/round2-adversarial.md",
+      "sha256": "55cda97a13771b2dcc10ceeb105b493b1a108997ed4f55b7257eea2156b1e59f",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-ROUND1-DISPOSITION",
+      "path": "reviews/round1-disposition.md",
+      "sha256": "9bebf0c7b1c07590b2d8e30c7c612e23dff4a63334a204075651ffa9ffe70a14",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-PROVENANCE",
+      "path": "reviews/native-provenance.md",
+      "sha256": "000ebc4780414a243039bcb669e49ccaaf30f90151cbe893c849dd76d755119d",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": "6bfb34159e92356d945484428a29325ad8a8aca2a22957f48b06b8ddd3b5af2f",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": "9a6b28fb6f680487452968891e07f88c4ae7774abd7a42213b186ba57ed0a9d1",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "6770ab226c7a7bbdf56a482149c6c35e7dfc3108025bf338b1bac9f4dd4b9170",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "d1ca2094e08250094f05cbdba7976918516723402bdbd3d240f57f6e4ca3c7ce",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "5e385bd0f6739ac4cc49fc8c15392639eaf7dfd030a55b0e1fcf4de722ec3953",
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": "contract-reviewer",
+      "session_id": "01a13320-0e35-7600-8c62-2767a6e538e1",
+      "independent_of_writer": true,
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": "adversarial-reviewer",
+      "session_id": "01a13320-2091-71d1-8147-e081a46d2add",
+      "independent_of_writer": true,
+      "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": "Codex integration writer, explicitly delegated by Adam Burdett for G-0004",
+    "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+    "decision": "accept",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": "Codex G-0004 integration record maintainer under accepted plan",
+    "candidate_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+    "decision": "ready",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Codex G-0004 integration writer",
+    "retrieval_verified": true,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}

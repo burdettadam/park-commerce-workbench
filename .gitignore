@@ -4,6 +4,10 @@
 **/node_modules/
 **/dist/
 admin-console/src/main/frontend/generated/
+admin-console/src/main/bundles/
+admin-console/vite.generated.ts
+admin-console/.npmrc
+admin-console/pnpmfile.js
 **/.angular/
 **/coverage/
 .idea/

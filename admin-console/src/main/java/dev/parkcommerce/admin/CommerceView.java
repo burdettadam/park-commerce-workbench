@@ -29,7 +29,7 @@ public class CommerceView extends VerticalLayout {
   booking=client(builder,env.getRequiredProperty("park.booking-url"));
   setMaxWidth("1080px");getStyle().set("margin","auto");setPadding(true);
   add(new H1("Park Commerce Workbench"),new Paragraph("Employee operations · Fictional products · Local development only"));
-  token.setWidthFull();token.setAutocomplete("off");
+  token.setWidthFull();token.setAutocomplete(Autocomplete.OFF);
   add(token,new Paragraph("Paste DEMO_EMPLOYEE_TOKEN from your local .env. It stays in this view's memory; do not expose this console to the internet."));
   TextField id=text("Product ID","lantern-evening"),name=text("Product name","Lantern Evening");
   IntegerField revision=number("Catalog revision",1,1,1000000);
