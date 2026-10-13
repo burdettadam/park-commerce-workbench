@@ -58,5 +58,27 @@ jobs:
       - run: node --test storefront/src/app/*.test.mjs
       - run: node scripts/validate-roadmap.mjs
       - run: node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs
+
+  admin-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: admin-console/package-lock.json
+      - run: mvn -B -ntp -Pui,production -pl admin-console -am verify
+      - run: git diff --exit-code -- admin-console/package.json admin-console/package-lock.json
+      - run: npm audit --audit-level=high
+        working-directory: admin-console
 # Official GitHub Actions are pinned to reviewed release commits.
 # No external initializer access, credentials, deployments, or automatic releases.

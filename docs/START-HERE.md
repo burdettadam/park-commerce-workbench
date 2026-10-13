@@ -107,6 +107,19 @@ bash scripts/verify.sh --integration
 
 `--integration` enables Maven Failsafe and runs the 64 MongoDB/MySQL integration tests as well. Each Testcontainers suite owns disposable test databases; it does not require the Compose stack. Docker absence is an error, not an automatic skip. Results go to each module's `target/surefire-reports` and `target/failsafe-reports`.
 
+On Windows, select JDK 21 and Maven 3.9+ in the current PowerShell terminal before Maven or Node tests that call `javac`. This leaves other projects' toolchains alone:
+
+```powershell
+$env:JAVA_HOME = 'C:\path\to\jdk-21'
+$env:Path = "$env:JAVA_HOME\bin;C:\path\to\apache-maven-3.9.x\bin;$env:Path"
+java -version
+javac -version
+mvn -version
+mvn -B -ntp clean verify
+```
+
+Install the JDK and Maven from their publishers and verify their archive checksums. G-0004's [Windows investigation](../goals/G-0004/work/build-investigation.md) records a working Microsoft OpenJDK 21.0.12.1 and Maven 3.9.16 pair. Run `clean` once after switching from an older JDK or build checkout so stale `target` classes cannot affect the result. Use Git for Windows Bash for the repository's shell scripts; `bash` in a default Windows PowerShell may point to WSL.
+
 ## 7. Start the Angular guest client
 
 With Node **24** and npm on the workstation, while the three APIs are running:
@@ -126,18 +139,18 @@ The checkout includes `storefront/package-lock.json` for repeatable installs. Th
 
 ## 8. Start the Vaadin employee client
 
-With JDK 21, Maven 3.9+, Node 24, and npm 11.3+:
+With JDK 21, Maven 3.9+, Node 24, and npm:
 
 ```bash
-mvn -B -ntp -Pui -pl admin-console -am install -DskipTests
+mvn -B -ntp -Pui,production -pl admin-console -am clean install
 mvn -Pui -pl admin-console spring-boot:run
 ```
 
 Visit `http://127.0.0.1:8080` and paste **DEMO_EMPLOYEE_TOKEN** from `.env`. Publish product revision 1, price version 1, then an event occurrence. Subsequent publication requires the next revision/version.
 
-The console can preview **unpublished** candidate prices without issuing a quote or publishing the rates. Full Vaadin execution remains unverified. This local-only console has no production login flow. It holds the entered token in its Vaadin view/session memory and forwards it to the API; the API enforces the employee role. The session expires after fifteen minutes of inactivity. It does not persist tokens to a database or file.
+The console can preview **unpublished** candidate prices without issuing a quote or publishing the rates. Vaadin Java compilation and a forced production frontend build passed locally in G-0004; browser interaction remains unverified. This local-only console has no production login flow. It holds the entered token in its Vaadin view/session memory and forwards it to the API; the API enforces the employee role. The session expires after fifteen minutes of inactivity. It does not persist tokens to a database or file.
 
-The optional UI profile avoids making Vaadin's frontend toolchain a prerequisite for the three backend builds. `-DskipTests` above is solely for the optional console build, not release acceptance. The Vaadin source has not been compiled or browser-tested here.
+The optional UI profile keeps Vaadin's frontend toolchain out of the three backend builds. The committed `admin-console/package.json` and `package-lock.json` came from Vaadin's generated inputs. The `production` profile forces a fresh frontend bundle and uses `npm ci`; a package/lock mismatch fails the build. Do not substitute a precompiled-bundle success for this clean build check. The generated bundle is ignored; browser behavior remains a separate verification task.
 
 ## 9. Stop without destroying data
 

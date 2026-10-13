@@ -42,11 +42,12 @@ The proposed [roadmap](docs/roadmap/README.md) contains 10 milestones and 30 goa
 
 ```bash
 bash scripts/verify.sh --integration
+mvn -B -ntp -Pui,production -pl admin-console -am verify
 node --test scripts/pricing-contract.test.mjs
 cd storefront && npm ci && npm run test:types && npm run build
 ```
 
-The GitHub Actions workflow runs Java integration, client contract checks, and a frontend dependency audit on pushes to `main` and on pull requests. Both original jobs passed on the [public source snapshot](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38297197722). The previously verified Java suite passed 344 tests, including 64 database integration tests; see [verification details](docs/import-verification-2026-10-12.md).
+The GitHub Actions workflow runs Java integration, Angular client checks, and the G-0004 Vaadin production build with its retained npm lock on pull requests and pushes to `main`. The earlier two jobs passed on the [public source snapshot](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38297197722); the new Vaadin lane still requires its first hosted run. The previously verified Java suite passed 344 tests, including 64 database integration tests; see [verification details](docs/import-verification-2026-10-12.md).
 
 Local demo security is intentionally limited to loopback development. Review [security boundaries](docs/project/security.md) before running services. No production identity, payment processing, cloud deployment, or browser acceptance is claimed.
 
