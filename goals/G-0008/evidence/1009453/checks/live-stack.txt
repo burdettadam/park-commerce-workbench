@@ -1,0 +1,53 @@
+Source S: 100945358c88e4c72a7c444326c618e19b054180
+Run: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38476661000/job/115568897914
+Full hosted log SHA-256: b851ede22fb00b297e961f0c894190d2e776f8591436e0373b5c193fe3e3ff10
+Sanitized exact output lines follow. Full public job log remains at the URL above.
+
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2833530Z PASS guest cannot publish
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2833898Z PASS product publication
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2834136Z PASS public product read
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2834564Z PASS catalog drafts and audit history are employee-only
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2834946Z PASS saved catalog draft is invisible to guests
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2835272Z PASS stale catalog draft write conflicts
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2835653Z PASS publication uses the reviewed version and server audit actor
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2836079Z PASS later draft survives another version being published
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2836917Z PASS publication rejects a now-stale draft base
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2837519Z PASS catalog history traversal stays pinned while new publications arrive
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2837944Z PASS guest cannot preview unpublished employee rates
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2838354Z PASS unpublished preview is an explainable what-if, not a quote
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2838739Z PASS preview did not publish its candidate
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2839002Z PASS first price book
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2839336Z PASS publishing the previewed candidate preserves its calculation
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2839676Z PASS published prices do not mutate old quotes
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2839849Z PASS quote ownership
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2840072Z PASS quote status observes the immutable snapshot without renewing expiry
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2840309Z PASS quote status hides other owners
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2840551Z PASS GraphQL status preserves existing string money and version fields
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2840813Z PASS REST and GraphQL reject abbreviated quote IDs
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2841030Z PASS invalid calendar date returns INVALID_INPUT
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2841229Z PASS fractional ticket counts rejected
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2841407Z PASS GraphQL quote and family offer
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2841591Z PASS GraphQL private resolver authorization
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2841797Z PASS guest identity is derived from authentication
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2842061Z PASS guest session endpoint rejects anonymous and employee credentials
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2842331Z PASS recovery observes an active hold without confirming it
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2842532Z PASS recovery is owner-scoped
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2842772Z PASS fresh coordinator recovers the server order after a discarded response
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2843031Z PASS recovery with a replacement key is a conflict
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2843258Z PASS checkout keeps the original amount and is idempotent
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2843564Z PASS order ownership
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2843870Z PASS concurrent HTTP requests allocate only remaining capacity
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2844205Z PASS no negative or extra availability
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2844591Z PASS admission recovery observes absence without submitting a purchase
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2845018Z PASS admission confirmation requires the quote-owning guest
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2845478Z PASS admission receipt preserves quote and complete variant entitlement set
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2846255Z PASS admission retry retains the original order and entitlement identities
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2846734Z PASS admission recovery and read return the same owner-bound receipt
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2848175Z PASS admission receipt cannot be read by another guest or reissued under a new key
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2848488Z PASS event quote cannot create admission entitlements
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2848905Z PASS admission leaves old event receipt and confirmed event count unchanged
+live-stack	UNKNOWN STEP	2026-10-13T22:18:16.2849204Z 43 live HTTP acceptance checks passed. No payment was taken.
+live-stack	UNKNOWN STEP	2026-10-13T22:18:18.7732242Z  Volume park-wb-ci-38476661000-1_mongo-data  Removed
+live-stack	UNKNOWN STEP	2026-10-13T22:18:18.8019228Z  Volume park-wb-ci-38476661000-1_booking-data  Removed
+live-stack	UNKNOWN STEP	2026-10-13T22:18:18.8285962Z  Volume park-wb-ci-38476661000-1_pricing-data  Removed
+live-stack	UNKNOWN STEP	2026-10-13T22:18:18.8298980Z  Network park-wb-ci-38476661000-1_default  Removed
