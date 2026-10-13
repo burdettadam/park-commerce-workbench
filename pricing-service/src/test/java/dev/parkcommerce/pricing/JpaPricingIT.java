@@ -2,6 +2,7 @@ package dev.parkcommerce.pricing;
 import dev.parkcommerce.core.*;
 import java.net.URI;
 import java.net.http.*;
+import java.sql.SQLException;
 import java.time.*;
 import java.util.*;
 import org.junit.jupiter.api.*;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.*;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import tools.jackson.databind.ObjectMapper;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.*;
@@ -31,6 +34,7 @@ class JpaPricingIT {
         r.add("spring.datasource.url",mysql::getJdbcUrl);r.add("spring.datasource.username",mysql::getUsername);r.add("spring.datasource.password",mysql::getPassword);
     }
     @Autowired JpaPricingStore store;@Autowired PriceBooks books;@Autowired Quotes quotes;@Autowired Environment environment;
+    @Autowired JdbcTemplate jdbc;
     @Autowired ObjectMapper json;
     @TestConfiguration(proxyBeanMethods=false)
     static class TestCatalog {
@@ -51,7 +55,24 @@ class JpaPricingIT {
     Pricing.PriceBook book(long version,long price){return new Pricing.PriceBook("night",version,1,List.of(new Pricing.Rate(Catalog.Variant.ADULT,day,day,new Money(price))),null);}
     @Test void immutableQuoteAndMoneyRoundTrip(){
         service.publish(book(1,10000));var q=service.create(new Pricing.Request("night",day,1,0),"guest");
-        service.publish(book(2,12500));assertEquals(q,service.get(q.id(),"guest"));assertEquals(12500,service.create(new Pricing.Request("night",day,1,0),"guest").total().cents());
+        assertEquals(book(1,10000),store.latest("night").orElseThrow());
+        assertEquals(day,q.visitDate());assertEquals(1,q.catalogRevision());assertEquals(1,q.pricingVersion());
+        assertEquals(new Money(10000),q.total());assertEquals(q,store.quote(q.id()).orElseThrow());
+        service.publish(book(2,12500));assertEquals(q,service.get(q.id(),"guest"));
+        assertEquals(2,store.latest("night").orElseThrow().version());
+        var newer=service.create(new Pricing.Request("night",day,1,0),"guest");
+        assertEquals(day,newer.visitDate());assertEquals(2,newer.pricingVersion());assertEquals(new Money(12500),newer.total());
+    }
+    @Test void emptyDatabaseMigrationCreatesPricingConstraints(){
+        assertEquals(List.of("1"),jdbc.queryForList("SELECT version FROM flyway_schema_history WHERE success=1 ORDER BY installed_rank",String.class));
+        assertEquals("InnoDB",jdbc.queryForObject("SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='price_books'",String.class));
+        assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM information_schema.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='price_books' AND CONSTRAINT_NAME='uk_price_book_version'",Integer.class));
+        var violation=assertThrows(DataAccessException.class,()->jdbc.update(
+            "INSERT INTO price_books (id,product_id,pricing_version,payload) VALUES (?,?,?,?)",
+            UUID.randomUUID().toString(),"night",99,"not json"));
+        assertEquals(3819,((SQLException)violation.getRootCause()).getErrorCode());
+        assertTrue(violation.getMessage().contains("ck_price_book_json"));
+        assertEquals(0,books.count());
     }
     @Test void databasePreventsDuplicateVersion(){
         store.insert(book(1,10000));assertEquals(Failure.Code.CONFLICT,assertThrows(Failure.class,()->store.insert(book(1,12500))).code());
