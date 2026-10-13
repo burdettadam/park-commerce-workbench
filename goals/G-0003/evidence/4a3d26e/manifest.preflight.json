@@ -237,7 +237,7 @@
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "566d1c60dd736b0e68f5f1dc2c4eb0fde054cceee4dd5ac2f8e3cd429770a06b",
+      "sha256": "e51a9ef193ac5c00a6e699fa83830c6f2605d8d7f1aca11e860d8a61cf2a2fa9",
       "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
     },
     {
@@ -285,13 +285,13 @@
     {
       "id": "VALIDATION",
       "path": "validation.md",
-      "sha256": "d5d4decc93442430c6c505badbb3fbf0a2aa4a1e8740036cc793d18300eea8bd",
+      "sha256": "404f277e6cb28d5356775397281087b096a5a92ab854291cd63e32fcec1acd57",
       "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
     },
     {
       "id": "DECISION",
       "path": "decision.md",
-      "sha256": "e3ee3925dba621282e72b927374e2f0286b1cf443de3ac067f89da0c6d672d85",
+      "sha256": "eaf6fe1777e17f00992146b3851cfcd4bc0e3328b8699f84e8d6404053ae5ce7",
       "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
     },
     {
@@ -332,9 +332,9 @@
     }
   ],
   "intended_use_validation": {
-    "validator_id": null,
-    "candidate_commit": null,
-    "decision": "not_run",
+    "validator_id": "Codex integration writer, explicitly delegated by Adam Burdett for G-0003",
+    "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+    "decision": "accept",
     "report_artifact_id": "VALIDATION"
   },
   "readiness_decision": {
@@ -356,5 +356,5 @@
     "artifact_digest": null,
     "tag": null
   },
-  "preflight_note": "Incomplete mapping of observed G-0003 checks and artifacts. Round-1/2 reviewer observations are retained as supporting artifacts; final current reviews, intended-use validation, final manifest validation, and readiness decision are pending. This file is not a readiness claim."
+  "preflight_note": "Incomplete mapping of observed G-0003 checks and artifacts. Round-1/2 native observations and delegated intended-use acceptance are retained. Final current native reviews, final report retrieval, and readiness decision are pending; this file is not a readiness claim."
 }
