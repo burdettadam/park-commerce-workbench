@@ -1,0 +1,7 @@
+OS: Windows 11 development host; Git for Windows Bash
+JDK: Microsoft 21.0.12.1 (process-local)
+Node: v24.14.1
+Docker Desktop engine: 29.7.2; local isolated Compose build interrupted after Docker CLI stopped responding
+Hosted checks: public GitHub Actions ubuntu-latest standard runner; run 38476661000 at source S
+Local Compose project: park-wb-b558834a, ports 8681-8683, 3367-3368, 27617; .env ignored and private
+Other Docker projects were left untouched

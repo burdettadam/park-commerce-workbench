@@ -1,0 +1,8 @@
+candidate=100945358c88e4c72a7c444326c618e19b054180
+command=bash scripts/test-core.sh --demo
+working_directory=repository root
+started_utc=2026-10-13T22:16:50.4230295Z
+finished_utc=2026-10-13T22:16:57.4129667Z
+exit_code=0
+jdk=Microsoft JDK 21.0.12.1 (process-local)
+capture=PowerShell raw output was UTF-16LE; retained text normalized to UTF-8 LF with trailing spaces removed
