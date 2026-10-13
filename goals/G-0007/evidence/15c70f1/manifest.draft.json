@@ -232,14 +232,14 @@
     },
     {
       "id": "REVIEW-CONTRACT",
-      "path": "reviews/round4-contract.md",
-      "sha256": "91ea5a0d86eff5939616478a8d7083d312db8ac69e8e06c6614e133614f90bc8",
+      "path": "reviews/round5-contract.md",
+      "sha256": "3202fdfc3dfa6a91a637a39161bbc4233500774593542126131da7ad49dd8e0e",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     },
     {
       "id": "REVIEW-ADVERSARIAL",
-      "path": "reviews/round4-adversarial.md",
-      "sha256": "8e19765c009d8eeac0427f507a13c632c52d239c66534e7bbe6e09002e222cca",
+      "path": "reviews/round5-adversarial.md",
+      "sha256": "43d60ef5d4c43aabf29afd7cc0d78bc9df95ab2df6c64db908501bc273b8426a",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     },
     {
@@ -275,13 +275,13 @@
     {
       "id": "DECISION",
       "path": "decision.md",
-      "sha256": "96ae51ebb3f8286369c1e2a103943ff309c8962c6cef7ed66185e49ecedee1f9",
+      "sha256": "5fc7b4208dd13d6ced922d4d62ac2127dc38a76c2e58c48a3b01462621bcf75d",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     },
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "6fb97133cdc8e0bb157cd96a968b56dfe14bc8d0d0e829a692f81a186c25c6fd",
+      "sha256": "1a70ddcaae3bbd9f6a006eb74e2a86672870668c6a1f7611e5d68a04433ea6a1",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     },
     {
@@ -319,29 +319,47 @@
       "path": "reviews/round4-hash-reconciliation.md",
       "sha256": "c7d7a36747d58a7532fedaa2e53c94b9272b33c2ce2b57865faa0e02d2d30f2b",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND4-CONTRACT",
+      "path": "reviews/round4-contract.md",
+      "sha256": "91ea5a0d86eff5939616478a8d7083d312db8ac69e8e06c6614e133614f90bc8",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND4-ADVERSARIAL",
+      "path": "reviews/round4-adversarial.md",
+      "sha256": "8e19765c009d8eeac0427f507a13c632c52d239c66534e7bbe6e09002e222cca",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND5-DISPOSITION",
+      "path": "reviews/round5-disposition.md",
+      "sha256": "51d0c2e6933f8790db3413047d9d19115c083f07b66d0879e4d9560243c57c3c",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     }
   ],
   "reviews": [
     {
       "role": "contract",
       "reviewer_id": "contract-reviewer",
-      "session_id": "01a136a5-96a2-7c71-a662-9e44b42ff6ba",
+      "session_id": "01a136b8-cc12-7f80-8ee1-e8dc8cae8de5",
       "independent_of_writer": true,
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
-      "round": 4,
-      "open_blockers": 1,
-      "decision": "blocked",
+      "round": 5,
+      "open_blockers": 0,
+      "decision": "pass",
       "report_artifact_id": "REVIEW-CONTRACT"
     },
     {
       "role": "adversarial",
       "reviewer_id": "adversarial-reviewer",
-      "session_id": "01a136a5-a6ea-7c02-adc7-ea87193cd781",
+      "session_id": "01a136b8-f100-7482-934f-465f8abe8ef8",
       "independent_of_writer": true,
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
-      "round": 4,
-      "open_blockers": 1,
-      "decision": "blocked",
+      "round": 5,
+      "open_blockers": 0,
+      "decision": "pass",
       "report_artifact_id": "REVIEW-ADVERSARIAL"
     }
   ],

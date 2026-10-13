@@ -15,3 +15,7 @@ The [fourth-round disposition](reviews/round4-disposition.md) now records two bl
 ## Subsequent owner decision (2026-10-13)
 
 Adam explicitly authorized the [single lost-transcript exception](lost-transcript-exception.md) and one further independent reviewer pair. The change was assessed under the accepted R=4 control and adopted in the canonical plan. The workflow state is now **active, pending the fifth and final pair**; the fourth-round blockers remain historical findings and are not relabeled as passes. No readiness, merge, tagged-release or deployment decision is made here.
+
+## Fifth-round review result
+
+The independent [fifth-round disposition](reviews/round5-disposition.md) records no current blocker under Adam's one-item waiver. This is a reviewer result, not yet a readiness decision: the current package still needs its final manifest checks and fresh public retrieval. G-0007 remains **active** until those steps are complete. The historical failures and irretrievably lost first browser output stay disclosed.

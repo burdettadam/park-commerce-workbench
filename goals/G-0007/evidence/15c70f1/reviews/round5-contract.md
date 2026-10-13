@@ -1,0 +1,9 @@
+# G-0007 round-five contract acceptance review
+
+Native role `contract-reviewer`; thread `01a136b8-cc12-7f80-8ee1-e8dc8cae8de5`; task `/root/g0007_contract`; raw local rollout SHA-256 `ec1bd9157f70c7f37c528687abd88ea9cc7eae418e77d0b43ccb565a4c6ba890`. Independent first finding under the adopted single-item exception. Local absolute paths normalized.
+
+**Fifth-round contract review: pass for the inspected acceptance scope.** I found no demonstrated AC01–AC04, compatibility, or duplicated-rule defect at source `15c70f15154997f6eda7b72ad70aa3eba76e5fdd` against base `c734a95836388ec8316a06bac8c7361d9ef8b0de`. My native `contract-reviewer` thread UUID is `01a136b8-cc12-7f80-8ee1-e8dc8cae8de5`. My independent first finding was that Adam’s adopted waiver covers the one overwritten failed-browser transcript, while the later failed and passing attempts remain separate evidence.
+
+I reviewed plan `e5add22f8777c358e0a27981b1bb74e03f52bb47`, checkpoint `e836ecad75156cc65b8e059ad071710652e69291`, the contract guide, governing and exception decisions, prior reviews, product contracts and code, relevant tests, and all five decompressed archives. The logs support 280 core and 67 database tests with no skips or failures, 43 HTTP assertions, and a final passing browser scenario. All **31 manifest artifact hashes match the committed Git bytes**. One local checkout file has CRLF bytes; its normalized content matches the committed LF file and declared digest.
+
+Limits: I did not rerun services, fetch a clean public clone, or independently confirm hosted jobs. The audit sample’s originating API response is unavailable, although separate Mongo and HTTP tests support AC04. The draft manifest still has historical blocked review pointers and does not claim readiness. This review grants no human tagged-release approval.
