@@ -5,3 +5,7 @@
 Adam Burdett must decide whether to accept a revised review plan that authorizes a new independent round after the privacy remediation, or leave this goal at `needs-decision`. A new round would review the actual replacement and its artifact digests under an explicitly accepted rule; it cannot retroactively turn the round-three failure into a pass. No source code rework is indicated by either reviewer. The first failed browser attempt's raw transcript remains lost, and the audit example's exact response transcript remains unavailable; both limitations stay visible.
 
 This document records no tagged-release approval, merge, deployment or paid workflow.
+
+## Subsequent owner decision (2026-10-13)
+
+Adam Burdett authorized one additional independent review round. The [scoped exception](review-exception.md) was assessed under the preceding control baseline and adopted in the canonical G-0007 plan. This changes the current workflow state to **active, pending round four**; it does not reverse the third-round privacy finding or make this candidate ready. Both new native reviewers must inspect the sanitized replacement and report on round four. This decision record will be updated only after their findings and final retrieval are assessed.

@@ -1,6 +1,6 @@
 # G-0007 — Add reviewable catalog drafts and publication history
 
-Status: **needs-decision**. Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
+Status: **active** (one owner-authorized final review round pending). Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
 
 ## Accepted work contract
 
@@ -94,6 +94,8 @@ Start with one branch. Assign separate writers and refs only when useful; record
 
 ## Review and stop rules
 
+**Adopted G-0007-only exception, 2026-10-13:** Adam Burdett authorized one new round after the third-round privacy blocker and evidence replacement. The [decision artifact](evidence/15c70f1/review-exception.md) records scope, preceding-baseline control assessments, owner, mitigation and expiry. G-0007's maximum is now four rounds; the new final pair must both report round four with distinct configured native sessions and inspect the sanitized evidence at source S. Every other review and acceptance rule below remains effective. A surviving valid blocker after round four returns this goal to `needs-decision`. No fifth round is authorized.
+
 The accepted baseline is two independent reviewers (contract and adversarial) and at most three rounds. Collect first findings independently. A relevant code/test/configuration/input change creates a new candidate and reopens affected verification and review. Retain valid blockers even when another reviewer disagrees. Missing reviews are not passes; unresolved blockers after the review limit require `needs-decision`.
 
 Changes to these rules are reviewed under the previous accepted rules, never self-approved by the candidate. Version-producing merges require an actual human decision. Merely reaching `ready` does not create a release, deploy anything or change visibility.
@@ -116,4 +118,4 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 
 Fixed source S `15c70f15154997f6eda7b72ad70aa3eba76e5fdd` passed 280 core and 67 real database tests, 43 live HTTP checks, and a focused employee browser flow. The production Vaadin build and public hosted CI also passed. [Verification work](work/verification.md) and [candidate evidence](evidence/15c70f1/) retain the results, including the failed local browser attempts and their limits. Adam delegated this goal's intended-use check to Codex; that validation accepted AC01–AC04 for synthetic local use.
 
-The accepted final independent review round found local username paths in a published compressed test log. The archive was replaced and the post-E1 branch history containing it was withdrawn from the active PR ref, but no independent reviewer has cleared the replacement. The three-round limit has been reached; [the decision record](evidence/15c70f1/decision.md) therefore keeps G-0007 at `needs-decision`. Adam must explicitly authorize a revised review plan before another review can establish readiness. PR #9 remains draft and unmerged. No release or paid workflow is requested.
+The accepted final independent review round found local username paths in a published compressed test log. The archive was replaced and the post-E1 branch history containing it was withdrawn from the active PR ref, but no independent reviewer has cleared the replacement. Adam authorized one new review round; the preceding-baseline control assessment and scoped validator-contract amendment are recorded above. The prior [decision record](evidence/15c70f1/decision.md) retains the failed third round; the new pair has not yet cleared the replacement. PR #9 remains draft and unmerged. No release or paid workflow is requested.

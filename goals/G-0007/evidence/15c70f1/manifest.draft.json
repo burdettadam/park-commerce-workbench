@@ -283,6 +283,12 @@
       "path": "handoff.md",
       "sha256": "571695cc164c4fc91e8fcca27b3cabd9cacdb15d18d2e7ba059067c6deffcca9",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "REVIEW-EXCEPTION",
+      "path": "review-exception.md",
+      "sha256": "738f00b5bfde38ab470fdcb43b375992cef4d0b3db29bf841558a8137856f104",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     }
   ],
   "reviews": [
@@ -333,5 +339,10 @@
     "merged_commit": null,
     "artifact_digest": null,
     "tag": null
+  },
+  "review_policy_exception": {
+    "max_round": 4,
+    "decision_artifact_id": "REVIEW-EXCEPTION",
+    "authority_id": "Adam Burdett"
   }
 }
