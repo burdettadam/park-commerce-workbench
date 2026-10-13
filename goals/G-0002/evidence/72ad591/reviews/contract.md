@@ -1,0 +1,9 @@
+# Independent contract review - round 2
+
+Native `contract-reviewer` child thread `01a13294-25df-7e02-8bd6-e399f7bca972`, parent session `01a13293-ab16-7dd0-a835-70e90316c686`; distinct from the writer and adversarial child. Reviewed fixed S `72ad59192e667e9e1048c5f3f65efc21e087005a` under accepted P `56ea84e4e0d0429e3c7069c7a48efd1d903b9bec` and prior G-0001 governing base `f4ca6dc02d96a309763b1725b2eb3782cadd8f76`. The initial round-1 report remains at `../../df6e9b9/reviews/round1-contract.md`.
+
+Initial round-2 finding: **material verification gap**. S changes evidence validator and focused tests, but the supplied S output at first lacked their run and exit status. The reviewer found no demonstrated product/source defect, confirmed R `79560f4fc6692584f414e6851122bbc2058609dc` is a direct child of S0 `df6e9b9819cda0170bd9233387f72e16aa73573f`, and narrowed an initial lineage concern after seeing the contract's explicit independent-ancestry requirement.
+
+Follow-up in the **same child thread**: inspected `../checks/command.txt` and local raw `.tmp/g0002-s1-roadmap-raw.txt`; matched SHA-256 `f8795ddac702070b1616ec5547d7721b7f986fc01e7d49fbbc8d3d8bba20f63d`. The run exited 0: 47 selected, 46 passed, 0 failed, one existing symlink fixture skipped because Windows denied symlink creation (EPERM). All new negative-control tests passed. **Final source/control decision: pass, zero open source/control blockers.** The 29-check product mock suite had zero skips.
+
+The structural validator does not authenticate Git ancestry, human authority or actual command execution. The skipped symlink fixture is unverified on this host. Final manifest/retrieval and any version-producing merge are separate writer/owner records, not granted by this review. This report transcribes the independent native review without implying the reviewer edited it.
