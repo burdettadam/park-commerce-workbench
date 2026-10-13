@@ -1,0 +1,16 @@
+# G-0003 intended-use validation packet
+
+**Status: pending owner decision.** Adam Burdett is the intended-use validation owner under accepted P `4a0d6a66a4d51eca57059a88875fb6efe7ab687e`. A choice to delegate this final check to Codex has been requested but has not been received for G-0003. No acceptance is claimed by this packet.
+
+The intended use is to resume an interrupted goal from retained plan, branch and artifact records without relying on the prior chat. The fixed source is S `4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6`; the latest report branch is later evidence about S.
+
+| Accepted result | Observed evidence | Limit to consider |
+| --- | --- | --- |
+| AC01: two assigned worktrees with isolated resources | [Branch map](branch-map.md), [Docker identity](checks/pair-identity.json), and [cross-catalog requests](checks/catalog-cross.json) show two project names, distinct ports and volumes, 12 healthy containers and synthetic IDs only in their owner catalogs. Each worktree's maintained demo passed 43 checks. | Both drill stacks are now stopped; named data volumes remain. |
+| AC02: included revisions and explicit excluded alternative | [Branch map](branch-map.md) and [integration record](../../work/integration.md) name both included slice heads, their merges into S, and the shared-default-Compose option that was not integrated. | This goal changes workflow records, not commerce product code. |
+| AC03: recovery after session interruption | [Restore drill](restore-drill.md) records a running writer interruption, new session and directory, 23/23 indispensable digests, 487/487 source hashes, and a 146.584-second checkpoint-to-resumption handoff. | The bundle is local-only. Private `.env` values and database volumes were outside this recovery exercise. |
+| AC04: stale/missing evidence remains blocking | [Workflow observations](workflow-observations.md) and two [independent first native reports](reviews/native-provenance.md) show both reviewers rejected a G-0002 review for S and blocked E1 when A02 was absent. | Current final reviews and the final manifest are separate pending gates. |
+
+The root development stack was briefly stopped by a cleanup command run from the wrong directory. It was restarted; six containers were healthy and the catalog, pricing and booking health endpoints each returned HTTP 200. The two drill stacks were then stopped with explicit project names and no volume deletion. The host JDK 17 could not run the Java 21 core command; the same 280 core checks passed in a Java 21 container. G-0004 owns the intended host build setup and application build verification.
+
+The specific validation question is whether the retained plan, identities, bundle/inventory, measured recovery and observed review blockers demonstrate that a fresh Codex session can resume this bounded goal without the interrupted session. Adam can record acceptance or a concrete unmet condition; he may explicitly delegate this G-0003 final check to Codex. The resulting decision, validator identity, time, procedure and limits must be appended here before the manifest may claim acceptance. Review of this drill does not approve a version-producing merge, release, cloud deployment or production restore.
