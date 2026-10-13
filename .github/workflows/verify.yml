@@ -80,5 +80,48 @@ jobs:
       - run: git diff --exit-code -- admin-console/package.json admin-console/package-lock.json
       - run: npm audit --audit-level=high
         working-directory: admin-console
+  live-stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      COMPOSE_PROJECT_NAME: park-wb-ci-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Start isolated synthetic stack
+        timeout-minutes: 28
+        run: |
+          bash scripts/configure-local.sh
+          docker compose config --quiet
+          docker compose up --build -d --wait
+      - name: Check live pricing and checkout paths
+        timeout-minutes: 3
+        run: |
+          report="$RUNNER_TEMP/park-wb-live-http.log"
+          set +e
+          node scripts/demo-http.mjs > "$report" 2>&1
+          result=$?
+          set -e
+          grep -E '^PASS |^[0-9]+ live HTTP acceptance checks passed\.' "$report" || true
+          rm -f -- "$report"
+          if [ "$result" -ne 0 ]; then
+            echo 'Live HTTP exercise failed; request details were withheld from public logs.' >&2
+          fi
+          exit "$result"
+      - name: Stop only this Compose project
+        if: always()
+        timeout-minutes: 3
+        run: |
+          if [ -f .env ]; then
+            set +e
+            docker compose down --volumes --remove-orphans
+            result=$?
+            rm -f -- .env
+            exit "$result"
+          fi
 # Official GitHub Actions are pinned to reviewed release commits.
 # No external initializer access, credentials, deployments, or automatic releases.
