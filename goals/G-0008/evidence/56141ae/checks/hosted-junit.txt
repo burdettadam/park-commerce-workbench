@@ -1,0 +1,13 @@
+Source S: 56141ae40f05704ff0ae30b232ef878e2943b6c6
+Hosted run: 38478861553; artifact java-test-reports ID 11855991736; expires 2027-01-11T22:36:01Z
+Exact downloaded XML files are retained locally under ignored .tmp/g0008-evidence-local/java-test-reports-S3. Digests and suite counts follow.
+TEST-dev.parkcommerce.booking.AdmissionCheckoutIT.xml: tests=15 failures=0 errors=0 skipped=0 sha256=e792c64a7c7539f93cae1b38e981536da5accebe8d2c3d96b097097a1705d628
+TEST-dev.parkcommerce.booking.CheckoutRecoveryIT.xml: tests=7 failures=0 errors=0 skipped=0 sha256=5771874aa88c49c8ccbe82867b8c66361ec291d091dce2c9e314cf276935e04f
+TEST-dev.parkcommerce.booking.JdbcBookingIT.xml: tests=8 failures=0 errors=0 skipped=0 sha256=4bacb98413dbf0418f3664f1508512b176994b427cb6323f9f0cabfcfb094491
+TEST-dev.parkcommerce.catalog.CatalogEditorialIT.xml: tests=8 failures=0 errors=0 skipped=0 sha256=664a60c82416685157bbee4d1dd8ed803ab27d5351e179ef7022d70516ebd1cd
+TEST-dev.parkcommerce.catalog.MongoCatalogIT.xml: tests=9 failures=0 errors=0 skipped=0 sha256=9646a52a4c49e7a3a1f0be8c8a5ca1904df72f0439f3c62d90034c85d7beb0a4
+TEST-dev.parkcommerce.core.CoreScenariosTest.xml: tests=280 failures=0 errors=0 skipped=0 sha256=8b916e6e157bd0a77d9bb5fd64bcee82278d33001a6d361fe61a96a336f08cf6
+TEST-dev.parkcommerce.pricing.JpaPricingIT.xml: tests=9 failures=0 errors=0 skipped=0 sha256=d4f23a311792d9290315e8bbddd2ae38758bb915b46f1377e971ce11edd902df
+TEST-dev.parkcommerce.pricing.QuoteContractIT.xml: tests=12 failures=0 errors=0 skipped=0 sha256=6163f36b8699766db39da33278b960514902e8c463a24582ac70b7b5de62ce88
+TEST-dev.parkcommerce.pricing.PreviewErrorContractTest.xml: tests=3 failures=0 errors=0 skipped=0 sha256=30009f0bc77847659764f41267e8e4c958d4e30af81f672720335bb17dacae1b
+Selected testcase in the downloaded `JpaPricingIT` XML: `httpPreviewPastVisitReturnsTheEmployeeRepairMessageWithoutWrites`, time 0.021 s; no failure, error or skip node.

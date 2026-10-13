@@ -17,7 +17,7 @@ An employee can explain the price a family would receive before publishing a rul
 
 ## Acceptance criteria
 
-These outcomes are adopted verbatim from proposal-1; none is an observed result yet.
+These outcomes are adopted verbatim from proposal-1. Candidate results are recorded against fixed source S in the evidence directory below; readiness remains pending.
 
 ### G-0008-AC01
 
@@ -43,12 +43,12 @@ Candidate checks include `bash scripts/test-core.sh --demo`, `bash scripts/verif
 
 | Slice | Ref | Writer | Dependency and state |
 | --- | --- | --- | --- |
-| Canonical integration and accepted record | `goal/G-0008` | Primary Codex session | Active plan and implementation checkpoint pushed at `8a2c68dc326719798b558ff7d9e2c9b2168635b6`; acceptance pending |
-| Pricing preview implementation and focused tests | `goal/G-0008-implementation` | G-0008 subagent | Source `b749533c14da1d99cb652cfd5bf5dcebaf158fa1`; merged into canonical branch |
-| Independent contract/adversarial review | Separate native reviewer assignments | Unassigned | After fixed S and selected checks |
+| Canonical integration and accepted record | `goal/G-0008` | Primary Codex session | Fixed source S `56141ae40f05704ff0ae30b232ef878e2943b6c6`; evidence and review in progress |
+| Pricing preview implementation and focused tests | `goal/G-0008-implementation` | G-0008 subagent | Implementation and UI repair merged; real HTTP past-date assertion selected at S |
+| Independent contract/adversarial review | Separate native reviewer assignments | Primary Codex session coordinates | Round one at old source retained; round two at S pending |
 
 Publish implementation and required artifacts before updating this canonical record. Preserve old failed attempts. Confirm exact remote revisions and artifact retrieval before claiming recovery. A version-producing merge requires distinct eligible-human review; goal readiness, merge, release, and deployment remain separate observations.
 
-The source checkpoint passed 280 core tests and three preview error contract tests. The local real database attempt stalled during Testcontainers startup and was interrupted; it is retained as a failed attempt. Free public CI at `ba2988172ccf6d216641847e639dc095d1214382` passed all three jobs, including 67/67 real database integration tests with zero skips. AC01–AC04 still require fixed combined-candidate fixture and side-effect evidence, live cross-service HTTP and applicable browser checks, independent reviews, and intended-use validation. See [implementation notes](work/implementation.md).
+At S, free public CI run `38478861553` passed all four jobs: 280 core cases, 68 real database integration cases with zero skips, three admin helper cases, and 43 six-service HTTP checks. The employee browser displayed the past-date repair message from a controlled loopback 400 response; a separate real HTTP integration case passed at S. The fixture, side-effect and error records are under [evidence/56141ae](evidence/56141ae/). Local Docker and Git Bash attempts failed and are retained as gaps. Codex performed the intended-use check under Adam Burdett's explicit G-0008 delegation. Independent round-two reviews, final manifest, retention and readiness decision remain open.
 
-Next action: complete the remaining acceptance evidence on a fixed combined candidate and obtain independent reviews. G-0009 and G-0010 may prepare independently but cannot claim implementation acceptance until their predecessor input is fixed and accepted.
+Next action: obtain independent reviews on S and finish the evidence contract. G-0009 and G-0010 may prepare independently but cannot claim implementation acceptance until their predecessor input is fixed and accepted.

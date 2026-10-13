@@ -1,0 +1,20 @@
+Source S: 56141ae40f05704ff0ae30b232ef878e2943b6c6
+Run: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38478861553
+Local full hosted log SHA-256: 7ffade5918711093dab4c635480e5fd2ec998141656537849517a9c4aa46eefe
+Selected exact public log lines follow. Full hosted output remains at the run URL.
+
+java	Run node --test scripts/pricing-contract.test.mjs	2026-10-13T22:36:15.9238809Z ℹ tests 29
+java	Run node --test scripts/pricing-contract.test.mjs	2026-10-13T22:36:15.9239247Z ℹ pass 29
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:36:50.5510759Z [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s -- in dev.parkcommerce.pricing.PreviewErrorContractTest
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:36:50.5748286Z [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:16.0762849Z [INFO] Running dev.parkcommerce.pricing.JpaPricingIT
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:21.6080734Z {"@timestamp":"2026-10-13T22:37:21.603154316Z","log":{"level":"INFO","logger":"org.springframework.boot.test.context.SpringBootTestContextBootstrapper"},"process":{"pid":4120,"thread":{"name":"main"}},"service":{"name":"pricing-service","node":{}},"message":"Found @SpringBootConfiguration dev.parkcommerce.pricing.PricingApplication for test class dev.parkcommerce.pricing.JpaPricingIT","tags":["COMMONS-LOGGING"],"ecs":{"version":"8.11"}}
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:21.6083770Z {"@timestamp":"2026-10-13T22:37:21.604501773Z","log":{"level":"INFO","logger":"org.springframework.boot.test.context.SpringBootTestContextBootstrapper"},"process":{"pid":4120,"thread":{"name":"main"}},"service":{"name":"pricing-service","node":{}},"message":"Found @SpringBootConfiguration dev.parkcommerce.pricing.PricingApplication for test class dev.parkcommerce.pricing.JpaPricingIT","tags":["COMMONS-LOGGING"],"ecs":{"version":"8.11"}}
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:21.7150795Z {"@timestamp":"2026-10-13T22:37:21.624304717Z","log":{"level":"INFO","logger":"dev.parkcommerce.pricing.JpaPricingIT"},"process":{"pid":4120,"thread":{"name":"main"}},"service":{"name":"pricing-service","node":{}},"message":"Starting JpaPricingIT using Java 21.0.12.1 with PID 4120 (started by runner in /home/runner/work/park-commerce-workbench/park-commerce-workbench/pricing-service)","tags":["COMMONS-LOGGING"],"ecs":{"version":"8.11"}}
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:21.7175353Z {"@timestamp":"2026-10-13T22:37:21.624495852Z","log":{"level":"INFO","logger":"dev.parkcommerce.pricing.JpaPricingIT"},"process":{"pid":4120,"thread":{"name":"main"}},"service":{"name":"pricing-service","node":{}},"message":"The following 1 profile is active: \"local\"","tags":["COMMONS-LOGGING"],"ecs":{"version":"8.11"}}
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:22.2542505Z {"@timestamp":"2026-10-13T22:37:22.249454294Z","log":{"level":"INFO","logger":"dev.parkcommerce.pricing.JpaPricingIT"},"process":{"pid":4120,"thread":{"name":"main"}},"service":{"name":"pricing-service","node":{}},"message":"Started JpaPricingIT in 0.642 seconds (process running for 31.531)","tags":["COMMONS-LOGGING"],"ecs":{"version":"8.11"}}
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:22.7525312Z [INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.682 s -- in dev.parkcommerce.pricing.JpaPricingIT
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:53.8335626Z [INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:53.8392114Z [INFO] BUILD SUCCESS
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:54.2842745Z pricing-service/JpaPricingIT: selected=9 executed=9 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T22:37:54.2985615Z PASS database integration selection: 7 suites, 68 executed tests, 0 skipped
