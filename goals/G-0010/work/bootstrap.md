@@ -3,7 +3,7 @@
 - Status: **blocked** on G-0009 acceptance and an exact prerequisite revision. The user activated the next three roadmap goals for subagent work on 2026-10-13; this record is planning, not product execution or acceptance.
 - Writer and integration owner: assigned G-0010 Codex subagent; sole writer of `goal/G-0010` in `.tmp/g0010-planning`.
 - Base: `bd26cfbd062228c228223518d3800cd125c4e9b1` (`main` at assignment).
-- Accepted plan commit: `2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd` (`goals/G-0010/README.md`). Plan file SHA-256: `afa91986e407058b9d3fbd1b74fb49a9d0e484d3b276157bcd233925edc7f6a4`.
+- Accepted plan commit: `2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd` (`goals/G-0010/README.md`). Initial plan file SHA-256: `afa91986e407058b9d3fbd1b74fb49a9d0e484d3b276157bcd233925edc7f6a4`. The later Git-ref planning correction yields current plan file SHA-256 `a73f9f99cd2c79eaab00142dfbfbb2a56b152254b4fcfb885440533af42c1806`.
 - Historical proposal: `docs/roadmap/goals/G-0010/README.md` at base; SHA-256 `352c315ef7851e98a15fe7f342f69c383f0813ed5aa7990e93bd8e8bf435be8b`. AC01–AC04 are copied unchanged.
 - Governing baseline: root `AGENTS.md`, `GOVERNANCE.md`, `DEVELOPMENT.md`, `ARCHITECTURE.md`, `PLANS.md`, and `.agents/skills/work-goal` and `worktree-flow` at the base. N=2 independent contract/adversarial reviewers, R=3 rounds. No exception is requested.
 - Required goal evidence after unblocking: `contention-results.json`, `interruption-recovery.md`, `transaction-design.md`, fixed candidate and environment/configuration identity, actual raw checks, two independent reviews, intended-use validation, decision, and recoverable handoff. The roadmap manifest template is intentionally unfilled; none of these acceptance artifacts exists for G-0010.
@@ -26,3 +26,7 @@ The Hikari pool has 10 connections with a five-second acquisition timeout; the t
 5. Run `bash scripts/verify.sh --integration` and the added focused harness on frozen inputs, retain raw failures as well as passes, seek two independent reviews, and perform delegated intended-use validation. Readiness and release remain separate decisions.
 
 No product code, test harness, service, or release was changed at this checkpoint. Next action: wait for G-0009 acceptance and exact input identity, then assign an implementation slice and revisit resource isolation and CI time bounds.
+
+## Planning correction after checkpoint
+
+The proposal's suggested `goal/G-0010/implementation` and `goal/G-0010/validation` refs conflict with the actual canonical `goal/G-0010` ref under Git's ref namespace. The active record uses `goal/G-0010-implementation` and `goal/G-0010-validation` as unassigned, uncreated suggestions instead. This changes no acceptance criterion, scope, evidence gate, or implementation authorization. Both the initial and current plan file digests are recorded above; Git history identifies the correction commit.

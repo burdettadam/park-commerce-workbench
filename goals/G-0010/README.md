@@ -84,8 +84,8 @@ Existing commands establish only their stated coverage. Extend tests for the new
 
 | Slice | Proposed ref | Writer | Included commit |
 | --- | --- | --- | --- |
-| Implementation/configuration | `goal/G-0010/implementation` | Unassigned pending G-0009 acceptance | Not created |
-| Tests/evidence or independent alternative | `goal/G-0010/validation` | Unassigned pending G-0009 acceptance | Not created |
+| Implementation/configuration | `goal/G-0010-implementation` | Unassigned pending G-0009 acceptance | Not created |
+| Tests/evidence or independent alternative | `goal/G-0010-validation` | Unassigned pending G-0009 acceptance | Not created |
 | Canonical integration | `goal/G-0010` | Assigned G-0010 Codex subagent | Planning record only |
 
 Use one branch when that is sufficient; multiple branches are allowed, not mandatory overhead. Each writer updates only their branch record. Record exact included revisions and disposition for abandoned alternatives. A proposed branch name is not an existing branch or permission to push.
