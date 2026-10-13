@@ -281,7 +281,7 @@
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "06feb08b1dd0a026d6b11e0a8d0455bf255f7564ca05ecb6061966378dfea182",
+      "sha256": "571695cc164c4fc91e8fcca27b3cabd9cacdb15d18d2e7ba059067c6deffcca9",
       "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
     }
   ],
