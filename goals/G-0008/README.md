@@ -43,10 +43,12 @@ Candidate checks include `bash scripts/test-core.sh --demo`, `bash scripts/verif
 
 | Slice | Ref | Writer | Dependency and state |
 | --- | --- | --- | --- |
-| Canonical integration and accepted record | `goal/G-0008` | Primary Codex session | Base `bd26cfb`; active plan checkpoint pending |
-| Pricing preview implementation and focused tests | `goal/G-0008-implementation` | G-0008 subagent | Starts after plan checkpoint; no source candidate yet |
+| Canonical integration and accepted record | `goal/G-0008` | Primary Codex session | Active plan and implementation checkpoint pushed at `8a2c68dc326719798b558ff7d9e2c9b2168635b6`; acceptance pending |
+| Pricing preview implementation and focused tests | `goal/G-0008-implementation` | G-0008 subagent | Source `b749533c14da1d99cb652cfd5bf5dcebaf158fa1`; merged into canonical branch |
 | Independent contract/adversarial review | Separate native reviewer assignments | Unassigned | After fixed S and selected checks |
 
 Publish implementation and required artifacts before updating this canonical record. Preserve old failed attempts. Confirm exact remote revisions and artifact retrieval before claiming recovery. A version-producing merge requires distinct eligible-human review; goal readiness, merge, release, and deployment remain separate observations.
 
-Next action: audit the existing preview path and its canonical calculation owner, then implement and check the smallest AC01–AC04 slice in the assigned worktree. G-0009 and G-0010 may prepare independently but cannot claim implementation acceptance until their predecessor input is fixed and accepted.
+The source checkpoint passed 280 core tests and three preview error contract tests. The real database attempt stalled during Testcontainers startup and was interrupted; it is not a passing check. AC01–AC04 still require fixed combined-candidate evidence, real database/HTTP and applicable UI checks, independent reviews, and intended-use validation. See [implementation notes](work/implementation.md).
+
+Next action: run free public CI on the canonical branch, capture the real database result, then complete the remaining acceptance evidence on a fixed combined candidate. G-0009 and G-0010 may prepare independently but cannot claim implementation acceptance until their predecessor input is fixed and accepted.
