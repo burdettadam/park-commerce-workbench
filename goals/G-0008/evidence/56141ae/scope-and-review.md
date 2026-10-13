@@ -6,7 +6,7 @@
 - The first independent review was at prior source `1009453` and is retained under that candidate's `reviews/`. It blocked readiness on evidence and a UI error-display concern. The suggested 21-ticket reproduction was inaccurate for the UI because local validation rejects it before HTTP; `round1-disposition.md` records the correction and the reachable past-date case.
 - Current source S adds the `JpaPricingIT` past-date real HTTP assertion after the successful S2 `98b8283` product/UI pass. The admin JAR exercised in the browser was built at product commit `3ededd1`, whose product sources match S; only a pricing integration test and goal records changed afterward.
 - This directory separates the controlled browser 400 fixture from real service checks. A fixture click alone cannot establish the real API response; the hosted `JpaPricingIT` and six-service checks are required.
-- Local Docker Desktop and Git Bash failed during attempted additional checks. Their attempts are retained as gaps; free hosted checks at S are the acceptance source for real databases and cross-service HTTP.
+- Local Docker Desktop and the default Windows Linux `bash.exe` failed during attempted additional checks. Those attempts remain disclosed. The exact `--demo` check later passed at S through Git Bash; free hosted checks at S are the acceptance source for real databases and cross-service HTTP.
 - No paid runner, cloud deployment, version tag or release is included. Readiness, main merge and release are separate decisions.
 
 The independent second review round, intended-use validation, manifest, readiness decision and remote retrieval record must use this exact S and the completed current-run evidence. This file is a scope record, not a passing review.
