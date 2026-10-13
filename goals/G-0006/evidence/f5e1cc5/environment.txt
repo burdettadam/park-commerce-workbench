@@ -1,0 +1,15 @@
+Candidate S: f5e1cc5e576c45a785199374031e5853a4dc7606
+Plan P: db494ebe4b5761cab9a1ecd67831dbad059f69b6
+Verification checkout: clean detached .tmp/g0006-live (local; ignored .env and build outputs)
+Host: Windows 11 Home, build 26200
+JDK: Microsoft OpenJDK 21.0.12.1+1 (process-scoped)
+Maven: 3.9.16 (process-scoped)
+Node: 24.14.1; npm: 11.11.0
+Docker: 29.7.2; Compose: 5.4.0
+Browser driver: local Playwright 1.64.0 and locally installed Chromium headless shell revision 1234
+Compose project: pcw-g0006-live; catalog 8381, pricing 8382, booking 8383; Mongo 27317, pricing MySQL 3337, booking MySQL 3338 (all host ports loopback)
+UI: Vaadin 8480; Angular 4300 (loopback); independent preexisting stack/Angular process left untouched
+Data: synthetic fictional product, event, quote and order; no payment provider or external write
+Credentials: local ignored .env, random demo values omitted; screenshots mask entered tokens
+Retention: public branch/evidence after review; local .env, volumes, scratch browser installation and build caches are local_only
+Log publication: public check copies replace the local Windows username/worktree and Maven-cache paths, normalize line endings and trim native trailing spaces; original command logs remain in ignored .tmp on this workstation

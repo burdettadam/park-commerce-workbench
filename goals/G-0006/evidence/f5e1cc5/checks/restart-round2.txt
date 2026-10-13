@@ -1,0 +1,112 @@
+started_at=2026-10-13T10:53:06.4477540Z
+source=f5e1cc5e576c45a785199374031e5853a4dc7606
+working_directory=.tmp/g0006-live
+command=docker compose down; docker compose up -d --wait; GET new browser order
+BEFORE_VOLUMES
+pcw-g0006-live_mongo-data 2026-10-13T06:52:02Z
+pcw-g0006-live_pricing-data 2026-10-13T06:52:02Z
+pcw-g0006-live_booking-data 2026-10-13T06:52:02Z
+BEFORE_CONTAINERS
+booking fb4072aa83b9 healthy
+catalog 2885bc879cd9 healthy
+mongo d85eca946094 healthy
+mysql-booking 4195e58b17d4 healthy
+mysql-pricing 5335be37c6ef healthy
+pricing 3a88d0a9ec27 healthy
+ Container pcw-g0006-live-booking-1 Stopping
+ Container pcw-g0006-live-booking-1 Stopped
+ Container pcw-g0006-live-booking-1 Removing
+ Container pcw-g0006-live-booking-1 Removed
+ Container pcw-g0006-live-pricing-1 Stopping
+ Container pcw-g0006-live-mysql-booking-1 Stopping
+ Container pcw-g0006-live-pricing-1 Stopped
+ Container pcw-g0006-live-pricing-1 Removing
+ Container pcw-g0006-live-pricing-1 Removed
+ Container pcw-g0006-live-catalog-1 Stopping
+ Container pcw-g0006-live-mysql-pricing-1 Stopping
+ Container pcw-g0006-live-catalog-1 Stopped
+ Container pcw-g0006-live-catalog-1 Removing
+ Container pcw-g0006-live-catalog-1 Removed
+ Container pcw-g0006-live-mongo-1 Stopping
+ Container pcw-g0006-live-mysql-booking-1 Stopped
+ Container pcw-g0006-live-mysql-booking-1 Removing
+ Container pcw-g0006-live-mysql-booking-1 Removed
+ Container pcw-g0006-live-mongo-1 Stopped
+ Container pcw-g0006-live-mongo-1 Removing
+ Container pcw-g0006-live-mongo-1 Removed
+ Container pcw-g0006-live-mysql-pricing-1 Stopped
+ Container pcw-g0006-live-mysql-pricing-1 Removing
+ Container pcw-g0006-live-mysql-pricing-1 Removed
+ Network pcw-g0006-live_default Removing
+ Network pcw-g0006-live_default Removed
+down_exit_code=0
+AFTER_DOWN_VOLUMES
+pcw-g0006-live_mongo-data 2026-10-13T06:52:02Z
+pcw-g0006-live_pricing-data 2026-10-13T06:52:02Z
+pcw-g0006-live_booking-data 2026-10-13T06:52:02Z
+ Network pcw-g0006-live_default Creating
+ Network pcw-g0006-live_default Creating
+ Network pcw-g0006-live_default Created
+ Network pcw-g0006-live_default Created
+ Container pcw-g0006-live-mongo-1 Creating
+ Container pcw-g0006-live-mysql-booking-1 Creating
+ Container pcw-g0006-live-mysql-pricing-1 Creating
+ Container pcw-g0006-live-mysql-pricing-1 Created
+ Container pcw-g0006-live-mysql-booking-1 Created
+ Container pcw-g0006-live-mongo-1 Created
+ Container pcw-g0006-live-catalog-1 Creating
+ Container pcw-g0006-live-catalog-1 Created
+ Container pcw-g0006-live-pricing-1 Creating
+ Container pcw-g0006-live-pricing-1 Created
+ Container pcw-g0006-live-booking-1 Creating
+ Container pcw-g0006-live-booking-1 Created
+ Container pcw-g0006-live-mysql-pricing-1 Starting
+ Container pcw-g0006-live-mongo-1 Starting
+ Container pcw-g0006-live-mysql-booking-1 Starting
+ Container pcw-g0006-live-mysql-booking-1 Started
+ Container pcw-g0006-live-mongo-1 Started
+ Container pcw-g0006-live-mongo-1 Waiting
+ Container pcw-g0006-live-mysql-pricing-1 Started
+ Container pcw-g0006-live-mongo-1 Healthy
+ Container pcw-g0006-live-catalog-1 Starting
+ Container pcw-g0006-live-catalog-1 Started
+ Container pcw-g0006-live-mysql-pricing-1 Waiting
+ Container pcw-g0006-live-catalog-1 Waiting
+ Container pcw-g0006-live-mysql-pricing-1 Healthy
+ Container pcw-g0006-live-catalog-1 Healthy
+ Container pcw-g0006-live-pricing-1 Starting
+ Container pcw-g0006-live-pricing-1 Started
+ Container pcw-g0006-live-pricing-1 Waiting
+ Container pcw-g0006-live-mysql-booking-1 Waiting
+ Container pcw-g0006-live-mysql-booking-1 Healthy
+ Container pcw-g0006-live-pricing-1 Healthy
+ Container pcw-g0006-live-booking-1 Starting
+ Container pcw-g0006-live-booking-1 Started
+ Container pcw-g0006-live-mysql-booking-1 Waiting
+ Container pcw-g0006-live-catalog-1 Waiting
+ Container pcw-g0006-live-pricing-1 Waiting
+ Container pcw-g0006-live-booking-1 Waiting
+ Container pcw-g0006-live-mongo-1 Waiting
+ Container pcw-g0006-live-mysql-pricing-1 Waiting
+ Container pcw-g0006-live-mysql-booking-1 Healthy
+ Container pcw-g0006-live-mongo-1 Healthy
+ Container pcw-g0006-live-catalog-1 Healthy
+ Container pcw-g0006-live-pricing-1 Healthy
+ Container pcw-g0006-live-mysql-pricing-1 Healthy
+ Container pcw-g0006-live-booking-1 Healthy
+up_exit_code=0
+AFTER_UP_VOLUMES
+pcw-g0006-live_mongo-data 2026-10-13T06:52:02Z
+pcw-g0006-live_pricing-data 2026-10-13T06:52:02Z
+pcw-g0006-live_booking-data 2026-10-13T06:52:02Z
+AFTER_UP_CONTAINERS
+booking 000bb104bc20 healthy
+catalog 21381701e1de healthy
+mongo bfbe66b5231d healthy
+mysql-booking 4d95311c2f26 healthy
+mysql-pricing 9aff3694a83a healthy
+pricing 3444ac126cb1 healthy
+RETRIEVED_ORDER_AND_CAPACITY
+{"orderId":"5a2d529d-3af9-4121-a508-c1a458e30b26","totalCents":10000,"quantity":1,"availability":{"eventId":"g6-occurrence-e1238acb","capacity":3,"confirmed":1,"held":0,"available":2}}
+retrieval_exit_code=0
+finished_at=2026-10-13T10:54:17.1636998Z

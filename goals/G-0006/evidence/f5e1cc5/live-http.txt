@@ -1,0 +1,9 @@
+G-0006-A01 — fixed source S f5e1cc5e576c45a785199374031e5853a4dc7606
+Base: f95ca02f1f54b4010c0e9b4c00cba6fa685d689e
+Accepted plan P: db494ebe4b5761cab9a1ecd67831dbad059f69b6
+
+The isolated six-service Compose project pcw-g0006-live was rebuilt from S and all services became healthy. The full unmodified `node scripts/demo-http.mjs` selected and passed 43 live HTTP assertions, zero failed or skipped, exit 0. The current count includes admission API assertions even though the G-0006 browser scope is the event purchase. The assertions include guest/employee role boundaries, owner-bound quote and order reads, preservation of an old $100 quote after a $125 publication, same-order retry, competing holds for the two remaining tickets, and nonnegative availability. Raw output and command timestamps: [checks/live-http.txt](checks/live-http.txt). Compose build and health output: [checks/compose-build.txt](checks/compose-build.txt).
+
+Synthetic HTTP fixture: product `lantern-04f6cd66`, event `evening-04f6cd66`, visit date `2026-10-20`, confirmed order `212835d5-749b-4930-8dee-4b35b14e358e`. These IDs identify only the HTTP script run, not the separate browser run. No actual payment or external customer data was involved.
+
+The later browser run supplies the additional employee-to-guest path and separate price/retry evidence in [browser walkthrough](browser-walkthrough.md). Its event `g6-occurrence-e1238acb` had capacity 3 and, after the order retry and restart, `confirmed=1`, `held=0`, `available=2` as recorded in [checks/restart-round2.txt](checks/restart-round2.txt).

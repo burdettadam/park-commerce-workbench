@@ -1,10 +1,10 @@
-> **Admission-checkout update:** dated entitlement sets, owner-bound confirmation/recovery, and additive SQL migration are included as a local candidate. See [contract](project/admission-checkout.md) and [verification](changes/admission-checkout/VERIFICATION.md). No admission browser UI or database runtime acceptance is claimed.
+> **Admission-checkout update:** dated entitlement sets, owner-bound confirmation/recovery, and additive SQL migration are included. See [contract](project/admission-checkout.md), [candidate verification](changes/admission-checkout/VERIFICATION.md), and [G-0005 database evidence](../goals/G-0005/evidence/1dd1ef2/database-tests.md). The guest browser flow below covers an event, not admission checkout.
 
 > **Pricing-contract update:** single-instant quote evaluation, read-only expiry status, strict shared parsers and independent cents fixtures. See [contract](project/pricing-contract.md) and [evidence](changes/pricing-contract/README.md). Framework execution and independent acceptance remain pending.
 
 > **Catalog-publication update:** immutable drafts, exact-version publishing, and stable audit history are now implemented as a local candidate. See [the contract](project/catalog-publication.md) and [candidate evidence](changes/catalog-publication/README.md).
 
-> **Checkout-recovery update:** owner-bound same-tab retry metadata and server checkout reconciliation are now implemented. See [the recovery contract](project/checkout-recovery.md) and [candidate evidence](changes/checkout-recovery/README.md). Full Spring, database and browser validation still need your workstation.
+> **Checkout-recovery update:** owner-bound same-tab retry metadata and server checkout reconciliation are now implemented. See [the recovery contract](project/checkout-recovery.md) and [candidate evidence](changes/checkout-recovery/README.md). Local validation still requires your own services and browser; the G-0006 goal records an executed event purchase on Windows.
 
 # Start here
 
@@ -92,7 +92,7 @@ node scripts/demo-http.mjs
 
 This creates uniquely named synthetic products/events, checks role access and quote ownership, exercises GraphQL pricing, publishes a price change, confirms a protected-price order, repeats checkout, and races ten HTTP holds for the two remaining tickets. It prints IDs you can inspect. It does **not** delete your existing data.
 
-The extra holds expire after five minutes; the confirmed order remains sold. The imported checkout passed 43 HTTP assertions on 2026-10-12; see [import verification](import-verification-2026-10-12.md). The original archive delivery did not execute this runtime exercise. Report any future failure rather than treating core test results as a substitute.
+The extra holds expire after five minutes; the confirmed order remains sold. The imported checkout passed 43 HTTP assertions on 2026-10-12; see [import verification](import-verification-2026-10-12.md). The script reports the current actual count, including admission API checks added later. The original archive delivery did not execute this runtime exercise. Report any future failure rather than treating core test results as a substitute.
 
 ## 6. Compile and run database integration tests
 
@@ -135,7 +135,16 @@ Visit `http://127.0.0.1:4200`. Paste **DEMO_GUEST_TOKEN** from `.env` into the p
 
 The application sends quotes through GraphQL and booking commands through REST. Tokens stay in memory. Only the schema version, authenticated subject, hold ID and retry key are retained in **sessionStorage**. After a reload, reenter the token and authenticate; the server reports whether the original hold is active, confirmed or expired. Checking status never confirms a purchase. A timeout preserves the original key. Form edits and new purchases stay blocked until the checkout is resolved and explicitly cleared. Closing the tab or clearing site data is not a supported recovery guarantee. See [the lifecycle and limits](project/checkout-recovery.md).
 
-The checkout includes `storefront/package-lock.json` for repeatable installs. The Angular build and type check have passed locally and in hosted CI; browser behavior remains unverified. The development proxy uses ports 8081/8082/8083 unless you set `CATALOG_PORT`, `PRICING_PORT`, and `BOOKING_PORT` in its process.
+The checkout includes `storefront/package-lock.json` for repeatable installs. The Angular build and type check have passed locally and in hosted CI. The development proxy uses ports 8081/8082/8083 unless you set `CATALOG_PORT`, `PRICING_PORT`, and `BOOKING_PORT` in its process. For a second isolated worktree, assign unused ports in its `.env`, then set those three variables in the Angular process. For example, from `storefront` in PowerShell after assigning API ports 8381/8382/8383:
+
+```powershell
+$env:CATALOG_PORT = '8381'
+$env:PRICING_PORT = '8382'
+$env:BOOKING_PORT = '8383'
+node node_modules/@angular/cli/bin/ng.js serve --host 127.0.0.1 --port 4300 --proxy-config proxy.conf.cjs
+```
+
+Verify that both the Angular port and API ports are unused first. This example is local only; stop only the process you started.
 
 ## 8. Start the Vaadin employee client
 
@@ -148,9 +157,15 @@ mvn -Pui -pl admin-console spring-boot:run
 
 Visit `http://127.0.0.1:8080` and paste **DEMO_EMPLOYEE_TOKEN** from `.env`. Publish product revision 1, price version 1, then an event occurrence. Subsequent publication requires the next revision/version.
 
-The console can preview **unpublished** candidate prices without issuing a quote or publishing the rates. Vaadin Java compilation and a forced production frontend build passed locally in G-0004; browser interaction remains unverified. This local-only console has no production login flow. It holds the entered token in its Vaadin view/session memory and forwards it to the API; the API enforces the employee role. The session expires after fifteen minutes of inactivity. It does not persist tokens to a database or file.
+The console can preview **unpublished** candidate prices without issuing a quote or publishing the rates. Vaadin Java compilation and a forced production frontend build passed locally in G-0004. G-0006 exercises the real browser path. For the isolated API ports above, the built console can run on another free loopback port with process arguments:
 
-The optional UI profile keeps Vaadin's frontend toolchain out of the three backend builds. The committed `admin-console/package.json` and `package-lock.json` came from Vaadin's generated inputs. The `production` profile forces a fresh frontend bundle and uses `npm ci`; a package/lock mismatch fails the build. Do not substitute a precompiled-bundle success for this clean build check. The generated bundle is ignored; browser behavior remains a separate verification task.
+```powershell
+java -jar admin-console/target/admin.jar --server.port=8480 --park.catalog-url=http://127.0.0.1:8381 --park.pricing-url=http://127.0.0.1:8382 --park.booking-url=http://127.0.0.1:8383
+```
+
+This local-only console has no production login flow. It holds the entered token in its Vaadin view/session memory and forwards it to the API; the API enforces the employee role. The session expires after fifteen minutes of inactivity. It does not persist tokens to a database or file.
+
+The optional UI profile keeps Vaadin's frontend toolchain out of the three backend builds. The committed `admin-console/package.json` and `package-lock.json` came from Vaadin's generated inputs. The `production` profile forces a fresh frontend bundle and uses `npm ci`; a package/lock mismatch fails the build. Do not substitute a precompiled-bundle success for this clean build check. The generated bundle is ignored; browser behavior remains a separate verification task from compilation.
 
 ## 9. Stop without destroying data
 

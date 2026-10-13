@@ -1,0 +1,71 @@
+const {chromium}=require('playwright');
+const {readFileSync,mkdirSync}=require('node:fs');
+const {randomUUID}=require('node:crypto');
+const path=require('node:path');
+const assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../g0006-live');
+const env=Object.fromEntries(readFileSync(path.join(root,'.env'),'utf8').split(/\r?\n/).map(x=>x.split('=')).filter(x=>x.length===2));
+const out=path.join(__dirname,'screenshots');mkdirSync(out,{recursive:true});
+const suffix=randomUUID().slice(0,8),productId=`g6-event-${suffix}`,eventId=`g6-occurrence-${suffix}`;
+const browserPath=process.env.LOCALAPPDATA+'\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe';
+async function api(service,path,token){const port={catalog:8381,pricing:8382,booking:8383}[service];const r=await fetch(`http://127.0.0.1:${port}${path}`,{headers:token?{Authorization:`Bearer ${token}`}:{}});assert.equal(r.status,200,`${service} ${path}: ${r.status}`);return r.json()}
+async function post(service,path,token,body){const port={catalog:8381,pricing:8382,booking:8383}[service];const r=await fetch(`http://127.0.0.1:${port}${path}`,{method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body:JSON.stringify(body)});assert.equal(r.status,200,`${service} ${path}: ${r.status}`);return r.json()}
+async function action(page,name,expected){await page.getByRole('button',{name,exact:true}).click();await page.getByRole('status').first().getByText(expected,{exact:false}).waitFor({timeout:10000});}
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:browserPath});
+ try{
+  const context=await browser.newContext({viewport:{width:1400,height:1000}});
+  const admin=await context.newPage();await admin.goto('http://127.0.0.1:8480/',{waitUntil:'networkidle'});
+  await admin.getByLabel('Employee demo token').fill(env.DEMO_EMPLOYEE_TOKEN);
+  await admin.getByLabel('Product ID').fill(productId);
+  await admin.getByLabel('Product name').fill(`G6 Lantern Evening ${suffix}`);
+  await action(admin,'Save new draft version','SAVED DRAFT');
+  await action(admin,'Publish reviewed saved draft','PUBLISHED revision 1');
+  const product=await api('catalog',`/api/products/${productId}`);assert.equal(product.revision,1);
+  await action(admin,'Publish price book','PriceBook');
+  const dateDisplay=await admin.getByLabel('Visit date').inputValue();
+  const visitDate=/^\d{4}-\d{2}-\d{2}$/.test(dateDisplay)?dateDisplay:(()=>{const [m,d,y]=dateDisplay.split('/');return `${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`})();
+  await admin.getByLabel('Event occurrence ID').fill(eventId);
+  await admin.getByLabel('Shared adult/child capacity').fill('3');
+  await action(admin,'Create event occurrence','Event');
+  await admin.screenshot({path:path.join(out,`${suffix}-admin.png`),fullPage:true});
+  console.log(JSON.stringify({step:'admin',productId,eventId,visitDate,revision:product.revision}));
+  const guest=await context.newPage();await guest.goto('http://127.0.0.1:4300/',{waitUntil:'networkidle'});
+  assert((await guest.locator('footer').innerText()).includes('Same-tab recovery only'));
+  await guest.getByLabel('Guest demo token').fill(env.DEMO_GUEST_TOKEN);
+  await guest.getByRole('button',{name:'Authenticate and recover saved checkout'}).click();
+  await guest.getByText('Authenticated as guest.').waitFor();
+  await guest.getByRole('button',{name:'Load published products'}).click();
+  await guest.locator('select').selectOption(productId);
+  await guest.getByLabel('Visit date').fill(visitDate);
+  const quoteResponse=guest.waitForResponse(r=>r.url().includes('/pricing/graphql')&&r.request().method()==='POST');
+  await guest.getByRole('button',{name:'Get itemized quote'}).click();
+  const quoted=(await (await quoteResponse).json()).data.createQuote;
+  await guest.getByText('Price version 1').waitFor();
+  await guest.screenshot({path:path.join(out,`${suffix}-quote.png`),fullPage:true});
+  const guestText=await guest.locator('body').innerText();
+  assert.equal(quoted.total.cents,'10000');
+  await admin.getByLabel('Pricing version').fill('2');
+  await admin.getByLabel('Adult price (USD)').fill('125.00');
+  await action(admin,'Publish price book','PriceBook');
+  const oldQuote=await api('pricing',`/api/quotes/${quoted.id}`,env.DEMO_GUEST_TOKEN);
+  const fresh=await post('pricing','/graphql',env.DEMO_OTHER_GUEST_TOKEN,{query:'mutation($input:QuoteInput!){createQuote(input:$input){id pricingVersion total{cents}}}',variables:{input:{productId,visitDate,adults:1,children:0}}});
+  assert.equal(oldQuote.total.cents,10000);assert.equal(fresh.data.createQuote.total.cents,'12500');
+  console.log(JSON.stringify({step:'quote',quoteId:quoted.id,oldVersion:oldQuote.pricingVersion,oldCents:oldQuote.total.cents,newCents:fresh.data.createQuote.total.cents,uiKeepsOldPrice:guestText.includes('$100.00')}));
+  await guest.getByLabel('Evening-event occurrence ID').fill(eventId);
+  await guest.getByRole('button',{name:'Hold event capacity'}).click();
+  await guest.getByText('Inventory held and retry identity saved').waitFor();
+  await guest.getByRole('button',{name:'Confirm saved simulated purchase'}).click();
+  await guest.getByText('Server confirmed').waitFor();
+  const receipt=await guest.locator('.receipt').innerText();
+  const orderId=receipt.match(/Order\s+([0-9a-f-]{36})/)?.[1];assert(orderId,receipt);
+  const first=await api('booking',`/api/orders/${orderId}`,env.DEMO_GUEST_TOKEN);
+  await guest.getByRole('button',{name:'Retry same checkout'}).click();
+  await guest.getByText('Simulated purchase confirmed').waitFor();
+  const retried=await api('booking',`/api/orders/${orderId}`,env.DEMO_GUEST_TOKEN);
+  assert.deepEqual(retried,first);
+  await guest.screenshot({path:path.join(out,`${suffix}-order.png`),fullPage:true});
+  console.log(JSON.stringify({step:'order',orderId,totalCents:first.total.cents,quantity:first.quantity,receipt,originalPriceRetained:first.total.cents===10000}));
+  await context.close();
+ }finally{await browser.close()}
+})().catch(e=>{console.error(e.stack||e.message);process.exitCode=1});
