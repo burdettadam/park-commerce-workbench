@@ -6,4 +6,4 @@ The isolated six-service Compose project pcw-g0006-live was rebuilt from S and a
 
 Synthetic HTTP fixture: product `lantern-04f6cd66`, event `evening-04f6cd66`, visit date `2026-10-20`, confirmed order `212835d5-749b-4930-8dee-4b35b14e358e`. These IDs identify only the HTTP script run, not the separate browser run. No actual payment or external customer data was involved.
 
-The browser run supplies the additional employee-to-guest path and separate price/retry evidence in [browser walkthrough](browser-walkthrough.md). Its event `g6-occurrence-65db25a9` had capacity 3 and, after the order retry and restart, `confirmed=1`, `held=0`, `available=2` as recorded in [checks/restart.txt](checks/restart.txt).
+The later browser run supplies the additional employee-to-guest path and separate price/retry evidence in [browser walkthrough](browser-walkthrough.md). Its event `g6-occurrence-e1238acb` had capacity 3 and, after the order retry and restart, `confirmed=1`, `held=0`, `available=2` as recorded in [checks/restart-round2.txt](checks/restart-round2.txt).

@@ -43,7 +43,6 @@ async function action(page,name,expected){await page.getByRole('button',{name,ex
   const quoted=(await (await quoteResponse).json()).data.createQuote;
   await guest.getByText('Price version 1').waitFor();
   await guest.screenshot({path:path.join(out,`${suffix}-quote.png`),fullPage:true});
-  const guestText=await guest.locator('body').innerText();
   assert.equal(quoted.total.cents,'10000');
   await admin.getByLabel('Pricing version').fill('2');
   await admin.getByLabel('Adult price (USD)').fill('125.00');
@@ -51,7 +50,10 @@ async function action(page,name,expected){await page.getByRole('button',{name,ex
   const oldQuote=await api('pricing',`/api/quotes/${quoted.id}`,env.DEMO_GUEST_TOKEN);
   const fresh=await post('pricing','/graphql',env.DEMO_OTHER_GUEST_TOKEN,{query:'mutation($input:QuoteInput!){createQuote(input:$input){id pricingVersion total{cents}}}',variables:{input:{productId,visitDate,adults:1,children:0}}});
   assert.equal(oldQuote.total.cents,10000);assert.equal(fresh.data.createQuote.total.cents,'12500');
-  console.log(JSON.stringify({step:'quote',quoteId:quoted.id,oldVersion:oldQuote.pricingVersion,oldCents:oldQuote.total.cents,newCents:fresh.data.createQuote.total.cents,uiKeepsOldPrice:guestText.includes('$100.00')}));
+  const guestTotalAfterReprice=await guest.locator('.total dd').innerText();
+  assert.match(guestTotalAfterReprice,/\$100\.00 USD/);
+  await guest.screenshot({path:path.join(out,`${suffix}-reprice.png`),fullPage:true});
+  console.log(JSON.stringify({step:'quote',quoteId:quoted.id,oldVersion:oldQuote.pricingVersion,oldCents:oldQuote.total.cents,newCents:fresh.data.createQuote.total.cents,guestTotalAfterReprice}));
   await guest.getByLabel('Evening-event occurrence ID').fill(eventId);
   await guest.getByRole('button',{name:'Hold event capacity'}).click();
   await guest.getByText('Inventory held and retry identity saved').waitFor();

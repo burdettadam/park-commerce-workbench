@@ -1,9 +1,10 @@
-started_at=2026-10-13T10:37:49.1443034Z
+started_at=2026-10-13T10:52:37.5156357Z
 source=f5e1cc5e576c45a785199374031e5853a4dc7606
 command=node ..\g0006-browser\flow.cjs
 working_directory=.tmp/g0006-live
-{"step":"admin","productId":"g6-event-65db25a9","eventId":"g6-occurrence-65db25a9","visitDate":"2026-10-20","revision":1}
-{"step":"quote","quoteId":"37fbc3dd-9c11-4903-a176-cfecd4c8c5e0","oldVersion":1,"oldCents":10000,"newCents":"12500","uiKeepsOldPrice":true}
-{"step":"order","orderId":"38bc4892-f810-42b0-90fd-5ae9413b858e","totalCents":10000,"quantity":1,"receipt":"Server confirmed\n\nOrder 38bc4892-f810-42b0-90fd-5ae9413b858e\n\nAmount $100.00 � 1 ticket(s)\n\nNo payment was taken.","originalPriceRetained":true}
-finished_at=2026-10-13T10:37:54.5565656Z
+review_disposition=round1 post-publication UI assertion
+{"step":"admin","productId":"g6-event-e1238acb","eventId":"g6-occurrence-e1238acb","visitDate":"2026-10-20","revision":1}
+{"step":"quote","quoteId":"98cf4bd3-8e67-4452-aac3-65f0946a74b0","oldVersion":1,"oldCents":10000,"newCents":"12500","guestTotalAfterReprice":"$100.00 USD"}
+{"step":"order","orderId":"5a2d529d-3af9-4121-a508-c1a458e30b26","totalCents":10000,"quantity":1,"receipt":"Server confirmed\n\nOrder 5a2d529d-3af9-4121-a508-c1a458e30b26\n\nAmount $100.00 � 1 ticket(s)\n\nNo payment was taken.","originalPriceRetained":true}
+finished_at=2026-10-13T10:52:47.5464424Z
 exit_code=0
