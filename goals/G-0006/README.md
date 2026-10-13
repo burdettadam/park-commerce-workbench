@@ -1,6 +1,6 @@
 # G-0006 — Demonstrate the original live event purchase flow
 
-Status: **active**. Milestone: M1. Dependency: [G-0005 ready](../G-0005/README.md) at `f95ca02f1f54b4010c0e9b4c00cba6fa685d689e`, still on draft PR #7 and not merged to `main`.
+Status: **ready** for the accepted local event-purchase scope. Milestone: M1. Dependency: [G-0005 ready](../G-0005/README.md) at `f95ca02f1f54b4010c0e9b4c00cba6fa685d689e`, promoted by PR #7 to `main` at `a16f17a22cbec11d5734d31bf1fbeca8dd70058e`. G-0006 report checkpoint `13b57d3890a4fc519334c3ded45788fd86b7eb89` was retrieved from public Git with 40/40 evidence files matching; [final retrieval](work/final-retrieval.md) records the proof. Readiness does not claim a merge, version tag, release artifact or deployment.
 
 ## Accepted work contract
 
@@ -106,12 +106,12 @@ Changes to these rules are reviewed under the previous accepted rules, never sel
 
 Retain source/branch/artifact checkpoints before the canonical coordination record, identify every indispensable component, then prove retrieval. Until privacy is verified, use local artifacts and label coverage `local_only`; do not claim off-device recovery. Record source S separately from later evidence/report commit E so the report does not need its own future commit hash.
 
-## Activation and next action
+## Outcome and next action
 
-- Accepted plan commit P and exact file digest: record in [bootstrap](work/bootstrap.md) after activation commit.
-- Source candidate S: not selected. The base includes G-0005 ready source and evidence at `f95ca02f1f54b4010c0e9b4c00cba6fa685d689e`.
-- Runtime: no G-0006-owned instance has been started or verified. Any preexisting Compose containers require ownership and endpoint checks before use.
-- Verification, browser validation, independent reviews, final decision and release: not performed for G-0006 at activation.
-- Next action: publish and retrieve activation P, inspect the actual Compose/HTTP and both UI paths, then start the bounded live-flow implementation and checks.
+- Accepted plan P `db494ebe4b5761cab9a1ecd67831dbad059f69b6`, exact bytes and digest in [accepted-plan.md](evidence/f5e1cc5/accepted-plan.md); fixed product source S `f5e1cc5e576c45a785199374031e5853a4dc7606`.
+- Six healthy Compose services, 43 selected live HTTP assertions, passing Angular and Vaadin builds, actual Vaadin-to-Angular purchase, preserved $100 quote after $125 publication, one retry-safe order/capacity unit, and volume-preserving restart retrieval are retained under [evidence](evidence/f5e1cc5/). The filled [manifest](evidence/f5e1cc5/manifest.json) passes local and fresh-clone structure/digest validation for 39 hashed artifacts.
+- Adam delegated intended-use validation to Codex on 2026-10-13. The [scoped validation](evidence/f5e1cc5/validation.md) accepts the local synthetic event path. Both configured native reviewer roles completed three rounds; the [final disposition](evidence/f5e1cc5/reviews/round3-disposition.md) records the technical result and the process finding closed by the final public retrieval.
+- Final report checkpoint `13b57d3890a4fc519334c3ded45788fd86b7eb89` and all 40 evidence files were retrieved on a fresh public clone with identical SHA-256 bytes. [Final retrieval](work/final-retrieval.md) names the proof and remaining local-only state.
+- PR #8 targets `main` after PR #7 promotion. Reconcile Git ancestry, verify the resulting combined tree and free CI, then merge this untagged goal work under Adam's current authorization. Any later version-producing release merge needs its separate human review.
 
 [Milestone M1](../../docs/roadmap/milestones/M1.md) · [Roadmap](../../docs/roadmap/README.md) · [Commands](../../docs/roadmap/COMMANDS.md)
