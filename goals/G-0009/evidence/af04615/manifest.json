@@ -241,13 +241,13 @@
     {
       "id": "CHECK-NODE",
       "path": "checks/node-fixtures-1.txt",
-      "sha256": "2b9fbfa3082d4a2b32603404bc2d65903dce2e67980f0abede4c5fa254cb89fb",
+      "sha256": "0958f5e62c77502ae1a7b756fe72d2d170f16f52cf05d4e8e730cf836e88833b",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
       "id": "CHECK-CORE",
       "path": "checks/core-demo-1.txt",
-      "sha256": "7a5ef1a5617bb8b49fe2e061ccc5205e8ffb2dc7fee617d9109f6ca542170caa",
+      "sha256": "86fe515e8d80a3d099bdd3a74b78d6eef5e60e0a6ce5a2c518377da412096799",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
@@ -283,7 +283,7 @@
     {
       "id": "CHECK-LOCAL-META",
       "path": "checks/local-checks.md",
-      "sha256": "b0e98e102a16fae7afdda83c453705863b8d4bc3c2b8a0a4c395438acfb2d210",
+      "sha256": "b897377cfc69a15060e5836fef296723c3e63774ef4bf94c1f7f6ed69fe99bcd",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
