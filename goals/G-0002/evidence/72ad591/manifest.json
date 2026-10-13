@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0002",
+  "claim": "ready",
+  "candidate": {
+    "source_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+    "base_commit": "f4ca6dc02d96a309763b1725b2eb3782cadd8f76",
+    "negative_control": {
+      "commit": "79560f4fc6692584f414e6851122bbc2058609dc",
+      "derived_from_commit": "df6e9b9819cda0170bd9233387f72e16aa73573f",
+      "purpose": "disposable committed old-substring guard challenge, local-only"
+    },
+    "accepted_plan_commit": "56ea84e4e0d0429e3c7069c7a48efd1d903b9bec",
+    "accepted_plan_path": "goals/G-0002/README.md",
+    "accepted_plan_sha256": "d2bffe23ad8954ba35eec3e3c36e92a110fd4b5bf054f06c96ab2e67c41d8ad3",
+    "working_tree_clean": true,
+    "configuration_sha256": "9ae437b56e4c48cffdda051339c2b2bd2e3913fac636edf816ea1809e8670141",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "RED-CHALLENGE",
+      "type": "expected_failure",
+      "candidate_commit": "79560f4fc6692584f414e6851122bbc2058609dc",
+      "command": "C:\\Program Files\\Git\\bin\\bash.exe scripts/test-tooling.sh",
+      "working_directory": ".",
+      "started_at": "2026-10-12T23:50:19.1630748Z",
+      "finished_at": "2026-10-12T23:50:28.9406234Z",
+      "expected_exit_code": 1,
+      "observed_exit_code": 1,
+      "selected": 29,
+      "passed": 18,
+      "failed": 11,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "11 rejected-output failures, including all three required look-alikes; negative control only",
+      "output_artifact_id": "G-0002-A01"
+    },
+    {
+      "id": "GREEN-MOCK",
+      "type": "automated",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+      "command": "C:\\Program Files\\Git\\bin\\bash.exe scripts/test-tooling.sh",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:03:55.595725Z",
+      "finished_at": "2026-10-13T00:04:01.113012Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "29 of 29 tooling assertions passed; zero skips",
+      "output_artifact_id": "G-0002-A02"
+    },
+    {
+      "id": "REAL-VERSION",
+      "type": "automated",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+      "command": "C:\\Program Files\\Git\\bin\\bash.exe -lc 'git agent --version'",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:04:09.519995Z",
+      "finished_at": "2026-10-13T00:04:09.727562Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "exact reviewed git-agent 0.2.0 output",
+      "output_artifact_id": "G-0002-A02"
+    },
+    {
+      "id": "REAL-PREVIEW",
+      "type": "automated",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+      "command": "C:\\Program Files\\Git\\bin\\bash.exe scripts/init-agent.sh --preview",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:04:09.728083Z",
+      "finished_at": "2026-10-13T00:04:13.462928Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "real reviewed initializer dry-run exited 0 and made no project writes",
+      "output_artifact_id": "G-0002-A02"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0002-AC01",
+      "result": "passed",
+      "independent_expected_result": "In a disposable worktree, commit a deliberately restored old substring check on a local-only challenge branch and show that the existing mock tests fail for 0.2.01, 10.2.0 and 0.2.0-rc.1. Retain that exact challenge commit, failing assertions and exit status. Archived pre-fix evidence is historical context, not a new goal run or a new product defect.",
+      "check_ids": [
+        "RED-CHALLENGE"
+      ],
+      "artifact_ids": [
+        "G-0002-A01"
+      ]
+    },
+    {
+      "id": "G-0002-AC02",
+      "result": "passed",
+      "independent_expected_result": "On the unchanged current source, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked. Also run a preview with the reviewed real initializer on the current worktree; distinguish that observation from mock coverage.",
+      "check_ids": [
+        "GREEN-MOCK",
+        "REAL-VERSION",
+        "REAL-PREVIEW"
+      ],
+      "artifact_ids": [
+        "G-0002-A02"
+      ]
+    },
+    {
+      "id": "G-0002-AC03",
+      "result": "passed",
+      "independent_expected_result": "All existing tooling checks remain selected and passing on the intended host, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Record any host-specific skipped check explicitly; do not replace assertions with snapshots.",
+      "check_ids": [
+        "GREEN-MOCK"
+      ],
+      "artifact_ids": [
+        "G-0002-A02"
+      ]
+    },
+    {
+      "id": "G-0002-AC04",
+      "result": "passed",
+      "independent_expected_result": "Obtain independent contract and adversarial reviews of fixed candidate S, including the challenge method and any actual product diff. A relevant source or test change invalidates stale review coverage. Record actual acceptance separately; no reviewer, tag or approval is fabricated.",
+      "check_ids": [
+        "GREEN-MOCK",
+        "REAL-PREVIEW"
+      ],
+      "artifact_ids": [
+        "G-0002-A03",
+        "REVIEW-CONTRACT",
+        "REVIEW-ADVERSARIAL",
+        "CHECK-OUTPUT"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0002-A01",
+      "path": "red-before.txt",
+      "sha256": "9719b7a9efc01718e475045ac18c7fc4e58247d415d483c7e9147c6d1e98af89",
+      "candidate_commit": "79560f4fc6692584f414e6851122bbc2058609dc"
+    },
+    {
+      "id": "G-0002-A02",
+      "path": "green-after.txt",
+      "sha256": "6c15dcb136d8a623b9c75ac901c2181cc0db6c8d1400b523a378bb9bb8dc80ef",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "G-0002-A03",
+      "path": "scope-and-review.md",
+      "sha256": "5187d3b4f1448ca9b172d498350f2f502b482069c497bd2b320b363c866d2cdc",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "f7123366524e478c283e5e52d8c3ee7ebd13eca7a56632a2e0be64efc90ae896",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "CHECK-OUTPUT",
+      "path": "checks/command.txt",
+      "sha256": "508c3f89d1d32858ac2ae56c8600ce39f02c3a1a9d1c643b8efd75400fa195fb",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": "03ec3888124353ea8de62448fa8a9b976b8c735cbdeaf96d975ada9fd409069a",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": "a542ec7eacb6f36af24474b4f1c6b0743cd9d6853f76cd0baf2e8a8013222227",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "4527f306ec5c670430d9e9ad1815cb3fad4c11ecc25b7fd2370473d35b5712c1",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "a3223766e0ffb39a02957bcda2cf15c585f467214603380659a0313e0c4ea050",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "dc80d2c8636b3c2477ce0a5cc653e971875f676611e761ed4fae69e04b236241",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "d2bffe23ad8954ba35eec3e3c36e92a110fd4b5bf054f06c96ab2e67c41d8ad3",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "9ae437b56e4c48cffdda051339c2b2bd2e3913fac636edf816ea1809e8670141",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    },
+    {
+      "id": "REVIEW-PROVENANCE",
+      "path": "reviews/native-provenance.md",
+      "sha256": "18da480f46e795227e981f1f35d9ecf1ae4aba1db475d6208b6b0ce47d996ffa",
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": "contract-reviewer",
+      "session_id": "01a13294-25df-7e02-8bd6-e399f7bca972",
+      "independent_of_writer": true,
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+      "round": 2,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": "adversarial-reviewer",
+      "session_id": "01a13294-524e-7401-b8bc-0e2cf7240830",
+      "independent_of_writer": true,
+      "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+      "round": 2,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": "Codex integration writer, explicitly delegated by Adam Burdett",
+    "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+    "decision": "accept",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": "Codex G-0002 integration record maintainer under accepted plan",
+    "candidate_commit": "72ad59192e667e9e1048c5f3f65efc21e087005a",
+    "decision": "ready",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Codex integration writer; public report branch and local-only raw/R custody",
+    "retrieval_verified": true,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}

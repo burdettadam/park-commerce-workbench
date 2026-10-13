@@ -6,4 +6,6 @@ Initial round-2 finding: **material verification gap**. S changes evidence valid
 
 Follow-up in the **same child thread**: inspected `../checks/command.txt` and local raw `.tmp/g0002-s1-roadmap-raw.txt`; matched SHA-256 `f8795ddac702070b1616ec5547d7721b7f986fc01e7d49fbbc8d3d8bba20f63d`. The run exited 0: 47 selected, 46 passed, 0 failed, one existing symlink fixture skipped because Windows denied symlink creation (EPERM). All new negative-control tests passed. **Final source/control decision: pass, zero open source/control blockers.** The 29-check product mock suite had zero skips.
 
+The later filled-manifest semantic review found two report-only truth errors: red-before.txt mislabeled R as a child of final S, and decision.md called the unsigned JSON manifest signed. The writer corrected both and updated the digests; the same child verified both corrections and the refreshed manifest digests; its source/control pass stands with no local evidence blocker.
+
 The structural validator does not authenticate Git ancestry, human authority or actual command execution. The skipped symlink fixture is unverified on this host. Final manifest/retrieval and any version-producing merge are separate writer/owner records, not granted by this review. This report transcribes the independent native review without implying the reviewer edited it.
