@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0009",
+  "claim": "not_ready",
+  "candidate": {
+    "source_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+    "base_commit": "620a505cc68f81fac58f596cb4d8488c83b9d903",
+    "accepted_plan_commit": "ae52a4564ff732994578a7d698713d042e2bf287",
+    "accepted_plan_path": "goals/G-0009/README.md",
+    "accepted_plan_sha256": "09b837e4294b77cc79e4e12e13eccba389de2e540b9639fc7726169b668e501d",
+    "working_tree_clean": true,
+    "configuration_sha256": "e6132b8ee6427633316664272c0eb834dddae0fd22279832b6b3d1f3655bcc5e",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "LOCAL-NODE",
+      "type": "automated",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+      "command": "node --test scripts/pricing-contract.test.mjs",
+      "working_directory": ".tmp/g0009-planning",
+      "started_at": "2026-10-13T23:02:10Z",
+      "finished_at": "2026-10-13T23:02:11Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "29 literal/oracle/SDL checks passed.",
+      "output_artifact_id": "CHECK-NODE"
+    },
+    {
+      "id": "LOCAL-CORE",
+      "type": "automated",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+      "command": "C:/Program Files/Git/bin/bash.exe scripts/test-core.sh --demo",
+      "working_directory": ".tmp/g0009-planning",
+      "started_at": "2026-10-13T23:02:11Z",
+      "finished_at": "2026-10-13T23:02:14Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 280,
+      "passed": 280,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280 core scenarios passed.",
+      "output_artifact_id": "CHECK-CORE"
+    },
+    {
+      "id": "LOCAL-PRICING",
+      "type": "automated",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+      "command": "mvn -B -ntp -Pintegration -pl pricing-service -am -Dit.test=QuoteContractIT -Dfailsafe.failIfNoSpecifiedTests=false verify",
+      "working_directory": ".tmp/g0009-planning",
+      "started_at": "2026-10-13T23:02:19Z",
+      "finished_at": "2026-10-13T23:02:44Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Real MySQL/Spring QuoteContractIT 16/16 passed; zero skips.",
+      "output_artifact_id": "CHECK-PRICING"
+    },
+    {
+      "id": "LOCAL-BOOKING",
+      "type": "automated",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+      "command": "mvn -B -ntp -Pintegration -pl booking-service -am -Dit.test=CheckoutRecoveryIT -Dfailsafe.failIfNoSpecifiedTests=false verify",
+      "working_directory": ".tmp/g0009-planning",
+      "started_at": "2026-10-13T23:02:50Z",
+      "finished_at": "2026-10-13T23:03:11Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Real MySQL/Spring CheckoutRecoveryIT 8/8 passed; zero skips.",
+      "output_artifact_id": "CHECK-BOOKING"
+    },
+    {
+      "id": "HOSTED-JAVA",
+      "type": "automated",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+      "command": "bash scripts/verify.sh --integration",
+      "working_directory": ".",
+      "started_at": "2026-10-13T23:02:10Z",
+      "finished_at": "2026-10-13T23:04:27Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 356,
+      "passed": 356,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Nine JUnit suites, 356/356 tests, zero skips, in public free run 38481693801.",
+      "output_artifact_id": "CHECK-HOSTED-JUNIT"
+    },
+    {
+      "id": "HOSTED-LIVE",
+      "type": "automated",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+      "command": "node scripts/demo-http.mjs",
+      "working_directory": ".",
+      "started_at": "2026-10-13T23:02:10Z",
+      "finished_at": "2026-10-13T23:04:11Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "43/43 live HTTP acceptance checks passed in public free run 38481693801.",
+      "output_artifact_id": "CHECK-HOSTED-LIVE"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0009-AC01",
+      "result": "not_run",
+      "independent_expected_result": "A reviewed fixture pack covers no offer, exact threshold, one-below threshold, mixed adult/child quantities and every applicable rounding boundary using expected cents calculated independently of implementation.",
+      "check_ids": [
+        "LOCAL-NODE",
+        "LOCAL-CORE",
+        "HOSTED-JAVA"
+      ],
+      "artifact_ids": [
+        "G-0009-A01"
+      ]
+    },
+    {
+      "id": "G-0009-AC02",
+      "result": "not_run",
+      "independent_expected_result": "Test date-range endpoints, invalid dates, park-local timezone transitions, exact quote-expiry instant and expired/unknown quote errors through the public API.",
+      "check_ids": [
+        "LOCAL-CORE",
+        "LOCAL-PRICING",
+        "LOCAL-BOOKING",
+        "HOSTED-JAVA"
+      ],
+      "artifact_ids": [
+        "G-0009-A02"
+      ]
+    },
+    {
+      "id": "G-0009-AC03",
+      "result": "not_run",
+      "independent_expected_result": "A quote identifies catalog and pricing versions and cannot be rewritten by new publications. Own/other-user/service-role access behaves consistently across REST and GraphQL.",
+      "check_ids": [
+        "LOCAL-PRICING",
+        "HOSTED-JAVA",
+        "HOSTED-LIVE"
+      ],
+      "artifact_ids": [
+        "G-0009-A02"
+      ]
+    },
+    {
+      "id": "G-0009-AC04",
+      "result": "not_run",
+      "independent_expected_result": "Publish contract examples and explicit exclusions; retain schema/consumer tests that fail for an incompatible quote or error-shape change.",
+      "check_ids": [
+        "LOCAL-NODE",
+        "LOCAL-PRICING",
+        "HOSTED-JAVA"
+      ],
+      "artifact_ids": [
+        "G-0009-A03"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0009-A01",
+      "path": "pricing-contract-fixtures.json",
+      "sha256": "d8c6c0093997e7b4f9b9ae0a999ca949b1f65ab8311bd10f62b202f1baf7a3ba",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "G-0009-A02",
+      "path": "quote-boundary-tests.md",
+      "sha256": "600c15ed8fe7d90e63f93d4aa6b24165c89dfd643675ef6d5dc2e738903ca6d7",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "G-0009-A03",
+      "path": "contract-examples.md",
+      "sha256": "30464d5609df8b949d8d32e9b882b1c663b6d86b44e0e5211d21e2bad3f22f15",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "a47be512e4841d7b713c97973ed9dda79a35ee50adc77f6e12aaaffceabb647d",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "e6132b8ee6427633316664272c0eb834dddae0fd22279832b6b3d1f3655bcc5e",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "09b837e4294b77cc79e4e12e13eccba389de2e540b9639fc7726169b668e501d",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "5b4824380076f8b20e5681bcbda387630bbc0ecc6d9496612ce98bd3495ff801",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "bfb1a55f70ef68e26a29e1dd838acf9b7e0935fdfc94baad9e6051b3aadc667a",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "9e52606b53450471cb2016235cd7f10b26142696dd2d9cb108855b4c16ee87e1",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "SCOPE",
+      "path": "scope-and-review.md",
+      "sha256": "7aaf1357796e17db7abf9e32c97db93146a39fa3bcbef7e6245bd64702571b73",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-NODE",
+      "path": "checks/node-fixtures-1.txt",
+      "sha256": "2b9fbfa3082d4a2b32603404bc2d65903dce2e67980f0abede4c5fa254cb89fb",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-CORE",
+      "path": "checks/core-demo-1.txt",
+      "sha256": "7a5ef1a5617bb8b49fe2e061ccc5205e8ffb2dc7fee617d9109f6ca542170caa",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-PRICING",
+      "path": "checks/pricing-junit-summary.txt",
+      "sha256": "f10035dc5a75555da5be1e33b0ede55c394089aabcd3df47ffee1448a9be1c60",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-BOOKING",
+      "path": "checks/booking-junit-summary.txt",
+      "sha256": "8727231079e94888a2a0b97159d46a7990bc59cbfbdeca6c4b2dd5312b248009",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-HOSTED-JUNIT",
+      "path": "checks/hosted-junit.txt",
+      "sha256": "20147a0d108cdb8a3da58011a2613c23d368b8ef5294e3493def8644dc436cef",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-HOSTED-LIVE",
+      "path": "checks/hosted-live-stack.txt",
+      "sha256": "c3de1e00753d90a85abcbb34733361d7bf800d54be35934bdb1cbab8683dbafe",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-HOSTED-CI",
+      "path": "checks/hosted-ci.txt",
+      "sha256": "7d4d1bb1252b2120ca7ab0597f1dc927a289c128ecdb5c0ae21c7065bc284c68",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "CHECK-LOCAL-META",
+      "path": "checks/local-checks.md",
+      "sha256": "b0e98e102a16fae7afdda83c453705863b8d4bc3c2b8a0a4c395438acfb2d210",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "REVIEW-ROUND1-CONTRACT",
+      "path": "reviews/round1-contract.md",
+      "sha256": "dbb6f597889501aec2dcbaf3d1f43b2b605a249d932d3f9f8e80a465d2d4b3a2",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    },
+    {
+      "id": "REVIEW-ROUND1-ADVERSARIAL",
+      "path": "reviews/round1-adversarial.md",
+      "sha256": "945eb80441d3b09fb4b58aa70fd24a5589ad0cd85cc01a3dc72a7e20fdf4dd41",
+      "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": null,
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": null,
+    "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+    "decision": "not_run",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": null,
+    "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2",
+    "decision": "not_requested",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Adam Burdett",
+    "retrieval_verified": false,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}
