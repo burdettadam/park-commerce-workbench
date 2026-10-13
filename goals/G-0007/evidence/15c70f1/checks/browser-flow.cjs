@@ -1,0 +1,60 @@
+const {chromium}=require('playwright');
+const {readFileSync}=require('node:fs');
+const {randomUUID}=require('node:crypto');
+const assert=require('node:assert/strict');
+const path=require('node:path');
+const root=path.resolve(process.cwd(),'.tmp/g0007-verify');
+const env=Object.fromEntries(readFileSync(path.join(root,'.env'),'utf8').split(/\r?\n/).map(x=>x.split('=')).filter(x=>x.length===2));
+const id=`g7-ui-${randomUUID().slice(0,8)}`;
+const browserPath=process.env.LOCALAPPDATA+'\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe';
+async function get(url,token){return fetch('http://127.0.0.1:8581'+url,{headers:token?{Authorization:`Bearer ${token}`}:{}})}
+async function action(page,name,expected){await page.getByRole('button',{name,exact:true}).click();try{await page.getByRole('status').getByText(expected,{exact:false}).waitFor({timeout:15000});}catch(e){console.error('Status after '+name+': '+(await page.getByRole('status').innerText()).slice(0,500));throw e}}
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:browserPath});
+ try{
+  const page=await browser.newPage({viewport:{width:1300,height:900}});
+  await page.goto('http://127.0.0.1:8680/',{waitUntil:'networkidle'});
+  await page.getByLabel('Employee demo token').fill(env.DEMO_EMPLOYEE_TOKEN);
+  await page.getByLabel('Product ID').fill(id);
+  await page.getByLabel('Product name').fill('G7 Review One');
+  await action(page,'Save new draft version','SAVED DRAFT 1');
+  assert.equal((await get(`/api/products/${id}`)).status,404);
+  await page.getByLabel('Product name').fill('Unsaved screen change');
+  await action(page,'Publish reviewed saved draft','Form changed');
+  assert.equal((await get(`/api/products/${id}`)).status,404);
+  await action(page,'Load latest draft for review','LOADED DRAFT 1');
+  await action(page,'Publish reviewed saved draft','PUBLISHED revision 1');
+  let published=await (await get(`/api/products/${id}`)).json();
+  assert.equal(published.name,'G7 Review One');assert.equal(published.revision,1);
+  await page.getByLabel('Product name').fill('G7 Review Two');
+  await action(page,'Save new draft version','SAVED DRAFT 2');
+  published=await (await get(`/api/products/${id}`)).json();
+  assert.equal(published.name,'G7 Review One');
+  await action(page,'Publish reviewed saved draft','PUBLISHED revision 2');
+  published=await (await get(`/api/products/${id}`)).json();assert.equal(published.name,'G7 Review Two');
+  await action(page,'Load publication history','HISTORY');
+  const history=await page.getByRole('status').innerText();
+  assert.match(history,/Revision 2/);assert.match(history,/Revision 1/);assert.match(history,/audit/);
+  const apiHistory=await (await get(`/api/admin/products/${id}/history?limit=1`,env.DEMO_EMPLOYEE_TOKEN)).json();
+  assert.equal(apiHistory.items.length,1);assert.equal(apiHistory.items[0].product.revision,2);
+  assert(apiHistory.nextCursor);
+  const next=await (await get(`/api/admin/products/${id}/history?limit=1&cursor=${encodeURIComponent(apiHistory.nextCursor)}`,env.DEMO_EMPLOYEE_TOKEN)).json();
+  assert.equal(next.items[0].product.revision,1);assert.equal(next.nextCursor,null);
+  const other=await browser.newPage({viewport:{width:1300,height:900}});
+  await other.goto('http://127.0.0.1:8680/',{waitUntil:'networkidle'});
+  await other.getByLabel('Employee demo token').fill(env.DEMO_EMPLOYEE_TOKEN);
+  await other.getByLabel('Product ID').fill(id);
+  await other.getByLabel('Product name').fill('Stale employee draft');
+  await other.getByLabel('Expected draft version (0 = new)').fill('2');
+  await other.getByLabel('Reviewed published base (0 = new)').fill('2');
+  await page.getByLabel('Product name').fill('Winning employee draft');
+  await action(page,'Save new draft version','SAVED DRAFT 3');
+  await action(other,'Save new draft version','CONFLICT');
+  const latest=await (await get(`/api/admin/products/${id}/drafts/latest`,env.DEMO_EMPLOYEE_TOKEN)).json();
+  assert.equal(latest.version,3);assert.equal(latest.content.name,'Winning employee draft');
+  published=await (await get(`/api/products/${id}`)).json();assert.equal(published.revision,2);
+  console.log(JSON.stringify({productId:id,guestDraftStatus:404,unsavedFormRejected:true,publishedRevisions:[1,2],historyPageRevisions:[2,1],auditStatus:apiHistory.items[0].auditStatus,staleEmployeeConflict:true,winningDraftVersion:3,guestRevisionAfterDraft:2,tokenMasked:await page.getByLabel('Employee demo token').evaluate(e=>e.type==='password')}));
+  await other.close();
+  await page.close();
+ }finally{await browser.close()}
+})().catch(e=>{console.error(e.stack||e.message);process.exitCode=1});

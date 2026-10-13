@@ -1,0 +1,17 @@
+{
+  "source_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+  "compose_sha256": "8e38b19d3098d25f361a4b2d531f3456383b7fd0f54cdaf20d82fd0d4b768ed5",
+  "compose_project": "park-wb-88799b56",
+  "host_ports": {
+    "catalog": 8581,
+    "pricing": 8582,
+    "booking": 8583,
+    "mongo": 27517,
+    "pricing_mysql": 3357,
+    "booking_mysql": 3358,
+    "vaadin": 8680
+  },
+  "network_scope": "loopback only",
+  "credentials": "random local demo values in ignored .env; values are not retained here",
+  "data_scope": "synthetic catalog products; no payment or real customer data"
+}

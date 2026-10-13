@@ -1,0 +1,7 @@
+# G-0007 adversarial control-change assessment, initial proposal
+
+Native role `adversarial-reviewer`; thread `01a13695-7367-7560-b9f4-a834f3aa7a45`; task `/root/g0007_control_adversarial`; raw local rollout SHA-256 `d67bc3f033447facaaa729964e45dd3afe3dc93858a2eb45b82f95deac41317c`. Read-only policy assessment under the accepted three-round baseline, not a G-0007 candidate acceptance review. Local absolute paths in the child report are normalized.
+
+Native child thread UUID: `01a13695-7367-7560-b9f4-a834f3aa7a45`. Role `adversarial-reviewer`; task `/root/g0007_control_adversarial`. Assessment unchanged. `task_complete`.
+
+The independent first assessment supported a narrowly scoped owner-approved G-0007 fourth round in principle, with N=2, AC01–AC04, the selected checks, privacy scrutiny and the separate human release gate intact. It identified a concrete operability blocker in the initial proposal: `scripts/validate-evidence.mjs` rejected every round greater than three, while `docs/roadmap/ARTIFACT-CONTRACT.md` required an explicit reviewed validator-contract update before any later policy could be represented. The reviewer required a G-0007-only validator and contract amendment that preserves the three-round default, plus current review of the replacement evidence. This assessment was read-only and did not clear the privacy blocker or grant candidate acceptance. The parent reconciliation was retained locally in `.tmp/g0007-rule-review-final.txt`; the substantive finding above is preserved here for remote recovery.

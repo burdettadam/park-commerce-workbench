@@ -1,0 +1,16 @@
+G-0007 source S: 15c70f15154997f6eda7b72ad70aa3eba76e5fdd
+Working directory: .tmp/g0007-verify (clean detached worktree at S)
+Command: bash scripts/verify.sh --integration
+Started: 2026-10-13T17:56:44.5547446Z
+Finished: 2026-10-13T17:58:56.9572833Z
+Observed exit code: 0
+CoreScenariosTest: 280 run, 0 failed, 0 errors, 0 skipped
+CatalogEditorialIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+MongoCatalogIT: selected=9 executed=9 skipped=0 failures=0 errors=0
+JpaPricingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+QuoteContractIT: selected=12 executed=12 skipped=0 failures=0 errors=0
+AdmissionCheckoutIT: selected=15 executed=15 skipped=0 failures=0 errors=0
+CheckoutRecoveryIT: selected=7 executed=7 skipped=0 failures=0 errors=0
+JdbcBookingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+Maven: BUILD SUCCESS
+Complete command output with generated Spring passwords and local user paths replaced is in integration-full-sanitized.txt.gz. The exact catalog/core result lines are also in integration-selected.txt. Original unsanitized 3.5 MB UTF-16 transcript remains local at .tmp/g0007-integration-raw.txt, excluded from Git.

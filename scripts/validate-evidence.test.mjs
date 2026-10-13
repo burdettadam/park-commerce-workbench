@@ -10,9 +10,9 @@ import { validateEvidence } from './validate-evidence.mjs';
 import { projectRoot } from './validate-roadmap.mjs';
 const digest=x=>crypto.createHash('sha256').update(x).digest('hex');
 const S='a'.repeat(40), B='b'.repeat(40), P='c'.repeat(40), R='d'.repeat(40);
-function fixture() {
+function fixture(goalId='G-0002') {
   const directory=fs.mkdtempSync(path.join(os.tmpdir(),'pcw evidence fixtures '));
-  const manifest=JSON.parse(fs.readFileSync(path.join(projectRoot,'docs/roadmap/goals/G-0002/manifest.template.json'),'utf8'));
+  const manifest=JSON.parse(fs.readFileSync(path.join(projectRoot,`docs/roadmap/goals/${goalId}/manifest.template.json`),'utf8'));
   manifest.claim='ready';
   Object.assign(manifest.candidate,{source_commit:S,base_commit:B,accepted_plan_commit:P,working_tree_clean:true});
   for(const a of manifest.artifacts) {
@@ -64,6 +64,134 @@ rejects('missing intended-use validation is not a pass',f=>f.manifest.intended_u
 rejects('placeholder Git identity is rejected',f=>f.manifest.candidate.source_commit='NOT_A_COMMIT',/Git identities/);
 rejects('configuration snapshot must match the declared digest',f=>f.manifest.candidate.configuration_sha256='d'.repeat(64),/Configuration digest mismatch/);
 rejects('round four requires a decision rather than silent acceptance',f=>f.manifest.reviews[0].round=4,/Review round outside/);
+function addSyntheticReviewException(f) {
+  const bytes=Buffer.from('SYNTHETIC owner decision fixture; not actual approval.\n');
+  fs.writeFileSync(path.join(f.directory,'review-exception.md'),bytes);
+  f.manifest.artifacts.push({id:'REVIEW-EXCEPTION',path:'review-exception.md',sha256:digest(bytes),candidate_commit:S});
+  f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'Adam Burdett'};
+}
+function addSyntheticLostException(f) {
+  addSyntheticReviewException(f);
+  const bytes=Buffer.from('SYNTHETIC lost transcript exception fixture; not actual approval.\n');
+  fs.writeFileSync(path.join(f.directory,'lost-transcript-exception.md'),bytes);
+  f.manifest.artifacts.push({id:'LOST-TRANSCRIPT-EXCEPTION',path:'lost-transcript-exception.md',sha256:digest(bytes),candidate_commit:S});
+  Object.assign(f.manifest.review_policy_exception,{max_round:5,lost_attempt_exception_artifact_id:'LOST-TRANSCRIPT-EXCEPTION'});
+}
+test('G-0007 fifth round requires both owner decision artifacts and a complete new pair',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticLostException(f);
+    assert.deepEqual(validateEvidence(f.save()).errors,[]);
+    fs.appendFileSync(path.join(f.directory,'lost-transcript-exception.md'),'changed');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Artifact digest mismatch: LOST-TRANSCRIPT-EXCEPTION/.test(x)));
+  } finally {f.clean();}
+});
+test('fifth round without the lost transcript decision is rejected',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticReviewException(f);
+    f.manifest.review_policy_exception.max_round=5;
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
+  } finally {f.clean();}
+});
+test('fifth round without the original review decision is rejected',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticLostException(f);
+    f.manifest.artifacts=f.manifest.artifacts.filter(a=>a.id!=='REVIEW-EXCEPTION');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review policy exception/.test(x)));
+  } finally {f.clean();}
+});
+test('fifth round with a tampered original review decision is rejected',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticLostException(f);
+    fs.appendFileSync(path.join(f.directory,'review-exception.md'),'changed');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Artifact digest mismatch: REVIEW-EXCEPTION/.test(x)));
+  } finally {f.clean();}
+});
+test('fifth round cannot pair with an older final review',()=>{
+  const f=fixture('G-0007');
+  try {
+    f.manifest.reviews[0].round=5;
+    f.manifest.reviews[1].round=4;
+    addSyntheticLostException(f);
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/both final reviews from round 5/.test(x)));
+  } finally {f.clean();}
+});
+test('another goal cannot borrow the fifth-round exception',()=>{
+  const f=fixture();
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticLostException(f);
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
+  } finally {f.clean();}
+});
+test('the lost transcript exception never permits round six',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=6;
+    addSyntheticLostException(f);
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0007 round four accepts only a hashed owner decision artifact',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    assert.deepEqual(validateEvidence(f.save()).errors,[]);
+    fs.appendFileSync(path.join(f.directory,'review-exception.md'),'changed');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Artifact digest mismatch: REVIEW-EXCEPTION/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0007 round four without the decision artifact is rejected',()=>{
+  const f=fixture('G-0007');
+  try {for(const r of f.manifest.reviews)r.round=4;f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'Adam Burdett'};
+    const errors=validateEvidence(f.save()).errors;
+    assert.ok(errors.some(x=>/Review policy exception/.test(x)),JSON.stringify(errors));
+    assert.ok(errors.some(x=>/Review round outside/.test(x)),JSON.stringify(errors));
+  } finally {f.clean();}
+});
+test('another goal cannot borrow a complete fourth-round declaration',()=>{
+  const f=fixture();
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    const errors=validateEvidence(f.save()).errors;
+    assert.ok(errors.some(x=>/outside G-0007/.test(x)),JSON.stringify(errors));
+    assert.ok(errors.some(x=>/Review round outside/.test(x)),JSON.stringify(errors));
+  } finally {f.clean();}
+});
+test('G-0007 exception rejects a mixed final review pair',()=>{
+  const f=fixture('G-0007');
+  try {
+    f.manifest.reviews[0].round=4;
+    addSyntheticReviewException(f);
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/both final reviews from round 4/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0007 exception rejects a false authority label',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    f.manifest.review_policy_exception.authority_id='synthetic-owner';
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review policy exception/.test(x)));
+  } finally {f.clean();}
+});
+test('a documented G-0007 exception still rejects round five',()=>{
+  const f=fixture('G-0007');
+  try {
+    f.manifest.reviews[0].round=5;
+    addSyntheticReviewException(f);
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
+  } finally {f.clean();}
+});
 rejects('template flag cannot be accepted as ready',f=>f.manifest.claim='not_ready',/Template\/incomplete/);
 rejects('missing decision authority is rejected',f=>f.manifest.readiness_decision.authority_id=null,/readiness decision/);
 rejects('unretrieved artifact retention is not recoverability',f=>f.manifest.retention.retrieval_verified=false,/Retention\/retrieval/);
