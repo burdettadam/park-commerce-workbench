@@ -104,10 +104,10 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 
 ## Activation and next action
 
-- Accepted plan commit P and exact file digest: record in [bootstrap](work/bootstrap.md) after activation commit.
+- Accepted plan P `e5add22f8777c358e0a27981b1bb74e03f52bb47`; exact plan SHA-256 `c2c888455143d271dd2a7d6e9a41137a28d68dc522cb2b04a80aeb83df28ae23` is recorded in [bootstrap](work/bootstrap.md). Draft [PR #9](https://github.com/burdettadam/park-commerce-workbench/pull/9) targets `main`.
 - Source candidate S: not selected. Base `c734a95836388ec8316a06bac8c7361d9ef8b0de` contains the imported catalog-publication candidate; its source and prior tests need a G-0007 gap audit before acceptance claims.
 - Runtime: no G-0007-owned Compose project, database, browser or API instance has been started. Existing G-0006 local processes/volumes are not assigned to this goal; verify ownership and isolation before reuse.
 - Verification, independent reviews, intended-use validation, readiness and release: not performed for G-0007 at activation. No paid workflow or service has been used.
-- Next action: publish/retrieve activation P, inspect the existing catalog-publication code/contracts/tests for AC01–AC04 and DRY/architecture risks, then select focused real MongoDB/API and employee workflow checks before freezing S.
+- The public activation checkpoint `949fd4a9b9a030755d4de31dc0f735f8fd36bc50` was retrieved cleanly on a fresh path with the exact plan digest and base ancestry. Next action: inspect the existing catalog-publication code/contracts/tests for AC01–AC04 and DRY/architecture risks, then select focused real MongoDB/API and employee workflow checks before freezing S.
 
 [Milestone M2](../../docs/roadmap/milestones/M2.md) · [Roadmap](../../docs/roadmap/README.md) · [Commands](../../docs/roadmap/COMMANDS.md)
