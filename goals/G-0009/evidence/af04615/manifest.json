@@ -187,7 +187,7 @@
     {
       "id": "G-0009-A02",
       "path": "quote-boundary-tests.md",
-      "sha256": "600c15ed8fe7d90e63f93d4aa6b24165c89dfd643675ef6d5dc2e738903ca6d7",
+      "sha256": "0b084f8cfac058b65fb9cfd9f588408983addb7c1ceee112a8c39fa275f718ef",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
@@ -217,7 +217,7 @@
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "5b4824380076f8b20e5681bcbda387630bbc0ecc6d9496612ce98bd3495ff801",
+      "sha256": "01c9e3abf09055fd1664e4af80ad36f88ad4f7bfaf8af3bbe733fd3ba1394087",
       "candidate_commit": "af04615957d172e6ad145baa7ba7858584b9a4f2"
     },
     {
