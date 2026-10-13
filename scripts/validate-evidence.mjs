@@ -94,8 +94,9 @@ export function validateEvidence(filename, root = projectRoot) {
     reviewException?.max_round === 4 &&
     reviewException?.decision_artifact_id === 'REVIEW-EXCEPTION' &&
     map.has('REVIEW-EXCEPTION') &&
-    filled(reviewException?.authority_id);
+    reviewException?.authority_id === 'Adam Burdett';
   if (reviewException != null && !fourthRoundAllowed) fail('Review policy exception is missing, invalid or outside G-0007.');
+  if (fourthRoundAllowed && reviews.some(r => r.round !== 4)) fail('G-0007 exception requires both final reviews from round four.');
   if (reviews.length !== 2 || !['contract','adversarial'].every(role => reviews.filter(r => r.role === role).length === 1)) fail('Two independent roles are required: contract and adversarial.');
   if (!unique(reviews.map(r => r.session_id))) fail('Review assignments must have distinct independent sessions.');
   for (const r of reviews) {

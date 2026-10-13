@@ -64,14 +64,17 @@ rejects('missing intended-use validation is not a pass',f=>f.manifest.intended_u
 rejects('placeholder Git identity is rejected',f=>f.manifest.candidate.source_commit='NOT_A_COMMIT',/Git identities/);
 rejects('configuration snapshot must match the declared digest',f=>f.manifest.candidate.configuration_sha256='d'.repeat(64),/Configuration digest mismatch/);
 rejects('round four requires a decision rather than silent acceptance',f=>f.manifest.reviews[0].round=4,/Review round outside/);
+function addSyntheticReviewException(f) {
+  const bytes=Buffer.from('SYNTHETIC owner decision fixture; not actual approval.\n');
+  fs.writeFileSync(path.join(f.directory,'review-exception.md'),bytes);
+  f.manifest.artifacts.push({id:'REVIEW-EXCEPTION',path:'review-exception.md',sha256:digest(bytes),candidate_commit:S});
+  f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'Adam Burdett'};
+}
 test('G-0007 round four accepts only a hashed owner decision artifact',()=>{
   const f=fixture('G-0007');
   try {
     for(const r of f.manifest.reviews)r.round=4;
-    const bytes=Buffer.from('SYNTHETIC owner decision fixture; not actual approval.\n');
-    fs.writeFileSync(path.join(f.directory,'review-exception.md'),bytes);
-    f.manifest.artifacts.push({id:'REVIEW-EXCEPTION',path:'review-exception.md',sha256:digest(bytes),candidate_commit:S});
-    f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
+    addSyntheticReviewException(f);
     assert.deepEqual(validateEvidence(f.save()).errors,[]);
     fs.appendFileSync(path.join(f.directory,'review-exception.md'),'changed');
     assert.ok(validateEvidence(f.save()).errors.some(x=>/Artifact digest mismatch: REVIEW-EXCEPTION/.test(x)));
@@ -79,24 +82,44 @@ test('G-0007 round four accepts only a hashed owner decision artifact',()=>{
 });
 test('G-0007 round four without the decision artifact is rejected',()=>{
   const f=fixture('G-0007');
-  try {f.manifest.reviews[0].round=4;f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
+  try {for(const r of f.manifest.reviews)r.round=4;f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'Adam Burdett'};
     const errors=validateEvidence(f.save()).errors;
     assert.ok(errors.some(x=>/Review policy exception/.test(x)),JSON.stringify(errors));
     assert.ok(errors.some(x=>/Review round outside/.test(x)),JSON.stringify(errors));
   } finally {f.clean();}
 });
-rejects('G-0002 cannot borrow the fourth-round exception',f=>{
-  f.manifest.reviews[0].round=4;
-  f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
-},/Review round outside/);
+test('another goal cannot borrow a complete fourth-round declaration',()=>{
+  const f=fixture();
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    const errors=validateEvidence(f.save()).errors;
+    assert.ok(errors.some(x=>/outside G-0007/.test(x)),JSON.stringify(errors));
+    assert.ok(errors.some(x=>/Review round outside/.test(x)),JSON.stringify(errors));
+  } finally {f.clean();}
+});
+test('G-0007 exception rejects a mixed final review pair',()=>{
+  const f=fixture('G-0007');
+  try {
+    f.manifest.reviews[0].round=4;
+    addSyntheticReviewException(f);
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/both final reviews from round four/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0007 exception rejects a false authority label',()=>{
+  const f=fixture('G-0007');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    f.manifest.review_policy_exception.authority_id='synthetic-owner';
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review policy exception/.test(x)));
+  } finally {f.clean();}
+});
 test('a documented G-0007 exception still rejects round five',()=>{
   const f=fixture('G-0007');
   try {
     f.manifest.reviews[0].round=5;
-    const bytes=Buffer.from('SYNTHETIC owner decision fixture; not actual approval.\n');
-    fs.writeFileSync(path.join(f.directory,'review-exception.md'),bytes);
-    f.manifest.artifacts.push({id:'REVIEW-EXCEPTION',path:'review-exception.md',sha256:digest(bytes),candidate_commit:S});
-    f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'synthetic-owner'};
+    addSyntheticReviewException(f);
     assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
   } finally {f.clean();}
 });
