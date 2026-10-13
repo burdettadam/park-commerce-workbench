@@ -5,6 +5,7 @@
   "candidate": {
     "source_commit": null,
     "base_commit": null,
+    "negative_control": null,
     "accepted_plan_commit": null,
     "accepted_plan_path": "goals/G-0002/README.md",
     "accepted_plan_sha256": null,
@@ -36,7 +37,7 @@
     {
       "id": "G-0002-AC01",
       "result": "not_run",
-      "independent_expected_result": "Before the fix, independently reproduce rejection failures for 0.2.01, 10.2.0 and 0.2.0-rc.1 in disposable worktrees with a mock command. Preserve the expected-failing run and its exit status; the planning discovery is context, not a substitute for the goal run.",
+      "independent_expected_result": "In a disposable worktree, commit a deliberately restored old substring check on a local-only challenge branch and show that the existing mock tests fail for 0.2.01, 10.2.0 and 0.2.0-rc.1. Retain that exact challenge commit, failing assertions and exit status. Archived pre-fix evidence is historical context, not a new goal run or a new product defect.",
       "check_ids": [],
       "artifact_ids": [
         "G-0002-A01"
@@ -45,7 +46,7 @@
     {
       "id": "G-0002-AC02",
       "result": "not_run",
-      "independent_expected_result": "After the fix, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked.",
+      "independent_expected_result": "On the unchanged current source, exact reviewed version 0.2.0 reaches mock init, while incompatible, prefix/suffix look-alikes, empty and malformed outputs are rejected before init is invoked. Also run a preview with the reviewed real initializer on the current worktree; distinguish that observation from mock coverage.",
       "check_ids": [],
       "artifact_ids": [
         "G-0002-A02"
@@ -54,7 +55,7 @@
     {
       "id": "G-0002-AC03",
       "result": "not_run",
-      "independent_expected_result": "All existing tooling checks remain selected and passing, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Add explicit assertions instead of only updating expected snapshots.",
+      "independent_expected_result": "All existing tooling checks remain selected and passing on the intended host, including project-root protection, extra-argument rejection, preservation and forwarding of initializer exit code 3. Record any host-specific skipped check explicitly; do not replace assertions with snapshots.",
       "check_ids": [],
       "artifact_ids": [
         "G-0002-A02"
@@ -63,7 +64,7 @@
     {
       "id": "G-0002-AC04",
       "result": "not_run",
-      "independent_expected_result": "Obtain independent contract and adversarial reviews of fixed candidate S; a fix or relevant test change invalidates stale review coverage. Record the diff and actual acceptance separately; no reviewer, tag or approval is fabricated.",
+      "independent_expected_result": "Obtain independent contract and adversarial reviews of fixed candidate S, including the challenge method and any actual product diff. A relevant source or test change invalidates stale review coverage. Record actual acceptance separately; no reviewer, tag or approval is fabricated.",
       "check_ids": [],
       "artifact_ids": [
         "G-0002-A03"

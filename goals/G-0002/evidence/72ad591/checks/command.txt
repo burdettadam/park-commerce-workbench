@@ -1,0 +1,61 @@
+# Final S evidence-contract/roadmap validator checks
+
+Command: `node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs` from clean S `72ad59192e667e9e1048c5f3f65efc21e087005a`. Start `2026-10-13T00:05:39.478921+00:00`; finish `2026-10-13T00:05:39.810847+00:00`; exit **0**. Local raw SHA-256 `f8795ddac702070b1616ec5547d7721b7f986fc01e7d49fbbc8d3d8bba20f63d`. Of 47 selected, 46 passed and one host-permission symlink case skipped (EPERM). The negative-control cases passed. This check supports the evidence tooling change; the G-0002 guard's required 29 mock checks had no skips.
+
+```text
+✔ complete synthetic evidence shape passes without authenticating its claims (11.3345ms)
+✔ all 30 unfilled output templates fail readiness as intended (17.754ms)
+✔ stale ordinary check cannot satisfy a new candidate (7.533ms)
+✔ stale reviewer coverage is rejected (6.8019ms)
+✔ changed artifact bytes invalidate recorded hash (6.658ms)
+✔ missing artifact output is rejected (9.3021ms)
+✔ dropping a criterion cannot make the goal ready (9.125ms)
+✔ omitting a mandatory goal artifact is rejected (10.6587ms)
+✔ empty selected suite is rejected (7.1226ms)
+✔ required skipped tests are rejected (6.641ms)
+✔ open valid review blockers prevent structural readiness (7.561ms)
+✔ same reviewer session cannot be counted twice (7.6789ms)
+✔ artifact path traversal is refused (5.931ms)
+﹣ symlinked artifacts are refused (5.5463ms) # Host does not permit symlink creation: EPERM
+✔ dirty source is not identified as a frozen candidate (6.9292ms)
+✔ missing intended-use validation is not a pass (6.4866ms)
+✔ placeholder Git identity is rejected (6.1723ms)
+✔ configuration snapshot must match the declared digest (6.3767ms)
+✔ round four requires a decision rather than silent acceptance (5.7452ms)
+✔ template flag cannot be accepted as ready (6.1783ms)
+✔ missing decision authority is rejected (6.4803ms)
+✔ unretrieved artifact retention is not recoverability (6.2526ms)
+✔ criterion must retain its specified goal artifact (6.4259ms)
+✔ expected red failure cannot replace all green candidate checks (6.1404ms)
+✔ a separate pre-fix red run retains its true base source alongside current green (7.2677ms)
+✔ a declared separate negative-control red run retains its source alongside current green (6.7066ms)
+✔ undeclared negative-control red check is stale (6.5759ms)
+✔ negative-control identity cannot replace source or base (5.4742ms)
+✔ negative-control declaration requires a lineage identity (7.0813ms)
+✔ an ordinary check cannot run against the negative control (6.5186ms)
+✔ a negative-control artifact requires its matching red check (5.601ms)
+✔ manual checks record observations without invented automated test counts (5.7649ms)
+✔ valid catalog resolves every milestone, goal, criterion and artifact contract (15.1851ms)
+✔ duplicate goal IDs are rejected (8.2545ms)
+✔ unknown dependency is rejected (7.2046ms)
+✔ dependency cycles are rejected (7.3985ms)
+✔ criterion with no matching artifact is rejected (6.3266ms)
+✔ missing goal file is rejected (8.5687ms)
+✔ criterion text drifting from its proposal is rejected (8.6018ms)
+✔ empty acceptance contract is rejected (8.5672ms)
+✔ unsafe future artifact path is rejected (9.2188ms)
+✔ unknown claimed command is rejected (6.9847ms)
+✔ milestone membership drift is rejected (8.3563ms)
+✔ coverage table drift is rejected (6.1562ms)
+✔ uncovered original requirement is rejected (6.6718ms)
+✔ duplicate artifact output paths are rejected (6.869ms)
+✔ path validation refuses traversal, Windows paths, backslashes and controls (0.1319ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 296.3711
+```

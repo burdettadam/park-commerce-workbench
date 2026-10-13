@@ -4,7 +4,7 @@
 
 **10 milestones · 30 goal proposals · 120 acceptance criteria · 90 goal-specific artifact requirements**
 
-Revision: `proposal-1`, prepared 11 October 2026 from the supplied foundation ZIP. **No milestone is claimed complete.** Planning artifacts exist; goal execution, independent reviews, human acceptance, hosted controls and releases do not exist merely because these files do.
+Revision: `proposal-2`, updated 12 October 2026 for the public checkout. The owner has since advanced [G-0001](../../goals/G-0001/README.md), [G-0002](../../goals/G-0002/README.md) and [G-0003](../../goals/G-0003/README.md) to ready on retained branches. See [the starting audit](CURRENT-STATE-2026-10-12.md). **No milestone is claimed complete.** Earlier source, local runs and hosted CI are reusable evidence only when their inputs and limits match an accepted goal; they do not establish independent reviews or human acceptance.
 
 This roadmap serves two purposes: build a credible Java/Spring commerce portfolio and test whether the existing goal-driven workflow produces correct, reviewable, recoverable work. Each goal has a bounded outcome, prerequisites, exclusions, expected results and named evidence. Existing source is a candidate to validate or extend, not a reason to regenerate everything.
 
@@ -12,7 +12,7 @@ This roadmap serves two purposes: build a credible Java/Spring commerce portfoli
 
 | Milestone | Goals | Observable outcome | Evidence that closes the milestone |
 | --- | --- | --- | --- |
-| [M0 — Prove the goal-driven workflow](milestones/M0.md) | G-0001–G-0003 | A real initializer adoption, one deliberately small red/green repair, and a recoverable multi-worktree handoff. | Reviewed adoption record; exact-version regression fix; branch-and-artifact recovery drill. |
+| [M0 — Prove the goal-driven workflow](milestones/M0.md) | G-0001–G-0003 | Adopt the existing initializer guidance, run a controlled red/green regression challenge, and complete a recoverable multi-worktree handoff. | Reviewed adoption record; current-version guard challenge; branch-and-artifact recovery drill. |
 | [M1 — Verify the full-stack baseline](milestones/M1.md) | G-0004–G-0006 | The source candidate actually builds and completes its original event purchase path against MongoDB/MySQL and both UIs. | Locked builds; database reports; live API results; browser walkthrough. |
 | [M2 — Complete catalog and pricing administration](milestones/M2.md) | G-0007–G-0009 | An employee can draft, preview, publish, and explain versioned prices without rewriting existing quotes. | Publication audit; preview scenarios; deterministic pricing fixture pack. |
 | [M3 — Complete a bounded commerce journey](milestones/M3.md) | G-0010–G-0012 | Admission plus one optional evening event can be purchased and cancelled with consistent inventory and idempotent outcomes. | Concurrency evidence; admission entitlement model; cart/cancellation state machine. |
@@ -25,7 +25,7 @@ This roadmap serves two purposes: build a credible Java/Spring commerce portfoli
 
 ## Execution order and useful checkpoints
 
-Start with M0, then M1. M0 contains a concrete, bounded defect: the initializer wrapper uses a substring check and accepts unreviewed versions such as `0.2.01`. Reproduce and repair it as G-0002 after actual initializer adoption. The [planning discovery](planning-discovery.txt) is a mock-based observation, not an initializer acceptance test or a completed goal.
+Start with M0, then M1. The initializer wrapper's former substring defect was repaired before this public snapshot. G-0002 now challenges the current regression tests with a disposable mutation and checks the unchanged guard; a real new defect would require its own observed fix. The [planning discovery](planning-discovery.txt) and [starter-code evidence](../changes/starter-code/README.md) are historical observations, not new goal runs or completed goals.
 
 M1 verifies the preexisting candidate before new product work. M2/M3 complete the bounded commerce domain. M4 makes the UIs and identity boundary fit for later deployment. M5 proves diagnosability and failure handling. M6 proves delivery locally before M7 incurs authorized AWS spend.
 
@@ -38,7 +38,7 @@ Proposed checkpoints are **workflow proof** (M0), **working local baseline** (M1
 | Goal | Bounded outcome | Depends on |
 | --- | --- | --- |
 | [G-0001](goals/G-0001/README.md) | Adopt the actual initializer and accepted project rules | Human bootstrap |
-| [G-0002](goals/G-0002/README.md) | Repair exact-version matching through one real red/green goal | G-0001 |
+| [G-0002](goals/G-0002/README.md) | Validate the existing version guard with a red/green challenge | G-0001 |
 | [G-0003](goals/G-0003/README.md) | Recover a goal across two worktrees and a session interruption | G-0002 |
 | [G-0004](goals/G-0004/README.md) | Resolve and lock the actual Java and UI builds | G-0003 |
 | [G-0005](goals/G-0005/README.md) | Verify persistence against real MongoDB and MySQL | G-0004 |
@@ -93,17 +93,17 @@ node scripts/validate-evidence.mjs goals/G-0002/evidence/CANDIDATE/manifest.json
 
 The last path is a future example, not an existing run. Do not make templates pass by inserting invented reviewers/results.
 
-## Adopt locally without replacing git-agent
+## Adopt the existing public checkout without replacing git-agent
 
-Use [START-FIRST-GOAL.md](START-FIRST-GOAL.md). Run the actual reviewed initializer locally, review its output, and link this roadmap from adopted `PLANS.md`. Keep the roadmap proposals under `docs/roadmap/`; create an active `goals/G-xxxx/README.md` only when that work is accepted. The active accepted copy is then the scope/state authority; the static catalog is just navigation/dependency metadata.
+Use [START-FIRST-GOAL.md](START-FIRST-GOAL.md). Run a fresh preview of the reviewed initializer, review its output, and adopt the unresolved product decisions in `GOVERNANCE.md`/`DEVELOPMENT.md`. `PLANS.md` already links this roadmap. Keep proposals under `docs/roadmap/`; create an active `goals/G-xxxx/README.md` only when work is accepted. The active accepted copy is then the scope/state authority; the static catalog is navigation/dependency metadata.
 
-No native `AGENTS.md`, `PLANS.md`, `.codex/` or `.agents/` files were generated here. There is no new git subcommand, scheduler, skill or agent execution layer. Standard Git, OS, editor, Codex and maintained project validation commands remain the machinery.
+The public checkout already contains generated `AGENTS.md`, `PLANS.md`, `.codex/` and `.agents/` guidance. There is no additional scheduler, skill or agent execution layer. Standard Git, OS, editor, Codex and maintained project validation commands remain the machinery.
 
 ## Current evidence boundary
 
-The original ZIP reports 77 JDK core scenarios, 10 Node client-state tests and 11 tooling checks. Those observations are scoped to the original candidate and mostly use test-only in-memory stores/mocks; they do not establish Spring/UI/database/runtime success. The original manifest and ZIP digest are retained in [baseline provenance](baseline/provenance.json). See [verification](../verification.md) for its exact limits and [this planning package's checks](DELIVERY-VERIFICATION.md) for new validation.
+The original ZIP reports 77 JDK core scenarios, 10 Node client-state tests and 11 tooling checks. Those observations are scoped to the original candidate and mostly use test-only in-memory stores/mocks; they do not establish Spring/UI/database/runtime success. The original manifest and ZIP digest are retained in [baseline provenance](baseline/provenance.json). See [original verification](../verification.md) and [proposal-1 delivery checks](DELIVERY-VERIFICATION.md) for historical limits; the [current-state audit](CURRENT-STATE-2026-10-12.md) names later evidence.
 
-All goals remain unaccepted proposals until the owner adopts them. Remote privacy is **not verified by this local delivery**. No remote write, release, cloud deployment, real payment, or licensed tool activation has occurred.
+G-0001, G-0002 and G-0003 are ready at their canonical records. The remaining roadmap goals are proposals until adopted. The project repository is public and its original history is in a separate private archive. No release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
 
 ## Navigation
 

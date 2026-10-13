@@ -1,0 +1,116 @@
+# G-0002-A02 - final source guard and real preview
+
+Final clean source S `72ad59192e667e9e1048c5f3f65efc21e087005a`; accepted plan P `56ea84e4e0d0429e3c7069c7a48efd1d903b9bec`; true G-0001 base `f4ca6dc02d96a309763b1725b2eb3782cadd8f76`. The product wrapper and mock suite are byte-identical to the G-0001 ready base and S0. The new S change is confined to evidence-validator code/tests, artifact-contract guidance and source manifest. The local worktree was clean before and after these checks.
+
+Reviewed sibling source `4c1bc45e44f7ce32e696dd338ddb3050fdb271d9`; executable SHA-256 `1339c03a6798b55cc8aaac9416601f82802cba522f5d3a4083026ffc56cb1451`. Its `bin` directory was prepended to PATH only for the real version and preview; it was not copied into this public repository.
+
+## Existing mock tooling suite
+
+Command: `C:\Program Files\Git\bin\bash.exe scripts/test-tooling.sh`, from clean repository root. Start `2026-10-13T00:03:55.595725+00:00`; finish `2026-10-13T00:04:01.113012+00:00`; exit **0**. **29 selected, 29 passed, zero failed/skipped**. The complete local raw output SHA-256 is `0223254567636413d1894ea81147c1e3aae8901665978710b34a6b1957d18952`. This suite uses an isolated mock initializer.
+
+```text
+PASS Fresh local configuration is generated
+PASS Nine distinct random credentials are generated without printing them
+PASS Generated local credentials have a private Windows ACL
+PASS Existing local configuration is preserved
+PASS Agent wrapper refuses non-repository targets
+PASS Agent wrapper refuses to initialize a parent worktree
+PASS Preview forwards the project root and dry-run to a mock initializer
+PASS Apply forwards only the project root to a mock initializer
+PASS Unreviewed initializer versions are rejected
+PASS Initializer proposal exit status is preserved
+PASS Extra initializer-wrapper arguments are rejected
+PASS Reject patch look-alike 0.2.01 before calling init
+PASS Reject major look-alike 10.2.0 before calling init
+PASS Reject prerelease 0.2.0-rc.1 before calling init
+PASS Reject build suffix before calling init
+PASS Reject empty output before calling init
+PASS Reject missing command name before calling init
+PASS Reject wrong command name before calling init
+PASS Reject leading space before calling init
+PASS Reject trailing space before calling init
+PASS Reject banner before version before calling init
+PASS Reject banner after version before calling init
+PASS Reject carriage return before calling init
+PASS An unsuccessful version probe fails before init even with correct output
+PASS Initializer exit 2 is preserved
+PASS Initializer exit 3 is preserved
+PASS Initializer exit 130 is preserved
+PASS Initializer exit 143 is preserved
+PASS Agent checks preserve existing local configuration bytes
+RESULT: 29 tooling checks passed. Initializer calls used a mock, not git-agent.
+```
+
+## Reviewed real version and dry-run preview
+
+Command: `C:\Program Files\Git\bin\bash.exe -lc 'git agent --version'`, from the clean root with reviewed sibling executable on PATH. Start `2026-10-13T00:04:09.519995+00:00`; finish `2026-10-13T00:04:09.727562+00:00`; exit **0**. Local raw SHA-256 `32c21a751aa842ac6094f8677d4836721580b7da032349f651713cdcd9cbbe36`. Exact output:
+
+```text
+git-agent 0.2.0
+```
+
+Command: `C:\Program Files\Git\bin\bash.exe scripts/init-agent.sh --preview`, same clean root and PATH. Start `2026-10-13T00:04:09.728083+00:00`; finish `2026-10-13T00:04:13.462928+00:00`; exit **0**. Local raw SHA-256 `b6a7301b1d84b1fc0c0f3e9434d859a0fa661d953fe605c4a616bc3a6db727cc`. The complete preview follows with only the absolute target path replaced; it reports no writes. This dry run does not imply apply or product service execution.
+
+```text
+git agent init - DRY RUN
+Target: <project-root>
+Kind: existing repository
+Template: 0.2.0 / git-blob-sha1:bc235dc1d6759efc018e38c02cda10cc4ffae5a4
+Runtime: git version 2.53.0.windows.2; Bash 5.2.37(1)-release
+
+Inspected project guidance/setup (bounded, no execution):
+  .agents/skills/work-goal/SKILL.md
+  .agents/skills/work-goal/references/release-lifecycle.md
+  .agents/skills/work-goal/references/review-guide.md
+  .agents/skills/work-goal/references/state-report.md
+  .agents/skills/worktree-flow/SKILL.md
+  .agents/skills/worktree-flow/references/isolation-and-recovery.md
+  .codex/agents/adversarial-reviewer.toml
+  .codex/agents/contract-reviewer.toml
+  .codex/config.toml
+  .gitattributes
+  .github/workflows/verify.yml
+  AGENTS.md
+  ARCHITECTURE.md
+  DEVELOPMENT.md
+  Dockerfile
+  GOVERNANCE.md
+  PLANS.md
+  compose.yml
+  docs/project/architecture.md
+  storefront/package.json
+
+File plan:
+  unchanged: AGENTS.md
+  adopted: GOVERNANCE.md
+  adopted: DEVELOPMENT.md
+  adopted: ARCHITECTURE.md
+  adopted: PLANS.md
+  unchanged: docs/agent-init/README.md
+  unchanged: .codex/config.toml
+  unchanged: .codex/agents/contract-reviewer.toml
+  unchanged: .codex/agents/adversarial-reviewer.toml
+  unchanged: .agents/skills/work-goal/SKILL.md
+  unchanged: .agents/skills/work-goal/references/review-guide.md
+  unchanged: .agents/skills/work-goal/references/release-lifecycle.md
+  unchanged: .agents/skills/work-goal/references/state-report.md
+  unchanged: .agents/skills/worktree-flow/SKILL.md
+  unchanged: .agents/skills/worktree-flow/references/isolation-and-recovery.md
+
+Gaps / not yet verified:
+  - Codex TOML syntax and effective configuration are unverified; validate with the installed Codex client.
+  - Syntax and command declarations in storefront/package.json are unverified. Bash does not parse JSON/TOML; use the maintained product validators.
+  - Review GOVERNANCE.md for GOVERNANCE.md responsibilities; existing guidance was preserved, not certified.
+  - Review DEVELOPMENT.md for DEVELOPMENT.md responsibilities; existing guidance was preserved, not certified.
+  - Review ARCHITECTURE.md for ARCHITECTURE.md responsibilities; existing guidance was preserved, not certified.
+  - Review PLANS.md for PLANS.md responsibilities; existing guidance was preserved, not certified.
+  - Git LFS detected: source refs alone do not retain LFS objects; prove retrieval and retention.
+  - Accept/adapt governing guidance and ownership before goal execution; presence does not prove coverage.
+  - Verify the installed Codex client, effective instruction chain, models, reviewer roles and actual permissions.
+  - Record real product commands, isolated ports/data/effects, runtime limits and applicable local/CI differences.
+  - Verify GitHub required checks, eligible human premerge approval and release/tag identities in GitHub.
+  - Set recovery objectives, retain/push whole-goal checkpoints and artifacts, and perform a clean restore drill.
+  - Run applicable upgrade/health/support and acceptance demonstrations; scaffold creation is not product evidence.
+
+No target directories, Git metadata, files, refs or settings were changed.
+```

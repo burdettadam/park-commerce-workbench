@@ -1,6 +1,6 @@
 # Accepted plans and living goal records
 
-The imported [10-milestone roadmap](docs/roadmap/README.md) contains **proposed** goals and acceptance criteria. [G-0001](docs/roadmap/goals/G-0001/README.md) is the proposed adoption goal. No active accepted goal record or release approval is created by this import.
+The [10-milestone roadmap](docs/roadmap/README.md) contains goal proposals. Its [current-state audit](docs/roadmap/CURRENT-STATE-2026-10-12.md) reconciles the public checkout and first trial path. [G-0001](goals/G-0001/README.md), [G-0002](goals/G-0002/README.md), and [G-0003](goals/G-0003/README.md) are ready on retained branches. G-0004 is the next proposed product/toolchain goal and is not active. No version-producing merge or release has been approved.
 
 This is a project convention informed by OpenAI's ExecPlan pattern. It is not a
 native Codex database or parsed configuration schema. Reuse existing issue/plan

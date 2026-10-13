@@ -1,0 +1,375 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0001",
+  "claim": "ready",
+  "candidate": {
+    "source_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+    "base_commit": "c8c46a2824f558e33c9e640fe6fc82dfdf705399",
+    "accepted_plan_commit": "c8c46a2824f558e33c9e640fe6fc82dfdf705399",
+    "accepted_plan_path": "goals/G-0001/README.md",
+    "accepted_plan_sha256": "5c1776991a5f96c98981f8badd1888c4547e34716d91baa5ad64e24d43209aad",
+    "working_tree_clean": true,
+    "configuration_sha256": "612e06b20431b78d9ef14981be44ce2f0a26bdc6f680ce0256f043cdfd3c37a5",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "VERSION",
+      "type": "automated",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "command": "git agent --version",
+      "working_directory": ".",
+      "started_at": "2026-10-12T22:36:42.2121628Z",
+      "finished_at": "2026-10-12T22:36:42.2973496Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Exact git-agent 0.2.0; exit 0",
+      "output_artifact_id": "CHECK-INITIALIZER"
+    },
+    {
+      "id": "PREVIEW",
+      "type": "automated",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "command": "Git for Windows Bash scripts/init-agent.sh --preview from a clean S clone",
+      "working_directory": ".",
+      "started_at": "2026-10-12T22:36:42.3054468Z",
+      "finished_at": "2026-10-12T22:36:46.0479860Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Exit 0; adopted/unchanged results; no proposal conflict",
+      "output_artifact_id": "CHECK-INITIALIZER"
+    },
+    {
+      "id": "APPLY",
+      "type": "automated",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "command": "Git for Windows Bash scripts/init-agent.sh --apply from a clean S clone",
+      "working_directory": ".",
+      "started_at": "2026-10-12T22:36:46.0479860Z",
+      "finished_at": "2026-10-12T22:36:49.8065532Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Exit 0; safe rerun",
+      "output_artifact_id": "CHECK-INITIALIZER"
+    },
+    {
+      "id": "TOOLING",
+      "type": "automated",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "command": "Git for Windows Bash scripts/test-tooling.sh from a clean S clone",
+      "working_directory": ".",
+      "started_at": "2026-10-12T22:36:49.8065532Z",
+      "finished_at": "2026-10-12T22:36:55.3646954Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "29 selected mock tooling assertions passed",
+      "output_artifact_id": "CHECK-TOOLING"
+    },
+    {
+      "id": "OWNER",
+      "type": "manual",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "command": "Read owner-decisions.md and maintained G-0001 guidance at S for seven adopted groups and scoped UNCONFIGURED fields",
+      "working_directory": ".",
+      "started_at": "2026-10-12T22:38:13.5251490Z",
+      "finished_at": "2026-10-12T22:38:13.5582504Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "All seven groups adopted; first-goal decisions represented; later merge blocker disclosed",
+      "output_artifact_id": "CHECK-OWNER"
+    },
+    {
+      "id": "CONTROLS",
+      "type": "manual",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "command": "Read GitHub public repo, branch protection, S CI and tracked S clone privacy scan",
+      "working_directory": ".",
+      "started_at": "2026-10-12T22:38:25.1477119Z",
+      "finished_at": "2026-10-12T22:38:36.8962911Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "Public MIT, two required CI jobs passed on S, zero required approvals; no selected private path/content hits",
+      "output_artifact_id": "CHECK-CONTROLS"
+    },
+    {
+      "id": "DISCOVERY",
+      "type": "manual",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "command": "Fresh trusted codex exec --strict-config --sandbox read-only from project root; select both configured native roles",
+      "working_directory": ".",
+      "started_at": "2026-10-12T22:34:39.405Z",
+      "finished_at": "2026-10-12T22:34:57.478Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "AGENTS.md, both skills and both custom agent types observed",
+      "output_artifact_id": "CHECK-DISCOVERY"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0001-AC01",
+      "result": "passed",
+      "independent_expected_result": "Exact version and live preview/rerun at S exit 0; 29 tooling assertions also pass.",
+      "check_ids": [
+        "VERSION",
+        "PREVIEW",
+        "APPLY",
+        "TOOLING"
+      ],
+      "artifact_ids": [
+        "G-0001-A01",
+        "CHECK-INITIALIZER",
+        "CHECK-TOOLING"
+      ]
+    },
+    {
+      "id": "G-0001-AC02",
+      "result": "passed",
+      "independent_expected_result": "A fresh trusted native Codex session loads AGENTS.md, both skills and selects both configured reviewer types.",
+      "check_ids": [
+        "DISCOVERY"
+      ],
+      "artifact_ids": [
+        "G-0001-A02",
+        "CHECK-DISCOVERY",
+        "VALIDATION"
+      ]
+    },
+    {
+      "id": "G-0001-AC03",
+      "result": "passed",
+      "independent_expected_result": "The owner adopted all seven recorded choices, which S reflects; future hosted review remains explicitly blocked.",
+      "check_ids": [
+        "OWNER"
+      ],
+      "artifact_ids": [
+        "G-0001-A01",
+        "CHECK-OWNER"
+      ]
+    },
+    {
+      "id": "G-0001-AC04",
+      "result": "passed",
+      "independent_expected_result": "PLANS names one active goal; public MIT/protection/CI controls are observed and S privacy scan found no selected hits.",
+      "check_ids": [
+        "CONTROLS"
+      ],
+      "artifact_ids": [
+        "G-0001-A03",
+        "CHECK-CONTROLS"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0001-A01",
+      "path": "adoption.md",
+      "sha256": "830e239d2bb59923fb33e7945706075dfa149b0ae34f16c76ab22b870435db07",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "G-0001-A02",
+      "path": "discovery.txt",
+      "sha256": "ac6034f3947defb2d7da4ab19376092fe0058a547f8836074d596f07116dd04a",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "G-0001-A03",
+      "path": "controls-and-privacy.md",
+      "sha256": "22099746245ea54449372a2c0f268c23139565ada7e4755c75f48a78d23df2ce",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "a57dec5ec1ada857ae06a5cf81eff746616cd00ebfe9b716748cbfa91c6e31db",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "5c1776991a5f96c98981f8badd1888c4547e34716d91baa5ad64e24d43209aad",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "612e06b20431b78d9ef14981be44ce2f0a26bdc6f680ce0256f043cdfd3c37a5",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "a41bae7713830f3a298cc85189848809a5d03d744190ed0d35e83b44f72695ce",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "c88ccbd0536912de8f9b2d0e63416c50bdae36d3a1da7ac00592bd8a80c59413",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "ed30cb4e72721a7c0c303ed5b8caad7e320fe85aab7206d4f092da436a712bf8",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "CHECK-INITIALIZER",
+      "path": "checks/initializer.txt",
+      "sha256": "4e73aef8a104c34ee9e7b7a30d9c260ad197f94e75d8f2665480e13c04ba2d3c",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "CHECK-TOOLING",
+      "path": "checks/tooling.txt",
+      "sha256": "b641cbac70945411c549dcf37516b7e0a47d4a2aaf817c428303d92a96c29ace",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "CHECK-OWNER",
+      "path": "checks/owner.txt",
+      "sha256": "5dbac72a53e678af7558dddca4250f68df13cb2e729ce02827be332b63f31cac",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "CHECK-CONTROLS",
+      "path": "checks/controls.txt",
+      "sha256": "1e9ad5ccb5d15338f87e7fa6afa42b0967c9c3660762f12bc80be040418f535c",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "CHECK-DISCOVERY",
+      "path": "native-discovery.txt",
+      "sha256": "6f78d0c137a741da49984768c848f69d2d2fe5ea98cac4cee46ccd4a3489c742",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-ROUND1-CONTRACT",
+      "path": "reviews/round1-contract.md",
+      "sha256": "c9b3680bbc29ea59ee107231c421fda9532128322335c9ced28ecea1ec2b8cdc",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-ROUND1-ADVERSARIAL",
+      "path": "reviews/round1-adversarial.md",
+      "sha256": "725663b5a53f91f1ffdc6e6a272b493005bbbddb183248366a49ff7ca7832243",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-ROUND2-CONTRACT",
+      "path": "reviews/round2-contract.md",
+      "sha256": "5e1085736a2e5258c8bf3740fe086812e7f090782f6c9e1bfb8dd5cb2d9f74c0",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-ROUND2-ADVERSARIAL",
+      "path": "reviews/round2-adversarial.md",
+      "sha256": "ac0b41c1eaf957c1825e1f3a84215b9a71b29a00e3089b6e2e2c67d45cae049d",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "ROLE-PROVENANCE",
+      "path": "reviews/native-provenance.md",
+      "sha256": "a782d36ab1f7d4877e87e5afa5369af2c726248437bcd6b22a497cec923e2598",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": "1dbbde5367f99e40222bf3520d3eb2a0d7b6e12b2d68e43673ac96feb82fa86a",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": "c5a10a6537a0e6e1de0a5daa8d0fb0b049ddbcfbef63c131a4c85ad9f564ef19",
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": "native Codex contract-reviewer",
+      "session_id": "01a1324a-b0b9-7fe1-b019-bc72b877fcd9",
+      "independent_of_writer": true,
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": "native Codex adversarial-reviewer",
+      "session_id": "01a1324a-bf13-7f01-81e2-0c24df802057",
+      "independent_of_writer": true,
+      "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": "Codex agent delegated by Adam Burdett",
+    "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+    "decision": "accept",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": "Codex integration record maintainer assigned by Adam Burdett",
+    "candidate_commit": "8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e",
+    "decision": "ready",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Adam Burdett",
+    "retrieval_verified": true,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}

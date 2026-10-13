@@ -1,5 +1,7 @@
 # Source alignment and provenance
 
+> **Historical proposal-1 source alignment.** It describes the original ZIP before source import and later fixes. See [current state](CURRENT-STATE-2026-10-12.md) for the public checkout.
+
 ## Supplied project baseline
 
 Input: `park-commerce-workbench-foundation-2026-10-11.zip`, 105 source/evidence files. The original archive SHA-256 and original source manifest are retained under `baseline/`. The candidate's original verification record remains at `docs/verification.md`.

@@ -1,0 +1,30 @@
+PASS Fresh local configuration is generated
+PASS Nine distinct random credentials are generated without printing them
+PASS Generated local credentials have a private Windows ACL
+PASS Existing local configuration is preserved
+PASS Agent wrapper refuses non-repository targets
+PASS Agent wrapper refuses to initialize a parent worktree
+PASS Preview forwards the project root and dry-run to a mock initializer
+PASS Apply forwards only the project root to a mock initializer
+PASS Unreviewed initializer versions are rejected
+PASS Initializer proposal exit status is preserved
+PASS Extra initializer-wrapper arguments are rejected
+PASS Reject patch look-alike 0.2.01 before calling init
+PASS Reject major look-alike 10.2.0 before calling init
+PASS Reject prerelease 0.2.0-rc.1 before calling init
+PASS Reject build suffix before calling init
+PASS Reject empty output before calling init
+PASS Reject missing command name before calling init
+PASS Reject wrong command name before calling init
+PASS Reject leading space before calling init
+PASS Reject trailing space before calling init
+PASS Reject banner before version before calling init
+PASS Reject banner after version before calling init
+PASS Reject carriage return before calling init
+PASS An unsuccessful version probe fails before init even with correct output
+PASS Initializer exit 2 is preserved
+PASS Initializer exit 3 is preserved
+PASS Initializer exit 130 is preserved
+PASS Initializer exit 143 is preserved
+PASS Agent checks preserve existing local configuration bytes
+RESULT: 29 tooling checks passed. Initializer calls used a mock, not git-agent.

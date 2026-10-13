@@ -2,7 +2,7 @@
 
 Milestone: M1
 Depends on: G-0005
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: high
 
@@ -39,7 +39,7 @@ Expected outcomes below are proposed contractual tests, not observations. Accept
 
 ### G-0006-AC01
 
-Compose services become healthy and all existing live HTTP assertions execute (13 in the foundation), including role checks, ownership, price-version preservation and competing holds.
+Compose services become healthy and all live HTTP assertions selected at the accepted source revision execute, including role checks, ownership, price-version preservation and competing holds. Record the actual count rather than using the foundation count.
 
 Required evidence: `G-0006-A01` plus the relevant raw check, source S and independent review coverage.
 

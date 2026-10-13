@@ -1,0 +1,40 @@
+# G-0002-A01 - fresh deliberately red challenge
+
+Fixed unchanged green source S: `df6e9b9819cda0170bd9233387f72e16aa73573f`. Disposable challenge commit R: `79560f4fc6692584f414e6851122bbc2058609dc`, parent S. R changes only `scripts/init-agent.sh` to the historical `*0.2.0*` substring comparison and updates `SOURCE-MANIFEST.sha256`; it is on local-only `challenge/G-0002-old-substring` in an owned disposable worktree. The red worktree was clean before and after the run. R is not a product fix, green candidate, or remotely recoverable checkpoint. The archived pre-fix run under `docs/changes/starter-code/` is historical and was not reused as this observation.
+
+Command: Git for Windows Bash `scripts/test-tooling.sh` from the root of clean R. It uses the existing mock initializer; no private real initializer ran in this red test. Start `2026-10-12T23:50:19.1630748Z`; finish `2026-10-12T23:50:28.9406234Z`; observed exit **1**. The unredacted local log SHA-256 is `82fd21428c3b8c3231680cd2b2d1de3bb57407dec9ba4c8453f8c3e4edaf927b` and remains under ignored `.tmp/`; this public copy removes no test result.
+
+Independent expected result from accepted AC01: the three selected look-alike outputs must be rejected before mock init; the restored old guard should incorrectly accept each, so the unchanged tests should record `exit=0 init_called=yes` and fail overall. Observed: all three named failures occurred, with eight further malformed-output failures, while preservation/exit-code checks still ran. The aggregate reported 11 rejected-output regressions failed. This demonstrates the test detects the old defect; it does not demonstrate a current product defect.
+
+```text
+PASS Fresh local configuration is generated
+PASS Nine distinct random credentials are generated without printing them
+PASS Generated local credentials have a private Windows ACL
+PASS Existing local configuration is preserved
+PASS Agent wrapper refuses non-repository targets
+PASS Agent wrapper refuses to initialize a parent worktree
+PASS Preview forwards the project root and dry-run to a mock initializer
+PASS Apply forwards only the project root to a mock initializer
+PASS Unreviewed initializer versions are rejected
+PASS Initializer proposal exit status is preserved
+PASS Extra initializer-wrapper arguments are rejected
+FAIL reject patch look-alike 0.2.01: exit=0 init_called=yes
+FAIL reject major look-alike 10.2.0: exit=0 init_called=yes
+FAIL reject prerelease 0.2.0-rc.1: exit=0 init_called=yes
+FAIL reject build suffix: exit=0 init_called=yes
+PASS Reject empty output before calling init
+FAIL reject missing command name: exit=0 init_called=yes
+FAIL reject wrong command name: exit=0 init_called=yes
+FAIL reject leading space: exit=0 init_called=yes
+FAIL reject trailing space: exit=0 init_called=yes
+FAIL reject banner before version: exit=0 init_called=yes
+FAIL reject banner after version: exit=0 init_called=yes
+FAIL reject carriage return: exit=0 init_called=yes
+PASS An unsuccessful version probe fails before init even with correct output
+PASS Initializer exit 2 is preserved
+PASS Initializer exit 3 is preserved
+PASS Initializer exit 130 is preserved
+PASS Initializer exit 143 is preserved
+PASS Agent checks preserve existing local configuration bytes
+RESULT: 11 rejected-output regressions failed.
+```

@@ -1,0 +1,52 @@
+PASS guest cannot publish
+PASS product publication
+PASS public product read
+PASS catalog drafts and audit history are employee-only
+PASS saved catalog draft is invisible to guests
+PASS stale catalog draft write conflicts
+PASS publication uses the reviewed version and server audit actor
+PASS later draft survives another version being published
+PASS publication rejects a now-stale draft base
+PASS catalog history traversal stays pinned while new publications arrive
+PASS guest cannot preview unpublished employee rates
+PASS unpublished preview is an explainable what-if, not a quote
+PASS preview did not publish its candidate
+PASS first price book
+PASS publishing the previewed candidate preserves its calculation
+PASS published prices do not mutate old quotes
+PASS quote ownership
+PASS quote status observes the immutable snapshot without renewing expiry
+PASS quote status hides other owners
+PASS GraphQL status preserves existing string money and version fields
+PASS REST and GraphQL reject abbreviated quote IDs
+PASS invalid calendar date returns INVALID_INPUT
+PASS fractional ticket counts rejected
+PASS GraphQL quote and family offer
+PASS GraphQL private resolver authorization
+PASS guest identity is derived from authentication
+PASS guest session endpoint rejects anonymous and employee credentials
+PASS recovery observes an active hold without confirming it
+PASS recovery is owner-scoped
+PASS fresh coordinator recovers the server order after a discarded response
+PASS recovery with a replacement key is a conflict
+PASS checkout keeps the original amount and is idempotent
+PASS order ownership
+PASS concurrent HTTP requests allocate only remaining capacity
+PASS no negative or extra availability
+PASS admission recovery observes absence without submitting a purchase
+PASS admission confirmation requires the quote-owning guest
+PASS admission receipt preserves quote and complete variant entitlement set
+PASS admission retry retains the original order and entitlement identities
+PASS admission recovery and read return the same owner-bound receipt
+PASS admission receipt cannot be read by another guest or reissued under a new key
+PASS event quote cannot create admission entitlements
+PASS admission leaves old event receipt and confirmed event count unchanged
+
+43 live HTTP acceptance checks passed. No payment was taken.
+{
+  "productId": "lantern-a7a047a6",
+  "eventId": "evening-a7a047a6",
+  "visitDate": "2026-10-20",
+  "originalOrderId": "6fe9dcab-0150-47f8-966e-80c70a4c8407",
+  "note": "Two extra holds expire after five minutes; confirmed capacity stays sold. This run created synthetic data and did not erase existing data."
+}

@@ -1,0 +1,198 @@
+{
+  "at": "2026-10-13T00:35:17.917842+00:00",
+  "projects": {
+    "implementation": {
+      "project": "pcw-g0003-impl",
+      "containers": [
+        {
+          "service": "booking",
+          "id": "87e4aee8ea31",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "8083/tcp",
+              "127.0.0.1",
+              8183
+            ]
+          ],
+          "volumes": []
+        },
+        {
+          "service": "catalog",
+          "id": "04c4e6ffba40",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "8081/tcp",
+              "127.0.0.1",
+              8181
+            ]
+          ],
+          "volumes": []
+        },
+        {
+          "service": "mongo",
+          "id": "c5b5023fcf06",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "27017/tcp",
+              "127.0.0.1",
+              27117
+            ]
+          ],
+          "volumes": [
+            "be30ebc9d988fa7a5812cf3b8261f62f903ce6a867f0d6a6713f2210120a229e",
+            "pcw-g0003-impl_mongo-data"
+          ]
+        },
+        {
+          "service": "mysql-booking",
+          "id": "4946ade8c6cf",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "3306/tcp",
+              "127.0.0.1",
+              3318
+            ]
+          ],
+          "volumes": [
+            "pcw-g0003-impl_booking-data"
+          ]
+        },
+        {
+          "service": "mysql-pricing",
+          "id": "939f639a1575",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "3306/tcp",
+              "127.0.0.1",
+              3317
+            ]
+          ],
+          "volumes": [
+            "pcw-g0003-impl_pricing-data"
+          ]
+        },
+        {
+          "service": "pricing",
+          "id": "6cc2383621b7",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "8082/tcp",
+              "127.0.0.1",
+              8182
+            ]
+          ],
+          "volumes": []
+        }
+      ]
+    },
+    "validation": {
+      "project": "pcw-g0003-validation",
+      "containers": [
+        {
+          "service": "booking",
+          "id": "b3aac265d9fc",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "8083/tcp",
+              "127.0.0.1",
+              8283
+            ]
+          ],
+          "volumes": []
+        },
+        {
+          "service": "catalog",
+          "id": "5ea7c0ad5aed",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "8081/tcp",
+              "127.0.0.1",
+              8281
+            ]
+          ],
+          "volumes": []
+        },
+        {
+          "service": "mongo",
+          "id": "425fa05de956",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "27017/tcp",
+              "127.0.0.1",
+              27217
+            ]
+          ],
+          "volumes": [
+            "21edc2404fdc65a5305a2f05e3765d2aae459281f8459f8b1e2f0dc46f450162",
+            "pcw-g0003-validation_mongo-data"
+          ]
+        },
+        {
+          "service": "mysql-booking",
+          "id": "0b502bc04a93",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "3306/tcp",
+              "127.0.0.1",
+              3328
+            ]
+          ],
+          "volumes": [
+            "pcw-g0003-validation_booking-data"
+          ]
+        },
+        {
+          "service": "mysql-pricing",
+          "id": "dd2c0675b34a",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "3306/tcp",
+              "127.0.0.1",
+              3327
+            ]
+          ],
+          "volumes": [
+            "pcw-g0003-validation_pricing-data"
+          ]
+        },
+        {
+          "service": "pricing",
+          "id": "4fe997e1ae3b",
+          "status": "running",
+          "health": "healthy",
+          "ports": [
+            [
+              "8082/tcp",
+              "127.0.0.1",
+              8282
+            ]
+          ],
+          "volumes": []
+        }
+      ]
+    }
+  },
+  "implementation_product_on_validation_status": 404
+}
