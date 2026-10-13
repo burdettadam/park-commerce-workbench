@@ -86,7 +86,7 @@ Existing commands establish only their stated coverage. Extend tests for the new
 
 | Slice | Ref | Writer | Included commit |
 | --- | --- | --- | --- |
-| Canonical integration, implementation and tests | `goal/G-0005` | Current Codex session | Activation P recorded in [bootstrap](work/bootstrap.md); source S not selected |
+| Canonical integration, implementation and tests | `goal/G-0005` | Current Codex session | P `30ffac8304f0ddf40a4845bb19e32393b1f0a516`; S `1dd1ef28d3d5db6bcd4e47255c074ed6205c1627` |
 | Additional independent work | Not assigned | Unassigned | Not created |
 
 Start with one branch. Assign separate writers and refs only when useful; record exact included revisions and disposition for abandoned alternatives.
@@ -106,7 +106,7 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 - Accepted plan commit P and file digest: recorded in [bootstrap](work/bootstrap.md) after activation commit.
 - Source candidate S: `1dd1ef28d3d5db6bcd4e47255c074ed6205c1627` from base `575d44ad21e6ed6fc0e72de4f6f27060a324bfcb`; the fixed candidate adds datastore assertions and a required nonempty integration-suite gate. [Verification work](work/persistence-verification.md) records the implementation and attempted checks.
 - Runtime: disposable MongoDB/MySQL Testcontainers and temporary Spring test contexts were started for synthetic-data verification; no long-lived G-0005 development instance was launched.
-- Verification: [candidate evidence](evidence/1dd1ef2/database-tests.md) records a clean-clone 67/67 local run, hosted CI and deliberate missing-Docker/empty/skipped-suite failures. Independent reviews and intended-use validation are pending. No release, tag, artifact or deployment has occurred.
-- Next action: obtain two independent reviews of fixed S and its retained evidence, resolve any findings, then complete intended-use validation and recoverable handoff before considering ready.
+- Verification: [candidate evidence](evidence/1dd1ef2/database-tests.md) records a clean-clone 67/67 local run, hosted CI and deliberate missing-Docker/empty/skipped-suite failures. Both [independent first reviews](evidence/1dd1ef2/reviews/native-provenance.md) found no AC01–AC04 source blocker; the adversarial handoff-table finding was corrected in this report-only update. Final review coverage, intended-use validation and readiness remain pending. No release, tag, artifact or deployment has occurred.
+- Next action: publish and retrieve the review/disposition checkpoint, complete final manifest and handoff, obtain applicable final review coverage and intended-use validation, then make a separate readiness decision.
 
 [Milestone M1](../../docs/roadmap/milestones/M1.md) · [Roadmap](../../docs/roadmap/README.md) · [Commands](../../docs/roadmap/COMMANDS.md)
