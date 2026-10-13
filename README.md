@@ -47,7 +47,7 @@ node --test scripts/pricing-contract.test.mjs
 cd storefront && npm ci && npm run test:types && npm run build
 ```
 
-The GitHub Actions workflow runs Java integration, Angular client checks, and the G-0004 Vaadin production build with its retained npm lock on pull requests and pushes to `main`. All three jobs passed on the [G-0004 candidate run](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38335871253). The previously verified Java suite passed 344 tests, including 64 database integration tests; see [verification details](docs/import-verification-2026-10-12.md).
+The GitHub Actions workflow runs Java integration, Angular client checks, and the G-0004 Vaadin production build with its retained npm lock on pull requests and pushes to `main`. All three jobs passed on the [fixed G-0004 source run](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38336113859). The previously verified Java suite passed 344 tests, including 64 database integration tests; see [verification details](docs/import-verification-2026-10-12.md).
 
 Local demo security is intentionally limited to loopback development. Review [security boundaries](docs/project/security.md) before running services. No production identity, payment processing, cloud deployment, or browser acceptance is claimed.
 
