@@ -20,3 +20,9 @@ The integration owner should rerun acceptance checks on a fixed combined candida
 ## Next action
 
 Integrate the coordination-only `goal/G-0008` update, commit and push this slice, then hand the exact source checkpoint and remaining AC01–AC04 verification gap to the integration owner.
+
+## Hosted live-stack check follow-up
+
+After the local Docker hang, the writer added one `live-stack` job to the existing public candidate workflow. It uses the free standard `ubuntu-latest` runner, the repository's existing `configure-local.sh` and `compose.yml`, and `node scripts/demo-http.mjs`. The Compose project name includes GitHub's run ID and attempt. The job emits only fixed `PASS` labels and the final count from the live demo, withholding raw HTTP response details and removing its runner-local report. An always-run step targets only that Compose project with `down --volumes --remove-orphans` and removes `.env`; per-step timeouts leave time for cleanup before the job timeout. A runner or Docker failure may still prevent cleanup, so no cleanup success is claimed before execution.
+
+Local static checks: Python YAML parsing found `live-stack` alongside the existing three jobs; `node scripts/validate-roadmap.mjs` exited 0 with 10 milestones, 30 goals, 120 criteria and 90 artifact requirements; `git diff --check` was clean. The live-stack job itself has not run yet. The integration owner must include this new source in a combined candidate and inspect hosted output before crediting cross-service evidence.
