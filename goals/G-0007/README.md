@@ -1,6 +1,6 @@
 # G-0007 — Add reviewable catalog drafts and publication history
 
-Status: **ready** (accepted goal gate; not merged or released). Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
+Status: **ready** (merged to `main`; no version release). Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
 
 ## Accepted work contract
 
