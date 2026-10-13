@@ -1,7 +1,7 @@
 # G-0003 two-worktree verification procedure
 
 Use this from two assigned, clean worktrees at the same accepted plan P. The
-implementation writer owns project `pcw-g0003-implementation`; the independent
+implementation writer owns project `pcw-g0003-impl`; the independent
 validation writer owns `pcw-g0003-validation`. Keep each worktree's private
 `.env` in that worktree. Record the exact branch/HEAD, `git status --porcelain`,
 writer, start/end time, commands, exit codes, and sanitized output for each
