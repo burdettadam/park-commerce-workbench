@@ -1,0 +1,17 @@
+{
+  "source_commit": "e7c1e7f309bd976b6bb92e575374c1bb1add316d",
+  "base_commit": "d7ed805158bd6a239480ce7ae03312c139f2acc7",
+  "accepted_plan_commit": "5ec839681f563b4267a912e66f5969c1f1d9ac24",
+  "java_release": 21,
+  "spring_boot_parent": "4.1.1",
+  "vaadin": "25.3.0",
+  "admin_profile": ["ui", "production"],
+  "vaadin_force_production_build": true,
+  "vaadin_ci_build": true,
+  "admin_lock_sha256": "89f7c27640fedb619d14a4de30b8c4daa50d729c2650131a034d1ad01a37ee53",
+  "storefront_angular": "21.2.25",
+  "storefront_lock_sha256": "a377d33b2e4a26b0678cd90320e1d3fbc5f91f47a87c7502ae6f57da229b7b65",
+  "ci_run": 38336113859,
+  "private_env": "Ignored local development .env only; no values used in the recorded build inputs",
+  "release": "not requested"
+}
