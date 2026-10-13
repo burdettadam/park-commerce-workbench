@@ -1,0 +1,7 @@
+# G-0003 readiness decision record
+
+**Decision: not ready; no readiness decision has been made.** Source S `4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6` remains fixed under accepted P `4a0d6a66a4d51eca57059a88875fb6efe7ab687e`. The branch map, restore drill and workflow observations provide evidence for the four accepted criteria, including the deliberately blocked E1 review case. That negative case must remain visible as the first review round; it cannot be counted as a current pass.
+
+Before changing this record to `ready`, the integration owner must retain two independent current native reviews of S and the completed candidate package, resolve any findings within the three-round limit, record actual intended-use validation in [validation.md](validation.md), fill the candidate manifest with true artifact digests and selected checks, run its evidence validator, and verify retrieval of the final public report commit. A structural validator pass alone would not authenticate reviewers or grant approval.
+
+The local bundle/recovery exercise was successful for retained source and work artifacts, with private `.env` values and database volumes outside its scope. The two drill stacks are stopped, named volumes retained, and the root development stack healthy after the documented cleanup correction. No version-producing merge into `main`, release, tag, cloud deployment or human release approval is recorded. This is a report-only checkpoint, not a change to S or to the accepted criteria.
