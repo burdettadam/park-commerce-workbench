@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0008",
+  "claim": "ready",
+  "candidate": {
+    "source_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+    "base_commit": "bd26cfbd062228c228223518d3800cd125c4e9b1",
+    "accepted_plan_commit": "717c31b04eca3f6478efa50c25dd666d3de73057",
+    "accepted_plan_path": "goals/G-0008/README.md",
+    "accepted_plan_sha256": "cb89fb489c5b53bbb65469d441ebdea820f73c5f15e5843154b890779147722a",
+    "working_tree_clean": true,
+    "configuration_sha256": "db16cc80cdf1ecb2c755055d0d591f563b5886bbc7a4f32ae7058c0064b42ab9",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CHECK-DEMO",
+      "type": "automated",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "command": "C:\\Program Files\\Git\\bin\\bash.exe scripts/test-core.sh --demo",
+      "working_directory": ".tmp/g0008-integration",
+      "started_at": "2026-10-13T22:43:13.6542502Z",
+      "finished_at": "2026-10-13T22:43:16.1043820Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 280,
+      "passed": 280,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280/280 in-memory core cases and demonstration output passed; zero failures.",
+      "output_artifact_id": "CHECK-DEMO"
+    },
+    {
+      "id": "CHECK-CORE-CI",
+      "type": "automated",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "command": "bash scripts/test-core.sh",
+      "working_directory": ".",
+      "started_at": "2026-10-13T22:36:03Z",
+      "finished_at": "2026-10-13T22:37:58Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 280,
+      "passed": 280,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280/280 in-memory core cases passed in the free hosted Java job.",
+      "output_artifact_id": "CHECK-JAVA"
+    },
+    {
+      "id": "CHECK-PRICING-CONTRACT",
+      "type": "automated",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "command": "node --test scripts/pricing-contract.test.mjs",
+      "working_directory": ".",
+      "started_at": "2026-10-13T22:36:03Z",
+      "finished_at": "2026-10-13T22:37:58Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "29/29 Node pricing contract tests passed in the free hosted Java job.",
+      "output_artifact_id": "CHECK-JAVA"
+    },
+    {
+      "id": "CHECK-INTEGRATION",
+      "type": "automated",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "command": "bash scripts/verify.sh --integration",
+      "working_directory": ".",
+      "started_at": "2026-10-13T22:36:03Z",
+      "finished_at": "2026-10-13T22:37:58Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 351,
+      "passed": 351,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280 core, 3 preview error contract, and 68 real database tests passed; no skips; 9/9 JpaPricingIT.",
+      "output_artifact_id": "CHECK-JAVA"
+    },
+    {
+      "id": "CHECK-ADMIN",
+      "type": "automated",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "command": "mvn -B -ntp -Pui,production -pl admin-console -am verify",
+      "working_directory": ".",
+      "started_at": "2026-10-13T22:36:03Z",
+      "finished_at": "2026-10-13T22:36:43Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 283,
+      "passed": 283,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280 core and 3 admin helper tests passed; production Vaadin frontend built.",
+      "output_artifact_id": "CHECK-ADMIN"
+    },
+    {
+      "id": "CHECK-HTTP",
+      "type": "automated",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "command": "docker compose up --build -d --wait; node scripts/demo-http.mjs; docker compose down --volumes --remove-orphans",
+      "working_directory": ".",
+      "started_at": "2026-10-13T22:36:04Z",
+      "finished_at": "2026-10-13T22:37:57Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "43/43 live six-service HTTP checks passed; owned CI volumes and network removed.",
+      "output_artifact_id": "CHECK-HTTP"
+    },
+    {
+      "id": "CHECK-BROWSER",
+      "type": "manual",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "command": "Playwright browser form: synthetic token, 2026-10-12 visit, click Preview unpublished rates against loopback 400 fixture",
+      "working_directory": ".tmp/g0008-integration",
+      "started_at": "2026-10-13T22:36:30Z",
+      "finished_at": "2026-10-13T22:36:43Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "Browser form sent one POST and displayed the exact safe past-date detail; real API covered separately.",
+      "output_artifact_id": "CHECK-BROWSER"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0008-AC01",
+      "result": "passed",
+      "independent_expected_result": "A known fixture produces the independently calculated subtotal, discount and final amount in preview; preview explicitly labels unpublished input/version state.",
+      "check_ids": [
+        "CHECK-DEMO",
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP"
+      ],
+      "artifact_ids": [
+        "G-0008-A01",
+        "CHECK-DEMO",
+        "CHECK-JAVA",
+        "CHECK-HTTP"
+      ]
+    },
+    {
+      "id": "G-0008-AC02",
+      "result": "passed",
+      "independent_expected_result": "Publishing exactly the previewed candidate makes a subsequent real quote agree on all monetary lines under identical date/party inputs; quote issuance additionally assigns actual identity/expiry.",
+      "check_ids": [
+        "CHECK-DEMO",
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP"
+      ],
+      "artifact_ids": [
+        "G-0008-A01",
+        "CHECK-JAVA",
+        "CHECK-HTTP"
+      ]
+    },
+    {
+      "id": "G-0008-AC03",
+      "result": "passed",
+      "independent_expected_result": "Invalid or overlapping effective-date rules and out-of-range party inputs are rejected with actionable messages, not a best-guess price.",
+      "check_ids": [
+        "CHECK-DEMO",
+        "CHECK-INTEGRATION",
+        "CHECK-ADMIN",
+        "CHECK-BROWSER"
+      ],
+      "artifact_ids": [
+        "G-0008-A02",
+        "CHECK-DEMO",
+        "CHECK-JAVA",
+        "CHECK-ADMIN",
+        "CHECK-BROWSER"
+      ]
+    },
+    {
+      "id": "G-0008-AC04",
+      "result": "passed",
+      "independent_expected_result": "No preview mutates price publication, issued quotes, orders or inventory. Concurrent preview/publication keeps candidate identity explicit; previous unexpired quotes remain unchanged.",
+      "check_ids": [
+        "CHECK-DEMO",
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP"
+      ],
+      "artifact_ids": [
+        "G-0008-A03",
+        "CHECK-DEMO",
+        "CHECK-JAVA",
+        "CHECK-HTTP"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0008-A01",
+      "path": "preview-fixtures.json",
+      "sha256": "395cf46e447e77c8854c79cce0393625f2e835f8809577510b4865c1fa1280c7",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "G-0008-A02",
+      "path": "preview-errors.md",
+      "sha256": "ca6044dbfa53b6a3cac02bae479d26fd047dd596c6fe4465a6c896a621989af6",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "G-0008-A03",
+      "path": "preview-side-effects.md",
+      "sha256": "983e8b3767c589e33691781364d184c7cced00e3e7fb6162d8956f438bdc6a7c",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "d3fdf2578308672bce67b476234124cb7d64b28139d4ca0f04fdb8d7df2de772",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "cb89fb489c5b53bbb65469d441ebdea820f73c5f15e5843154b890779147722a",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "db16cc80cdf1ecb2c755055d0d591f563b5886bbc7a4f32ae7058c0064b42ab9",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-DEMO",
+      "path": "checks/core-demo.txt",
+      "sha256": "675624740952877d7afe99000d18276c7ec6c8d2277dcc1cb11240548fa00e52",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-JAVA",
+      "path": "checks/hosted-ci.txt",
+      "sha256": "0bdaf309089707bf4636be5aab488bd76c52c462b87987789e6f6c12fd696047",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-ADMIN",
+      "path": "checks/admin-ui.txt",
+      "sha256": "f5659c28b7fda7ae5fd3fbc2672998da35b30cb07646aef298af5a8781b0b231",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-HTTP",
+      "path": "checks/live-stack.txt",
+      "sha256": "c76e2c33a24f621ad3a01d623de3b1cb26fdd1c7a47a8f4daa8fc0241e03ab23",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-BROWSER",
+      "path": "checks/browser-preview-error.md",
+      "sha256": "0d7bc9bfc0577f01135be9036be618208f5a9a8ab079ee6b034bb6310b530dd9",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/round2-contract-final.md",
+      "sha256": "3a094ed815554f86bcdef7910092eba49fab1fcae777ba25cbcb43b9bc11b210",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/round2-adversarial-final.md",
+      "sha256": "7e66a6c3a4f10b99ba9b8a545528cbd86574c6f5f835c2f7990018e434e7fa38",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "a570421bd81905fb87855db982e1cee21fffc9514d033cd373afc43ba6e0467e",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "f9aedfce8c8310283e50e8c2b41fb40ef8b1b98070bb114888f0a0082e7471c8",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "a8b9b9f4fe681ac85ca0aa960145a6ea8d3a0367ae3a4b2b93c5dce871ddfb96",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "REVIEW-FIRST-CONTRACT",
+      "path": "reviews/round2-contract.md",
+      "sha256": "8a48f13ad76b5facb0dc4ab0729dba6502dddde5badf86aa78a14d148f4ba0fc",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "REVIEW-FIRST-ADVERSARIAL",
+      "path": "reviews/round2-adversarial.md",
+      "sha256": "813da7e35466e8c3ea71824cd9c12f8e3eac9323fe7cc8a801a3617e9b37d437",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "REVIEW-DISPOSITION",
+      "path": "reviews/round2-disposition.md",
+      "sha256": "6637f4834bf2cd0c98d6c1e2419acbc3cfedafd8aca2cb6bb51059a01dd46eae",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-LOG-CLASSIFICATION",
+      "path": "checks/public-log-classification.md",
+      "sha256": "fa09e204569cd7d094985843a3e13945e7f4af4e6ce9c3080be78c2d031ba733",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-JUNIT",
+      "path": "checks/hosted-junit.txt",
+      "sha256": "f5bc298b997ea419bc7888a307eea2a5b10224d6645bc2c19aedec530914af50",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-DEMO-META",
+      "path": "checks/core-demo.meta.txt",
+      "sha256": "0e299f31450f9cb548cd9deb8ce7cf76bb5e77f3125b26164223f35686941c0b",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-LOCAL-FAILURE",
+      "path": "checks/windows-bash-interrupted.md",
+      "sha256": "29f72e4bb0b4dfa5cf070e44d4dcd71628c5e80deb4998230cde9499b946b0ab",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "CHECK-MOCK",
+      "path": "checks/preview-error-mock.mjs",
+      "sha256": "3c8bc8996561bdbf04129886b9b6ad0e7499a837fa8e4b2a8eb04ca4451e7b9c",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "REVIEW-INTERIM-CONTRACT",
+      "path": "reviews/round2-contract-closure1.md",
+      "sha256": "222ed9a29e4916fa56008aa2e1e757c0da4e097e615c652093c0699136812493",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    },
+    {
+      "id": "SCOPE",
+      "path": "scope-and-review.md",
+      "sha256": "dbf290e0afcc39b00e2946773b51e963779f51330742d2198c250fb3613c147d",
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": "contract-reviewer",
+      "session_id": "01a1376d-3723-7091-a0e4-9511514a286c",
+      "independent_of_writer": true,
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "round": 2,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": "adversarial-reviewer",
+      "session_id": "01a1376d-4820-7781-a1ca-ed7183d14b32",
+      "independent_of_writer": true,
+      "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+      "round": 2,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": "Codex (explicitly delegated by Adam Burdett on 2026-10-13)",
+    "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+    "decision": "accept",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": "Codex integration owner",
+    "candidate_commit": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+    "decision": "ready",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Adam Burdett",
+    "retrieval_verified": true,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}
