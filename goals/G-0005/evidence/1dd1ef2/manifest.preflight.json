@@ -41,7 +41,15 @@
         "CHECK-HOSTED-INTEGRATION"
       ],
       "artifact_ids": [
-        "G-0005-A01"
+        "G-0005-A01",
+        "LOCAL-INTEGRATION",
+        "RAW-CATALOG-EDITORIAL",
+        "RAW-MONGO-CATALOG",
+        "RAW-JPA-PRICING",
+        "RAW-QUOTE-CONTRACT",
+        "RAW-ADMISSION-CHECKOUT",
+        "RAW-CHECKOUT-RECOVERY",
+        "RAW-JDBC-BOOKING"
       ]
     },
     {
@@ -52,7 +60,12 @@
         "CHECK-HOSTED-INTEGRATION"
       ],
       "artifact_ids": [
-        "G-0005-A02"
+        "G-0005-A02",
+        "RAW-MONGO-CATALOG",
+        "RAW-JPA-PRICING",
+        "RAW-QUOTE-CONTRACT",
+        "RAW-ADMISSION-CHECKOUT",
+        "RAW-JDBC-BOOKING"
       ]
     },
     {
@@ -63,7 +76,8 @@
         "CHECK-HOSTED-INTEGRATION"
       ],
       "artifact_ids": [
-        "G-0005-A02"
+        "G-0005-A02",
+        "RAW-JDBC-BOOKING"
       ]
     },
     {
@@ -74,7 +88,11 @@
         "CHECK-HOSTED-INTEGRATION"
       ],
       "artifact_ids": [
-        "G-0005-A03"
+        "G-0005-A03",
+        "MIGRATION-OUTPUT",
+        "FAIL-CLOSED",
+        "RAW-JPA-PRICING",
+        "RAW-JDBC-BOOKING"
       ]
     }
   ],
@@ -124,8 +142,8 @@
     {
       "id": "VALIDATION",
       "path": "validation.md",
-      "sha256": null,
-      "candidate_commit": null
+      "sha256": "c1dcc52e444c56b1bd27c723f33b31607947e02615dee33abf5aa8eb2b382814",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
     },
     {
       "id": "DECISION",
@@ -136,7 +154,7 @@
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "a34809eca9d325d1550f7c956ba2328c159a040a0d2b0f312cb0ffd15d8e10b0",
+      "sha256": "8a30b0a9489780b5f2793cbd0da1ea1281964acd63028c7d0e71f2fe73e5f487",
       "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
     },
     {
@@ -149,6 +167,78 @@
       "id": "CONFIGURATION",
       "path": "configuration.json",
       "sha256": "ae57fab542d6ce84c5f36385abee210eb0619573a2063a10dd53233bc4317761",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "LOCAL-INTEGRATION",
+      "path": "checks/integration-summary.txt",
+      "sha256": "d0e54978689e4115df530e05c6a4205b3cd6ab1925d6a426d6aeac0dec81b8cf",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "MIGRATION-OUTPUT",
+      "path": "checks/migration-summary.txt",
+      "sha256": "38c1e15dc2551a5da991d0430b101eae5dc944c23638cc360f137f7cf25d7eae",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "FAIL-CLOSED",
+      "path": "checks/fail-closed.txt",
+      "sha256": "d96cfb58307dd70f8b2e91bbaba56e1907f6d01e62a14c01973d47c68846bdc9",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RAW-CATALOG-EDITORIAL",
+      "path": "checks/dev.parkcommerce.catalog.CatalogEditorialIT.txt",
+      "sha256": "7c2c74adb3ad016b085e23d0815c6548635e455a3d2ef66cc3fc5d72430e220f",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RAW-MONGO-CATALOG",
+      "path": "checks/dev.parkcommerce.catalog.MongoCatalogIT.txt",
+      "sha256": "73db1ecac035869878f7bd7a0380ac8271f0ce939da72dad76af1b159f13c31e",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RAW-JPA-PRICING",
+      "path": "checks/dev.parkcommerce.pricing.JpaPricingIT.txt",
+      "sha256": "4722413a14cca1315dc95934d7862966e93bba435823abacb6603e98ac85e358",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RAW-QUOTE-CONTRACT",
+      "path": "checks/dev.parkcommerce.pricing.QuoteContractIT.txt",
+      "sha256": "c40a655736968585a69945d9b49e81bbe5034942310c1d68980e8314e1cb8169",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RAW-ADMISSION-CHECKOUT",
+      "path": "checks/dev.parkcommerce.booking.AdmissionCheckoutIT.txt",
+      "sha256": "ef8b6fbc8a17de7c9a7e88ce9d755e57293b3abdd4145aba257d12903a074f94",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RAW-CHECKOUT-RECOVERY",
+      "path": "checks/dev.parkcommerce.booking.CheckoutRecoveryIT.txt",
+      "sha256": "fdcb94111578e65cfeafeac7d440665d5a902c399aa8b767f52004c11992a972",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "RAW-JDBC-BOOKING",
+      "path": "checks/dev.parkcommerce.booking.JdbcBookingIT.txt",
+      "sha256": "358f334a81730b589c33ee6824ab0ade9438bd091071c8438612b68496fa8f20",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "REVIEW-PROVENANCE",
+      "path": "reviews/native-provenance.md",
+      "sha256": "1d4c04f0ed0f871f417ad4fa7511ddf07abfe064740a52356c7955d3b93f2abf",
+      "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
+    },
+    {
+      "id": "REVIEW-DISPOSITION",
+      "path": "reviews/round1-disposition.md",
+      "sha256": "ce9e91fb70aa14e476fbea07f6c6a2aee0a1e91e1d5a1a48aeeaf7368975016c",
       "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627"
     }
   ],
@@ -177,9 +267,9 @@
     }
   ],
   "intended_use_validation": {
-    "validator_id": null,
+    "validator_id": "Codex (delegated by Adam Burdett)",
     "candidate_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627",
-    "decision": "not_run",
+    "decision": "accept",
     "report_artifact_id": "VALIDATION"
   },
   "readiness_decision": {
