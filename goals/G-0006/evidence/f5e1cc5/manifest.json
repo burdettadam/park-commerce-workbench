@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0006",
+  "claim": "ready",
+  "candidate": {
+    "source_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+    "base_commit": "f95ca02f1f54b4010c0e9b4c00cba6fa685d689e",
+    "accepted_plan_commit": "db494ebe4b5761cab9a1ecd67831dbad059f69b6",
+    "accepted_plan_path": "goals/G-0006/README.md",
+    "accepted_plan_sha256": "b622f98c193a2d25fffa3d00fc0b021b40a8ad87fa0d1696c2bc1970d6d85508",
+    "working_tree_clean": true,
+    "configuration_sha256": "02d989bed168abe432e4593285947b25e3f5006b4379d0357c3db507358502d6",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CHECK-COMPOSE",
+      "type": "automated",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "command": "docker compose up --build -d --wait",
+      "working_directory": ".tmp/g0006-live",
+      "started_at": "2026-10-13T10:36:08.8344153Z",
+      "finished_at": "2026-10-13T10:37:14.0719950Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Six services healthy; command exited 0.",
+      "output_artifact_id": "COMPOSE-OUTPUT"
+    },
+    {
+      "id": "CHECK-HTTP",
+      "type": "automated",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "command": "node scripts/demo-http.mjs",
+      "working_directory": ".tmp/g0006-live",
+      "started_at": "2026-10-13T10:37:29.8007513Z",
+      "finished_at": "2026-10-13T10:37:32.8138373Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "43 current live HTTP assertions passed, including role, owner, immutable price, retry and competing holds.",
+      "output_artifact_id": "HTTP-OUTPUT"
+    },
+    {
+      "id": "CHECK-ANGULAR",
+      "type": "automated",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "command": "npm run build",
+      "working_directory": ".tmp/g0006-live/storefront",
+      "started_at": "2026-10-13T10:36:08.8344153Z",
+      "finished_at": "2026-10-13T10:36:32.6946780Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "One production Angular build succeeded.",
+      "output_artifact_id": "ANGULAR-OUTPUT"
+    },
+    {
+      "id": "CHECK-VAADIN",
+      "type": "automated",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "command": "mvn -B -ntp -Pui,production -pl admin-console -am clean install",
+      "working_directory": ".tmp/g0006-live",
+      "started_at": "2026-10-13T10:42:46.3410306Z",
+      "finished_at": "2026-10-13T10:43:18.1823358Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 280,
+      "passed": 280,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "Production Vaadin build and 280 core tests passed after stopping owned jar process.",
+      "output_artifact_id": "VAADIN-OUTPUT"
+    },
+    {
+      "id": "CHECK-BROWSER",
+      "type": "automated",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "command": "node ../g0006-browser/flow.cjs",
+      "working_directory": ".tmp/g0006-live",
+      "started_at": "2026-10-13T10:52:37.5156357Z",
+      "finished_at": "2026-10-13T10:52:47.5464424Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "One scripted real Vaadin-to-Angular event flow passed with post-reprice UI assertion, retry and one order.",
+      "output_artifact_id": "BROWSER-OUTPUT"
+    },
+    {
+      "id": "CHECK-RESTART",
+      "type": "automated",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "command": "docker compose down; docker compose up -d --wait; GET order and availability",
+      "working_directory": ".tmp/g0006-live",
+      "started_at": "2026-10-13T10:53:06.4477540Z",
+      "finished_at": "2026-10-13T10:54:17.1636998Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "One volume-preserving restart returned same order and one confirmed capacity unit.",
+      "output_artifact_id": "RESTART-OUTPUT"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0006-AC01",
+      "result": "passed",
+      "independent_expected_result": "Compose services become healthy and all live HTTP assertions selected at the accepted source revision execute, including role checks, ownership, price-version preservation and competing holds. Record the actual count rather than using the foundation count.",
+      "check_ids": [
+        "CHECK-COMPOSE",
+        "CHECK-HTTP"
+      ],
+      "artifact_ids": [
+        "G-0006-A01",
+        "COMPOSE-OUTPUT",
+        "HTTP-OUTPUT"
+      ]
+    },
+    {
+      "id": "G-0006-AC02",
+      "result": "passed",
+      "independent_expected_result": "Through the real Vaadin interface publish a product/rate/event, and through Angular obtain a quote and confirm an order. Record the browser steps and corresponding API/order identifiers.",
+      "check_ids": [
+        "CHECK-ANGULAR",
+        "CHECK-VAADIN",
+        "CHECK-BROWSER"
+      ],
+      "artifact_ids": [
+        "G-0006-A02",
+        "BROWSER-SCRIPT",
+        "BROWSER-OUTPUT",
+        "SCREEN-ADMIN",
+        "SCREEN-QUOTE",
+        "SCREEN-ORDER"
+      ]
+    },
+    {
+      "id": "G-0006-AC03",
+      "result": "passed",
+      "independent_expected_result": "Publish a new price after an earlier quote and prove that the still-valid earlier quote keeps its original total. Retry the same checkout and observe one order and one capacity consumption.",
+      "check_ids": [
+        "CHECK-HTTP",
+        "CHECK-BROWSER",
+        "CHECK-RESTART"
+      ],
+      "artifact_ids": [
+        "G-0006-A01",
+        "G-0006-A02",
+        "HTTP-OUTPUT",
+        "BROWSER-OUTPUT",
+        "SCREEN-REPRICE",
+        "RESTART-OUTPUT"
+      ]
+    },
+    {
+      "id": "G-0006-AC04",
+      "result": "passed",
+      "independent_expected_result": "Stop the local stack without deleting volumes; restart and retrieve the confirmed order. Record framework/binding repairs and any remaining demo-only auth limitations.",
+      "check_ids": [
+        "CHECK-RESTART"
+      ],
+      "artifact_ids": [
+        "G-0006-A03",
+        "RESTART-OUTPUT"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0006-A01",
+      "path": "live-http.txt",
+      "sha256": "9b0f2e2b6e1bee4f1c7649e272042edd68fc64ab563ef533a8b28c7dc5bd55c9",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "G-0006-A02",
+      "path": "browser-walkthrough.md",
+      "sha256": "1eca15cb41fd33a03225d13297b245985a3101967cf0d0e598f5d8772f6467f2",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "G-0006-A03",
+      "path": "restart-and-limitations.md",
+      "sha256": "edd0abbed5cafe7ba82ac48fbcd8f6d445493b61827816fcb7c8c95841da5d14",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "eebedb5dcfa71106064bbba873d37687f9cc04fc9aaa5ba8a756fded70a4f461",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "b622f98c193a2d25fffa3d00fc0b021b40a8ad87fa0d1696c2bc1970d6d85508",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "02d989bed168abe432e4593285947b25e3f5006b4379d0357c3db507358502d6",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/round3-contract.md",
+      "sha256": "d263997bcaa67d1b369babf6288d0171dfa0a97b129d0e888432f281d0ecb36d",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/round3-adversarial.md",
+      "sha256": "ad9defcf4243465bfbd84dfa819c6624bd1841044e274174cf15404114358f22",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "1ba99a111fd8d81a2ee6781dd3c24aad76c7030af2092708ce11744a15a51399",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "ac6ce41ae9d9ba00bcfbf52ca7a1b80a4d961cebceea88ba510ee8ce59e78943",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "d64e9f909aba9ea64df74890be48b84de288970c55aaa692ea6ec6322d802777",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "HTTP-OUTPUT",
+      "path": "checks/live-http.txt",
+      "sha256": "06967b16e7d3105a9ff63bb55ea5b04d143988ca2b2ee535b3a1ca9f038fdc15",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "COMPOSE-OUTPUT",
+      "path": "checks/compose-build.txt",
+      "sha256": "0148df27e2b404155cd8f39bc025848c4e42eb6aafd3c9d11d6180f1da07f966",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ANGULAR-OUTPUT",
+      "path": "checks/angular-build.txt",
+      "sha256": "ebcb2aad60efbfac4ca135723f0e79ec426a15274357037d5889f5a5fdc7da44",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "VAADIN-OUTPUT",
+      "path": "checks/vaadin-build.txt",
+      "sha256": "2a422a321c307a16285a9027d9856ea72527a51adec736f61949a13e4d3641c4",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "BROWSER-OUTPUT",
+      "path": "checks/browser-flow.txt",
+      "sha256": "e351c79b528f969c4a7d394ac614d3f6237d7fa4d9ac9a7ff1deb273c69b9df6",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "BROWSER-SCRIPT",
+      "path": "checks/browser-flow.cjs",
+      "sha256": "ffaf2de73dc5ddbd92d00150f573b15ee50a4c217c7dfcfcaa88027c0c87935c",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "RESTART-OUTPUT",
+      "path": "checks/restart-round2.txt",
+      "sha256": "878acdabb10ac5fd99f00778500b609de49714bcaf77ee45cd824c502b37e0fc",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "SCREEN-ADMIN",
+      "path": "checks/screenshots/admin.png",
+      "sha256": "4b418cc51f8d2407eac98ef6baab10d7149c797ddc1726bd28e193ebf106d256",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "SCREEN-QUOTE",
+      "path": "checks/screenshots/quote.png",
+      "sha256": "342b61f2b9dfafa0de6482a1f9f8c750ffb344e09188bf292c83d8d4228179e2",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "SCREEN-REPRICE",
+      "path": "checks/screenshots/reprice.png",
+      "sha256": "342b61f2b9dfafa0de6482a1f9f8c750ffb344e09188bf292c83d8d4228179e2",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "SCREEN-ORDER",
+      "path": "checks/screenshots/order.png",
+      "sha256": "953452da60dbb384644158ef6918055162e5ee4f25a163534cfc016ddb883d26",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "REVIEW-PROVENANCE",
+      "path": "reviews/round2-provenance.md",
+      "sha256": "d985778167e576f2c9982282db9001a9ea2118edf70184835f368b82343196c5",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-CONTRACT",
+      "path": "reviews/round1-contract.md",
+      "sha256": "fb19ed3df90d85f3db2966a1b307412a966e522bb1ee8ecfcc5f6f083dabcc01",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-ADVERSARIAL",
+      "path": "reviews/round1-adversarial.md",
+      "sha256": "48ac06a040c280e60879ef206c3484f7918d88388582e010d69ac7c6ff2df769",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-DISPOSITION",
+      "path": "reviews/round1-disposition.md",
+      "sha256": "b72b7535362afb6327ee7de940c53567f8667726cbc13b8deaa697a034295955",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-PROVENANCE",
+      "path": "reviews/round1-provenance.md",
+      "sha256": "67b069af4713a44035f97d88c28bd322ae10e125fba5a14920c19371eea3e8eb",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-BROWSER-SCRIPT",
+      "path": "checks/browser-flow-round1.cjs",
+      "sha256": "34b13d857debd9544cd7af4fed5bdbd0c4e870345996095e9677f80b5e3ceaaf",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-BROWSER-OUTPUT",
+      "path": "checks/browser-flow-round1.txt",
+      "sha256": "d79f7b27dd58ae77a983d1202ff699a3b8a5cf5b4c8f6c7a2a1f507c06f148d6",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-RESTART",
+      "path": "checks/restart.txt",
+      "sha256": "7e565769e194b7889f5fc5d79df9f411dbd1d6b27a795a4e62e9b06a2f13e698",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-SCREEN-ADMIN",
+      "path": "checks/screenshots/round1-admin.png",
+      "sha256": "0e1a08d10cd3fa3f8a45c1505a4f50d76100dd94c4084b49c7d1a9a504af1135",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-SCREEN-QUOTE",
+      "path": "checks/screenshots/round1-quote.png",
+      "sha256": "ac80c0eaa14fdc6db4f0ab05eeaa76022d0459bdb25f012bff0481a172d1eca9",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND1-SCREEN-ORDER",
+      "path": "checks/screenshots/round1-order.png",
+      "sha256": "717b3e1ad1707ebbf418b742a303845793d88adeaf62a557613b25fc6c4fa160",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND2-DISPOSITION",
+      "path": "reviews/round2-disposition.md",
+      "sha256": "326b52ae6efbf74730335103be5e4c0eb72cde3b40cf09b3116f2af4b53197f0",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND2-CONTRACT",
+      "path": "reviews/round2-contract.md",
+      "sha256": "829dbb137e46f654b041882b29f0a2270fce3b48b482cdd89d9623152d6d7046",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND2-ADVERSARIAL",
+      "path": "reviews/round2-adversarial.md",
+      "sha256": "a7801993bfdccc9764b6047f07942eceec97ea3e151ae92deb739f7805bd4c22",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND3-DISPOSITION",
+      "path": "reviews/round3-disposition.md",
+      "sha256": "318b075e174073c1ef1f3b4b6611bd30915bdc781ea6e1fa54e441d182eae8e5",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "ROUND3-PROVENANCE",
+      "path": "reviews/round3-provenance.md",
+      "sha256": "3a9e45cdbc25a91b6d18aacb747a8390411742573d37a2f49b9d951d7c11bdde",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    },
+    {
+      "id": "VAADIN-RED",
+      "path": "checks/vaadin-build-red.txt",
+      "sha256": "9570e793aed95ac3ffe98c5f9454e00ae2fd91e96e561077870a0ab2f3ff9516",
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": "contract-reviewer",
+      "session_id": "01a135b3-cc71-7423-868d-2ad2a1a9f4b6",
+      "independent_of_writer": true,
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": "adversarial-reviewer",
+      "session_id": "01a135b3-ea18-7942-b09d-40da150f89d8",
+      "independent_of_writer": true,
+      "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": "Codex integration writer (delegated by Adam Burdett on 2026-10-13)",
+    "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+    "decision": "accept",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": "Codex integration writer",
+    "candidate_commit": "f5e1cc5e576c45a785199374031e5853a4dc7606",
+    "decision": "ready",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Adam Burdett",
+    "retrieval_verified": true,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}
