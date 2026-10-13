@@ -1,6 +1,6 @@
 # G-0007 — Add reviewable catalog drafts and publication history
 
-Status: **active** (one owner-authorized final review round pending). Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
+Status: **needs-decision** (fourth review exhausted with an evidence blocker). Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
 
 ## Accepted work contract
 
@@ -119,3 +119,9 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 Fixed source S `15c70f15154997f6eda7b72ad70aa3eba76e5fdd` passed 280 core and 67 real database tests, 43 live HTTP checks, and a focused employee browser flow. The production Vaadin build and public hosted CI also passed. [Verification work](work/verification.md) and [candidate evidence](evidence/15c70f1/) retain the results, including the failed local browser attempts and their limits. Adam delegated this goal's intended-use check to Codex; that validation accepted AC01–AC04 for synthetic local use.
 
 The accepted final independent review round found local username paths in a published compressed test log. The archive was replaced and the post-E1 branch history containing it was withdrawn from the active PR ref, but no independent reviewer has cleared the replacement. Adam authorized one new review round; the preceding-baseline control assessment and scoped validator-contract amendment are recorded above. The prior [decision record](evidence/15c70f1/decision.md) retains the failed third round; the new pair has not yet cleared the replacement. PR #9 remains draft and unmerged. No release or paid workflow is requested.
+
+## Fourth-round disposition
+
+The owner-authorized fourth pair inspected the fixed product S and sanitized replacement at public evidence checkpoint `e7108e16b50fcb8baff61d4340ddc951dba52186`. Both configured native reviewers blocked readiness because the first failed browser attempt's raw transcript was overwritten; the accepted evidence contract requires retaining failed attempts and that output cannot be recreated from the later runs. The [round-four disposition](evidence/15c70f1/reviews/round4-disposition.md) retains each finding and the retrieval limits. The one additional round is consumed. G-0007 is `needs-decision`, PR #9 remains draft, and there is no fifth round, ready claim, merge or release approval.
+
+The [owner decision proposal](work/lost-browser-transcript-decision.md) describes the narrow evidence exception and one further review pair that would be required to pursue readiness. It is not adopted.
