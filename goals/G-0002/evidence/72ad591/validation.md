@@ -1,0 +1,3 @@
+# G-0002 intended-use validation
+
+Adam Burdett explicitly answered ?Delegate the final check to Codex? for G-0002 on 12 October 2026. On final clean S `72ad59192e667e9e1048c5f3f65efc21e087005a`, the Codex integration writer checked the retained red R run (three named look-alike failures; suite exit 1), reran 29/29 mock checks with exit 0, checked reviewed real `git-agent 0.2.0`, and ran real dry-run preview with exit 0. The affected evidence-validator test set also passed on S with one documented Windows symlink-permission skip. This is delegated intended-use observation, not a claim that Adam operated the client, approved a merge, or ran apply. The R object remains local-only.

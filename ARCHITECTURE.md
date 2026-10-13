@@ -47,6 +47,11 @@ boundaries above.
 
 ## Operations and support links
 
+G-0001 adopts initializer and local development policy without changing a
+product contract, production deployment, support version, or production data.
+The lifecycle choices below are therefore outside this first local goal and
+remain required decisions before a goal that exercises the corresponding path.
+
 | Responsibility | Existing guide or actual product decision |
 | --- | --- |
 | Supported upgrade/data paths and rollback/roll-forward | UNCONFIGURED |

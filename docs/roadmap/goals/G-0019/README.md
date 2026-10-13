@@ -2,7 +2,7 @@
 
 Milestone: M6
 Depends on: G-0018
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: high
 
@@ -76,7 +76,7 @@ The common manifest, environment, raw checks, independent contract/adversarial r
 
 - `bash scripts/verify.sh --java` — existing. Maven/JDK/repository access required; does NOT execute *IT suites.
 - `mvn -B -ntp -Pui -pl admin-console -am verify` — proposed_validation. Uses existing Maven profile; must be executed and repaired in G-0004. Do not skip required tests.
-- `(cd storefront && npm ci && npm run build)` — planned_until_G-0004. Use only after the real lockfile exists and is reviewed; not executed by this roadmap.
+- `(cd storefront && npm ci && npm run build)` — existing. Uses the committed lockfile; repeat on the accepted candidate rather than relying on earlier CI.
 - `bash scripts/verify.sh --integration` — existing. Maven/JDK/Docker required; real database tests must not silently skip.
 
 Existing commands establish only their stated coverage. Extend tests for the new criteria; a successful baseline command does not automatically prove a new goal. Resolve unspecified goal-specific commands during plan acceptance and retain the actual executed commands, working directory and inputs.

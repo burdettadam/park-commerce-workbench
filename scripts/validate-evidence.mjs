@@ -25,6 +25,9 @@ export function validateEvidence(filename, root = projectRoot) {
   if (!goal) return { errors: ['Unknown goal_id.'] };
   if (x.claim !== 'ready') fail('Template/incomplete evidence: claim must be ready only after real collection.');
   const s = x.candidate?.source_commit;
+  const nc = x.candidate?.negative_control;
+  if (nc != null && (!gitHash(nc.commit) || !gitHash(nc.derived_from_commit) || !filled(nc.purpose) || nc.commit === s || nc.commit === x.candidate?.base_commit || nc.derived_from_commit === nc.commit)) fail('Negative-control identity, lineage and purpose are invalid.');
+  const redSource = commit => commit === x.candidate?.base_commit || (nc != null && commit === nc.commit);
   if (!gitHash(s) || !gitHash(x.candidate?.base_commit) || !gitHash(x.candidate?.accepted_plan_commit)) fail('Actual source/base/accepted-plan Git identities are required.');
   if (x.candidate?.working_tree_clean !== true) fail('Source candidate is not declared clean.');
   if (!safeRelative(x.candidate?.accepted_plan_path)) fail('Accepted plan path is missing or unsafe.');
@@ -36,7 +39,7 @@ export function validateEvidence(filename, root = projectRoot) {
     map.set(a?.id, a);
     if (paths.has(a?.path)) fail(`Duplicate artifact path: ${a?.path}`);
     paths.add(a?.path);
-    const redBaseline = a?.candidate_commit === x.candidate?.base_commit && (x.checks ?? []).some(c => c.type === 'expected_failure' && c.candidate_commit === a.candidate_commit && c.output_artifact_id === a.id);
+    const redBaseline = redSource(a?.candidate_commit) && (x.checks ?? []).some(c => c.type === 'expected_failure' && c.candidate_commit === a.candidate_commit && c.output_artifact_id === a.id);
     if (a?.candidate_commit !== s && !redBaseline) fail(`Stale artifact candidate: ${a?.id}`);
     if (!sha256(a?.sha256)) fail(`Missing artifact digest: ${a?.id}`);
     try {
@@ -59,7 +62,7 @@ export function validateEvidence(filename, root = projectRoot) {
   for (const c of checks) {
     if (!filled(c?.id) || checkMap.has(c.id)) fail('Missing/duplicate check ID.');
     checkMap.set(c?.id, c);
-    if (c?.candidate_commit !== s && !(c?.type === 'expected_failure' && c?.candidate_commit === x.candidate?.base_commit)) fail(`Stale check candidate: ${c?.id}`);
+    if (c?.candidate_commit !== s && !(c?.type === 'expected_failure' && redSource(c?.candidate_commit))) fail(`Stale check candidate: ${c?.id}`);
     if (!filled(c?.command) || !filled(c?.working_directory) || !filled(c?.observed_result)) fail(`Missing command/procedure/outcome: ${c?.id}`);
     if (c?.status !== 'passed') fail(`Check not passed: ${c?.id}`);
     const start = Date.parse(c?.started_at), end = Date.parse(c?.finished_at);

@@ -1,5 +1,7 @@
 # Roadmap delivery verification
 
+> **Historical proposal-1 delivery record (11 October 2026).** Its statements about the then-current wrapper, ZIP, privacy and unavailable runtime apply only to that earlier source. Use [the current-state audit](CURRENT-STATE-2026-10-12.md) for this public checkout.
+
 This is a **planning and artifact-contract delivery**, not acceptance of a product goal. No initializer, native model/reviewer session, human approval, GitHub write, cloud operation or application release occurred.
 
 ## Observed checks

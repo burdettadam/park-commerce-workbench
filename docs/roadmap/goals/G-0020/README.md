@@ -2,7 +2,7 @@
 
 Milestone: M6
 Depends on: G-0019
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: high
 
@@ -50,7 +50,7 @@ Required evidence: `G-0020-A02` plus the relevant raw check, source S and indepe
 
 ### G-0020-AC03
 
-Credentials are least-privilege and untrusted changes cannot access publishing/deployment secrets; record actual private-repository and applicable branch/environment control observations.
+Credentials are least-privilege and untrusted changes cannot access publishing/deployment secrets; record the actual public-repository, protected-branch, workflow-permission and applicable environment-control observations.
 
 Required evidence: `G-0020-A03` plus the relevant raw check, source S and independent review coverage.
 
@@ -68,7 +68,7 @@ Relative to the eventual candidate evidence directory, for example `goals/G-0020
 | --- | --- | --- |
 | `G-0020-A01` | `pipeline-runs.md` | Actual GitHub/Jenkins runs, counts, source and artifacts. |
 | `G-0020-A02` | `negative-gate-test.md` | Known failed check and observed promotion denial. |
-| `G-0020-A03` | `pipeline-controls.md` | Permissions, trust boundaries, private status and human gates. |
+| `G-0020-A03` | `pipeline-controls.md` | Permissions, trust boundaries, public visibility and human gates. |
 
 The common manifest, environment, raw checks, independent contract/adversarial review reports, intended-use validation, decision and handoff are also mandatory. Start from [the unfilled manifest template](manifest.template.json) and [artifact contract](../../ARTIFACT-CONTRACT.md). The unfilled template deliberately fails the readiness checker.
 

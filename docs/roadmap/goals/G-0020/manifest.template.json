@@ -54,7 +54,7 @@
     {
       "id": "G-0020-AC03",
       "result": "not_run",
-      "independent_expected_result": "Credentials are least-privilege and untrusted changes cannot access publishing/deployment secrets; record actual private-repository and applicable branch/environment control observations.",
+      "independent_expected_result": "Credentials are least-privilege and untrusted changes cannot access publishing/deployment secrets; record the actual public-repository, protected-branch, workflow-permission and applicable environment-control observations.",
       "check_ids": [],
       "artifact_ids": [
         "G-0020-A03"

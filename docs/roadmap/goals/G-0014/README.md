@@ -2,7 +2,7 @@
 
 Milestone: M4
 Depends on: G-0012
-Proposal revision: proposal-1
+Proposal revision: proposal-2
 Plan authority: NOT ACCEPTED
 Risk profile: high
 
@@ -75,7 +75,7 @@ The common manifest, environment, raw checks, independent contract/adversarial r
 
 ## Validation commands and new tests
 
-- `(cd storefront && npm ci && npm run build)` — planned_until_G-0004. Use only after the real lockfile exists and is reviewed; not executed by this roadmap.
+- `(cd storefront && npm ci && npm run build)` — existing. Uses the committed lockfile; repeat on the accepted candidate rather than relying on earlier CI.
 - `(cd storefront && npm run start)` — existing. Real services and reviewed dependencies required; loopback development server.
 - `node --test storefront/src/app/checkout-state.test.mjs` — existing. Existing dependency-free client-state tests, not Angular browser tests.
 - `node scripts/demo-http.mjs` — existing. Requires running local services and .env; creates synthetic data.

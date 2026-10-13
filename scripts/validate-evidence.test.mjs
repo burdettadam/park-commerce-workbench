@@ -9,7 +9,7 @@ import crypto from 'node:crypto';
 import { validateEvidence } from './validate-evidence.mjs';
 import { projectRoot } from './validate-roadmap.mjs';
 const digest=x=>crypto.createHash('sha256').update(x).digest('hex');
-const S='a'.repeat(40), B='b'.repeat(40), P='c'.repeat(40);
+const S='a'.repeat(40), B='b'.repeat(40), P='c'.repeat(40), R='d'.repeat(40);
 function fixture() {
   const directory=fs.mkdtempSync(path.join(os.tmpdir(),'pcw evidence fixtures '));
   const manifest=JSON.parse(fs.readFileSync(path.join(projectRoot,'docs/roadmap/goals/G-0002/manifest.template.json'),'utf8'));
@@ -48,7 +48,17 @@ rejects('required skipped tests are rejected',f=>Object.assign(f.manifest.checks
 rejects('open valid review blockers prevent structural readiness',f=>f.manifest.reviews[1].open_blockers=1,/open blockers/);
 rejects('same reviewer session cannot be counted twice',f=>f.manifest.reviews[1].session_id=f.manifest.reviews[0].session_id,/distinct independent sessions/);
 rejects('artifact path traversal is refused',f=>f.art('G-0002-A01').path='../outside.txt',/Missing\/unsafe artifact/);
-rejects('symlinked artifacts are refused',f=>{const a=f.art('G-0002-A01');fs.unlinkSync(path.join(f.directory,a.path));fs.symlinkSync(path.join(f.directory,f.art('ENVIRONMENT').path),path.join(f.directory,a.path));},/Symlink refused/);
+test('symlinked artifacts are refused',t=>withFixture(f=>{
+  const a=f.art('G-0002-A01');
+  fs.unlinkSync(path.join(f.directory,a.path));
+  try { fs.symlinkSync(path.join(f.directory,f.art('ENVIRONMENT').path),path.join(f.directory,a.path)); }
+  catch(e) {
+    if (['EPERM','EACCES','ENOTSUP'].includes(e.code)) { t.skip(`Host does not permit symlink creation: ${e.code}`); return; }
+    throw e;
+  }
+  const r=validateEvidence(f.save());
+  assert.ok(r.errors.some(x=>/Symlink refused/.test(x)),JSON.stringify(r.errors));
+}));
 rejects('dirty source is not identified as a frozen candidate',f=>f.manifest.candidate.working_tree_clean=false,/not declared clean/);
 rejects('missing intended-use validation is not a pass',f=>f.manifest.intended_use_validation.decision='not_run',/intended-use validation/);
 rejects('placeholder Git identity is rejected',f=>f.manifest.candidate.source_commit='NOT_A_COMMIT',/Git identities/);
@@ -63,6 +73,22 @@ test('a separate pre-fix red run retains its true base source alongside current 
   const red=structuredClone(f.manifest.checks[0]);Object.assign(red,{id:'RED-BASE',type:'expected_failure',candidate_commit:B,expected_exit_code:1,observed_exit_code:1,passed:0,failed:1,output_artifact_id:'G-0002-A01'});
   f.art('G-0002-A01').candidate_commit=B;f.manifest.checks.push(red);f.manifest.criteria[0].check_ids=['RED-BASE'];assert.deepEqual(validateEvidence(f.save()).errors,[]);
 }));
+function addNegativeControl(f) {
+  f.manifest.candidate.negative_control={commit:R,derived_from_commit:S,purpose:'synthetic deliberately weakened guard'};
+  const red=structuredClone(f.manifest.checks[0]);
+  Object.assign(red,{id:'RED-CONTROL',type:'expected_failure',candidate_commit:R,expected_exit_code:1,observed_exit_code:1,passed:0,failed:1,output_artifact_id:'G-0002-A01'});
+  f.art('G-0002-A01').candidate_commit=R;
+  f.manifest.checks.push(red);
+  f.manifest.criteria[0].check_ids=['RED-CONTROL'];
+}
+test('a declared separate negative-control red run retains its source alongside current green',()=>withFixture(f=>{
+  addNegativeControl(f);assert.deepEqual(validateEvidence(f.save()).errors,[]);
+}));
+rejects('undeclared negative-control red check is stale',f=>{addNegativeControl(f);f.manifest.candidate.negative_control=null;},/Stale check candidate/);
+rejects('negative-control identity cannot replace source or base',f=>{addNegativeControl(f);f.manifest.candidate.negative_control.commit=S;},/Negative-control identity/);
+rejects('negative-control declaration requires a lineage identity',f=>{addNegativeControl(f);f.manifest.candidate.negative_control.derived_from_commit=null;},/Negative-control identity/);
+rejects('an ordinary check cannot run against the negative control',f=>{addNegativeControl(f);f.manifest.checks[0].candidate_commit=R;},/Stale check candidate/);
+rejects('a negative-control artifact requires its matching red check',f=>{addNegativeControl(f);f.manifest.checks.pop();},/Stale artifact candidate/);
 test('manual checks record observations without invented automated test counts',()=>withFixture(f=>{
   Object.assign(f.manifest.checks[0],{type:'manual',selected:null,passed:null,failed:null,skipped:null,expected_exit_code:null,observed_exit_code:null});assert.deepEqual(validateEvidence(f.save()).errors,[]);
 }));

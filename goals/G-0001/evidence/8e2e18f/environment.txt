@@ -1,0 +1,8 @@
+G-0001 fixed source S: 8e2e18f04906cd9bdbd8344c74d3fd222ebd4e2e
+Observed on 12 October 2026 from Windows 11 Home, culture en-US, time zone Mountain Standard Time.
+Native Git for Windows: 2.53.0.windows.2; Git Bash: 5.2.37(1)-release.
+Installed Codex CLI used for accepted discovery: 0.162.0-alpha.17.2. The project trust prompt was accepted in the interactive CLI before native role selection succeeded. Project role selection is a machine/session setting as well as a tracked configuration; a clean Git clone does not recreate trust.
+Node: 24.14.1; npm: 11.11.0; Docker: 29.7.2; Compose: v5.4.0.
+Host default Java: OpenJDK 17.0.10; native mvn command not found. G-0001's initializer, tooling, discovery and evidence checks do not require host JDK 21 or Maven. Dockerfile builds with Maven 3.9.11 and Temurin 21; GitHub java job installs Temurin 21 and passed on S. No claim is made that direct host Maven commands ran or that the whole product was rebuilt from this host in G-0001.
+One owned local mutable product instance is the adopted G-0001 limit; no Compose instance was started for this initializer/doc goal. No two-instance isolation result is claimed.
+Raw native prompt/rollout JSONL and absolute path output are local-only in ignored .tmp or Codex's session store. Public sanitized transcripts and reports are tracked with exact source identity. The complete public source/evidence checkpoint was clean-cloned; private account configuration is outside that clone.

@@ -1,0 +1,10 @@
+# G-0002 integration readiness decision
+
+**Decision: ready for the accepted G-0002 local goal at fixed source S `72ad59192e667e9e1048c5f3f65efc21e087005a`**, following structural validation of its final manifest. **Authority:** the Codex branch writer/integration record maintainer acting within Adam Burdett's accepted G-0002 plan and explicit delegation of the final intended-use check. This is an integration status decision, not a claim that Adam operated the check, signed the report, or approved a version-producing merge.
+
+- **AC01:** clean local-only R `79560f4fc6692584f414e6851122bbc2058609dc`, directly derived from S0 `df6e9b9819cda0170bd9233387f72e16aa73573f`, reproduced the old substring defect: 11 reject-output assertions failed including all three required look-alikes, suite exit 1. It is a negative control, not a current product defect.
+- **AC02:** clean S passed all version-output mock cases, real reviewed `git-agent 0.2.0` reported exactly, and real initializer dry-run preview exited 0 with no project writes.
+- **AC03:** all 29 selected mock tooling checks passed with zero skips, including root/argument protections, local configuration preservation and exit-code 3 forwarding.
+- **AC04:** independent native contract and adversarial round-2 reviews of S closed with zero source/control blockers. The contract review's missing validator-run output was supplied and checked; 47 roadmap/evidence validator cases yielded 46 pass, zero fail, one Windows EPERM symlink-fixture skip. The separate validated manifest records their identities and criterion mapping.
+
+The public evidence checkpoint E1 `4e0133e1aa08df3eb77e4dc24ae4d13e098f0b5a` was fresh-cloned, with 467 S source-manifest entries verified, all 13 report files byte-matched and no `.env`. Local raw logs, native session rollouts and exact red Git object remain local-only. The final manifest/decision report increment still needs push and fresh retrieval before advancing the canonical goal record. No release, deployment, artifact tag, health, measured recovery objective, or human merge approval is claimed.

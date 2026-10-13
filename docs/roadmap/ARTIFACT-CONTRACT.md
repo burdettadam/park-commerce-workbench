@@ -41,7 +41,7 @@ Use the goal's `manifest.template.json` as an output contract. Paths are relativ
 
 Freeze source candidate **S**, relevant base, accepted plan **P**, toolchain/configuration and environment before selected acceptance checks. Record whether the working tree was clean. A dirty working tree is exploratory unless a separately accepted exact snapshot identity is used; this version of the readiness manifest requires a clean Git source commit.
 
-The proposal ZIP has no Git history. Its original manifest and ZIP digest are retained under `baseline/`; import and commit locally before claiming Git-based goal evidence. Never invent a commit SHA to fill a required field.
+The historical proposal ZIP had no Git history. Its original manifest and ZIP digest are retained under `baseline/`; the current public checkout has its own Git history. Use the actual current source commit and preserve the private archive's earlier source identity separately. Never invent a commit SHA to fill a required field.
 
 Retain the accepted plan's exact bytes/digest as `accepted-plan.md`; subsequent progress/status updates do not retrospectively alter that contract. Changes to accepted criteria require a new decision/plan revision and renewed affected checks.
 
@@ -49,7 +49,7 @@ Evidence can be committed later as **E** describing **S**. E must not claim to b
 
 ## Evidence manifest semantics
 
-Every criterion references at least one check and its required goal-specific artifact. All check and artifact references must exist, be nonempty and be tied to the same candidate. Automated acceptance checks must select tests and have no unexplained failures/skips. A deliberately red reproduction is declared `expected_failure`, with a nonzero expected exit and retained failure assertion; it does not count as the repaired green run. Its check and raw output may identify the recorded pre-fix base commit rather than S. All ordinary acceptance checks and both reviews still cover S, and at least one actual current-candidate acceptance check is required. Never relabel an old red run as if it executed the repaired source. A manual validation is labeled `manual` and records a real observer/procedure/outcome, not invented test counts or exit codes.
+Every criterion references at least one check and its required goal-specific artifact. All check and artifact references must exist, be nonempty and be tied to the same candidate. Automated acceptance checks must select tests and have no unexplained failures/skips. A deliberately red reproduction is declared `expected_failure`, with a nonzero expected exit and retained failure assertion; it does not count as the repaired green run. Its check and raw output may identify the recorded pre-fix base commit rather than S. A disposable negative-control commit can instead be declared as `candidate.negative_control` with its distinct `commit`, `derived_from_commit` and `purpose`; only a red check and its output may use that commit. Record and independently inspect the actual Git lineage: the structural validator checks the declared identities but does not authenticate Git ancestry. All ordinary acceptance checks and both reviews still cover S, and at least one actual current-candidate acceptance check is required. Never relabel an old red run as if it executed the repaired source. A manual validation is labeled `manual` and records a real observer/procedure/outcome, not invented test counts or exit codes.
 
 Record actual start/end timestamps, command, working directory, observed result, environment and source. Keep raw output, including failed attempts; do not rerun until green and discard history. Environment absence, omitted suites, stale data, unsupported platforms and access failures remain visible.
 
@@ -67,7 +67,7 @@ Record intended-use validation and the integration owner's actual readiness deci
 
 After adoption, use the upstream goal states: `planned`, `active`, `blocked`, `paused`, `ready`, `needs-decision`, `cancelled`, `superseded`. These proposals are not active records. Ready means the accepted candidate passed the goal gate; it does not mean merged, released, deployed, healthy or remotely recoverable.
 
-The supplied validators implement the proposal-1 artifact coverage and two-reviewer/three-round baseline. A later accepted policy or material criterion change requires an explicit reviewed update to the coverage catalog/validator contract under the prior rules; the active accepted goal remains the authority. They are not a general automatic parser of native governance.
+The supplied validators implement the proposal-2 catalog and the proposed two-reviewer/three-round baseline. A later accepted policy or material criterion change requires an explicit reviewed update to the coverage catalog/validator contract under the prior rules; the active accepted goal remains the authority. They are not a general automatic parser of native governance.
 
 The manifest checker verifies structure, declared candidate consistency, coverage, counts and local file digests. It does **not** authenticate reviewers/owners, verify Git objects against a remote, prove that commands really ran, read the semantics of every report, enforce hosted controls or grant an approval. Synthetic validator fixtures can pass structural checks; this is why independent review and actual authority remain necessary.
 
@@ -75,7 +75,7 @@ The manifest checker verifies structure, declared candidate consistency, coverag
 
 Keep compact approved reports in Git and record external artifacts' owners, storage, access, expiry, renewal/retrieval procedure and digests. Before declaring a whole goal recoverable, retrieve every indispensable component on a fresh path/session and compare identities. Retain branch/artifact checkpoints first; update the coordinating goal record afterward.
 
-Until repository privacy is confirmed, use local archives/bundles and label retention `local_only`. Local files are not automatically off-device backups. Never push secrets, `.env`, tokens, real customers, private initializer source, vendor credentials or unreviewed logs. Do not delete worktrees/volumes/backups before the required recovery checks and owner decisions.
+This repository is public. Publish only sanitized evidence and source; keep sensitive local artifacts out of Git and label them `local_only` unless an approved private retained location and retrieval are verified. Local files are not automatically off-device backups. Never push secrets, `.env`, tokens, real customers, private initializer source, vendor credentials or unreviewed logs. Do not delete worktrees/volumes/backups before the required recovery checks and owner decisions.
 
 ## Milestone gate
 
