@@ -47,14 +47,14 @@ The [artifact contract](../../docs/roadmap/ARTIFACT-CONTRACT.md) and deliberatel
 
 | Slice | Ref | Writer | Included revision | Record |
 | --- | --- | --- | --- | --- |
-| Canonical integration | `goal/G-0003` | Current Codex session | G-0002 ready base `a0cc506` | [bootstrap](work/bootstrap.md) |
-| Implementation/configuration | To assign under `goal/G-0003/` | Not yet assigned | None | Pending |
-| Independent test/documentation | To assign under `goal/G-0003/` | Not yet assigned | None | Pending |
+| Canonical integration | `goal/G-0003` | Current Codex session | G-0002 ready base `a0cc506`; assembled candidate pending freeze | [bootstrap](work/bootstrap.md), [integration](work/integration.md) |
+| Implementation/configuration | `goal/G-0003-implementation` | Codex integration writer | `ecc1439` included via `f8098e4` | [implementation](work/implementation.md) |
+| Independent test/documentation | `goal/G-0003-validation` | Independent Codex writer | `7eed2b0` included via `12a67c6` | [validation](work/validation.md) |
 
 Candidate resource plan, **not yet an isolation result**: use different Compose project names and distinct host-port sets for the two worktrees. Compose's named volumes are project-scoped; verify their actual names, service health, endpoint identity and absence of shared mutable effects before claiming AC01. Give each worktree its own private `.env`, process/container owner and progress file. The accepted G-0001 pilot demonstrated only one mutable instance, so two-instance capacity and isolation remain unverified.
 
-**Current state:** active plan accepted from the G-0002 ready base; no G-0003 slice, runtime instance, candidate S, acceptance check, review or intended-use validation is claimed.
+**Current state:** active. Both slice branches and their retained work records are integrated. Two six-service commerce stacks ran concurrently with disjoint live ports and volumes; each passed 43 maintained HTTP checks, and synthetic products were absent from the other stack. These are observed G-0003 inputs, not a ready decision. Candidate S, fresh-session recovery, deliberate gate challenges, final native reviews and intended-use validation remain open.
 
-**Next action:** assign and checkpoint the implementation and independent test/documentation slices on distinct worktrees at this plan revision. Inspect actual resource availability, then exercise the two-instance and recovery drill with retained, sanitized evidence. Preserve a nonincluded alternative and the deliberate review-gate failures. Do not delete the local G-0002 red worktree or any unverified G-0003 recovery input.
+**Next action:** freeze the combined source and candidate-specific evidence, then interrupt an authoring session and reconstruct in a fresh directory/session using a local bundle and exact digests. Challenge the review gate with a stale report and missing artifact before final review and validation. Preserve both product projects and the G-0002 red worktree until their evidence and recovery disposition is recorded.
 
 **Release and recovery:** no version-producing merge, artifact, tag or deployment. Activation publication and clean retrieval are recorded in [bootstrap](work/bootstrap.md); local drill bundles, credentials and raw logs must be identified separately. Ready status requires all four criteria, two final native reviews, actual intended-use validation and recoverable indispensable evidence.
