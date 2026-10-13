@@ -1,8 +1,12 @@
 # Catalog drafts, publication and history
 
-**Status:** implemented local candidate toward G-0007. The Java domain tests run;
-Spring/MongoDB/Vaadin integration remains unexecuted until the full-stack gate is met.
-This is independent fictional commerce software.
+**Status:** implemented local candidate under G-0007 review. At fixed source
+`15c70f15154997f6eda7b72ad70aa3eba76e5fdd`, 17 real catalog Mongo/Spring
+integration tests, the 43-check live HTTP run, and a focused production Vaadin
+browser flow passed on 2026-10-13. The [G-0007 evidence](../../goals/G-0007/evidence/15c70f1/)
+records the results and the earlier failed browser attempts. Final independent
+review found an evidence privacy issue; G-0007 is `needs-decision` after the accepted
+round limit. This is independent fictional commerce software.
 
 ## Two different counters
 
@@ -150,9 +154,10 @@ counters are visibly separate. A conflict requests reload/review; the console do
 not auto-rebase. A missing response advises inspection before retrying. History
 rendering uses text components rather than executing content as markup.
 
-There is no claim of an executed browser walkthrough. A workstation must verify
-compilation, both variant configurations, edited form rejection, conflicts, history,
-keyboard use, and actual API error handling. Existing pricing UI still emits both
+The G-0007 employee browser walkthrough verified edited-form rejection, a stale
+employee conflict, reviewed publication, guest invisibility, history and API response
+handling. It did not independently test keyboard navigation or both variant
+configurations. Existing pricing UI still emits both
 adult and child rates; an adults-only product requires a matching price-book request
 through the pricing API until that separate editor limitation is addressed.
 

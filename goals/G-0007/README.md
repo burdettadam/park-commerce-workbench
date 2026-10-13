@@ -1,6 +1,6 @@
 # G-0007 — Add reviewable catalog drafts and publication history
 
-Status: **active**. Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
+Status: **needs-decision**. Milestone: M2. Dependency: [G-0006 ready](../G-0006/README.md), promoted by [PR #8](https://github.com/burdettadam/park-commerce-workbench/pull/8) to `main` at `c734a95836388ec8316a06bac8c7361d9ef8b0de`.
 
 ## Accepted work contract
 
@@ -111,3 +111,9 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 - The public activation checkpoint `949fd4a9b9a030755d4de31dc0f735f8fd36bc50` was retrieved cleanly on a fresh path with the exact plan digest and base ancestry. Next action: inspect the existing catalog-publication code/contracts/tests for AC01–AC04 and DRY/architecture risks, then select focused real MongoDB/API and employee workflow checks before freezing S.
 
 [Milestone M2](../../docs/roadmap/milestones/M2.md) · [Roadmap](../../docs/roadmap/README.md) · [Commands](../../docs/roadmap/COMMANDS.md)
+
+## Current checkpoint after verification
+
+Fixed source S `15c70f15154997f6eda7b72ad70aa3eba76e5fdd` passed 280 core and 67 real database tests, 43 live HTTP checks, and a focused employee browser flow. The production Vaadin build and public hosted CI also passed. [Verification work](work/verification.md) and [candidate evidence](evidence/15c70f1/) retain the results, including the failed local browser attempts and their limits. Adam delegated this goal's intended-use check to Codex; that validation accepted AC01–AC04 for synthetic local use.
+
+The accepted final independent review round found local username paths in a published compressed test log. The archive was replaced and the post-E1 branch history containing it is being withdrawn, but no independent reviewer has cleared the replacement. The three-round limit has been reached; [the decision record](evidence/15c70f1/decision.md) therefore keeps G-0007 at `needs-decision`. Adam must explicitly authorize a revised review plan before another review can establish readiness. PR #9 remains draft and unmerged. No release or paid workflow is requested.

@@ -1,7 +1,7 @@
 {
   "provenance": {
     "sourceCommit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
-    "observation": "Authenticated GET /api/admin/products/g7-ui-8166d7dd/history?limit=10 and GET /api/admin/products/g7-ui-8166d7dd/drafts/2 after passing browser run",
+    "observation": "Authenticated GET /api/admin/products/g7-ui-8166d7dd/history?limit=10 and GET /api/admin/products/g7-ui-8166d7dd/drafts/2 after the earlier passing browser run. The same productId appears in checks/browser-earlier-full-sanitized.txt.gz; the later final browser run used a distinct synthetic product.",
     "productId": "g7-ui-8166d7dd",
     "data": "Synthetic local development product; audit fields copied from actual API response; content and credentials omitted"
   },

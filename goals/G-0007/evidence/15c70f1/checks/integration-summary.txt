@@ -13,4 +13,4 @@ AdmissionCheckoutIT: selected=15 executed=15 skipped=0 failures=0 errors=0
 CheckoutRecoveryIT: selected=7 executed=7 skipped=0 failures=0 errors=0
 JdbcBookingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
 Maven: BUILD SUCCESS
-Original unsanitized 3.5 MB transcript retained locally at .tmp/g0007-integration-raw.txt, excluded from Git.
+Complete command output with generated Spring passwords and local user paths replaced is in integration-full-sanitized.txt.gz. The exact catalog/core result lines are also in integration-selected.txt. Original unsanitized 3.5 MB UTF-16 transcript remains local at .tmp/g0007-integration-raw.txt, excluded from Git.

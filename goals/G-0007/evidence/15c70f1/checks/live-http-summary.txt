@@ -12,4 +12,4 @@ PASS later draft survives another version being published
 PASS publication rejects a now-stale draft base
 PASS catalog history traversal stays pinned while new publications arrive
 Synthetic product ID: lantern-d9eb6145
-Original unsanitized transcript retained locally at .tmp/g0007-http-raw.txt, excluded from Git.
+Complete command output with local paths/credentials screened is in live-http-full-sanitized.txt.gz. Original unsanitized transcript remains local at .tmp/g0007-http-raw.txt, excluded from Git.

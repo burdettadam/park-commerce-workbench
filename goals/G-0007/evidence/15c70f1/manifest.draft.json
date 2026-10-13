@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0007",
+  "claim": "not_ready",
+  "candidate": {
+    "source_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+    "base_commit": "c734a95836388ec8316a06bac8c7361d9ef8b0de",
+    "accepted_plan_commit": "e5add22f8777c358e0a27981b1bb74e03f52bb47",
+    "accepted_plan_path": "goals/G-0007/README.md",
+    "accepted_plan_sha256": "c2c888455143d271dd2a7d6e9a41137a28d68dc522cb2b04a80aeb83df28ae23",
+    "working_tree_clean": true,
+    "configuration_sha256": "a87d4e6fb8f4e500aef69ae90c4ea397b1eaa03bd45275f3195bc4f4c7ab8621",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CHECK-INTEGRATION",
+      "type": "automated",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+      "command": "bash scripts/verify.sh --integration",
+      "working_directory": ".tmp/g0007-verify",
+      "started_at": "2026-10-13T17:56:44.5547446Z",
+      "finished_at": "2026-10-13T17:58:56.9572833Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 347,
+      "passed": 347,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "280 core and 67 real database tests passed; no failures/errors/skips.",
+      "output_artifact_id": "CHECK-INTEGRATION"
+    },
+    {
+      "id": "CHECK-HTTP",
+      "type": "automated",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+      "command": "node scripts/demo-http.mjs",
+      "working_directory": ".tmp/g0007-verify",
+      "started_at": "2026-10-13T18:02:43Z",
+      "finished_at": "2026-10-13T18:02:48Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "43 live HTTP assertions passed; seven named editorial checks.",
+      "output_artifact_id": "CHECK-HTTP"
+    },
+    {
+      "id": "CHECK-BROWSER",
+      "type": "automated",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+      "command": "NODE_PATH=.tmp/g0006-browser/node_modules node goals/G-0007/evidence/15c70f1/checks/browser-flow.cjs",
+      "working_directory": ".",
+      "started_at": "2026-10-13T18:16:47Z",
+      "finished_at": "2026-10-13T18:16:58Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "One final browser scenario passed including guest invisibility, reviewed publication, history, audit and visible stale employee conflict.",
+      "output_artifact_id": "CHECK-BROWSER"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0007-AC01",
+      "result": "passed",
+      "independent_expected_result": "Draft changes are invisible to guest reads until an authorized publication; publication creates one new immutable revision and retains the previous revision.",
+      "check_ids": [
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP",
+        "CHECK-BROWSER"
+      ],
+      "artifact_ids": [
+        "G-0007-A01",
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP",
+        "CHECK-BROWSER"
+      ]
+    },
+    {
+      "id": "G-0007-AC02",
+      "result": "passed",
+      "independent_expected_result": "Two employee writes based on the same revision cannot silently overwrite one another; one receives a documented conflict and no duplicate published revision is created.",
+      "check_ids": [
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP",
+        "CHECK-BROWSER"
+      ],
+      "artifact_ids": [
+        "G-0007-A02",
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP",
+        "CHECK-BROWSER"
+      ]
+    },
+    {
+      "id": "G-0007-AC03",
+      "result": "passed",
+      "independent_expected_result": "History pagination has a stable documented ordering/cursor and deterministic behavior while new revisions arrive; exercise first/last/empty pages and invalid cursors.",
+      "check_ids": [
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP",
+        "CHECK-BROWSER"
+      ],
+      "artifact_ids": [
+        "G-0007-A02",
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP",
+        "CHECK-BROWSER"
+      ]
+    },
+    {
+      "id": "G-0007-AC04",
+      "result": "passed",
+      "independent_expected_result": "Audit records identify authenticated actor, operation, product, old/new revisions and timestamp without storing bearer tokens or full sensitive payloads.",
+      "check_ids": [
+        "CHECK-INTEGRATION",
+        "CHECK-HTTP",
+        "CHECK-BROWSER"
+      ],
+      "artifact_ids": [
+        "G-0007-A03",
+        "CHECK-INTEGRATION",
+        "CHECK-BROWSER"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0007-A01",
+      "path": "publication-scenarios.md",
+      "sha256": "981bb2796175ce23e90fcfbb1c6ce92ba568282b592aa2d145de56b77b17c830",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "G-0007-A02",
+      "path": "history-and-conflicts.md",
+      "sha256": "980630dbeefee20d429a2d2f0d29564e70284a19c2e32e40ae84fb1b21e2da34",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "G-0007-A03",
+      "path": "audit-example.json",
+      "sha256": "903d6adf71e6e7880ef17e7789ebfa235d81247d6350178f3083b094935a4187",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "25c0eed55f920f237b557abb753b6919dd27554a3c33d0b3d0e0322759944917",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "c2c888455143d271dd2a7d6e9a41137a28d68dc522cb2b04a80aeb83df28ae23",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "a87d4e6fb8f4e500aef69ae90c4ea397b1eaa03bd45275f3195bc4f4c7ab8621",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "CHECK-INTEGRATION",
+      "path": "checks/integration-full-sanitized.txt.gz",
+      "sha256": "002610e7a7053ef1e43c252985c0b2d1e450e72ad682f59c3655c2dd2fac76b5",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "CHECK-HTTP",
+      "path": "checks/live-http-full-sanitized.txt.gz",
+      "sha256": "c336e11aebb30474ea224fde1627b8da829b35d0b01921d23db3f6bbf5cbb1ca",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "CHECK-BROWSER",
+      "path": "checks/browser-final-full-sanitized.txt.gz",
+      "sha256": "509e6d15d311289d675560c90d743b4b6e586a8e35eedd892368b810380cfe87",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "CHECK-BROWSER-FAILED",
+      "path": "checks/browser-failed-full-sanitized.txt.gz",
+      "sha256": "6f667ca71dcbfafcdc7a2d677629f190d30e23706ac1b9f88690a1a2593fca0f",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "CHECK-BROWSER-EARLIER",
+      "path": "checks/browser-earlier-full-sanitized.txt.gz",
+      "sha256": "e99c196c482f7b88facf419f5c09d2f2d79e8384a07f1d0f2f0f4fbef2453937",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "INTEGRATION-SUMMARY",
+      "path": "checks/integration-summary.txt",
+      "sha256": "846dfa5807ed41d6d158e42a09ce7a32121a28ab9eb2a00d47375c739638802e",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "HTTP-SUMMARY",
+      "path": "checks/live-http-summary.txt",
+      "sha256": "16b3ff7b4ddd0aa3cc61b03a72381c45539d02d4c0d5f0e3d8110214943a6d41",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "BROWSER-SUMMARY",
+      "path": "checks/browser-green.txt",
+      "sha256": "2f19377ec49d27a2fca551d780f2a99c02b2c24011eb513e169eb63fa9d9a90f",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "BROWSER-SCRIPT",
+      "path": "checks/browser-flow.cjs",
+      "sha256": "a80361de9ff3c15bd191d893a14b70d7df9a9a3b1d6e9e1f024f5e72ab456d3a",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "BROWSER-ATTEMPTS",
+      "path": "checks/browser-attempts.txt",
+      "sha256": "a9180b5425e4b9d210b68a5f40d307b455d6170519bbe7a94bf153a5916f9071",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/round3-contract.md",
+      "sha256": "cf6b2b3fe7843d35f901c9c7d718148c7953ac703618e789c55ad57621ff0025",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/round3-adversarial.md",
+      "sha256": "d5ab59a002ec9ddfa0abcbc1fa48aea63e74d49304c8f4b06ca337a6e7416ffe",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND2-DISPOSITION",
+      "path": "reviews/round2-disposition.md",
+      "sha256": "4773bee37bf699080e6d21803be29b8be1e7d275599e880c1b762e360e63babf",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND3-DISPOSITION",
+      "path": "reviews/round3-disposition.md",
+      "sha256": "61a2c2c3d36cf687c97437df7dff8f1f14e78e48fa40f985b20d230d8039ab91",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND2-CONTRACT",
+      "path": "reviews/round2-contract.md",
+      "sha256": "4100c860ab7188138fb9a7e18c3b8978069f585e2f2756f678d944f37ae7aff7",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "ROUND2-ADVERSARIAL",
+      "path": "reviews/round2-adversarial.md",
+      "sha256": "d344c88dbcaa569786f62bfe378f75d1cceb8d3d8450c1e5d08d8b3304570a75",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "8c69161a12b3234876f493bcfd80cc5383c219b30781c45c3c6cff128f9810f3",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "5b3984bdeb62ded41a85fa584eab15533662865528c8de7f3a0199085b394fcd",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "06feb08b1dd0a026d6b11e0a8d0455bf255f7564ca05ecb6061966378dfea182",
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": "contract-reviewer",
+      "session_id": "01a13688-28c8-77c0-adc4-91008012de49",
+      "independent_of_writer": true,
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+      "round": 3,
+      "open_blockers": 1,
+      "decision": "blocked",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": "adversarial-reviewer",
+      "session_id": "01a13688-3e11-7d31-b134-d2d9e4695e13",
+      "independent_of_writer": true,
+      "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "conditional",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": "Codex integration writer (delegated by Adam Burdett on 2026-10-13)",
+    "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+    "decision": "accept",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": "Codex integration writer",
+    "candidate_commit": "15c70f15154997f6eda7b72ad70aa3eba76e5fdd",
+    "decision": "needs-decision",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Adam Burdett",
+    "retrieval_verified": false,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}
