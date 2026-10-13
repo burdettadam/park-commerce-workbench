@@ -1,6 +1,6 @@
 # G-0005 — Verify persistence against real MongoDB and MySQL
 
-Status: **active**. Milestone: M1. Dependency: [G-0004 ready and promoted](../G-0004/README.md) to `main` at `c873cfe1b8dd93732ef0d63f1b890b9774174934`.
+Status: **ready**. Milestone: M1. Dependency: [G-0004 ready and promoted](../G-0004/README.md) to `main` at `c873cfe1b8dd93732ef0d63f1b890b9774174934`.
 
 ## Accepted work contract
 
@@ -106,7 +106,7 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 - Accepted plan commit P and file digest: recorded in [bootstrap](work/bootstrap.md) after activation commit.
 - Source candidate S: `1dd1ef28d3d5db6bcd4e47255c074ed6205c1627` from base `575d44ad21e6ed6fc0e72de4f6f27060a324bfcb`; the fixed candidate adds datastore assertions and a required nonempty integration-suite gate. [Verification work](work/persistence-verification.md) records the implementation and attempted checks.
 - Runtime: disposable MongoDB/MySQL Testcontainers and temporary Spring test contexts were started for synthetic-data verification; no long-lived G-0005 development instance was launched.
-- Verification: [candidate evidence](evidence/1dd1ef2/database-tests.md) records clean-clone and hosted 67/67 integration runs and deliberate missing-Docker/empty/skipped-suite failures. Both [independent first reviews](evidence/1dd1ef2/reviews/native-provenance.md) found no AC01-AC04 source blocker; their handoff-record finding was corrected. Adam delegated intended-use validation to Codex, and the scoped [validation](evidence/1dd1ef2/validation.md) accepts AC01-AC04. Final review coverage and readiness remain pending. No release, tag, artifact or deployment has occurred.
-- Next action: publish and retrieve the preflight manifest and delegated validation checkpoint, obtain applicable final independent review coverage, complete the final manifest and handoff, then make a separate readiness decision.
+- Verification: [candidate evidence](evidence/1dd1ef2/database-tests.md) records clean-clone and hosted 67/67 integration runs and deliberate missing-Docker/empty/skipped-suite failures. The final [contract](evidence/1dd1ef2/reviews/round3-contract.md) and [adversarial](evidence/1dd1ef2/reviews/round3-adversarial.md) native reviews passed with zero blockers in the third and final round. Adam delegated intended-use validation to Codex, and the scoped [validation](evidence/1dd1ef2/validation.md) accepts AC01-AC04. The [decision](evidence/1dd1ef2/decision.md) became effective after a new public clone retrieved final report E6 `6a1ba440ead5799b7b13f243d0ced817f18ad354` and verified 33/33 artifact digests and the filled [manifest](evidence/1dd1ef2/manifest.json). Hosted E6 CI [run 38345073113](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38345073113) passed all three jobs. No release, tag, merge, artifact or deployment has occurred.
+- Next action: retain PR #7 and this branch for a separate authorized integration decision; G-0006 is the next planned goal. Ready is bounded to the accepted persistence scope and does not authorize a version-producing merge.
 
 [Milestone M1](../../docs/roadmap/milestones/M1.md) · [Roadmap](../../docs/roadmap/README.md) · [Commands](../../docs/roadmap/COMMANDS.md)
