@@ -66,6 +66,10 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-maven-plugin</artifactId>
             <version>${vaadin.version}</version>
+            <configuration>
+              <forceProductionBuild>true</forceProductionBuild>
+              <ciBuild>true</ciBuild>
+            </configuration>
             <executions>
               <execution>
                 <goals>
