@@ -103,7 +103,7 @@ The public checkout already contains generated `AGENTS.md`, `PLANS.md`, `.codex/
 
 The original ZIP reports 77 JDK core scenarios, 10 Node client-state tests and 11 tooling checks. Those observations are scoped to the original candidate and mostly use test-only in-memory stores/mocks; they do not establish Spring/UI/database/runtime success. The original manifest and ZIP digest are retained in [baseline provenance](baseline/provenance.json). See [original verification](../verification.md) and [proposal-1 delivery checks](DELIVERY-VERIFICATION.md) for historical limits; the [current-state audit](CURRENT-STATE-2026-10-12.md) names later evidence.
 
-G-0001, G-0002 and G-0003 are ready at their canonical records. The remaining roadmap goals are proposals until adopted. The project repository is public and its original history is in a separate private archive. No release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
+G-0001, G-0002 and G-0003 are ready at their canonical records and their source contents have been promoted to `main`. [G-0004](../../goals/G-0004/README.md) is active on its canonical branch. The remaining roadmap goals are proposals until adopted. The project repository is public and its original history is in a separate private archive. No release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
 
 ## Navigation
 
