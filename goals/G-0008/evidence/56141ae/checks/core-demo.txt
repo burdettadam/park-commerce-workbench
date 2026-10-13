@@ -149,7 +149,7 @@ PASS Catalog rejects history limit -1
 PASS Catalog rejects history limit 0
 PASS Catalog rejects history limit 51
 PASS Catalog rejects history limit 2147483647
-PASS Catalog rejects malformed or unrelated cursor 
+PASS Catalog rejects malformed or unrelated cursor
 PASS Catalog rejects malformed or unrelated cursor not:a:cursor
 PASS Catalog rejects malformed or unrelated cursor xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 PASS Catalog rejects malformed or unrelated cursor djI6bmlnaHQ6Mzoy
@@ -167,8 +167,8 @@ PASS Catalog direct publication remains compatible and records actor
 PASS Catalog audit records stream-specific old and new revisions
 PASS Catalog timestamps normalize to Mongo-compatible millisecond precision
 PASS Catalog rejects invalid actor null
-PASS Catalog rejects invalid actor 
-PASS Catalog rejects invalid actor  
+PASS Catalog rejects invalid actor
+PASS Catalog rejects invalid actor
 PASS Catalog rejects invalid actor xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 PASS Catalog rejects invalid actor employee\nforged
 PASS Catalog draft validates content and defensive variant copies
@@ -213,7 +213,7 @@ PASS Quote input rejects malformed date: 2030-2-03
 PASS Quote input rejects malformed date: 2030-02-3
 PASS Quote input rejects malformed date: 2030-10-01T00:00:00Z
 PASS Quote input rejects malformed date:  2030-10-01
-PASS Quote input rejects malformed date: 2030-10-01 
+PASS Quote input rejects malformed date: 2030-10-01
 PASS Quote input rejects malformed date: +10000-01-01
 PASS Quote input rejects malformed date: 0000-01-01
 PASS Quote input rejects malformed date: 2030-13-01
@@ -225,7 +225,7 @@ PASS Quote input rejects malformed ID: not-a-uuid
 PASS Quote input rejects malformed ID: 00000000000000000000000000000000
 PASS Quote input rejects malformed ID: {00000000-0000-0000-0000-000000000000}
 PASS Quote input rejects malformed ID: 00000000-0000-0000-0000-00000000000g
-PASS Quote input rejects malformed ID: 00000000-0000-0000-0000-000000000000 
+PASS Quote input rejects malformed ID: 00000000-0000-0000-0000-000000000000
 PASS Quote input: full UUID accepts either hexadecimal case without changing identity
 PASS Quote input: absent quantities differ from explicit zero
 PASS Quote contract: legacy snapshot record shape and immutable lines remain unchanged
