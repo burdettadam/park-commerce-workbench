@@ -44,7 +44,7 @@ Candidate checks include `bash scripts/test-core.sh --demo`, `bash scripts/verif
 | Slice | Ref | Writer | Dependency and state |
 | --- | --- | --- | --- |
 | Canonical integration and accepted record | `goal/G-0008` | Primary Codex session | Base `bd26cfb`; active plan checkpoint pending |
-| Pricing preview implementation and focused tests | `goal/G-0008/implementation` | G-0008 subagent | Starts after plan checkpoint; no source candidate yet |
+| Pricing preview implementation and focused tests | `goal/G-0008-implementation` | G-0008 subagent | Starts after plan checkpoint; no source candidate yet |
 | Independent contract/adversarial review | Separate native reviewer assignments | Unassigned | After fixed S and selected checks |
 
 Publish implementation and required artifacts before updating this canonical record. Preserve old failed attempts. Confirm exact remote revisions and artifact retrieval before claiming recovery. A version-producing merge requires distinct eligible-human review; goal readiness, merge, release, and deployment remain separate observations.

@@ -7,3 +7,5 @@ The accepted active plan was committed at P `717c31b04eca3f6478efa50c25dd666d3de
 The primary Codex session owns canonical integration and shared Git administration for this assignment. The G-0008 subagent is assigned the implementation branch after this checkpoint. The G-0009 and G-0010 subagents have read-only preparatory assignments until prerequisite inputs are accepted. No G-0008 product source candidate, runtime, acceptance check, independent review, intended-use validation, readiness, release, or deployment is claimed here.
 
 Next: publish this plan checkpoint, assign the implementation worktree, and use the existing canonical pricing calculation path. Only standard free public CI runners may be used.
+
+Assignment correction: the initial suggested nested ref `goal/G-0008/implementation` cannot coexist with `goal/G-0008` in Git's ref namespace. The integration writer corrected only the implementation ref to `goal/G-0008-implementation` before assigning work. AC01–AC04 and the proposal digest are unchanged.
