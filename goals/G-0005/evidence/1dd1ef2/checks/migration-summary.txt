@@ -1,0 +1,23 @@
+2026-10-13T03:32:55.626032583Z pricing-service: Current version of schema `test`: << Empty Schema >>
+2026-10-13T03:32:55.676481010Z pricing-service: Migrating schema `test` to version "1 - pricing snapshots"
+2026-10-13T03:32:55.765121575Z pricing-service: Successfully applied 1 migration to schema `test`, now at version v1 (execution time 00:00.051s)
+2026-10-13T03:33:19.740519036Z pricing-service: Current version of schema `test`: << Empty Schema >>
+2026-10-13T03:33:19.783332075Z pricing-service: Migrating schema `test` to version "1 - pricing snapshots"
+2026-10-13T03:33:19.854220705Z pricing-service: Successfully applied 1 migration to schema `test`, now at version v1 (execution time 00:00.048s)
+2026-10-13T03:33:48.129215467Z booking-service: Current version of schema `test`: << Empty Schema >>
+2026-10-13T03:33:48.181132546Z booking-service: Migrating schema `test` to version "1 - event booking"
+2026-10-13T03:33:48.327806420Z booking-service: Migrating schema `test` to version "2 - admission orders"
+2026-10-13T03:33:48.397586326Z booking-service: Successfully applied 2 migrations to schema `test`, now at version v2 (execution time 00:00.123s)
+2026-10-13T03:34:02.911441088Z booking-service: Current version of schema `test`: << Empty Schema >>
+2026-10-13T03:34:02.949839147Z booking-service: Migrating schema `test` to version "1 - event booking"
+2026-10-13T03:34:03.143868956Z booking-service: Successfully applied 1 migration to schema `test`, now at version v1 (execution time 00:00.168s)
+2026-10-13T03:34:03.419592745Z booking-service: Migrating schema `test` to version "2 - admission orders"
+2026-10-13T03:34:03.515492528Z booking-service: Successfully applied 1 migration to schema `test`, now at version v2 (execution time 00:00.069s)
+2026-10-13T03:34:15.856095090Z booking-service: Current version of schema `test`: << Empty Schema >>
+2026-10-13T03:34:15.895795557Z booking-service: Migrating schema `test` to version "1 - event booking"
+2026-10-13T03:34:16.120810565Z booking-service: Migrating schema `test` to version "2 - admission orders"
+2026-10-13T03:34:16.216957313Z booking-service: Successfully applied 2 migrations to schema `test`, now at version v2 (execution time 00:00.242s)
+2026-10-13T03:34:28.003671033Z booking-service: Current version of schema `test`: << Empty Schema >>
+2026-10-13T03:34:28.053096188Z booking-service: Migrating schema `test` to version "1 - event booking"
+2026-10-13T03:34:28.287230227Z booking-service: Migrating schema `test` to version "2 - admission orders"
+2026-10-13T03:34:28.393118387Z booking-service: Successfully applied 2 migrations to schema `test`, now at version v2 (execution time 00:00.256s)

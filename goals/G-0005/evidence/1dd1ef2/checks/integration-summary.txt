@@ -1,0 +1,31 @@
+﻿[INFO] Running dev.parkcommerce.core.CoreScenariosTest
+[INFO] Tests run: 280, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.260 s -- in dev.parkcommerce.core.CoreScenariosTest
+[INFO] Tests run: 280, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Running dev.parkcommerce.catalog.CatalogEditorialIT
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.85 s -- in dev.parkcommerce.catalog.CatalogEditorialIT
+[INFO] Running dev.parkcommerce.catalog.MongoCatalogIT
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.398 s -- in dev.parkcommerce.catalog.MongoCatalogIT
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Running dev.parkcommerce.pricing.JpaPricingIT
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.70 s -- in dev.parkcommerce.pricing.JpaPricingIT
+[INFO] Running dev.parkcommerce.pricing.QuoteContractIT
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.32 s -- in dev.parkcommerce.pricing.QuoteContractIT
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Running dev.parkcommerce.booking.AdmissionCheckoutIT
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 37.06 s -- in dev.parkcommerce.booking.AdmissionCheckoutIT
+[INFO] Running dev.parkcommerce.booking.CheckoutRecoveryIT
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.94 s -- in dev.parkcommerce.booking.CheckoutRecoveryIT
+[INFO] Running dev.parkcommerce.booking.JdbcBookingIT
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.29 s -- in dev.parkcommerce.booking.JdbcBookingIT
+[INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  02:42 min
+[INFO] Finished at: 2026-10-13T03:34:30Z
+catalog-service/CatalogEditorialIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+catalog-service/MongoCatalogIT: selected=9 executed=9 skipped=0 failures=0 errors=0
+pricing-service/JpaPricingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+pricing-service/QuoteContractIT: selected=12 executed=12 skipped=0 failures=0 errors=0
+booking-service/AdmissionCheckoutIT: selected=15 executed=15 skipped=0 failures=0 errors=0
+booking-service/CheckoutRecoveryIT: selected=7 executed=7 skipped=0 failures=0 errors=0
+booking-service/JdbcBookingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+PASS database integration selection: 7 suites, 67 executed tests, 0 skipped
