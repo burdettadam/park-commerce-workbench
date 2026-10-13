@@ -19,4 +19,6 @@ The integration owner should rerun acceptance checks on a fixed combined candida
 
 ## Next action
 
-Integrate the coordination-only `goal/G-0008` update, commit and push this slice, then hand the exact source checkpoint and remaining AC01–AC04 verification gap to the integration owner.
+The integration owner fast-forwarded this implementation into canonical `goal/G-0008` and opened draft PR #12. At PR head `ba2988172ccf6d216641847e639dc095d1214382`, free public CI run `38475759454` passed all three jobs. The Java job (1m57s) reported in-memory core 280/280, Node pricing contract 29/29, Maven core 280/280, `PreviewErrorContractTest` 3/3, and real Testcontainers integration 67/67 with zero failures, errors or skips. The integration suites were `CatalogEditorialIT` 8, `MongoCatalogIT` 9, `JpaPricingIT` 8, `QuoteContractIT` 12, `AdmissionCheckoutIT` 15, `CheckoutRecoveryIT` 7, and `JdbcBookingIT` 8. `CheckIntegrationReports` confirmed selected/executed counts and zero skips. CI uploaded `java-test-reports` artifact `11854430521`.
+
+This hosted run resolves the local Docker gap for these automated checks. It does not exercise the six-service HTTP demo, a browser UI, or live cross-service catalog during `JpaPricingIT`; that test uses a fixed catalog client double. Retain the interrupted local run above as failed exploratory evidence. Acceptance fixtures, side-effect evidence, independent reviews and intended-use validation remain open.
