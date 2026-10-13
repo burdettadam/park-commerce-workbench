@@ -1,0 +1,15 @@
+{
+  "goal": "G-0005",
+  "source_commit": "1dd1ef28d3d5db6bcd4e47255c074ed6205c1627",
+  "base_commit": "575d44ad21e6ed6fc0e72de4f6f27060a324bfcb",
+  "accepted_plan_commit": "30ffac8304f0ddf40a4845bb19e32393b1f0a516",
+  "required_command": "bash scripts/verify.sh --integration",
+  "local_runner": "Docker Desktop Linux engine with maven:3.9.11-eclipse-temurin-21 and copied Docker 29 CLI",
+  "local_runner_image_id": "sha256:2c53ac3598c0a37d2ccefe9af9b6317c14a0aedb162ea397b14945522e612e7a",
+  "docker_socket": "/var/run/docker.sock mounted from host",
+  "testcontainers_host_override": "host.docker.internal",
+  "maven_cache": "named volume pcw-maven-cache; not a required correctness input",
+  "database_images": ["mongo:8.0.26", "mysql:8.4.11"],
+  "fixtures": "synthetic test-owned data in disposable Testcontainers databases",
+  "secret_values": "none"
+}

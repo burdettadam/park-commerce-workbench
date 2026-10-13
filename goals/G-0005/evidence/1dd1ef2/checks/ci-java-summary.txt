@@ -1,0 +1,9 @@
+﻿java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:31.4976515Z [INFO] BUILD SUCCESS
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0388321Z catalog-service/CatalogEditorialIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0475327Z catalog-service/MongoCatalogIT: selected=9 executed=9 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0522581Z pricing-service/JpaPricingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0582609Z pricing-service/QuoteContractIT: selected=12 executed=12 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0652764Z booking-service/AdmissionCheckoutIT: selected=15 executed=15 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0679623Z booking-service/CheckoutRecoveryIT: selected=7 executed=7 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0699572Z booking-service/JdbcBookingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+java	Run bash scripts/verify.sh --integration	2026-10-13T03:33:32.0700780Z PASS database integration selection: 7 suites, 67 executed tests, 0 skipped

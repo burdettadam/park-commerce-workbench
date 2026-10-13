@@ -104,9 +104,9 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 ## Activation and next action
 
 - Accepted plan commit P and file digest: recorded in [bootstrap](work/bootstrap.md) after activation commit.
-- Source candidate S: not selected. Base and governing configuration: `575d44ad21e6ed6fc0e72de4f6f27060a324bfcb`; no G-0005 code changes yet.
-- Runtime: no G-0005 instance or database test has been started. Local synthetic-data work only.
-- Verification, independent reviews and intended-use validation: pending. No release, tag, artifact or deployment has occurred.
-- Next action: inspect existing Mongo/MySQL Testcontainers suites, adapters, migrations and test selection; run the baseline required integration command from fixed inputs; record selected, executed and skipped suites before choosing repairs.
+- Source candidate S: `1dd1ef28d3d5db6bcd4e47255c074ed6205c1627` from base `575d44ad21e6ed6fc0e72de4f6f27060a324bfcb`; the fixed candidate adds datastore assertions and a required nonempty integration-suite gate. [Verification work](work/persistence-verification.md) records the implementation and attempted checks.
+- Runtime: disposable MongoDB/MySQL Testcontainers and temporary Spring test contexts were started for synthetic-data verification; no long-lived G-0005 development instance was launched.
+- Verification: [candidate evidence](evidence/1dd1ef2/database-tests.md) records a clean-clone 67/67 local run, hosted CI and deliberate missing-Docker/empty/skipped-suite failures. Independent reviews and intended-use validation are pending. No release, tag, artifact or deployment has occurred.
+- Next action: obtain two independent reviews of fixed S and its retained evidence, resolve any findings, then complete intended-use validation and recoverable handoff before considering ready.
 
 [Milestone M1](../../docs/roadmap/milestones/M1.md) · [Roadmap](../../docs/roadmap/README.md) · [Commands](../../docs/roadmap/COMMANDS.md)

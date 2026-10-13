@@ -1,0 +1,8 @@
+G-0005 fixed source S: 1dd1ef28d3d5db6bcd4e47255c074ed6205c1627
+Proof checkout: fresh public HTTPS clone at .tmp/g0005-proof-S; clean Git status before and after verification.
+Host: Windows, America/Denver; Docker Desktop client/server 29.7.2, Linux engine on WSL2.
+Runner: Apache Maven 3.9.11, Eclipse Adoptium Java 21.0.9, Linux amd64, UTF-8, in local image sha256:2c53ac3598c0a37d2ccefe9af9b6317c14a0aedb162ea397b14945522e612e7a.
+The runner adds Docker 29 CLI to the cached Maven image; the host Docker socket is mounted. TESTCONTAINERS_HOST_OVERRIDE=host.docker.internal lets the runner reach disposable MongoDB/MySQL containers. The existing six-service development Compose project was left untouched.
+The fixed local integration run finished 2026-10-13T03:34:30Z, exit 0, in 2m42s. Hosted Ubuntu PR #7 run 38342100003 passed java, client-contracts and admin-ui; its Java job ran the same required integration command and selected 67/67 tests.
+The current Windows PowerShell session has Java 17 and no Maven, so it cannot run the required host command directly. Docker supplies the documented JDK 21/Maven 3.9+ toolchain. A missing-Docker CLI negative run in the Maven-only image exited 2 before Maven.
+No long-lived G-0005 development instance was launched; the test suites started temporary Spring test contexts and Testcontainers owns and disposes their databases. Local full process logs contain generated development security passwords and stay local-only; committed raw Failsafe text reports and bounded command excerpts were scanned before publication.
