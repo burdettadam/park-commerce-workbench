@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0003",
+  "claim": "ready",
+  "candidate": {
+    "source_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+    "base_commit": "a0cc50650a34c1f131eef824d9a074bd0e945605",
+    "accepted_plan_commit": "4a0d6a66a4d51eca57059a88875fb6efe7ab687e",
+    "accepted_plan_path": "goals/G-0003/README.md",
+    "accepted_plan_sha256": "3cff05657a54f79a3fe088d757d35959be79b4381b130bfdfacd939340084a68",
+    "working_tree_clean": true,
+    "configuration_sha256": "7b10ce7acca83090b5630b4bf39c18d8f7d36de8d56cf8f6281fc57ae8e296e6",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "IMPLEMENTATION-DEMO",
+      "type": "automated",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "command": "node scripts/demo-http.mjs",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:33:05.737658Z",
+      "finished_at": "2026-10-13T00:33:07.763756Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "43/43 live HTTP checks passed on implementation project",
+      "output_artifact_id": "CHECK-IMPL-DEMO"
+    },
+    {
+      "id": "VALIDATION-DEMO",
+      "type": "automated",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "command": "node scripts/demo-http.mjs",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:35:00.9579862Z",
+      "finished_at": "2026-10-13T00:35:03.5137313Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "43/43 live HTTP checks passed on validation project",
+      "output_artifact_id": "CHECK-VAL-DEMO"
+    },
+    {
+      "id": "PAIR-ISOLATION",
+      "type": "manual",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "command": "Docker inspect six containers per project; compare actual project labels, published ports, and mounted volume names",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:35:17.917842Z",
+      "finished_at": "2026-10-13T00:35:17.917842Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "12 healthy containers in two projects with distinct published ports and mounted volume names",
+      "output_artifact_id": "CHECK-PAIR"
+    },
+    {
+      "id": "CROSS-CATALOG",
+      "type": "manual",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "command": "Four HTTP GETs total, two per synthetic catalog product on owner and other project",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:35:37.593213Z",
+      "finished_at": "2026-10-13T00:35:37.593213Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "Each product returned HTTP 200 with exact ID on owning project and HTTP 404 on other project",
+      "output_artifact_id": "CHECK-CROSS"
+    },
+    {
+      "id": "BRANCH-ANCESTRY",
+      "type": "manual",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "command": "Fresh-session git bundle verify, show-ref and merge-base --is-ancestor checks",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:41:45.0688493Z",
+      "finished_at": "2026-10-13T00:42:45.2254394Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "P and both included slice heads are ancestors of S; shared-default-Compose alternative documented as excluded",
+      "output_artifact_id": "G-0003-A02"
+    },
+    {
+      "id": "FRESH-RECOVERY",
+      "type": "manual",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "command": "Fresh session clone local Git bundle; verify inventory and SOURCE-MANIFEST.sha256 at S",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:41:45.0688493Z",
+      "finished_at": "2026-10-13T00:42:45.2254394Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "23/23 indispensable artifacts and 487/487 source hashes matched",
+      "output_artifact_id": "G-0003-A02"
+    },
+    {
+      "id": "NEGATIVE-GATES",
+      "type": "manual",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "command": "Two native reviewer roles inspect stale-review and missing-A02 fixture against fixed S/P/E1",
+      "working_directory": ".",
+      "started_at": "2026-10-13T00:42:07.196Z",
+      "finished_at": "2026-10-13T00:43:58.606Z",
+      "expected_exit_code": null,
+      "observed_exit_code": null,
+      "selected": null,
+      "passed": null,
+      "failed": null,
+      "skipped": null,
+      "status": "passed",
+      "observed_result": "Both independent reviewers rejected stale G-0002 review and absent A02 as readiness blockers",
+      "output_artifact_id": "G-0003-A03"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0003-AC01",
+      "result": "passed",
+      "independent_expected_result": "Two named worktrees have nonconflicting ports, Compose project names and data volumes; each has one identified writer and progress record based on the same accepted plan revision.",
+      "check_ids": [
+        "IMPLEMENTATION-DEMO",
+        "VALIDATION-DEMO",
+        "PAIR-ISOLATION",
+        "CROSS-CATALOG"
+      ],
+      "artifact_ids": [
+        "G-0003-A01",
+        "CHECK-IMPL-DEMO",
+        "CHECK-VAL-DEMO",
+        "CHECK-PAIR",
+        "CHECK-CROSS"
+      ]
+    },
+    {
+      "id": "G-0003-AC02",
+      "result": "passed",
+      "independent_expected_result": "Record at least two included branch commits, one explicit nonincluded alternative or change proposal, and the assembled candidate. An unaccepted scope change must not silently modify success criteria.",
+      "check_ids": [
+        "BRANCH-ANCESTRY"
+      ],
+      "artifact_ids": [
+        "G-0003-A01",
+        "G-0003-A02"
+      ]
+    },
+    {
+      "id": "G-0003-AC03",
+      "result": "passed",
+      "independent_expected_result": "Interrupt the authoring session, preserve a checkpoint, and resume in a fresh directory/session using only retained records. Retrieve every indispensable artifact and match its digest before reporting complete recovery.",
+      "check_ids": [
+        "FRESH-RECOVERY"
+      ],
+      "artifact_ids": [
+        "G-0003-A02"
+      ]
+    },
+    {
+      "id": "G-0003-AC04",
+      "result": "passed",
+      "independent_expected_result": "Deliberately present one stale review and one missing required artifact to the review process. Both remain blockers. Record actual gate observations, handoff duration and unresolved items without pretending this is a statistical model evaluation.",
+      "check_ids": [
+        "NEGATIVE-GATES"
+      ],
+      "artifact_ids": [
+        "G-0003-A03",
+        "REVIEW-FIRST-CONTRACT",
+        "REVIEW-FIRST-ADVERSARIAL",
+        "REVIEW-PROVENANCE"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0003-A01",
+      "path": "branch-map.md",
+      "sha256": "75497a356f074b5b4cf8ba42fcd31115b08c2f42d86d79d082aa7a04243cd001",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "G-0003-A02",
+      "path": "restore-drill.md",
+      "sha256": "48715326840ab8973edda9d32a2cde06db638345720f6011534240148870a2c9",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "G-0003-A03",
+      "path": "workflow-observations.md",
+      "sha256": "12a6b27e930d18843be9659d4e9de2326e2e08eb44070a842532d13a56c03eb5",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "04ccf0ee74e1e5b491889759e3e75f740575fbc832a1da772dbba701c3f3178a",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "3cff05657a54f79a3fe088d757d35959be79b4381b130bfdfacd939340084a68",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "7b10ce7acca83090b5630b4bf39c18d8f7d36de8d56cf8f6281fc57ae8e296e6",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": "e9b04c9d4c099f3b35136fcdbf4f11c53bd2928c47fe702884d5ffddfc70a59e",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "CHECK-IMPL-DEMO",
+      "path": "checks/implementation-demo.txt",
+      "sha256": "7d2571de109fefeec1515d7485c12073e0609e0f47dd74285489fd6a4e0dbb77",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "CHECK-VAL-DEMO",
+      "path": "checks/validation-demo.txt",
+      "sha256": "100e91be4a9e8fafda2cd25caaedb8c4a58df7bc4675a6a78c1e77784016e7a2",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "CHECK-PAIR",
+      "path": "checks/pair-identity.json",
+      "sha256": "a20fdb621cdf93e34bdf26959575228a4ebf1893ba038a006f5a98a2320f591e",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "CHECK-CROSS",
+      "path": "checks/catalog-cross.json",
+      "sha256": "6abce1a52a64d969189508cba30fe0a345b09bd0d09f2a4cba2258db407e5386",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "REVIEW-FIRST-CONTRACT",
+      "path": "reviews/round1-contract.md",
+      "sha256": "9a6d76840f18f7359e94c776f593d2ca11538a06da25e56332cf9d7553e03160",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "REVIEW-FIRST-ADVERSARIAL",
+      "path": "reviews/round1-adversarial.md",
+      "sha256": "839abaad0b8e734efbb2a58db89c7b85a183911d3ac008fd07117dc78a66646f",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "REVIEW-PROVENANCE",
+      "path": "reviews/native-provenance.md",
+      "sha256": "4fc908d69c37ed073f045cae4fba2451467e973c84b9c7235eba955326e61277",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": "404f277e6cb28d5356775397281087b096a5a92ab854291cd63e32fcec1acd57",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": "eae921f6d140b88825d174d635ee2d1436883cefa6ab8882fe9453c201549672",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "REVIEW-ROUND2-CONTRACT",
+      "path": "reviews/round2-contract.md",
+      "sha256": "5979dc4cdb2dc5dd6ba96fc337f9e276481b1089561e690db34c1d5c06e0f6d1",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "REVIEW-ROUND2-ADVERSARIAL",
+      "path": "reviews/round2-adversarial.md",
+      "sha256": "f84f9d2f99a15f393a0715540584ecbcb4855a3a11f52c3aec80783d6b5e4463",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "sha256": "92f43057e45e3cc549201ef4de93b87eeebbd6484c8171f64629b012bb42e40c"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "sha256": "a769e73c3b9a10a998614779073f5321a357ce551ceb5fe829ba150c3467d24b"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": "contract-reviewer",
+      "session_id": "01a132db-c0a3-7332-bec0-04952d137383",
+      "independent_of_writer": true,
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": "adversarial-reviewer",
+      "session_id": "01a132db-cf11-7af0-b444-cc3f688caea7",
+      "independent_of_writer": true,
+      "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+      "round": 3,
+      "open_blockers": 0,
+      "decision": "pass",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": "Codex integration writer, explicitly delegated by Adam Burdett for G-0003",
+    "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+    "decision": "accept",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": "Codex G-0003 integration record maintainer under accepted plan",
+    "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
+    "decision": "ready",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Codex G-0003 integration writer",
+    "retrieval_verified": true,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}

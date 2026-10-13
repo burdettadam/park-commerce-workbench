@@ -1,6 +1,6 @@
 # G-0003 - Recover a goal across two worktrees and a session interruption
 
-Status: **active**. Milestone: M0. Dependency: [G-0002 ready](../G-0002/README.md) on retained `goal/G-0002`; neither prerequisite is merged into `main`.
+Status: **ready**. Milestone: M0. Dependency: [G-0002 ready](../G-0002/README.md) on retained `goal/G-0002`; neither prerequisite is merged into `main`.
 
 ## Accepted work contract
 
@@ -15,7 +15,7 @@ Status: **active**. Milestone: M0. Dependency: [G-0002 ready](../G-0002/README.m
 
 ## Acceptance criteria and independent expected results
 
-The four outcomes below are accepted verbatim from proposal-1 and remain **open**. Artifact names are requirements, not claims of execution.
+The four outcomes below are accepted verbatim from proposal-1 and passed the bounded drill. Their checks and limits are in the [final evidence manifest](evidence/4a3d26e/manifest.json).
 
 ### G-0003-AC01
 
@@ -51,10 +51,10 @@ The [artifact contract](../../docs/roadmap/ARTIFACT-CONTRACT.md) and deliberatel
 | Implementation/configuration | `goal/G-0003-implementation` | Codex integration writer | `ecc1439` included via `f8098e4` | [implementation](work/implementation.md) |
 | Independent test/documentation | `goal/G-0003-validation` | Independent Codex writer | `7eed2b0` included via `12a67c6` | [validation](work/validation.md) |
 
-Candidate resource plan, **not yet an isolation result**: use different Compose project names and distinct host-port sets for the two worktrees. Compose's named volumes are project-scoped; verify their actual names, service health, endpoint identity and absence of shared mutable effects before claiming AC01. Give each worktree its own private `.env`, process/container owner and progress file. The accepted G-0001 pilot demonstrated only one mutable instance, so two-instance capacity and isolation remain unverified.
+The two worktrees used different Compose project names, host-port sets and private `.env` files. Actual container labels, service health, endpoint identity, cross-catalog reads and mounted volume names were checked in the [pair identity](evidence/4a3d26e/checks/pair-identity.json) and [cross-catalog](evidence/4a3d26e/checks/catalog-cross.json) outputs.
 
-**Current state:** active. Both slice branches and their retained work records are integrated in fixed source S `4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6`. Two six-service commerce stacks ran concurrently with disjoint live ports and volumes; each passed 43 maintained HTTP checks, and synthetic products were absent from the other stack. A fresh session recovered 23 indispensable files and verified 487 source hashes from a local bundle. Two configured native reviewers independently blocked an offered stale G-0002 review and missing G-0003 recovery artifact in the deliberately incomplete E1 package; their round-2 technical assessments found no demonstrated AC01–AC04 failure. Adam delegated the intended-use check, and Codex [accepted the bounded result](evidence/4a3d26e/validation.md) after independent digest/branch/log verification. Final native reviews, a passing manifest, final report retrieval and readiness decision remain open. The root development stack is healthy after a documented cleanup mistake; both drill stacks are stopped with their named volumes retained.
+**Current state:** ready for the bounded local workflow drill. Both slice branches are integrated in fixed source S 4a3d26e. Two isolated six-service stacks each passed 43 HTTP checks; a fresh session recovered 23 indispensable files and verified 487 source hashes. The first native reviews blocked the stale-review and missing-artifact negative fixture. The final third-round reviews passed the inspected evidence scope with zero open blockers. Adam delegated intended-use validation to Codex; the [validation](evidence/4a3d26e/validation.md) and [readiness decision](evidence/4a3d26e/decision.md) record the bounded result. The root development stack is healthy after a documented cleanup error; both drill stacks are stopped with named volumes retained.
 
-**Next action:** obtain the third and final allowed native review round on fixed S and the completed evidence, fill and validate the final manifest, verify retrieval of its public report commit, then make the separate readiness decision. Preserve the local bundle, fresh recovery checkout, drill volumes and G-0002 red worktree until their retention disposition is recorded.
+**Next action:** start G-0004 for local build/toolchain and product work. Preserve local recovery materials until their retention disposition is recorded.
 
 **Release and recovery:** no version-producing merge, artifact, tag or deployment. Activation publication and clean retrieval are recorded in [bootstrap](work/bootstrap.md); local drill bundles, credentials and raw logs must be identified separately. Ready status requires all four criteria, two final native reviews, actual intended-use validation and recoverable indispensable evidence.

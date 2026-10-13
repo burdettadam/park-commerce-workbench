@@ -4,7 +4,7 @@
 
 **10 milestones · 30 goal proposals · 120 acceptance criteria · 90 goal-specific artifact requirements**
 
-Revision: `proposal-2`, updated 12 October 2026 for the public checkout. The owner has since advanced [G-0001](../../goals/G-0001/README.md) and [G-0002](../../goals/G-0002/README.md) to ready, then activated [G-0003](../../goals/G-0003/README.md) from unchanged proposal-1. See [the starting audit](CURRENT-STATE-2026-10-12.md). **No milestone is claimed complete.** Earlier source, local runs and hosted CI are reusable evidence only when their inputs and limits match an accepted goal; they do not establish independent reviews or human acceptance.
+Revision: `proposal-2`, updated 12 October 2026 for the public checkout. The owner has since advanced [G-0001](../../goals/G-0001/README.md), [G-0002](../../goals/G-0002/README.md) and [G-0003](../../goals/G-0003/README.md) to ready on retained branches. See [the starting audit](CURRENT-STATE-2026-10-12.md). **No milestone is claimed complete.** Earlier source, local runs and hosted CI are reusable evidence only when their inputs and limits match an accepted goal; they do not establish independent reviews or human acceptance.
 
 This roadmap serves two purposes: build a credible Java/Spring commerce portfolio and test whether the existing goal-driven workflow produces correct, reviewable, recoverable work. Each goal has a bounded outcome, prerequisites, exclusions, expected results and named evidence. Existing source is a candidate to validate or extend, not a reason to regenerate everything.
 
@@ -103,7 +103,7 @@ The public checkout already contains generated `AGENTS.md`, `PLANS.md`, `.codex/
 
 The original ZIP reports 77 JDK core scenarios, 10 Node client-state tests and 11 tooling checks. Those observations are scoped to the original candidate and mostly use test-only in-memory stores/mocks; they do not establish Spring/UI/database/runtime success. The original manifest and ZIP digest are retained in [baseline provenance](baseline/provenance.json). See [original verification](../verification.md) and [proposal-1 delivery checks](DELIVERY-VERIFICATION.md) for historical limits; the [current-state audit](CURRENT-STATE-2026-10-12.md) names later evidence.
 
-G-0001 and G-0002 are ready at their canonical records; G-0003 is active at [its canonical record](../../goals/G-0003/README.md). The remaining roadmap goals are proposals until adopted. The project repository is public and its original history is in a separate private archive. No release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
+G-0001, G-0002 and G-0003 are ready at their canonical records. The remaining roadmap goals are proposals until adopted. The project repository is public and its original history is in a separate private archive. No release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
 
 ## Navigation
 

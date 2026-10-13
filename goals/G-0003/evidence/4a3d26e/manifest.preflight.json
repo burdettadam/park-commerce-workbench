@@ -71,7 +71,7 @@
       "id": "CROSS-CATALOG",
       "type": "manual",
       "candidate_commit": "4a3d26ea99be5deeac1c0afd94b9cc4443efd9c6",
-      "command": "Four HTTP GETs for each synthetic catalog product on owner and other project",
+      "command": "Four HTTP GETs total, two per synthetic catalog product on owner and other project",
       "working_directory": ".",
       "started_at": "2026-10-13T00:35:37.593213Z",
       "finished_at": "2026-10-13T00:35:37.593213Z",
