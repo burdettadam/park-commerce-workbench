@@ -6,7 +6,7 @@ screenshots, traces, test reports, filled evidence manifests and reviewer
 transcripts are temporary review material. The repository ignores `**/evidence/`
 and `**/artifacts/`. Do not use `git add -f` to bypass those rules.
 
-## While a feature PR is open
+## During active review and handoff
 
 - Fix the source commit and relevant base before acceptance checks. Record the
   exact commit, command, environment, selected tests, result and limits in the PR

@@ -51,7 +51,7 @@ existing initializer helper's exact-version guard and its regression tests.
 In a disposable worktree, commit the old substring defect on a local-only
 challenge branch and observe the expected red assertions; then verify green
 on the unchanged current source. Do not
-claim the historical repair as a new code change. Keep raw outputs locally in ignored paths while the PR is open and identify the fixed source candidate.
+claim the historical repair as a new code change. Keep raw outputs locally in ignored paths while review or a live handoff needs them and identify the fixed source candidate.
 Obtain independent contract and adversarial reviews under the adopted policy.
 Do not invent reviewers, approvals or test results. Publish a sanitized trial
 branch only under actual accepted authority. Do not tag, deploy, change
