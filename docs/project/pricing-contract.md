@@ -185,7 +185,7 @@ not promised to be byte-identical.
 - `QuoteContractIT`: real MySQL/Spring HTTP/GraphQL tests with an explicit test
   catalogue and mutable clock. `scripts/demo-http.mjs` exercises the actual
   three-service stack. Both were executed for the fixed G-0009 source recorded
-  in [G-0009 evidence](../../goals/G-0009/evidence/bede018/); local targeted and
+  in the [G-0009 review checkpoint](../../goals/G-0009/work/review-checkpoint.md); local targeted and
   public hosted results, source identities and limits are retained there.
 
 ## Primary implementation references

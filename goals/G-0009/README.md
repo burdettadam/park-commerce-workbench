@@ -77,7 +77,7 @@ The common manifest, environment, raw checks, independent contract/adversarial r
 ## Validation commands and new tests
 
 - `bash scripts/test-core.sh --demo` — existing; in-memory domain adapters only.
-- `node --test scripts/pricing-contract.test.mjs` — existing fixture and SDL-source checks; G-0009 fixed-source observations are in [evidence](evidence/bede018/).
+- `node --test scripts/pricing-contract.test.mjs` — existing fixture and SDL-source checks; current G-0009 source and evidence identities are in the [review checkpoint](work/review-checkpoint.md).
 - `bash scripts/verify.sh --integration` — existing; Maven/JDK/Docker required and real database tests must not silently skip.
 - `node scripts/demo-http.mjs` — existing; requires an owned running local stack and `.env`; creates synthetic data.
 
@@ -88,13 +88,13 @@ These baseline commands prove only their actual selections. Add focused public A
 | Slice | Ref | Writer | Included revision |
 | --- | --- | --- | --- |
 | Canonical planning and later integration | `goal/G-0009` | Assigned G-0009 subagent | Base `bd26cfbd062228c228223518d3800cd125c4e9b1`; P in [bootstrap](work/bootstrap.md) |
-| Product implementation and verification | `goal/G-0009` | Assigned G-0009 subagent | G-0008 main input `50bbbdedb4928d2127cc6a950d8eaa9f70d77b48`; checked source and evidence in [handoff](evidence/bede018/handoff.md) |
+| Product implementation and verification | `goal/G-0009` | Assigned G-0009 subagent | G-0008 main input `50bbbdedb4928d2127cc6a950d8eaa9f70d77b48`; current checked source and evidence in the [review checkpoint](work/review-checkpoint.md) |
 
 One writer owns each future worktree. The integration owner records included revisions and dispositions before claiming a combined candidate.
 
 ## State, review and recovery
 
-G-0009 is **active** after both third-round native reviewers blocked source S3 on evidence citation drift and Codex authorized exactly one further review pair under Adam Burdett's decision delegation. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. Fixed-source checks and all blocked reviews are recorded in [evidence](evidence/bede018/); the scoped correction, exception and validator control change are in [round-three disposition](work/round3-disposition.md). G-0009 intended-use validation was explicitly delegated to Codex but remains pending, as does readiness. No merge, tag, release or deployment is claimed.
+G-0009 is **active** after both third-round native reviewers blocked source S3 on evidence citation drift and Codex authorized exactly one further review pair under Adam Burdett's decision delegation. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. The [review checkpoint](work/review-checkpoint.md) identifies the current source and evidence, while the S3 [historical evidence](evidence/bede018/) retains blocked attempts. The scoped exception and validator control change are in [round-three disposition](work/round3-disposition.md). G-0009 intended-use validation was explicitly delegated to Codex but remains pending, as does readiness. No merge, tag, release or deployment is claimed.
 
 At execution, publish source and indispensable artifacts before updating this canonical record. Verify retrieval and report local-only remainder. Source S, later evidence E, merge M and release/deployment observations are separate facts. A version-producing merge still requires distinct eligible human review.
 
