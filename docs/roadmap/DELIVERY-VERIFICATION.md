@@ -20,7 +20,7 @@ The validator suite uses explicitly synthetic identities, reports and decisions.
 
 ## Concrete planning discovery
 
-The current wrapper accepts version strings such as `0.2.01`, `10.2.0`, and `0.2.0-rc.1` because its guard tests a substring. This was reproduced in disposable worktrees with a mock command and retained in [planning-discovery.txt](planning-discovery.txt). No private initializer was run.
+The current wrapper accepts version strings such as `0.2.01`, `10.2.0`, and `0.2.0-rc.1` because its guard tests a substring. This was reproduced in disposable worktrees with a mock command and retained in [historical planning discovery](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/planning-discovery.txt). No private initializer was run.
 
 The defect remains in the unchanged candidate and is explicitly assigned to **G-0002**, the bounded first post-adoption red/green goal. During G-0001 bootstrap, manually verify the exact reviewed initializer version before invoking the wrapper. Do not interpret the preexisting 11 passing tooling checks as coverage for the newly identified cases.
 

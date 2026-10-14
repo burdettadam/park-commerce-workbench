@@ -16,14 +16,14 @@ Start with G-0002's controlled version-guard challenge, then G-0003's handoff/br
 
 | Measurement | Definition / denominator | Source |
 | --- | --- | --- |
-| Criterion coverage | Accepted criteria with current evidence / all accepted mandatory criteria | Plan and manifest |
-| Review coverage | Required independent assignments with current-candidate reports / required assignments | Independent review reports |
+| Criterion coverage | Accepted criteria with current evidence / all accepted mandatory criteria | Plan and PR/CI results |
+| Review coverage | Required independent assignments with current-candidate findings / required assignments | PR review discussion |
 | Review rounds | Reconciled review/fix cycles per goal; preserve first independent findings | Goal record |
 | Escaped regressions | Reopened correctness failures attributable to a previously accepted candidate | Incident/defect records |
 | Scope drift | Material changes attempted, approved, rejected and silently applied | Scope decisions/diffs |
 | False readiness | Candidate reported ready despite missing/stale/failed mandatory evidence | Gate experiment |
-| Handoff recovery | Time and steps to restore all indispensable refs/artifacts, plus unrecoverable items | Fresh-session drill |
-| Retention coverage | Indispensable components retrieved with matching identity / all indispensable components | Checkpoint inventory |
+| Handoff recovery | Time and steps to restore indispensable source refs and separately required release artifacts, plus unrecoverable items | Fresh-session drill |
+| Retention coverage | Indispensable source/release components retrieved with matching identity / all indispensable components | Checkpoint inventory |
 | Effort/cost | Observed human/agent elapsed or active time, model charges and cloud expense; keep them separate | Recorded run/billing evidence |
 
 All ratios should disclose the numerator and denominator. A zero denominator is not 100% success. Unknown measurements remain unknown. Comparison across different goal sizes is descriptive, not a causal productivity result.

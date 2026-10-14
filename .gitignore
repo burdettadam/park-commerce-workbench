@@ -39,3 +39,5 @@ docs/roadmap/validation/
 docs/roadmap/baseline/
 SOURCE-MANIFEST.sha256
 docs/archive-source-manifest-*.sha256
+goals/**/work/*-checks/
+docs/roadmap/planning-discovery.txt

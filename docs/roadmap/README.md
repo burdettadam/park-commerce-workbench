@@ -25,7 +25,7 @@ This roadmap serves two purposes: build a credible Java/Spring commerce portfoli
 
 ## Execution order and useful checkpoints
 
-Start with M0, then M1. The initializer wrapper's former substring defect was repaired before this public snapshot. G-0002 now challenges the current regression tests with a disposable mutation and checks the unchanged guard; a real new defect would require its own observed fix. The [planning discovery](planning-discovery.txt) and [starter-code evidence](../changes/starter-code/README.md) are historical observations, not new goal runs or completed goals.
+Start with M0, then M1. The initializer wrapper's former substring defect was repaired before this public snapshot. G-0002 now challenges the current regression tests with a disposable mutation and checks the unchanged guard; a real new defect would require its own observed fix. The [planning discovery at the historical source commit](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/planning-discovery.txt) and [starter-code evidence](../changes/starter-code/README.md) are historical observations, not new goal runs or completed goals.
 
 M1 verifies the preexisting candidate before new product work. M2/M3 complete the bounded commerce domain. M4 makes the UIs and identity boundary fit for later deployment. M5 proves diagnosability and failure handling. M6 proves delivery locally before M7 incurs authorized AWS spend.
 
