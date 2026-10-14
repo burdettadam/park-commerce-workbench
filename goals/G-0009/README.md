@@ -1,6 +1,6 @@
 # G-0009 — Freeze the price and quote contract with independent examples
 
-Status: **needs-decision** (third independent review round blocked on evidence citations; owner exception required for another review). Milestone: M2.
+Status: **active** (scoped fourth independent review authorized by delegated decision; acceptance pending). Milestone: M2.
 
 ## Accepted work contract
 
@@ -94,7 +94,7 @@ One writer owns each future worktree. The integration owner records included rev
 
 ## State, review and recovery
 
-G-0009 is **needs-decision** after both third-round native reviewers blocked source S3 on evidence citation drift. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. Fixed-source checks and all blocked reviews are recorded in [evidence](evidence/bede018/); the scoped correction and review limit decision are in [round-three disposition](work/round3-disposition.md). G-0009 intended-use validation was explicitly delegated to Codex but remains pending, as does readiness. No merge, tag, release or deployment is claimed.
+G-0009 is **active** after both third-round native reviewers blocked source S3 on evidence citation drift and Codex authorized exactly one further review pair under Adam Burdett's decision delegation. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. Fixed-source checks and all blocked reviews are recorded in [evidence](evidence/bede018/); the scoped correction, exception and validator control change are in [round-three disposition](work/round3-disposition.md). G-0009 intended-use validation was explicitly delegated to Codex but remains pending, as does readiness. No merge, tag, release or deployment is claimed.
 
 At execution, publish source and indispensable artifacts before updating this canonical record. Verify retrieval and report local-only remainder. Source S, later evidence E, merge M and release/deployment observations are separate facts. A version-producing merge still requires distinct eligible human review.
 
