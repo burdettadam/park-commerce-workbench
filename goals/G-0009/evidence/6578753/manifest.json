@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "goal_id": "G-0009",
-  "claim": "not_ready",
+  "claim": "ready",
   "candidate": {
     "source_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e",
     "base_commit": "620a505cc68f81fac58f596cb4d8488c83b9d903",
@@ -217,25 +217,25 @@
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": "8945ab4ffac6d031aeefff5b27833a2e3ec3f0c110cb6d005b0d7789d22472e1",
+      "sha256": "a5cbadd30f8c229d47924b245ee245dab35510d6d44e53f0364fc7e642c2e129",
       "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
     },
     {
       "id": "VALIDATION",
       "path": "validation.md",
-      "sha256": "85b8bdbefdd822b63edaf93c2dcebed44d773860d63fcae02d26a1e8cf21d99a",
+      "sha256": "85ee9607d2d8fff44c10ad72a79cceab381ff36904330484933fdc4661456120",
       "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
     },
     {
       "id": "DECISION",
       "path": "decision.md",
-      "sha256": "e6417230a374633e0204e8491949f337825c8e49b21873b72869ee6b5f4d0852",
+      "sha256": "e866a60cf865f075e465171f22e0915236c98d312bf88355fef8719975e0b3a3",
       "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
     },
     {
       "id": "SCOPE",
       "path": "scope-and-review.md",
-      "sha256": "7d672383a17cc4951951fcaf56410c703c228e80697aa9f8fd9165d87cdfae19",
+      "sha256": "0b1d26c8b75436b52b5772db4111bd5412a3e9013705e6f7815c158ddcb27a91",
       "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
     },
     {
@@ -339,48 +339,72 @@
       "path": "reviews/round4-preliminary-adversarial.md",
       "sha256": "68c277d3e742be707b012120daac3facb910980a90a9fd21bb7dd39579428635",
       "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/round4-contract.md",
+      "sha256": "fb455d789d629708385a42ab243f4c97f26c37f262f8607d488b58d8823226dc",
+      "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/round4-adversarial.md",
+      "sha256": "03a83fcacfd686c1ec2bb6db87a8cc36fe1100164e55d0df0492cc468b12c064",
+      "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
+    },
+    {
+      "id": "INDEPENDENT-CENTS-ORACLE",
+      "path": "checks/independent-cents-oracle.txt",
+      "sha256": "3d4233bb4b91ba0aa1aaa22b193fa13f70b15c956719ef8ee39d9db2f9d0a618",
+      "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
+    },
+    {
+      "id": "FRESH-CLONE-PROOF",
+      "path": "checks/fresh-clone-proof.txt",
+      "sha256": "2e65689cf2def87d112aa0cfbca3e8276b9940253682b57f75fe0c31ed62d362",
+      "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e"
     }
   ],
   "reviews": [
     {
       "role": "contract",
-      "reviewer_id": null,
-      "session_id": null,
-      "independent_of_writer": null,
-      "candidate_commit": null,
-      "round": null,
-      "open_blockers": null,
-      "decision": "not_run",
+      "reviewer_id": "/root/g0009_fourth_contract",
+      "session_id": "01a13869-a2fc-7d50-9725-348c07a14452",
+      "independent_of_writer": true,
+      "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e",
+      "round": 4,
+      "open_blockers": 0,
+      "decision": "pass",
       "report_artifact_id": "REVIEW-CONTRACT"
     },
     {
       "role": "adversarial",
-      "reviewer_id": null,
-      "session_id": null,
-      "independent_of_writer": null,
-      "candidate_commit": null,
-      "round": null,
-      "open_blockers": null,
-      "decision": "not_run",
+      "reviewer_id": "/root/g0009_fourth_adversarial",
+      "session_id": "01a13869-bc02-7393-8aad-4027a533372f",
+      "independent_of_writer": true,
+      "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e",
+      "round": 4,
+      "open_blockers": 0,
+      "decision": "pass",
       "report_artifact_id": "REVIEW-ADVERSARIAL"
     }
   ],
   "intended_use_validation": {
-    "validator_id": null,
+    "validator_id": "Codex (delegated by Adam Burdett)",
     "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e",
-    "decision": "not_run",
+    "decision": "accept",
     "report_artifact_id": "VALIDATION"
   },
   "readiness_decision": {
-    "authority_id": null,
+    "authority_id": "Codex integration owner (delegated by Adam Burdett)",
     "candidate_commit": "6578753c94674d95793f3ffd82ad7e67d9e98c4e",
-    "decision": "not_requested",
+    "decision": "ready",
     "report_artifact_id": "DECISION"
   },
   "retention": {
     "scope": "local_only",
     "owner_id": "Adam Burdett",
-    "retrieval_verified": false,
+    "retrieval_verified": true,
     "report_artifact_id": "HANDOFF"
   },
   "release": {

@@ -1,0 +1,11 @@
+Fresh public HTTPS clone retrieval proof
+Started UTC: 2026-10-14T03:27:37.073815+00:00
+Finished UTC: 2026-10-14T03:27:38.757770+00:00
+Command: git clone --quiet --branch goal/G-0009 https://github.com/burdettadam/park-commerce-workbench.git .tmp/g0009-ready-proof
+Retrieved head: 2adad8d342a5099fe58e0cabb65f24e1ee941cc7
+Working tree status --short: empty
+S6 source: 6578753c94674d95793f3ffd82ad7e67d9e98c4e
+E6 manifest artifacts checked: 27
+SHA-256 digest mismatches: 0
+Stable index names S6 and E6: true
+Scope: public source/evidence retrieval only; local-only Maven debug logs and Docker data were not retrieved.
