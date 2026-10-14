@@ -7,6 +7,7 @@ import java.time.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicReference;
+import javax.sql.DataSource;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +32,7 @@ import static org.junit.jupiter.api.Assertions.*;
     "DEMO_GUEST_TOKEN=test_guest_123456789012345678901234567",
     "DEMO_OTHER_GUEST_TOKEN=test_other_123456789012345678901234567",
     "DEMO_SERVICE_TOKEN=test_service_1234567890123456789012345",
+    "spring.datasource.hikari.maximum-pool-size=32",
     "management.tracing.sampling.probability=0.0"
 })
 class CheckoutRecoveryIT {
@@ -38,6 +40,7 @@ class CheckoutRecoveryIT {
     static final String GUEST="test_guest_123456789012345678901234567";
     static final String OTHER="test_other_123456789012345678901234567";
     static final String EMPLOYEE="test_employee_123456789012345678901234";
+    static final HttpClient HTTP=HttpClient.newHttpClient();
     @Container static MySQLContainer mysql=new MySQLContainer("mysql:8.4.11");
     @DynamicPropertySource static void database(DynamicPropertyRegistry r){
         r.add("spring.datasource.url",mysql::getJdbcUrl);r.add("spring.datasource.username",mysql::getUsername);r.add("spring.datasource.password",mysql::getPassword);
@@ -50,18 +53,26 @@ class CheckoutRecoveryIT {
     }
     static final class QuoteFixture implements Pricing.Client {
         final Map<UUID,Pricing.Quote> values=new ConcurrentHashMap<>();
-        @Override public Pricing.Quote quote(UUID id){return values.get(id);}
+        final AtomicReference<CountDownLatch> entered=new AtomicReference<>(),release=new AtomicReference<>();
+        @Override public Pricing.Quote quote(UUID id){
+            var signal=entered.get();var gate=release.get();
+            if(signal!=null&&gate!=null){signal.countDown();try{
+                if(!gate.await(15,TimeUnit.SECONDS))throw new AssertionError("Pricing fixture gate timed out");
+            }catch(InterruptedException e){Thread.currentThread().interrupt();throw new AssertionError(e);}}
+            return values.get(id);
+        }
     }
     @TestConfiguration(proxyBeanMethods=false) static class RecoveryInputs {
         @Bean @Primary RecoveryClock recoveryClock(){return new RecoveryClock();}
         @Bean @Primary QuoteFixture recoveryPricing(){return new QuoteFixture();}
     }
-    @Autowired Booking.Service service; @Autowired JdbcTemplate jdbc;
+    @Autowired Booking.Service service; @Autowired JdbcTemplate jdbc; @Autowired DataSource dataSource;
     @Autowired Environment env; @Autowired ObjectMapper json;
     @Autowired RecoveryClock clock; @Autowired QuoteFixture quotes;
     @BeforeEach void setup(){
         jdbc.update("DELETE FROM orders");jdbc.update("DELETE FROM holds");jdbc.update("DELETE FROM events");
-        clock.now.set(NOW);quotes.values.clear();service.create(new Booking.Event("night","night",LocalDate.of(2030,10,31),3));
+        clock.now.set(NOW);quotes.values.clear();quotes.entered.set(null);quotes.release.set(null);
+        service.create(new Booking.Event("night","night",LocalDate.of(2030,10,31),3));
     }
     Pricing.Quote quote(){
         var quote=new Pricing.Quote(UUID.randomUUID(),"guest","night","Night",Catalog.Kind.EVENT,1,LocalDate.of(2030,10,31),1,1,
@@ -74,7 +85,7 @@ class CheckoutRecoveryIT {
         var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+env.getRequiredProperty("local.server.port")+"/api/holds"))
             .timeout(Duration.ofSeconds(10)).header("Authorization","Bearer "+GUEST).header("Content-Type","application/json")
             .POST(HttpRequest.BodyPublishers.ofString("{\"eventId\":\"night\",\"quoteId\":\""+quote.id()+"\"}"));
-        try(var client=HttpClient.newHttpClient()){return client.send(builder.build(),HttpResponse.BodyHandlers.ofString());}
+        return HTTP.send(builder.build(),HttpResponse.BodyHandlers.ofString());
     }
     HttpResponse<String> request(String path,String token,String key,UUID hold)throws Exception {
         var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+env.getRequiredProperty("local.server.port")+path)).timeout(Duration.ofSeconds(10));
@@ -82,7 +93,7 @@ class CheckoutRecoveryIT {
         if(key!=null)builder.header("Idempotency-Key",key);
         if(hold!=null)builder.header("Content-Type","application/json").POST(HttpRequest.BodyPublishers.ofString("{\"holdId\":\""+hold+"\"}"));
         else builder.GET();
-        try(var client=HttpClient.newHttpClient()){return client.send(builder.build(),HttpResponse.BodyHandlers.ofString());}
+        return HTTP.send(builder.build(),HttpResponse.BodyHandlers.ofString());
     }
     Booking.Recovery recover(Booking.Hold h)throws Exception {
         var response=request("/api/orders/recovery",GUEST,"same",h.id());assertEquals(200,response.statusCode(),response.body());
@@ -145,5 +156,111 @@ class CheckoutRecoveryIT {
         }
         assertNotNull(recover(h).order());assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM orders",Integer.class));
         assertEquals(2,service.availability("night").available());
+    }
+
+    @Test void oneHundredRealHttpHoldsForTenSeatsReconcileWithSql()throws Exception {
+        jdbc.update("UPDATE events SET capacity=10 WHERE id='night'");
+        var candidates=new ArrayList<Pricing.Quote>();
+        for(int i=0;i<100;i++)candidates.add(quote());
+        var ready=new CountDownLatch(100);var start=new CountDownLatch(1);
+        var outcomes=new ArrayList<HttpResponse<String>>();
+        try(var pool=Executors.newFixedThreadPool(100)){
+            var tasks=new ArrayList<Callable<HttpResponse<String>>>();
+            for(var candidate:candidates)tasks.add(()->{ready.countDown();
+                assertTrue(start.await(15,TimeUnit.SECONDS));return reserve(candidate);});
+            var pending=new ArrayList<Future<HttpResponse<String>>>();
+            for(var task:tasks)pending.add(pool.submit(task));
+            assertTrue(ready.await(15,TimeUnit.SECONDS));start.countDown();
+            for(var result:pending)outcomes.add(result.get(60,TimeUnit.SECONDS));
+        }finally{start.countDown();}
+        int accepted=0,soldOut=0;
+        for(var result:outcomes){
+            if(result.statusCode()==201)accepted++;
+            else if(result.statusCode()==409){
+                assertEquals("SOLD_OUT",json.readValue(result.body(),Map.class).get("code"));soldOut++;
+            }else fail("Unexpected hold status "+result.statusCode()+": "+result.body());
+        }
+        var held=jdbc.queryForObject("SELECT COALESCE(SUM(quantity),0) FROM holds WHERE event_id='night' AND status='ACTIVE'",Integer.class);
+        var confirmed=jdbc.queryForObject("SELECT COALESCE(SUM(quantity),0) FROM holds WHERE event_id='night' AND status='CONFIRMED'",Integer.class);
+        var count=jdbc.queryForObject("SELECT COUNT(*) FROM holds WHERE event_id='night'",Integer.class);
+        var orders=jdbc.queryForObject("SELECT COUNT(*) FROM orders WHERE event_id='night'",Integer.class);
+        var availability=service.availability("night");
+        System.out.println("G-0010 HTTP contention: submitted=100 accepted="+accepted+" soldOut="+soldOut+
+            " held="+held+" confirmed="+confirmed+" holdRows="+count+" orderRows="+orders+
+            " available="+availability.available());
+        assertEquals(100,outcomes.size());assertEquals(10,accepted);assertEquals(90,soldOut);
+        assertEquals(accepted,held);assertEquals(accepted,count);assertEquals(0,confirmed);
+        assertEquals(0,orders);assertEquals(0,availability.available());
+        assertEquals(10,availability.capacity());assertEquals(held.intValue(),availability.held());
+    }
+
+    @Test void concurrentAuthenticatedCheckoutAndUncertainReplayConsumeOnce()throws Exception {
+        var first=hold();var second=hold();
+        var ready=new CountDownLatch(24);var start=new CountDownLatch(1);
+        var receipts=new HashSet<UUID>();
+        try(var pool=Executors.newFixedThreadPool(24)){
+            var pending=new ArrayList<Future<HttpResponse<String>>>();
+            for(int i=0;i<24;i++)pending.add(pool.submit(()->{ready.countDown();
+                assertTrue(start.await(15,TimeUnit.SECONDS));return request("/api/orders",GUEST,"same",first.id());}));
+            assertTrue(ready.await(15,TimeUnit.SECONDS));start.countDown();
+            for(var result:pending){var response=result.get(30,TimeUnit.SECONDS);
+                assertEquals(200,response.statusCode(),response.body());
+                receipts.add(json.readValue(response.body(),Booking.Order.class).id());}
+        }finally{start.countDown();}
+        assertEquals(1,receipts.size());
+        // Treat the original HTTP receipt as lost: the authenticated recovery key resolves it.
+        var recovered=recover(first);assertEquals(receipts.iterator().next(),recovered.order().id());
+        var replay=request("/api/orders",GUEST,"same",first.id());
+        assertEquals(200,replay.statusCode());assertEquals(recovered.order(),json.readValue(replay.body(),Booking.Order.class));
+        var conflict=request("/api/orders",GUEST,"same",second.id());
+        assertEquals(409,conflict.statusCode());assertEquals("CONFLICT",json.readValue(conflict.body(),Map.class).get("code"));
+        assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM orders",Integer.class));
+        assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM holds WHERE status='CONFIRMED'",Integer.class));
+        assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM holds WHERE status='ACTIVE'",Integer.class));
+        assertEquals(1,service.availability("night").available());
+    }
+
+    @Test void expiryAndConfirmationAtBoundaryHaveOneReconciledOutcome()throws Exception {
+        var expiring=hold();clock.now.set(expiring.expiresAt());
+        var rejected=request("/api/orders",GUEST,"boundary",expiring.id());
+        assertEquals(410,rejected.statusCode(),rejected.body());
+        assertEquals("EXPIRED",json.readValue(rejected.body(),Map.class).get("code"));
+        assertEquals(Booking.HoldStatus.EXPIRED,recoverWithKey(expiring,"boundary").hold().status());
+        assertEquals(0,jdbc.queryForObject("SELECT COUNT(*) FROM orders",Integer.class));
+        assertEquals(3,service.availability("night").available());
+        clock.now.set(NOW);var confirmed=hold();
+        assertEquals(200,request("/api/orders",GUEST,"before-boundary",confirmed.id()).statusCode());
+        clock.now.set(confirmed.expiresAt());
+        assertEquals(200,request("/api/orders",GUEST,"before-boundary",confirmed.id()).statusCode());
+        assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM orders",Integer.class));
+        assertEquals(2,service.availability("night").available());
+    }
+
+    Booking.Recovery recoverWithKey(Booking.Hold hold,String key)throws Exception {
+        var response=request("/api/orders/recovery",GUEST,key,hold.id());
+        assertEquals(200,response.statusCode(),response.body());
+        return json.readValue(response.body(),Booking.Recovery.class);
+    }
+
+    @Test void dependencyFetchFinishesBeforeEventRowLock()throws Exception {
+        var candidate=quote();var entered=new CountDownLatch(1);var release=new CountDownLatch(1);
+        quotes.entered.set(entered);quotes.release.set(release);
+        try(var pool=Executors.newSingleThreadExecutor()){
+            var pending=pool.submit(()->reserve(candidate));
+            assertTrue(entered.await(10,TimeUnit.SECONDS),"Booking did not reach pricing dependency");
+            try(var connection=dataSource.getConnection()){
+                connection.setAutoCommit(false);
+                try(var statement=connection.prepareStatement("SELECT id FROM events WHERE id=? FOR UPDATE NOWAIT")){
+                    statement.setString(1,"night");
+                    try(var rows=statement.executeQuery()){assertTrue(rows.next());}
+                }finally{connection.rollback();}
+            }
+            release.countDown();
+            var result=pending.get(20,TimeUnit.SECONDS);
+            assertEquals(201,result.statusCode(),result.body());
+        }finally{release.countDown();quotes.entered.set(null);quotes.release.set(null);}
+        var indexes=jdbc.queryForList("EXPLAIN SELECT * FROM holds WHERE event_id='night'");
+        assertFalse(indexes.isEmpty());
+        System.out.println("G-0010 lock ordering: pricing blocked, independent event FOR UPDATE NOWAIT succeeded; hold query EXPLAIN="+indexes);
     }
 }
