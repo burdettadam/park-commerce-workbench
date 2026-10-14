@@ -1,0 +1,25 @@
+﻿Command: mvn -B -ntp -Pintegration -pl pricing-service -am '-Dit.test=QuoteContractIT' '-Dfailsafe.failIfNoSpecifiedTests=false' verify
+Working directory: repository root
+Source: 00fe6bec25ba8b9a2480bafb2371d349ec4ca546
+Environment: Windows; local JDK 21, Maven 3.9.16, Docker Desktop Testcontainers
+Exit: 0
+Tests: 16; failures: 0; errors: 0; skipped: 0
+Full raw local log SHA-256: 952c634d21a87001d51a0933dc99ad2799d515cf5cc970991cad4c40e8aed2fb
+Full raw local log location: workstation TEMP/g0009-fixed-00fe6be (local_only)
+Test cases:
+  ordinaryQuoteReadsUseTheSameOwnerAndRoleBoundaryAcrossTransports
+  parkLocalMidnightEligibilityIsConsistentThroughHttp
+  malformedDatesAndIdsShareDomainErrorCodeAcrossTransports
+  exactExpiryIsObservedWithoutUpdatingStoredSnapshot
+  missingOrFractionalQuantityIsRejectedWithoutCreatingQuotes
+  priorQuoteVersionsAndNamesSurviveLaterPricePublication
+  expiredAndUnknownAreDifferentButUnknownAndOtherOwnerAreNot
+  inclusiveCalendarEndpointsAndGapAreVisibleThroughBothPublicApis
+  graphStatusAuthorizationPreventsCrossAccountAndInternalReads
+  publicApiUsesParkDatesAndElapsedExpiryAcrossDstTransitions
+  graphStatusReportsExactExpiryAndSameHistoricalQuote
+  serializedQuoteAndDomainErrorsKeepConsumerShape
+  missingRateAndUnavailableCatalogHaveStableDifferentErrorCodes
+  graphStatusAgreesWithRestAndPreservesStringMoneyAndVersionFields
+  realJsonAndGraphQlProduceTheIndependentHalfCentFixture
+  statusReadHidesOtherOwnersAndRequiresAppropriateAuthentication

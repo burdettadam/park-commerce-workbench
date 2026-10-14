@@ -1,0 +1,37 @@
+✔ pricing fixture: no-offer (1.4538ms)
+✔ pricing fixture: below-threshold (0.1213ms)
+✔ pricing fixture: exact-threshold (0.0696ms)
+✔ pricing fixture: above-threshold (0.0657ms)
+✔ pricing fixture: child-only (0.0765ms)
+✔ pricing fixture: zero-percent (0.0772ms)
+✔ pricing fixture: full-discount (0.0524ms)
+✔ pricing fixture: below-half-cent (0.084ms)
+✔ pricing fixture: exact-half-cent (0.1033ms)
+✔ pricing fixture: above-half-cent (0.0872ms)
+✔ pricing fixture: split-variant-rounding (0.0734ms)
+✔ pricing fixture: grouped-variant-rounding (0.0397ms)
+✔ pricing fixture: fractional-percent (0.051ms)
+✔ pricing fixture: free-product-with-offer (0.0525ms)
+✔ pricing fixture: maximum-party-and-unit (0.0377ms)
+✔ pricing fixture: threshold-twenty-not-met (0.0254ms)
+✔ pricing fixture: threshold-twenty-met (0.0578ms)
+✔ pricing fixture: one-basis-point-below-half (0.0221ms)
+✔ pricing fixture: one-basis-point-at-half (0.0193ms)
+✔ pricing fixture: one-basis-point-above-half (0.0184ms)
+✔ pricing fixture: near-full-single-cent (0.018ms)
+✔ pricing fixture: odd-price-mixed-party (0.0212ms)
+✔ 384 deterministic parties agree on every line and conserved total (3.0848ms)
+✔ an altered fixture expectation is detected, not regenerated from Java (1.5125ms)
+✔ per-ticket and whole-cart discount policies would fail the selected fixtures (0.0796ms)
+✔ SDL source: Quote retains the pinned field names and representations (0.2156ms)
+✔ SDL source: Money retains the pinned field names and representations (0.0634ms)
+✔ SDL source: QuoteStatus retains the pinned field names and representations (0.0544ms)
+✔ SDL source: historical quote query remains and status query is additive (0.1299ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1678.5537

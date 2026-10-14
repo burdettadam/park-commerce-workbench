@@ -1,0 +1,57 @@
+Public free GitHub Actions run: 38505009279
+Head source: 00fe6bec25ba8b9a2480bafb2371d349ec4ca546
+Downloaded java-test-reports artifact; raw Maven-generated per-suite text reports follow.
+
+--- booking-service/target/failsafe-reports/dev.parkcommerce.booking.AdmissionCheckoutIT.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.booking.AdmissionCheckoutIT
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.39 s -- in dev.parkcommerce.booking.AdmissionCheckoutIT
+
+--- booking-service/target/failsafe-reports/dev.parkcommerce.booking.CheckoutRecoveryIT.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.booking.CheckoutRecoveryIT
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.334 s -- in dev.parkcommerce.booking.CheckoutRecoveryIT
+
+--- booking-service/target/failsafe-reports/dev.parkcommerce.booking.JdbcBookingIT.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.booking.JdbcBookingIT
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.84 s -- in dev.parkcommerce.booking.JdbcBookingIT
+
+--- catalog-service/target/failsafe-reports/dev.parkcommerce.catalog.CatalogEditorialIT.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.catalog.CatalogEditorialIT
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.49 s -- in dev.parkcommerce.catalog.CatalogEditorialIT
+
+--- catalog-service/target/failsafe-reports/dev.parkcommerce.catalog.MongoCatalogIT.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.catalog.MongoCatalogIT
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.895 s -- in dev.parkcommerce.catalog.MongoCatalogIT
+
+--- core/target/surefire-reports/dev.parkcommerce.core.CoreScenariosTest.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.core.CoreScenariosTest
+-------------------------------------------------------------------------------
+Tests run: 280, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.562 s -- in dev.parkcommerce.core.CoreScenariosTest
+
+--- pricing-service/target/failsafe-reports/dev.parkcommerce.pricing.JpaPricingIT.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.pricing.JpaPricingIT
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.655 s -- in dev.parkcommerce.pricing.JpaPricingIT
+
+--- pricing-service/target/failsafe-reports/dev.parkcommerce.pricing.QuoteContractIT.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.pricing.QuoteContractIT
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 31.06 s -- in dev.parkcommerce.pricing.QuoteContractIT
+
+--- pricing-service/target/surefire-reports/dev.parkcommerce.pricing.PreviewErrorContractTest.txt ---
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.pricing.PreviewErrorContractTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.143 s -- in dev.parkcommerce.pricing.PreviewErrorContractTest
