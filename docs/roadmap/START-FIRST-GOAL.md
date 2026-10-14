@@ -51,24 +51,24 @@ existing initializer helper's exact-version guard and its regression tests.
 In a disposable worktree, commit the old substring defect on a local-only
 challenge branch and observe the expected red assertions; then verify green
 on the unchanged current source. Do not
-claim the historical repair as a new code change. Retain raw outputs and a fixed candidate.
+claim the historical repair as a new code change. Keep raw outputs locally in ignored paths while the PR is open and identify the fixed source candidate.
 Obtain independent contract and adversarial reviews under the adopted policy.
 Do not invent reviewers, approvals or test results. Publish a sanitized trial
 branch only under actual accepted authority. Do not tag, deploy, change
 visibility, add a new agent command layer or expand scope.
-Report actual readiness, blockers, retained artifacts and the next action.
+Report actual readiness, blockers, PR/CI links and the next action.
 ```
 
 `$work-goal` above is a native skill reference, not a shell command. The actual accepted goal/authority must exist before execution. G-0001 itself is a bootstrap adoption step with a human decision; it cannot use unadopted rules to approve itself.
 
 ## Capture, validate and hand off
 
-Create a candidate evidence directory only when work occurs. Copy its `manifest.template.json` as a starting contract, retain real outputs, populate actual identities/results and validate them:
+For the historical G-0002 drill, create a candidate evidence directory only when work occurs. Copy its `manifest.template.json` locally, populate actual identities/results and validate it without tracking the filled manifest:
 
 ```bash
 node scripts/validate-evidence.mjs goals/G-0002/evidence/CANDIDATE/manifest.json
 ```
 
-The example directory does not exist yet. Templates fail deliberately. A structural pass is not authentication of the reports or actual human approval. Retain failed attempts and reviewer limitations, and follow the component-before-coordinator checkpoint order.
+The example directory does not exist yet. Templates fail deliberately. A structural pass is not authentication of the reports or actual human approval. Keep failed attempts and reviewer limitations visible during review, summarize the outcome in the PR or goal record, and remove local generated evidence after merge. Follow the component-before-coordinator checkpoint order.
 
 Then perform G-0003's recovery drill. M1/G-0004 starts full Spring/UI build validation after the workflow proof; it does not regenerate the entire existing application. Independent future tracks can proceed when their precise prerequisites and authority are satisfied.

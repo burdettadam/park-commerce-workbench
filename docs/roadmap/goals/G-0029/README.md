@@ -1,4 +1,4 @@
-# G-0029 — Evaluate goal-driven development using retained evidence
+# G-0029 — Evaluate goal-driven development using PR and CI records
 
 Milestone: M9
 Depends on: G-0003, G-0006, G-0012, G-0020, G-0024

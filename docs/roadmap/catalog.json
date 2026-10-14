@@ -1754,7 +1754,7 @@
     {
       "id": "G-0029",
       "milestone": "M9",
-      "title": "Evaluate goal-driven development using retained evidence",
+      "title": "Evaluate goal-driven development using PR and CI records",
       "depends_on": [
         "G-0003",
         "G-0006",

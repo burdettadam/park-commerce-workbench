@@ -65,12 +65,12 @@ Proposed checkpoints are **workflow proof** (M0), **working local baseline** (M1
 | [G-0026](goals/G-0026/README.md) | Diagnose a Java business transaction in AppDynamics | G-0017 |
 | [G-0027](goals/G-0027/README.md) | Demonstrate graph-data compatibility separately | G-0009 |
 | [G-0028](goals/G-0028/README.md) | Benchmark the fixed release candidate honestly | G-0021 |
-| [G-0029](goals/G-0029/README.md) | Evaluate goal-driven development using retained evidence | G-0003, G-0006, G-0012, G-0020, G-0024 |
+| [G-0029](goals/G-0029/README.md) | Evaluate goal-driven development using PR and CI records | G-0003, G-0006, G-0012, G-0020, G-0024 |
 | [G-0030](goals/G-0030/README.md) | Prepare a truthful private release-candidate dossier | G-0024, G-0025, G-0026, G-0027, G-0028, G-0029 |
 
 ## Definition of an acceptable goal
 
-A goal can become `ready` only for a **fixed candidate** with accepted scope, independent expected results, selected nonempty checks, actual evidence for every criterion, current independent reviews, resolved blockers and retained/retrievable artifacts. Goal-specific criteria and common evidence requirements both apply. A passing script or a model's confidence is not an acceptance decision.
+A goal can become `ready` only for a **fixed candidate** with accepted scope, independent expected results, selected nonempty checks, actual evidence for every criterion, current independent reviews, resolved blockers and reviewable PR/CI results. Goal-specific criteria and common evidence requirements both apply. A passing script or a model's confidence is not an acceptance decision.
 
 Human approval, a version-producing merge, artifact publication, deployment health and recovery coverage remain separate records. There is no universal “done” flag that collapses them. No deadline, automatic model run, cloud spend, public publication or merge is authorized by this roadmap.
 
