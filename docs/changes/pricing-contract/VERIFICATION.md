@@ -18,7 +18,7 @@ independent reviewer acceptance or completion of G-0009.
 
 ## Executed against clean source S
 
-[checks.json](evidence/checks.json) records command, directory, fixed source, clean
+[checks.json](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/pricing-contract/evidence/checks.json) records command, directory, fixed source, clean
 state before/after, UTC timestamp, duration, exit code and raw output digest.
 Raw logs retain their original bytes, including trailing spaces from deliberately
 malformed test inputs and Node assertion formatting. Source whitespace checks
@@ -37,14 +37,14 @@ exclude only those raw evidence files; their exact bytes are instead digest-chec
 | Bash / JavaScript syntax | **Passed** | Syntax only |
 | Source-S manifest | **332 listed hashes matched** | Source snapshot integrity, not semantic correctness |
 
-The [portable source check](evidence/source-archive.json) records core and pricing
+The [portable source check](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/pricing-contract/evidence/source-archive.json) records core and pricing
 contract tests rerun successfully from a Git archive of S in a path containing
 spaces. The source archive contains 333 files including its manifest. The full
 later delivery also contains these new verification artifacts.
 
 ## Failing-before-fix evidence
 
-[red-core.txt](evidence/red-core.txt) records **181 passed, 3 failed** against the
+[red-core.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/pricing-contract/evidence/red-core.txt) records **181 passed, 3 failed** against the
 base implementation plus the initial tests preserved in `790e116`. The tests were
 run before their commit, then committed unchanged to preserve reproduction.
 
@@ -74,7 +74,7 @@ In isolated copies of S, two deliberate changes were introduced:
 - GraphQL `Money.cents` changed from `String!` to `Int!`: the pinned SDL-source
   representation check failed.
 
-[mutation-checks.json](evidence/mutation-checks.json) and its raw logs retain the
+[mutation-checks.json](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/pricing-contract/evidence/mutation-checks.json) and its raw logs retain the
 changes and intended assertion failures. The original source S remained unchanged.
 These are test-sensitivity demonstrations, not independent reviewer reports.
 

@@ -1,11 +1,14 @@
 ## Goal and behavior
 
 Link the accepted work-goal. Describe the product behavior and contracts changed.
+Record why this approach was chosen and any alternatives reviewers need to know;
+keep historical rationale out of source comments so Git blame leads here.
 
 ## Evidence
 
 - Source revision and environment:
 - Commands actually run and results:
+- Links to hosted CI runs and relevant local findings (no committed logs):
 - Database/HTTP/UI checks not run, and why:
 - Security, data migration, rollback and recovery impact:
 

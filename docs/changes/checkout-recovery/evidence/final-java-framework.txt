@@ -1,1 +1,0 @@
-Install Maven 3.9+ and JDK 21.

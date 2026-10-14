@@ -4,14 +4,14 @@ Actual authority / timestamp:
 Intended outcome / accepted milestone scope:
 Combined candidate S / base / configuration / toolchain:
 
-| Goal | Accepted plan revision | Included source revision | Current evidence/reviews | Remaining limitation |
+| Goal | Accepted plan revision | Included source revision | PR/CI checks and reviews | Remaining limitation |
 | --- | --- | --- | --- | --- |
 
 Combined end-to-end regression/validation command and actual result:
 Conflicting branch/interface changes and dispositions:
 Artifact D / source and input provenance:
 Actual user demonstration:
-Retention/retrieval coverage:
+Source retrieval and local generated-output cleanup:
 Actual milestone decision and allowed checkpoint label:
 
 Version-producing merge human approval: NOT REQUESTED

@@ -1,7 +1,0 @@
-# Initial native review attempt — retained, not a passing review
-
-Read-only CLI parent `01a13676-99c3-77a0-ad10-29fd4a0791f5` assigned configured native roles to distinct children: contract `01a13676-dfe5-7ec2-b95e-298e76c7c854` at `/root/g0007_contract`, adversarial `01a13676-ee38-7d20-bc70-ecaa4cd6016e` at `/root/g0007_adversarial`. Their session metadata identifies roles and parent. The parent final response summarized initial findings, but the child rollout files ended with `turn_aborted` before a durable final child report. This attempt is **not counted as a completed independent review**.
-
-Initial findings: no demonstrated AC01–AC04 source or DRY/architecture defect in the inspected catalog service/Mongo/API paths. Both correctly blocked readiness because the candidate-owned evidence and intended-use record did not yet exist, and the browser run then available had timed out. Those gaps motivated the subsequent retained evidence and successful browser run. A new pair must inspect the completed package independently; their reports cannot simply inherit this summary.
-
-Raw parent/child rollouts remain local under the user's Codex sessions directory and ignored `.tmp/g0007-review-parent.jsonl` because they contain host paths and possibly raw local environment output. The public report does not contain credentials. No source edit, mutable check, release approval or final reviewer pass came from the attempt.

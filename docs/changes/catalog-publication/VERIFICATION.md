@@ -17,25 +17,25 @@ version, deployed application, or verified private repository.
 
 ## Executed against clean source S
 
-The [command index](evidence/checks.json) records exact command, working directory,
+The [command index](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/checks.json) records exact command, working directory,
 source, clean state before/after, UTC execution timestamp, duration, exit code and
 raw artifact SHA-256. Every final command left source S clean.
 
 | Check | Actual result | Evidence |
 | --- | --- | --- |
-| JDK-only Java scenarios and demo | **180 passed / 0 failed**; 123 previous + 57 editorial | [core](evidence/final-core.txt) |
-| Client checkout/recovery tests | **66 passed / 0 failed**, unchanged suite | [client](evidence/final-client.txt) |
-| Initializer/setup tooling | **29 passed**, mock initializer only | [tooling](evidence/final-tooling.txt) |
-| Roadmap/evidence-validator tests | **41 passed / 0 failed** | [validators](evidence/final-validators.txt) |
-| Roadmap structure | 10 milestones, 30 proposals, 120 criteria retained | [roadmap](evidence/final-roadmap.txt) |
-| Public client TypeScript declarations | Exit 0 with installed TypeScript 5.8.3 | [types](evidence/final-types.txt) |
+| JDK-only Java scenarios and demo | **180 passed / 0 failed**; 123 previous + 57 editorial | [core](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-core.txt) |
+| Client checkout/recovery tests | **66 passed / 0 failed**, unchanged suite | [client](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-client.txt) |
+| Initializer/setup tooling | **29 passed**, mock initializer only | [tooling](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-tooling.txt) |
+| Roadmap/evidence-validator tests | **41 passed / 0 failed** | [validators](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-validators.txt) |
+| Roadmap structure | 10 milestones, 30 proposals, 120 criteria retained | [roadmap](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-roadmap.txt) |
+| Public client TypeScript declarations | Exit 0 with installed TypeScript 5.8.3 | [types](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-types.txt) |
 | Bash and JavaScript syntax | Exit 0 | `final-shell-syntax.txt`, `final-js-syntax.txt` |
-| JSON/POM XML/YAML parsing | Exit 0, syntax/structure only | [config](evidence/final-config.txt) |
-| Source-S manifest | 294 listed hashes matched | [hashes](evidence/final-source-manifest.txt) |
+| JSON/POM XML/YAML parsing | Exit 0, syntax/structure only | [config](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-config.txt) |
+| Source-S manifest | 294 listed hashes matched | [hashes](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/final-source-manifest.txt) |
 
 The code source S was also archived from Git and extracted into a directory
 containing spaces. Core, client, tooling and validator checks passed again there.
-The [source-archive record](evidence/source-archive.json) identifies the exact archive,
+The [source-archive record](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/source-archive.json) identifies the exact archive,
 296 files, raw portability logs and digests. Source S's manifest excluded a retained
 nested historical manifest by filename; the final delivery manifest corrects that
 metadata-only exclusion and hashes every delivered file except itself.
@@ -66,7 +66,7 @@ TypeScript 5.9.3 baseline. No dependency versions or stack technologies were rep
 The declaration-only check is **not an Angular compilation**.
 
 Maven and Docker are absent; Maven Central DNS lookup failed. See
-[capabilities](evidence/capabilities.txt). Actual attempts were retained:
+[capabilities](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/capabilities.txt). Actual attempts were retained:
 
 | Attempt | Outcome |
 | --- | --- |
@@ -87,11 +87,11 @@ parser results are not substitutes for those acceptance gates.
 ## Red-to-green history and author's self-checks
 
 The retained initial test commit fails because `CatalogEditorial` does not exist.
-[Initial red output](evidence/initial-missing-feature-red.txt) is a genuine
+[Initial red output](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/initial-missing-feature-red.txt) is a genuine
 missing-feature compile failure, not a failed running database or HTTP request.
 
 An early exploratory compile also caught an unqualified static helper call shadowed
-by a record accessor; [that compiler output](evidence/exploratory-compile-error.txt)
+by a record accessor; [that compiler output](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/catalog-publication/evidence/exploratory-compile-error.txt)
 is retained. It came from a dirty worktree and is not attributed to a frozen commit.
 The helper call was qualified before the final candidate; all final core tests pass.
 The larger suite and injected races are author's self-checks, **not independent reviews**.

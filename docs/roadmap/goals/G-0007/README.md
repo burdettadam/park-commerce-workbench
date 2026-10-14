@@ -61,9 +61,9 @@ Audit records identify authenticated actor, operation, product, old/new revision
 
 Required evidence: `G-0007-A03` plus the relevant raw check, source S and independent review coverage.
 
-## Required goal-specific artifacts
+## Review evidence outputs (temporary and ignored)
 
-Relative to the eventual candidate evidence directory, for example `goals/G-0007/evidence/<candidate>/`. These are output requirements, not generated evidence.
+The following IDs name expected review outputs, not files to commit. If generated, keep them under ignored `goals/G-0007/evidence/<candidate>/` only while the PR is open. Record concise findings and hosted check links in the PR; remove local outputs after feature code merges.
 
 | ID | File | Purpose |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ Relative to the eventual candidate evidence directory, for example `goals/G-0007
 | `G-0007-A02` | `history-and-conflicts.md` | Concurrent publication and pagination evidence. |
 | `G-0007-A03` | `audit-example.json` | Sanitized representative audit events, with provenance. |
 
-The common manifest, environment, raw checks, independent contract/adversarial review reports, intended-use validation, decision and handoff are also mandatory. Start from [the unfilled manifest template](manifest.template.json) and [artifact contract](../../ARTIFACT-CONTRACT.md). The unfilled template deliberately fails the readiness checker.
+The accepted outcome still requires actual checks, independent reviews, intended-use validation and a decision. [The legacy manifest template](manifest.template.json) documents the older file format; do not fill or commit an evidence manifest. Follow the current [review evidence policy](../../ARTIFACT-CONTRACT.md) and link PR/CI records.
 
 ## Validation commands and new tests
 
@@ -98,7 +98,7 @@ Changes to these rules are reviewed under the previous accepted rules, never sel
 
 ## Handoff and recovery
 
-Retain source/branch/artifact checkpoints before the canonical coordination record, identify every indispensable component, then prove retrieval. Until privacy is verified, use local artifacts and label coverage `local_only`; do not claim off-device recovery. Record source S separately from later evidence/report commit E so the report does not need its own future commit hash.
+Push source and branch checkpoints before the canonical coordination record, identify every required source component, and verify retrieval. Keep generated evidence ignored and local while the PR is open, with concise findings and CI links in the PR. After feature code merges, remove local generated outputs. Record exact source S and merged M separately; do not create an evidence-only commit E.
 
 ## Activation record — intentionally unfilled
 

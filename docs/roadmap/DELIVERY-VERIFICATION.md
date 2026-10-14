@@ -26,16 +26,16 @@ The defect remains in the unchanged candidate and is explicitly assigned to **G-
 
 ## Retained local observations
 
-- [Roadmap check](validation/roadmap-check.txt)
-- [Validator test output](validation/validator-tests.txt)
-- [Core rerun](validation/core-rerun.txt)
-- [Client-state rerun](validation/client-rerun.txt)
-- [Tooling rerun](validation/tooling-rerun.txt)
-- [Environment](validation/environment.txt)
-- [Source preservation](validation/source-preservation.txt)
-- [Original source/ZIP provenance](baseline/provenance.json)
+- [Roadmap check](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/validation/roadmap-check.txt)
+- [Validator test output](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/validation/validator-tests.txt)
+- [Core rerun](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/validation/core-rerun.txt)
+- [Client-state rerun](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/validation/client-rerun.txt)
+- [Tooling rerun](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/validation/tooling-rerun.txt)
+- [Environment](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/validation/environment.txt)
+- [Source preservation](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/validation/source-preservation.txt)
+- [Original source/ZIP provenance](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/baseline/provenance.json)
 
-The updated archive contains no `.git`, usable `.env`, private initializer executable, generated native agent guidance, installed dependencies or fabricated source commits. Its root `SOURCE-MANIFEST.sha256` identifies this delivered file set. Original evidence remains bound to the foundation archive recorded under `baseline/`; later evidence/report changes are not retroactively original test inputs.
+The updated archive contained no `.git`, usable `.env`, private initializer executable, generated native agent guidance, installed dependencies or fabricated source commits. Its historical [root source manifest](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/SOURCE-MANIFEST.sha256) identifies that delivered file set. Original evidence remains bound to that historical snapshot; later results are not retroactively original test inputs.
 
 ## Remaining validation boundary
 

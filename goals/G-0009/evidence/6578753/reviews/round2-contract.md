@@ -1,7 +1,0 @@
-# Independent contract review, round 2 — blocked at S2
-
-Native configured `contract-reviewer` examined source S2 `af04615957d172e6ad145baa7ba7858584b9a4f2` and updated provisional evidence E `3502bd8a6a238cc2bc62bf8b6996017f855e4326`. Parent CLI thread `01a13785-befd-7ad2-b408-5384930b39c1`, child `/root/g0009_contract_round_two`. Decision: **BLOCKED** for S2.
-
-The first-round public hold HTTP 410 and direct-read access coverage gaps were resolved. No monetary, expiry, ownership, or wire behavior defect was found. The reviewer identified stale published validation statements in `docs/project/pricing-contract.md` lines 3 and 183: they called G-0009 unaccepted and its real tests unexecuted despite S2 evidence. The reviewer checked all 20 declared artifact digests from Git objects and a fresh local proof clone, inspected hosted extracts showing 356 JUnit and 43 HTTP checks, and ran no tests. Direct GitHub API access failed in its environment; the integration owner independently queried the live run at the exact S2 head. The reviewed proof did not establish the clone creation time. The reviewer did not inspect adversarial findings and granted no acceptance or release approval.
-
-Disposition in S3 `bede01801a1c489982edbe688ac87f68c7ba7396`: pricing contract and API overview now accurately report the accepted plan and executed S2 checks, without claiming release/deployment. A clean S3 rerun passed locally and on the free hosted PR head. A new independent review must inspect S3 and its actual evidence; this round-two block remains historical.

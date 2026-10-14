@@ -1,8 +1,0 @@
-START_UTC=2026-10-13T02:37:13.076147+00:00
-COMMAND=node scripts/validate-evidence.mjs goals/G-0004/evidence/e7c1e7f/manifest.preflight.json
-FAIL Template/incomplete evidence: claim must be ready only after real collection.
-FAIL Actual readiness decision is missing/stale.
-FAIL Retention/retrieval record is incomplete.
-EXIT_CODE=1
-FINISH_UTC=2026-10-13T02:37:13.122181+00:00
-EXPECTED=three pending readiness/retention conditions; no missing artifact/digest/coverage errors

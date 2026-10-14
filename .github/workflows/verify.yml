@@ -28,13 +28,6 @@ jobs:
       - run: bash scripts/test-core.sh
       - run: node --test scripts/pricing-contract.test.mjs
       - run: bash scripts/verify.sh --integration
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        if: always()
-        with:
-          name: java-test-reports
-          path: |
-            **/target/surefire-reports/
-            **/target/failsafe-reports/
   client-contracts:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -56,6 +49,12 @@ jobs:
       - run: npm run build
         working-directory: storefront
       - run: node --test storefront/src/app/*.test.mjs
+      - name: Reject tracked generated evidence
+        run: |
+          if git ls-files | grep -E '(^|/)(evidence|artifacts)/|^docs/roadmap/(validation|baseline)/|^SOURCE-MANIFEST\.sha256$|^docs/archive-source-manifest-.*\.sha256$'; then
+            echo 'Generated evidence or artifacts are tracked.' >&2
+            exit 1
+          fi
       - run: node scripts/validate-roadmap.mjs
       - run: node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs
 

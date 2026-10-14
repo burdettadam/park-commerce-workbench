@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dev.parkcommerce.booking.JdbcBookingIT
--------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.29 s -- in dev.parkcommerce.booking.JdbcBookingIT

@@ -32,7 +32,7 @@ namespace and the future cancellation/combined-cart boundaries.
 
 ## Actually executed against S
 
-[checks.json](evidence/checks.json) records the fixed source, commands, environment,
+[checks.json](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/admission-checkout/evidence/checks.json) records the fixed source, commands, environment,
 exit codes and raw-file digests. Source was clean when execution began. Writing
 these later evidence files did not change the implementation under test.
 
@@ -51,7 +51,7 @@ these later evidence files did not change the implementation under test.
 Host: Linux, OpenJDK **21.0.12.1**, Node **22.16.0**, TypeScript **5.8.3**, Bash
 5.2.37. These are observed local check tools, not changes to the selected stack.
 The workstation Angular baseline remains Node 24 and its pinned TypeScript version.
-See [environment.txt](evidence/environment.txt).
+See [environment.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/admission-checkout/evidence/environment.txt).
 
 The core demonstration bought three dated admissions for **$210.00**, issued two
 variant groups, preserved event availability at **2** after the prior event sale,
@@ -64,7 +64,7 @@ The initial red command did not compile because Admission and its store/API did
 not exist. It demonstrates missing feature symbols, **not an existing behavioral
 bug or executed failing assertions**. A checked-exception declaration in the new
 test helper was corrected as part of source implementation. The first captured
-output is retained unchanged in [red-core.txt](evidence/red-core.txt).
+output is retained unchanged in [red-core.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/admission-checkout/evidence/red-core.txt).
 
 Two deliberate mutations were tested in isolated copies of S, not the delivery:
 
@@ -75,7 +75,7 @@ Two deliberate mutations were tested in isolated copies of S, not the delivery:
    test fails, as do the offline absent-result/recovery checks as applicable.
 
 Both returned exit 1 and the intended named failure. See
-[mutation-checks.json](evidence/mutation-checks.json) and its raw outputs. This is
+[mutation-checks.json](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/admission-checkout/evidence/mutation-checks.json) and its raw outputs. This is
 writer-run regression checking, **not independent adversarial review**.
 
 ## Concurrency evidence

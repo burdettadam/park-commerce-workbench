@@ -1,6 +1,0 @@
-UTC=2026-10-13T02:27:03.150227+00:00
-REMOTE_CHECKOUT_HEAD=5b220aec3f7a41c3de5d39e7b3e28a92ba91932d
-SOURCE_OBJECT=commit
-MATCHED_COMMITTED_FILES=14/14
-MISMATCHES=
-NOTE=Compared E1 Git blob bytes to fresh checkout files after CRLF normalization. Later report edits are outside E1.

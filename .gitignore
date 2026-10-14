@@ -31,3 +31,11 @@ out/
 terraform.tfvars
 **/secrets.yaml
 # Retain reviewed .agents/ and .codex/ guidance after git-agent initialization.
+
+# Generated goal and verification evidence belongs outside Git.
+**/evidence/
+**/artifacts/
+docs/roadmap/validation/
+docs/roadmap/baseline/
+SOURCE-MANIFEST.sha256
+docs/archive-source-manifest-*.sha256

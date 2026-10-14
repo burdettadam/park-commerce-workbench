@@ -1,7 +1,0 @@
-/mnt/data/development-next/park-commerce-workbench/core/src/main/java/dev/parkcommerce/core/CatalogEditorial.java:29: error: method actor in record Audit cannot be applied to given types;
-            actor = actor(actor);
-                    ^
-  required: no arguments
-  found:    String
-  reason: actual and formal argument lists differ in length
-1 error

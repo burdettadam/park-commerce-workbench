@@ -15,7 +15,7 @@ Status: **ready**. Milestone: M0. Dependency: [G-0002 ready](../G-0002/README.md
 
 ## Acceptance criteria and independent expected results
 
-The four outcomes below are accepted verbatim from proposal-1 and passed the bounded drill. Their checks and limits are in the [final evidence manifest](evidence/4a3d26e/manifest.json).
+The four outcomes below are accepted verbatim from proposal-1 and passed the bounded drill. Their checks and limits are in the [final evidence manifest](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/goals/G-0003/evidence/4a3d26e/manifest.json).
 
 ### G-0003-AC01
 
@@ -51,9 +51,9 @@ The [artifact contract](../../docs/roadmap/ARTIFACT-CONTRACT.md) and deliberatel
 | Implementation/configuration | `goal/G-0003-implementation` | Codex integration writer | `ecc1439` included via `f8098e4` | [implementation](work/implementation.md) |
 | Independent test/documentation | `goal/G-0003-validation` | Independent Codex writer | `7eed2b0` included via `12a67c6` | [validation](work/validation.md) |
 
-The two worktrees used different Compose project names, host-port sets and private `.env` files. Actual container labels, service health, endpoint identity, cross-catalog reads and mounted volume names were checked in the [pair identity](evidence/4a3d26e/checks/pair-identity.json) and [cross-catalog](evidence/4a3d26e/checks/catalog-cross.json) outputs.
+The two worktrees used different Compose project names, host-port sets and private `.env` files. Actual container labels, service health, endpoint identity, cross-catalog reads and mounted volume names were checked in the [pair identity](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/goals/G-0003/evidence/4a3d26e/checks/pair-identity.json) and [cross-catalog](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/goals/G-0003/evidence/4a3d26e/checks/catalog-cross.json) outputs.
 
-**Current state:** ready for the bounded local workflow drill. Both slice branches are integrated in fixed source S 4a3d26e. Two isolated six-service stacks each passed 43 HTTP checks; a fresh session recovered 23 indispensable files and verified 487 source hashes. The first native reviews blocked the stale-review and missing-artifact negative fixture. The final third-round reviews passed the inspected evidence scope with zero open blockers. Adam delegated intended-use validation to Codex; the [validation](evidence/4a3d26e/validation.md) and [readiness decision](evidence/4a3d26e/decision.md) record the bounded result. The root development stack is healthy after a documented cleanup error; both drill stacks are stopped with named volumes retained.
+**Current state:** ready for the bounded local workflow drill. Both slice branches are integrated in fixed source S 4a3d26e. Two isolated six-service stacks each passed 43 HTTP checks; a fresh session recovered 23 indispensable files and verified 487 source hashes. The first native reviews blocked the stale-review and missing-artifact negative fixture. The final third-round reviews passed the inspected evidence scope with zero open blockers. Adam delegated intended-use validation to Codex; the [validation](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/goals/G-0003/evidence/4a3d26e/validation.md) and [readiness decision](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/goals/G-0003/evidence/4a3d26e/decision.md) record the bounded result. The root development stack is healthy after a documented cleanup error; both drill stacks are stopped with named volumes retained.
 
 **Next action:** start G-0004 for local build/toolchain and product work. Preserve local recovery materials until their retention disposition is recorded.
 

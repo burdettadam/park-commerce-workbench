@@ -34,7 +34,7 @@ In a second PowerShell terminal, run `npm ci` and `npm run start` from `storefro
 | `admin-console/` | Optional Vaadin employee UI |
 | `storefront/` | Angular guest UI and retry state |
 | `contracts/`, `scripts/` | Contract fixtures, local setup, and verification |
-| `docs/` | Architecture, product contracts, roadmap, and test evidence |
+| `docs/` | Architecture, product contracts, roadmap, and development guidance |
 
 The proposed [roadmap](docs/roadmap/README.md) contains 10 milestones and 30 goals. Its proposals are planning input; they do not imply that a goal, independent review, or release has been accepted. The included agent guidance supports local development with Git and Codex; the application does not require the external `git-agent` initializer to build or run.
 
@@ -54,5 +54,9 @@ Local demo security is intentionally limited to loopback development. Review [se
 ## Contributing and license
 
 Open an issue or pull request with a focused behavior change and the commands actually run. Use [the pull request template](.github/pull_request_template.md) to record evidence and limitations. Do not include credentials, personal data, or real payment information.
+
+Generated test evidence, logs, screenshots and artifacts stay out of Git. Link
+relevant PR/CI results and clean local copies after the feature merges. Keep
+source comments sparse; the PR records change rationale for Git history.
 
 Copyright (c) 2026 Adam Burdett. Licensed under the [MIT License](LICENSE).

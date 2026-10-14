@@ -74,24 +74,19 @@ A goal can become `ready` only for a **fixed candidate** with accepted scope, in
 
 Human approval, a version-producing merge, artifact publication, deployment health and recovery coverage remain separate records. There is no universal “done” flag that collapses them. No deadline, automatic model run, cloud spend, public publication or merge is authorized by this roadmap.
 
-## Artifacts and workflow test
+## Review outputs and workflow test
 
-Every goal proposal has its own `manifest.template.json`; these are unfilled output contracts and intentionally fail the evidence checker. Each goal requires **delivery artifacts** (working source/configuration/docs), **verification artifacts** (raw checks tied to S), and **decision/recovery artifacts** (independent reviews, validation, actual authority, handoff).
+Every goal proposal has a legacy `manifest.template.json`. Source, tests and necessary documentation remain in Git. Generated review outputs stay ignored and local while a PR is open; link hosted checks, reviewer findings, validation and decisions in the PR. Remove local generated outputs after feature code merges.
 
-Use [ARTIFACT-CONTRACT.md](ARTIFACT-CONTRACT.md) for source S versus evidence commit E, retention, privacy and review semantics; use [PROCESS-EXPERIMENT.md](PROCESS-EXPERIMENT.md) to measure the workflow. The read-only validators check structure/hashes/declared coverage; they do not run agents, authenticate reviewer independence or grant approval.
+Use [the review evidence policy](ARTIFACT-CONTRACT.md) for current retention and review rules; use [PROCESS-EXPERIMENT.md](PROCESS-EXPERIMENT.md) to measure the workflow. The legacy evidence validator checks structure and local hashes; it does not run agents, authenticate reviewer independence or grant approval.
 
 ```bash
 node scripts/validate-roadmap.mjs
 node --test scripts/validate-roadmap.test.mjs scripts/validate-evidence.test.mjs
 ```
 
-After collecting real evidence for an adopted goal:
-
-```bash
-node scripts/validate-evidence.mjs goals/G-0002/evidence/CANDIDATE/manifest.json
-```
-
-The last path is a future example, not an existing run. Do not make templates pass by inserting invented reviewers/results.
+The older filled-manifest command applies only to historical goals that already
+used that format. Do not create or commit a new evidence manifest for future work.
 
 ## Adopt the existing public checkout without replacing git-agent
 
@@ -101,7 +96,7 @@ The public checkout already contains generated `AGENTS.md`, `PLANS.md`, `.codex/
 
 ## Current evidence boundary
 
-The original ZIP reports 77 JDK core scenarios, 10 Node client-state tests and 11 tooling checks. Those observations are scoped to the original candidate and mostly use test-only in-memory stores/mocks; they do not establish Spring/UI/database/runtime success. The original manifest and ZIP digest are retained in [baseline provenance](baseline/provenance.json). See [original verification](../verification.md) and [proposal-1 delivery checks](DELIVERY-VERIFICATION.md) for historical limits; the [current-state audit](CURRENT-STATE-2026-10-12.md) names later evidence.
+The original ZIP reports 77 JDK core scenarios, 10 Node client-state tests and 11 tooling checks. Those observations are scoped to the original candidate and mostly use test-only in-memory stores/mocks; they do not establish Spring/UI/database/runtime success. The original manifest and ZIP digest are retained in [baseline provenance](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/baseline/provenance.json). See [original verification](../verification.md) and [proposal-1 delivery checks](DELIVERY-VERIFICATION.md) for historical limits; the [current-state audit](CURRENT-STATE-2026-10-12.md) names later evidence.
 
 G-0001, G-0002 and G-0003 are ready at their canonical records and their source contents have been promoted to `main`. [G-0004](../../goals/G-0004/README.md) is active on its canonical branch. The remaining roadmap goals are proposals until adopted. The project repository is public and its original history is in a separate private archive. No release, cloud deployment, real payment, or licensed tool activation is claimed by this roadmap.
 

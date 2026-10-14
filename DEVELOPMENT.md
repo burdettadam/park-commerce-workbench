@@ -69,6 +69,13 @@ during execution. HEAD alone does not identify code served from a dirty worktree
 Read `.agents/skills/work-goal/references/review-guide.md` for evidence fields and
 flaky-check handling.
 
+Generated evidence and artifact directories are ignored. Do not stage logs,
+screenshots, test output, reviewer transcripts or evidence manifests. Keep them
+locally during review; use PR discussion and hosted CI checks for concise,
+source-linked findings. Remove local copies after the feature code merges once
+the merge and required decisions are recorded. Keep code comments minimal and
+put change rationale in the PR.
+
 | Event | Required work using maintained commands |
 | --- | --- |
 | Active edits | Live feedback and focused local checks |
@@ -116,20 +123,21 @@ separate scope decision. Production-data recovery is separate from development.
 | --- | --- |
 | Maximum tolerable active-work loss / RPO | G-0001 target: one hour while actively working. Push each meaningful increment, at handoff and at least hourly during active work; no unattended backup while inactive. Owner: Adam Burdett. |
 | Target time to resume useful development / RTO | G-0001 target: one working day with GitHub material and independently recoverable account access surviving. Owner: Adam Burdett. |
-| Retained work/checkpoint refs and required private guidance | Per-goal record; push required refs and sanitized evidence before a coordinating goal checkpoint. The private initializer executable is not required after adoption. |
-| Indispensable artifact retention duration, owner, digest, retrieval | Adam Burdett retains indispensable goal evidence through closure and 30 days afterward, with exact digest and sampled clean-clone retrieval before closure. Record any artifact that cannot be recovered from Git. |
+| Retained work/checkpoint refs and required private guidance | Per-goal record; push source refs before a coordinating goal checkpoint. The initializer executable is not required after adoption. |
+| Development evidence retention | Keep generated local evidence only while the PR is open; link relevant hosted CI runs and review findings. Remove local copies after feature code merges. Separate release/operational retention decisions remain goal-specific. |
 | Access, machine setup and native GitHub/Codex settings recovery | Adam Burdett owns secure GitHub/Codex account recovery. Reinstall documented toolchain, restore account settings through native facilities, and recreate `.env` locally from `.env.example`; never commit tokens. |
 | Restore-drill triggers and measured loss/resumption time | Drill after material setup, access or recovery changes and before the first version release. Record measured elapsed loss/resumption time in the applicable goal evidence; the G-0001 clean-clone retrieval is partial, not a measured full restore. |
 
 Checkpoint completed increments, pause/handoff, and before destructive cleanup.
-Publish each component/work branch and required artifact before its coordinating
-goal record. Confirm remote revisions and actual indispensable artifact retrieval;
-report incomplete coverage and local-only work. A local commit is not cloud backup.
+Publish each component/work branch before its coordinating goal record. Confirm
+remote revisions and relevant PR/CI links; report incomplete coverage and
+local-only work. Generated development evidence is transient and ignored.
+A local commit is not cloud backup.
 Report confirmation time/age against targets while active. These instructions do
 not provide an unattended timed backup while Codex is inactive.
 
 Exercise a clean restore after material setup/access/dependency/recovery changes
 and at the product's chosen reconsideration events. Follow the worktree-flow
-recovery reference. Retrieve artifacts rather than trusting URLs. Retain refs and
-artifact commitments before cleanup. Do not invent the amount lost after a real
+recovery reference. Retrieve separately required release/operational artifacts
+rather than trusting URLs. Retain source refs before cleanup. Do not invent the amount lost after a real
 failure when it is unknown.

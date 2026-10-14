@@ -1,2 +1,0 @@
-PASS roadmap structure: 10 milestones, 30 goals, 120 criteria, 90 goal-specific artifact requirements.
-No goal execution, review, approval, deployment or recovery is established by this check.

@@ -1,1 +1,0 @@
-All selected shell scripts parsed successfully.
