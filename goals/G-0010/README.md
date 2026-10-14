@@ -103,11 +103,11 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 ## Activation and dependency record
 
 - Accepted authority: owner's 2026-10-13 request for the next three roadmap goals to become active for subagent work; unchanged `proposal-1` acceptance criteria. Exact plan commit and digest are in `work/bootstrap.md`.
-- Integration owner, actual ref and active writer: assigned G-0010 Codex subagent, `goal/G-0010`. No implementation or validation writer is assigned while the prerequisite remains open.
+- Integration owner, actual ref and active writer: assigned G-0010 Codex subagent, `goal/G-0010`. G-0009 is accepted; one assigned writer completed the G-0010 source and evidence on this ref.
 - Dependency gate: G-0009 accepted plan P `ae52a4564ff732994578a7d698713d042e2bf287`, fixed source S `6578753c94674d95793f3ffd82ad7e67d9e98c4e`, ready evidence E `a59360a3366d4db0a212972d7d07f3dc0bb07445`, final branch head `a439342d367a4fa44ae584a141466ebb5f723eaa`, squash merge on main M `15010a258ac6618045d5afb35fb971127ce3ae7c` (PR #14). These are distinct identities; no G-0009 release or deployment is inferred.
 - G-0010 fixed source candidate S: `c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5` on base `e3719e6bf067e09a0fad20ffc78891a4c144f736`. Accepted G-0010 plan P is `2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd`; later planning clarifications changed no criteria. Evidence in `evidence/c6f432b/` is a later report-only layer, not part of S.
-- Runtime state: **active** with AC01–AC04 implementation and hosted verification complete; independent reviews, intended-use validation and readiness decision are still pending. Refresh affected checks if relevant inputs change.
+- Runtime state: **ready** at fixed S after two independent configured native round-2 reviewers passed with zero blockers, Codex accepted delegated intended use, and all 20 manifest artifacts were retrieved with matching digests from the published handoff checkpoint. The first adversarial checkout-identity blocker and its correction remain retained. No merge, release, tag or deployment has occurred.
 - Verification: public PR #16 run `38508335182` passed all four free jobs. Java selected 358 tests, zero failures/errors/skips; the required database integration gate selected seven suites and 78 tests. The earlier local broad attempt exited 1 after Docker Desktop HTTP 500; it remains retained and is not claimed as passed. No release, tag or deployment occurred.
-- Next action: obtain independent contract and adversarial reviews of fixed S/P and the raw evidence, resolve findings, then perform delegated intended-use validation, readiness and retrieval checks.
+- Next action: review draft PR #16 for integration. Keep S, the ready evidence ref, actual CI checkout identity, and any merge/release decision separate.
 
 [Milestone M3](../../docs/roadmap/milestones/M3.md) · [Roadmap](../../docs/roadmap/README.md) · [Commands](../../docs/roadmap/COMMANDS.md)

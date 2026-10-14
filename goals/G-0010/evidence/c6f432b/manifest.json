@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "goal_id": "G-0010",
-  "claim": "not_ready",
+  "claim": "ready",
   "candidate": {
     "source_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
     "base_commit": "e3719e6bf067e09a0fad20ffc78891a4c144f736",
@@ -243,7 +243,7 @@
   "retention": {
     "scope": "local_only",
     "owner_id": "Adam Burdett",
-    "retrieval_verified": null,
+    "retrieval_verified": true,
     "report_artifact_id": "HANDOFF"
   },
   "release": {
