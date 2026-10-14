@@ -1,0 +1,11 @@
+# G-0008 round-two disposition
+
+Both native reviewers examined fixed source S `56141ae40f05704ff0ae30b232ef878e2943b6c6` and evidence checkpoint E2 `31725c5f6fa295e774233c8430ea73d1e595714a`. Their independent first findings remain intact in the adjacent role reports and raw local rollouts. Neither demonstrated an AC01–AC04 product defect, DRY duplication of the calculation, architectural smell, or sensitive application data exposure.
+
+The adversarial reviewer correctly found that hosted CI ran `scripts/test-core.sh` without the accepted plan's `--demo` flag. The earlier local `bash` attempt selected `C:\Windows\system32\bash.exe` and failed in the Windows Linux service before tests. At exact S I explicitly selected `C:\Program Files\Git\bin\bash.exe` with process-local JDK 21 and ran `scripts/test-core.sh --demo`. It exited 0, selected/passed 280 cases, failed 0. The full normalized output and command/timing metadata are in `checks/core-demo.txt` and `checks/core-demo.meta.txt`. This resolves the named-check gap without changing product code.
+
+The contract reviewer asked about full public CI logs containing generated security-password lines. `checks/public-log-classification.md` records six Spring Boot auto-configuration messages from disposable integration test contexts, without reproducing their values. They were public in the full job log; no real `DEMO_*` token or customer data was found. This resolves the evidence classification request without claiming that the log lines were hidden.
+
+At E4, the adversarial reviewer independently closed its named-check finding and returned pass with zero blockers. The contract reviewer closed its public-log question but found a contradiction in the prior-failure note. E5 corrected that note without changing S; the same native contract session reviewed the correction and returned pass with zero blockers. Its original finding, blocked interim follow-up, and final closure are all retained. These are continuations of round two, not a new reviewer pair or a third review round.
+
+The final manifest, final retention check and readiness decision remain separate administrative gates. Neither review response grants release approval.

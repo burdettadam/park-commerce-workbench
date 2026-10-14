@@ -1,0 +1,5 @@
+# G-0009 S5 scope and review
+
+Accepted AC01–AC04 and fixture values are unchanged. S3 `bede01801a1c489982edbe688ac87f68c7ba7396` passed product checks but both third-round native reviewers blocked evidence-run attribution and links. S4 `6de44d3249c1f16028f57043bc95514c7794c486` corrected those citations and passed separate free hosted run `38483692056`. Adam Burdett delegated project decisions to Codex; Codex authorized exactly one native fourth contract/adversarial pair in `reviews/round4-exception.md`. S5 `00fe6bec25ba8b9a2480bafb2371d349ec4ca546` narrowly teaches the evidence validator to represent that true fourth round, with synthetic positive/negative tests. Existing G-0007 exception behavior and default R3 for other goals remain.
+
+The S5 reviewer pair must examine the frozen S5 code and this evidence checkpoint, including the validator control, prior blockers, price/expiry/access/consumer behavior, DRY and architecture. No prior blocked decision is rewritten as a pass. Intended-use validation and readiness remain separate and pending.

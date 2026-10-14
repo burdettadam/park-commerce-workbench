@@ -1,0 +1,64 @@
+{
+  "candidateSource": "56141ae40f05704ff0ae30b232ef878e2943b6c6",
+  "basis": "Independent decimal-cent arithmetic for ScenarioFixture; the live HTTP demo uses the same amounts and offer with pricing version 1. Observed checks are recorded separately under checks/.",
+  "fixtures": [
+    {
+      "id": "family-four",
+      "input": {
+        "productId": "lantern-evening",
+        "catalogRevision": 1,
+        "candidatePricingVersion": 2,
+        "visitDate": "2026-10-31",
+        "adults": 2,
+        "adultUnitCents": 10000,
+        "children": 2,
+        "childUnitCents": 7000,
+        "offerMinimumTickets": 4,
+        "offerDiscountBasisPoints": 1000
+      },
+      "independentCalculation": {
+        "adultSubtotalCents": 20000,
+        "childSubtotalCents": 14000,
+        "subtotalCents": 34000,
+        "discountCents": 3400,
+        "finalCents": 30600,
+        "arithmetic": "2*10000 + 2*7000 = 34000; 34000*1000/10000 = 3400; 34000-3400 = 30600"
+      },
+      "requiredPreview": {
+        "mode": "UNPUBLISHED_INPUT",
+        "candidateIdentity": "sha256 of exact candidate input",
+        "purchasableQuoteIdentity": false
+      },
+      "requiredPublishedQuote": {
+        "sameMonetaryLinesAsPreview": true,
+        "hasActualId": true,
+        "hasActualExpiry": true
+      },
+      "observations": [
+        "core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java: family fixture and publication parity passed in checks/hosted-ci.txt",
+        "pricing-service/src/test/java/dev/parkcommerce/pricing/JpaPricingIT.java: HTTP publication parity selected by hosted integration checks",
+        "scripts/demo-http.mjs: version-1 candidate with the same amounts passed unpublished preview and exact-publication parity in checks/live-stack.txt"
+      ]
+    },
+    {
+      "id": "below-four-threshold",
+      "input": {
+        "adults": 2,
+        "adultUnitCents": 10000,
+        "children": 1,
+        "childUnitCents": 7000,
+        "offerMinimumTickets": 4,
+        "offerDiscountBasisPoints": 1000
+      },
+      "independentCalculation": {
+        "subtotalCents": 27000,
+        "discountCents": 0,
+        "finalCents": 27000,
+        "arithmetic": "2*10000 + 1*7000 = 27000; 3 tickets are below the 4-ticket threshold"
+      },
+      "observations": [
+        "core/src/test/java/dev/parkcommerce/core/PricingPreviewScenarios.java: below-threshold fixture passed in checks/hosted-ci.txt"
+      ]
+    }
+  ]
+}

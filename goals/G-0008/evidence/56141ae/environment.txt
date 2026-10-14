@@ -1,0 +1,7 @@
+OS: Windows 11 development host; Git for Windows Bash
+JDK: Microsoft 21.0.12.1 (process-local); Node: v24.14.1
+Docker Desktop engine: 29.7.2; isolated local Compose build was interrupted after the Docker CLI stopped responding; cleanup status remains unverified
+Hosted checks: public GitHub Actions ubuntu-latest standard runner; run 38478861553 at source S; all four jobs succeeded
+Local Compose project attempted: park-wb-b558834a, ports 8681-8683, 3367-3368, 27617; .env ignored and private
+Local browser: Vaadin admin JAR from product source ancestor 3ededd1; loopback port 8690; controlled pricing error fixture on 8782
+No real secrets retained; other Docker projects were left untouched.

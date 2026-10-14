@@ -1,0 +1,24 @@
+Source S: 100945358c88e4c72a7c444326c618e19b054180
+Run: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38476661000
+Job: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38476661000/job/115568897751
+Full hosted log SHA-256: 3d91c40c0b8efdb36594417b5b82a80595279856bc0e1a1324050754cf2af8b2
+Report artifact: java-test-reports, id 11853997242, expires 2027-01-11T22:16:31Z
+Sanitized exact output lines follow. Full public job log remains at the URL above.
+
+java	UNKNOWN STEP	2026-10-13T22:16:46.6929182Z RESULT: 280 passed, 0 failed; JDK-only core tests with in-memory test stores.
+java	UNKNOWN STEP	2026-10-13T22:16:48.3191218Z ℹ tests 29
+java	UNKNOWN STEP	2026-10-13T22:16:48.3191849Z ℹ pass 29
+java	UNKNOWN STEP	2026-10-13T22:16:48.3192130Z ℹ fail 0
+java	UNKNOWN STEP	2026-10-13T22:16:58.5762041Z [INFO] Tests run: 280, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.526 s -- in dev.parkcommerce.core.CoreScenariosTest
+java	UNKNOWN STEP	2026-10-13T22:16:58.5966405Z [INFO] Tests run: 280, Failures: 0, Errors: 0, Skipped: 0
+java	UNKNOWN STEP	2026-10-13T22:17:30.3752160Z [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.129 s -- in dev.parkcommerce.pricing.PreviewErrorContractTest
+java	UNKNOWN STEP	2026-10-13T22:17:30.3972567Z [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+java	UNKNOWN STEP	2026-10-13T22:18:55.0252269Z [INFO] BUILD SUCCESS
+java	UNKNOWN STEP	2026-10-13T22:18:55.5659834Z catalog-service/CatalogEditorialIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+java	UNKNOWN STEP	2026-10-13T22:18:55.5769303Z catalog-service/MongoCatalogIT: selected=9 executed=9 skipped=0 failures=0 errors=0
+java	UNKNOWN STEP	2026-10-13T22:18:55.5829223Z pricing-service/JpaPricingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+java	UNKNOWN STEP	2026-10-13T22:18:55.5889102Z pricing-service/QuoteContractIT: selected=12 executed=12 skipped=0 failures=0 errors=0
+java	UNKNOWN STEP	2026-10-13T22:18:55.5929202Z booking-service/AdmissionCheckoutIT: selected=15 executed=15 skipped=0 failures=0 errors=0
+java	UNKNOWN STEP	2026-10-13T22:18:55.5959088Z booking-service/CheckoutRecoveryIT: selected=7 executed=7 skipped=0 failures=0 errors=0
+java	UNKNOWN STEP	2026-10-13T22:18:55.5989502Z booking-service/JdbcBookingIT: selected=8 executed=8 skipped=0 failures=0 errors=0
+java	UNKNOWN STEP	2026-10-13T22:18:55.5990491Z PASS database integration selection: 7 suites, 67 executed tests, 0 skipped

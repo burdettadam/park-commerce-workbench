@@ -184,6 +184,62 @@ test('G-0007 exception rejects a false authority label',()=>{
     assert.ok(validateEvidence(f.save()).errors.some(x=>/Review policy exception/.test(x)));
   } finally {f.clean();}
 });
+test('G-0009 accepts a hashed delegated decision and exactly two final round-four reviews',()=>{
+  const f=fixture('G-0009');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    f.manifest.review_policy_exception.authority_id='Codex (delegated by Adam Burdett)';
+    assert.deepEqual(validateEvidence(f.save()).errors,[]);
+    fs.appendFileSync(path.join(f.directory,'review-exception.md'),'changed');
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Artifact digest mismatch: REVIEW-EXCEPTION/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0009 fourth round rejects a missing decision artifact',()=>{
+  const f=fixture('G-0009');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    f.manifest.review_policy_exception={max_round:4,decision_artifact_id:'REVIEW-EXCEPTION',authority_id:'Codex (delegated by Adam Burdett)'};
+    const errors=validateEvidence(f.save()).errors;
+    assert.ok(errors.some(x=>/Review policy exception/.test(x)),JSON.stringify(errors));
+    assert.ok(errors.some(x=>/Review round outside/.test(x)),JSON.stringify(errors));
+  } finally {f.clean();}
+});
+test('G-0009 fourth round rejects an undelegated authority',()=>{
+  const f=fixture('G-0009');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review policy exception/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0009 fourth round rejects a mixed final review pair',()=>{
+  const f=fixture('G-0009');
+  try {
+    f.manifest.reviews[0].round=4;
+    addSyntheticReviewException(f);
+    f.manifest.review_policy_exception.authority_id='Codex (delegated by Adam Burdett)';
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/both final reviews from round 4/.test(x)));
+  } finally {f.clean();}
+});
+test('G-0009 delegation never permits a fifth round or lost-attempt extension',()=>{
+  const f=fixture('G-0009');
+  try {
+    for(const r of f.manifest.reviews)r.round=5;
+    addSyntheticLostException(f);
+    f.manifest.review_policy_exception.authority_id='Codex (delegated by Adam Burdett)';
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
+  } finally {f.clean();}
+});
+test('other goals cannot borrow the G-0009 delegated exception',()=>{
+  const f=fixture('G-0008');
+  try {
+    for(const r of f.manifest.reviews)r.round=4;
+    addSyntheticReviewException(f);
+    f.manifest.review_policy_exception.authority_id='Codex (delegated by Adam Burdett)';
+    assert.ok(validateEvidence(f.save()).errors.some(x=>/Review round outside/.test(x)));
+  } finally {f.clean();}
+});
 test('a documented G-0007 exception still rejects round five',()=>{
   const f=fixture('G-0007');
   try {

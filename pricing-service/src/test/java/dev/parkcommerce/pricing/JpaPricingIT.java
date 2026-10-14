@@ -124,9 +124,36 @@ class JpaPricingIT {
         // Deliberately invalid wire payloads; constructing validated records would reject them before HTTP.
         String overlapping="{\"candidate\":{\"productId\":\"night\",\"version\":1,\"catalogRevision\":1,\"rates\":["+rate+","+rate+"],\"offer\":null},\"request\":"+request+"}";
         String fractional="{\"candidate\":"+json.writeValueAsString(input.candidate())+",\"request\":{\"productId\":\"night\",\"visitDate\":\"2030-10-31\",\"adults\":1.5,\"children\":0}}";
-        for(String body:List.of("{}","{\"candidate\":null,\"request\":null}",overlapping,fractional))
-            assertEquals(400,post("/api/admin/price-books/preview",token,body).statusCode(),body);
+        for(String body:List.of("{}","{\"candidate\":null,\"request\":null}",overlapping,fractional)) {
+            var response=post("/api/admin/price-books/preview",token,body);
+            assertEquals(400,response.statusCode(),body);
+            assertEquals("INVALID_INPUT",json.readValue(response.body(),Map.class).get("code"));
+        }
+        assertPreviewError(token,overlapping,"Overlapping date ranges for ADULT");
+        String tooMany="{\"candidate\":"+json.writeValueAsString(input.candidate())+",\"request\":{\"productId\":\"night\",\"visitDate\":\"2030-10-31\",\"adults\":20,\"children\":1}}";
+        assertPreviewError(token,tooMany,"A party must have between 1 and 20 tickets");
+        assertPreviewError(token,fractional,"whole-number ticket counts");
         assertEquals(0,books.count()); assertEquals(0,quotes.count());
+    }
+    @Test void httpPreviewPastVisitReturnsTheEmployeeRepairMessageWithoutWrites() throws Exception {
+        // The UI can submit this date: Pricing.Request accepts it, while the
+        // service's park-local clock rejects it after the HTTP request arrives.
+        var past=new Pricing.Request("night",LocalDate.of(2030,9,30),1,0);
+        var input=new Pricing.PreviewRequest(book(1,10000),past);
+        var response=post("/api/admin/price-books/preview","test_employee_123456789012345678901234",
+            json.writeValueAsString(input));
+        assertEquals(400,response.statusCode(),response.body());
+        var problem=json.readValue(response.body(),Map.class);
+        assertEquals("INVALID_INPUT",problem.get("code"));
+        assertEquals("Visit date is in the past in the park time zone",problem.get("detail"));
+        assertEquals(0,books.count()); assertEquals(0,quotes.count());
+    }
+    private void assertPreviewError(String token,String payload,String expectedDetail) throws Exception {
+        var response=post("/api/admin/price-books/preview",token,payload);
+        assertEquals(400,response.statusCode(),response.body());
+        var problem=json.readValue(response.body(),Map.class);
+        assertEquals("INVALID_INPUT",problem.get("code"));
+        assertTrue(((String)problem.get("detail")).contains(expectedDetail),response.body());
     }
     private HttpResponse<String> post(String path,String token,String payload) throws Exception {
         var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+environment.getRequiredProperty("local.server.port")+path))

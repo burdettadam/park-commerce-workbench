@@ -1,0 +1,47 @@
+Source: public free GitHub Actions run 38505009279, job 115660391677, head 00fe6bec25ba8b9a2480bafb2371d349ec4ca546
+Raw PASS and final count lines selected from retained hosted job log; full log remains at run URL.
+
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7362971Z PASS guest cannot publish
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7363824Z PASS product publication
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7364054Z PASS public product read
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7364365Z PASS catalog drafts and audit history are employee-only
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7364739Z PASS saved catalog draft is invisible to guests
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7365052Z PASS stale catalog draft write conflicts
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7365438Z PASS publication uses the reviewed version and server audit actor
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7365877Z PASS later draft survives another version being published
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7366239Z PASS publication rejects a now-stale draft base
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7366667Z PASS catalog history traversal stays pinned while new publications arrive
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7367108Z PASS guest cannot preview unpublished employee rates
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7367553Z PASS unpublished preview is an explainable what-if, not a quote
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7367933Z PASS preview did not publish its candidate
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7368214Z PASS first price book
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7368558Z PASS publishing the previewed candidate preserves its calculation
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7368947Z PASS published prices do not mutate old quotes
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7369217Z PASS quote ownership
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7369576Z PASS quote status observes the immutable snapshot without renewing expiry
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7369963Z PASS quote status hides other owners
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7370344Z PASS GraphQL status preserves existing string money and version fields
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7370746Z PASS REST and GraphQL reject abbreviated quote IDs
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7371097Z PASS invalid calendar date returns INVALID_INPUT
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7371415Z PASS fractional ticket counts rejected
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7372577Z PASS GraphQL quote and family offer
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7372876Z PASS GraphQL private resolver authorization
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7373541Z PASS guest identity is derived from authentication
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7373964Z PASS guest session endpoint rejects anonymous and employee credentials
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7374438Z PASS recovery observes an active hold without confirming it
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7374786Z PASS recovery is owner-scoped
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7375185Z PASS fresh coordinator recovers the server order after a discarded response
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7375602Z PASS recovery with a replacement key is a conflict
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7376032Z PASS checkout keeps the original amount and is idempotent
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7376396Z PASS order ownership
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7376733Z PASS concurrent HTTP requests allocate only remaining capacity
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7377094Z PASS no negative or extra availability
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7377493Z PASS admission recovery observes absence without submitting a purchase
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7377961Z PASS admission confirmation requires the quote-owning guest
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7378550Z PASS admission receipt preserves quote and complete variant entitlement set
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7379238Z PASS admission retry retains the original order and entitlement identities
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7380237Z PASS admission recovery and read return the same owner-bound receipt
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7380965Z PASS admission receipt cannot be read by another guest or reissued under a new key
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7381669Z PASS event quote cannot create admission entitlements
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7382229Z PASS admission leaves old event receipt and confirmed event count unchanged
+live-stack	Check live pricing and checkout paths	2026-10-14T03:13:51.7382829Z 43 live HTTP acceptance checks passed. No payment was taken.

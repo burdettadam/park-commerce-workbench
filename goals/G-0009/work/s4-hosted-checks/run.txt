@@ -1,0 +1,26 @@
+G-0009 corrected candidate, supplemental hosted run while status is needs-decision
+PR: https://github.com/burdettadam/park-commerce-workbench/pull/14
+Run: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38483692056
+Run head E4: 561ab7e811259d59336534909f563475040ff18e
+Source correction S4 ancestor: 6de44d3249c1f16028f57043bc95514c7794c486
+GitHub synthetic PR merge checkout: 2b4f072f1c1d9eb39b363025008a1413c337bbae, distinct from head and source
+Event: pull_request; workflow Candidate checks; overall success; standard free public runners
+admin-ui 115592485672: success
+client-contracts 115592485842: success
+java 115592485845: success; nine downloaded Maven suites, 356 tests, zero failures/errors/skips
+live-stack 115592485883: success; 43 PASS lines and final 43 HTTP acceptance count
+
+Original downloaded local log byte digests:
+full hosted Java job log SHA-256 a1ecbe2959780c6f6b8b06dd4ad571b04e71d2de7758c5c753c835a17b62ed08
+full hosted live-stack job log SHA-256 1db8d6482008cf7ea595a841edbde7601a00b5a465d3abb715f54a922d367a6f
+booking-service/target/failsafe-reports/dev.parkcommerce.booking.AdmissionCheckoutIT.txt: SHA-256 3d69f0012dfa6b8848fa81ee35631f899c84f0d142337b88589ee3e81d79d81a
+booking-service/target/failsafe-reports/dev.parkcommerce.booking.CheckoutRecoveryIT.txt: SHA-256 4f247a4426c9a88394f0faa3044a77aba21aa5bcf57fc7c7055a4b9383cceb09
+booking-service/target/failsafe-reports/dev.parkcommerce.booking.JdbcBookingIT.txt: SHA-256 4e485e1b4cfb4d0033291b5d8f2eb2aa2cb08ad6d5de9298c60e88d6e3f672b0
+catalog-service/target/failsafe-reports/dev.parkcommerce.catalog.CatalogEditorialIT.txt: SHA-256 4201b0da86d2282d873b348b86cac074625deee565d0427cb44f93566a42773a
+catalog-service/target/failsafe-reports/dev.parkcommerce.catalog.MongoCatalogIT.txt: SHA-256 671c15651a2a1a7a868167bc602290497645748405249a68606a5fcfb2dd0853
+core/target/surefire-reports/dev.parkcommerce.core.CoreScenariosTest.txt: SHA-256 ea8ba6108658968693a0d10d678c4886af00e19a31657017d51b3b3e18528df9
+pricing-service/target/failsafe-reports/dev.parkcommerce.pricing.JpaPricingIT.txt: SHA-256 c30d766b6e84820e5040b91e67c18f0f0d5b2c5b67b32f8b9628de1053553ded
+pricing-service/target/failsafe-reports/dev.parkcommerce.pricing.QuoteContractIT.txt: SHA-256 35472fedf747dfb67accf5a156ab506f51cd673258004299c6c06b18e6f9f7da
+pricing-service/target/surefire-reports/dev.parkcommerce.pricing.PreviewErrorContractTest.txt: SHA-256 20651fc62a3b15b1e0d62901d65fd18018d93f0abed477c3007b898906addb03
+
+Full hosted job logs and uploaded XML remain available at the public run while GitHub retains them. These selected raw extracts are supplemental to the S3 bundle, not a final S4 manifest or acceptance. The three-round review cap is exhausted; owner exception, native reviews, delegated intended-use validation, and readiness decision remain pending.

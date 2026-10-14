@@ -1,0 +1,14 @@
+Public standard-runner workflow: Candidate checks
+Repository: burdettadam/park-commerce-workbench
+Run: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38505527493
+PR: https://github.com/burdettadam/park-commerce-workbench/pull/14
+Head source S: 6578753c94674d95793f3ffd82ad7e67d9e98c4e
+Event: pull_request; conclusion: success
+GitHub synthetic merge checkout: ab86d026629f2a2dceb04a45260454c536f60550, fetched as refs/remotes/pull/14/merge in java job; this is distinct from source S.
+Base main: 620a505cc68f81fac58f596cb4d8488c83b9d903
+java job 115662118102: success; downloaded java-test-reports contains 9 suites, 356 tests, 0 failures/errors/skips
+client-contracts job 115662118279: success; validator and roadmap checks passed on Linux
+admin-ui job 115662117952: success
+live-stack job 115662118367: success; 43 live HTTP checks passed
+Important suites: pricing QuoteContractIT 16; booking CheckoutRecoveryIT 8; core CoreScenariosTest 280.
+Complete hosted logs and uploaded XML remain retrievable from the public run while GitHub retains them; selected raw extracts are checked in. Full locally downloaded hosted Java log SHA-256 4821834c8c9a56c615c0c9bdc2d80f3dbf1d45a557b8135bdddc235b80699ea7; live-stack log SHA-256 8f7d1025c16020252544d876455f841ae2bb07a9991addfc708a44cd908c0e62.

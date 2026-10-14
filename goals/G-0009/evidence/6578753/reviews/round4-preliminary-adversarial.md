@@ -1,0 +1,5 @@
+# Fourth-pair preliminary adversarial observation at S5 — superseded before judgment
+
+Configured native `adversarial-reviewer`, parent CLI thread `01a13869-bc02-7393-8aad-4027a533372f`, child session `01a1386a-18cb-78e2-bb43-e28050ab6012`, began the same authorized fourth pair at source S5 `00fe6bec25ba8b9a2480bafb2371d349ec4ca546` and evidence E `6151e649968250491f5a185b977e093852256794`. It identified present-tense pointers to S3 evidence and exception wording limited to S4, and stopped before final judgment. It found no product, DRY or architecture defect, considered AC01–AC04 substantively supported, verified 25 artifact hashes, ran no tests, and granted no acceptance or approval. This preliminary observation is retained as a failed/incomplete attempt, not a final fourth-round decision.
+
+S6 `6578753c94674d95793f3ffd82ad7e67d9e98c4e` corrects the navigation and delegated scope for the **same** pair. The native reviewer must inspect the frozen S6 source and evidence checkpoint before issuing a final judgment; no fifth round or additional fourth pair is authorized.

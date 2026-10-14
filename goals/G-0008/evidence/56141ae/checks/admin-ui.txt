@@ -1,0 +1,9 @@
+Source S: 56141ae40f05704ff0ae30b232ef878e2943b6c6
+Run: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38478861553
+Local full hosted log SHA-256: d787af495e9120e54a1c1aa916851c5ed88b874014f1e9e2b55ac0e817e85c28
+Selected exact public log lines follow. Full hosted output remains at the run URL.
+
+admin-ui	Run mvn -B -ntp -Pui,production -pl admin-console -am verify	2026-10-13T22:36:26.4422558Z [INFO] Running dev.parkcommerce.admin.CommerceViewPreviewErrorTest
+admin-ui	Run mvn -B -ntp -Pui,production -pl admin-console -am verify	2026-10-13T22:36:26.7509073Z [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.290 s -- in dev.parkcommerce.admin.CommerceViewPreviewErrorTest
+admin-ui	Run mvn -B -ntp -Pui,production -pl admin-console -am verify	2026-10-13T22:36:26.7799546Z [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+admin-ui	Run mvn -B -ntp -Pui,production -pl admin-console -am verify	2026-10-13T22:36:39.7638091Z [INFO] BUILD SUCCESS

@@ -16,10 +16,15 @@ import java.util.*;
 import org.springframework.core.env.Environment;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.client.*;
+import tools.jackson.databind.ObjectMapper;
 
 /** Workstation-only administration client. Every write is authorized by its owning service. */
 @Route("") @PageTitle("Park Commerce | Employee workbench")
 public class CommerceView extends VerticalLayout {
+ private static final ObjectMapper JSON=new ObjectMapper();
+ private static final Set<String> PREVIEW_INPUT_DETAILS=Set.of(
+  "Visit date is in the past in the park time zone",
+  "Price variant is not offered by this product revision");
  private final PasswordField token=new PasswordField("Employee demo token");
  private final Pre result=new Pre();
  private final RestClient catalog,pricing,booking;
@@ -104,7 +109,9 @@ public class CommerceView extends VerticalLayout {
   IntegerField adults=number("Adults",2,0,20),children=number("Children",2,0,20);
   Button preview=new Button("Preview unpublished rates",e->action(()->{
    var input=new Pricing.PreviewRequest(priceCandidate.get(),new Pricing.Request(id.getValue(),visit.getValue(),adults.getValue(),children.getValue()));
-   Pricing.Preview calculation=post(pricing,"/api/admin/price-books/preview",input,Pricing.Preview.class);
+   Pricing.Preview calculation;
+   try{calculation=post(pricing,"/api/admin/price-books/preview",input,Pricing.Preview.class);}
+   catch(RestClientResponseException error){return previewError(error);}
    return "WHAT-IF ONLY — not a quote or reservation\nCandidate "+calculation.candidateId()+
     "\nSubmitted pricing version "+calculation.candidate().version()+" / catalog revision "+calculation.candidate().catalogRevision()+
     "\nSubtotal $"+calculation.subtotal().amount()+"\nDiscount $"+calculation.discount().amount()+
@@ -126,6 +133,17 @@ public class CommerceView extends VerticalLayout {
     " / source draft "+Objects.toString(item.sourceDraftVersion(),"none or unknown")+
     " / audit "+item.auditStatus()+"\n"+Objects.toString(item.audit(),"Legacy actor and timestamp unavailable"))
     .collect(java.util.stream.Collectors.joining("\n\n"))+"\nNext page: "+(page.nextCursor()!=null);
+ }
+ static String previewError(RestClientResponseException error){
+  if(error.getStatusCode().value()==400 && error.getResponseBodyAsByteArray().length<=1024){
+   try{
+    var problem=JSON.readTree(error.getResponseBodyAsByteArray());
+    String detail=problem.path("detail").asText();
+    if("INVALID_INPUT".equals(problem.path("code").asText()) && PREVIEW_INPUT_DETAILS.contains(detail))
+     return "PREVIEW INPUT — "+detail;
+   }catch(Exception ignored){ /* Malformed or unexpected server content is never displayed. */ }
+  }
+  return "Preview rejected (HTTP "+error.getStatusCode().value()+"). Check the date, party, rates, and employee credential.";
  }
  private <T>T get(RestClient client,String path,Class<T> type){
   if(!token.getValue().matches("[A-Za-z0-9_-]{32,128}"))throw new IllegalArgumentException("Provide your employee demo token first");

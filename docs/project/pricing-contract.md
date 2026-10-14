@@ -1,8 +1,10 @@
-# Pricing and quote contract — candidate revision 1
+# Pricing and quote contract — local G-0009 candidate
 
-This is implemented local candidate behavior toward **G-0009**, not an accepted
-roadmap goal or verified framework deployment. It uses synthetic USD amounts and
-an explicit park zone (`America/New_York` in the current service wiring).
+This documents implemented local behavior under the accepted **G-0009** plan.
+The [G-0009 evidence](../../goals/G-0009/README.md) identifies the fixed source,
+real framework checks, reviews and remaining acceptance gates. No version release
+or deployment is claimed. The contract uses synthetic USD amounts and an explicit
+park zone (`America/New_York` in the current service wiring).
 
 ## Evaluation time and calendar
 
@@ -116,6 +118,38 @@ string and `currency` is USD. Existing GraphQL Quote fields are retained; `creat
 and `kind` are additive. The status query is additive. Do not assume the two
 transports have identical envelopes or number representations.
 
+### Synthetic consumer examples
+
+An owner creates a one-adult/one-child quote from a published 5-cent rate per
+variant with a 10% offer. The following fields are excerpts; the service also
+returns the other documented quote snapshot fields. IDs and timestamps below
+illustrate shape rather than a reusable quote:
+
+```http
+POST /api/quotes
+Authorization: Bearer <guest token>
+Content-Type: application/json
+
+{"productId":"night","visitDate":"2030-10-31","adults":1,"children":1}
+```
+
+```json
+{"id":"00000000-0000-0000-0000-000000000001","owner":"guest","catalogRevision":1,"pricingVersion":1,"subtotal":{"cents":10},"discount":{"cents":2},"total":{"cents":8},"createdAt":"2030-10-01T12:00:00Z","expiresAt":"2030-10-01T12:15:00Z"}
+```
+
+For an unknown or another owner's full quote ID, REST returns HTTP 404 with a
+problem detail carrying `{"title":"NOT_FOUND","status":404,"code":"NOT_FOUND"}`.
+The same resolver condition can have HTTP 200 but carries
+`{"errors":[{"extensions":{"code":"NOT_FOUND"}}]}` in GraphQL. A GraphQL
+quote selection exposes string `catalogRevision`, `pricingVersion` and
+`Money.cents`, plus `Money.amount` and `Money.currency`; it does not expose the
+stored owner. Invalid GraphQL selections fail before quote issuance.
+
+These examples and [the pinned shape](../../contracts/pricing/quote-api-v1.json)
+are compatibility inputs. Real MySQL/Spring consumer tests check serialized
+field names, number/string representations, role boundaries and domain error
+codes; source-only SDL inspection is a narrower check.
+
 ## Error contract and disclosure boundaries
 
 | Condition | REST behavior | GraphQL resolver behavior |
@@ -148,9 +182,11 @@ not promised to be byte-identical.
   preview and quote calculation. The Java stores are test-only in-memory fixtures.
 - SDL-source field checks retain pinned names/types from `quote-api-v1.json`.
   These are not a GraphQL engine, resolver build, serialization or browser test.
-- `QuoteContractIT`: candidate real MySQL/Spring HTTP/GraphQL tests with an explicit
-  test catalogue and mutable clock. `scripts/demo-http.mjs` exercises the actual
-  three-service stack when available. Neither is claimed executed here.
+- `QuoteContractIT`: real MySQL/Spring HTTP/GraphQL tests with an explicit test
+  catalogue and mutable clock. `scripts/demo-http.mjs` exercises the actual
+  three-service stack. Both were executed for the fixed G-0009 source recorded
+  in the [G-0009 review checkpoint](../../goals/G-0009/work/review-checkpoint.md); local targeted and
+  public hosted results, source identities and limits are retained there.
 
 ## Primary implementation references
 

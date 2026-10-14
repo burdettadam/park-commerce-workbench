@@ -1,0 +1,17 @@
+﻿Command: mvn -B -ntp -Pintegration -pl booking-service -am '-Dit.test=CheckoutRecoveryIT' '-Dfailsafe.failIfNoSpecifiedTests=false' verify
+Working directory: repository root
+Source: af04615957d172e6ad145baa7ba7858584b9a4f2
+Environment: Windows; local JDK 21, Maven 3.9.16, Docker Desktop Testcontainers
+Exit: 0
+Tests: 8; failures: 0; errors: 0; skipped: 0
+Full raw local log SHA-256: ce0891339c8121fac03ab1f3e578d9019c2a56591d02cca44a637b357ad4d08f
+Full raw local log location: workstation TEMP/g0009-fixed-af04615 (local_only)
+Test cases:
+  authenticationAndOwnershipAreCheckedByRealHttpFilters
+  newHoldAtExactQuoteExpiryHasPublicExpiredErrorShape
+  sessionUsesAuthenticatedGuestSubjectNotCallerInput
+  activeRecoveryCannotConfirmAnOrder
+  discardedResponseCanBeRecoveredAfterQuoteExpiry
+  interleavedHttpRecoveryAndConfirmationProduceOneOrder
+  expiredRecoveryPersistsExpiryWithoutCreatingAnOrder
+  changedKeysAndChangedHoldIdentityAreConflicts
