@@ -63,7 +63,7 @@ Required evidence: `G-0001-A03` plus the relevant raw check, source S and indepe
 
 ## Review evidence outputs (temporary and ignored)
 
-The following IDs name expected review outputs, not files to commit. If generated, keep them under ignored `goals/G-0001/evidence/<candidate>/` only while the PR is open. Record concise findings and hosted check links in the PR; remove local outputs after feature code merges.
+The following IDs name expected review outputs, not files to commit. If generated, keep them under ignored `goals/G-0001/evidence/<candidate>/` only while review or a live handoff needs them. Record concise findings and hosted check links in the PR; remove local outputs after merge or terminal cancellation/supersession.
 
 | ID | File | Purpose |
 | --- | --- | --- |
@@ -100,7 +100,7 @@ Changes to these rules are reviewed under the previous accepted rules, never sel
 
 ## Handoff and recovery
 
-Push source and branch checkpoints before the canonical coordination record, identify every required source component, and verify retrieval. Keep generated evidence ignored and local while the PR is open, with concise findings and CI links in the PR. After feature code merges, remove local generated outputs. Record exact source S and merged M separately; do not create an evidence-only commit E.
+Push source and branch checkpoints before the canonical coordination record, identify every required source component, and verify retrieval. Keep generated evidence ignored and local while review or a live handoff needs it, with concise findings and CI links in the PR. After merge or terminal cancellation/supersession, remove local generated outputs. Record exact source S and merged M separately; do not create an evidence-only commit E.
 
 ## Activation record — intentionally unfilled
 

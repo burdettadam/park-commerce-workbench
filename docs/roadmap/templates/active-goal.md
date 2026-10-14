@@ -32,4 +32,4 @@ Scope changes / exceptions / debt owner and reconsideration: UNRECORDED
 Human version-producing-merge approval: NOT REQUESTED
 Actual merged M / built D / version/tag / deployment health: NOT PERFORMED
 Source checkpoint inventory and retrieval: UNRECORDED
-Local evidence cleanup after merge and next real action: UNRECORDED
+Local evidence cleanup after merge or terminal cancellation/supersession and next real action: UNRECORDED

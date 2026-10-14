@@ -6,7 +6,7 @@ screenshots, traces, test reports, filled evidence manifests and reviewer
 transcripts are temporary review material. The repository ignores `**/evidence/`
 and `**/artifacts/`. Do not use `git add -f` to bypass those rules.
 
-## While a feature PR is open
+## During active review and handoff
 
 - Fix the source commit and relevant base before acceptance checks. Record the
   exact commit, command, environment, selected tests, result and limits in the PR
@@ -14,7 +14,8 @@ and `**/artifacts/`. Do not use `git add -f` to bypass those rules.
 - Give independent reviewers the source, plan, PR and raw local or hosted output
   they need. Put their concise findings and blocker dispositions in PR review
   comments. Do not create an evidence-only commit to publish transcripts.
-- Keep raw local outputs in ignored paths only as long as review needs them.
+- Keep raw local outputs in ignored paths only as long as review or a live
+  handoff needs them.
   Sanitize material before sharing it. Hosted CI logs and PR discussion may
   expire or be edited; do not describe them as permanent artifact storage.
 - Source comments explain only non-obvious behavior or a durable contract.
@@ -28,11 +29,12 @@ manifests or generated outputs for a new goal. Review still requires real
 checks, two independent configured reviewers under `GOVERNANCE.md`, intended-use
 validation and a recorded decision. Missing evidence remains a gap.
 
-## After merge
+## After merge or terminal cancellation/supersession
 
-Record the PR, exact merged commit and concise outcome in the goal record. Then
-remove the feature's local generated evidence and artifacts, including obsolete
-worktree copies, after confirming ownership and merge identity. Keep source,
+Record the PR and exact merged commit, or the terminal cancellation/supersession
+decision, with a concise outcome in the goal record. Then remove the work's local
+generated evidence and artifacts, including obsolete worktree copies, after
+confirming ownership and outcome identity. Keep source,
 reconstructable tests, necessary design or operating documentation, and PR/CI
 links. Do not delete another owner's work or a separately required release,
 security, legal or operational record; decide those retention needs explicitly.

@@ -31,7 +31,7 @@ Recovery: canonical goal ref plus EVERY included source branch/component:
 Confirmed remote revisions/time/age and PR/CI links:
 Coverage: complete for listed scope or explicit missing parts:
 RPO/RTO targets and measured drill evidence or gap:
-Local-only evidence while work is open; cleanup after merge:
+Local-only evidence while work is open; cleanup after merge or terminal cancellation/supersession:
 
 Next action, responsible owner, and concrete decision needed if any:
 ```

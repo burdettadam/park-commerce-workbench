@@ -56,7 +56,7 @@ Local demo security is intentionally limited to loopback development. Review [se
 Open an issue or pull request with a focused behavior change and the commands actually run. Use [the pull request template](.github/pull_request_template.md) to record evidence and limitations. Do not include credentials, personal data, or real payment information.
 
 Generated test evidence, logs, screenshots and artifacts stay out of Git. Link
-relevant PR/CI results and clean local copies after the feature merges. Keep
+relevant PR/CI results and clean local copies after merge or terminal cancellation/supersession. Keep
 source comments sparse; the PR records change rationale for Git history.
 
 Copyright (c) 2026 Adam Burdett. Licensed under the [MIT License](LICENSE).
