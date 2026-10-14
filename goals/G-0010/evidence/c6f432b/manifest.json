@@ -194,13 +194,13 @@
     {
       "id": "DECISION",
       "path": "decision.md",
-      "sha256": null,
+      "sha256": "bc1a3a5980cba32b30c06f11fa98b9aef1c84ae069155ff6967cb3453bd96353",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
       "id": "HANDOFF",
       "path": "handoff.md",
-      "sha256": null,
+      "sha256": "974bfc90398244537d4220d6dcfde60f1d5c9c10c5fcb3e6f54dfe938b0370be",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     }
   ],
@@ -235,9 +235,9 @@
     "report_artifact_id": "VALIDATION"
   },
   "readiness_decision": {
-    "authority_id": null,
+    "authority_id": "Codex delegated by Adam Burdett",
     "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
-    "decision": "not_requested",
+    "decision": "ready",
     "report_artifact_id": "DECISION"
   },
   "retention": {
