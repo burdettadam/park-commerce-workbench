@@ -51,7 +51,7 @@ jobs:
       - run: node --test storefront/src/app/*.test.mjs
       - name: Reject tracked generated evidence
         run: |
-          if git ls-files | grep -E '(^|/)(evidence|artifacts)/|^docs/roadmap/(validation|baseline)/|(^|/)SOURCE-MANIFEST\.sha256$|^docs/archive-source-manifest-.*\.sha256$|^goals/.*/work/[^/]*-checks/|^docs/roadmap/planning-discovery\.txt$'; then
+          if git ls-files | grep -E '(^|/)(evidence|artifacts)/|^docs/roadmap/(validation|baseline)/|(^|/)SOURCE-MANIFEST\.sha256$|^docs/archive-source-manifest-.*\.sha256$|^goals/.*/work/([^/]*-checks|control-reviews)/|^docs/roadmap/planning-discovery\.txt$'; then
             echo 'Generated evidence or artifacts are tracked.' >&2
             exit 1
           fi

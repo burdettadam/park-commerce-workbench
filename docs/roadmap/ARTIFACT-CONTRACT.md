@@ -41,3 +41,14 @@ Earlier goals committed evidence under the old policy. Removing those files from
 the current tree does not remove them from existing Git history. Historical goal
 records may name old evidence commits; treat those as historical references,
 not a pattern for future work. Rewriting public history is a separate decision.
+
+The old evidence directories also contained four one-off executable fixtures:
+two G-0006 browser scripts, one G-0007 browser script, and a G-0008 loopback
+preview-error mock. They used fixed local ports, Windows Playwright cache paths,
+or goal-local environment files, and were never maintained as portable product
+tests. This cleanup retires those copies from the current tree; their exact
+versions remain available at the pre-cleanup commit
+`90ae8eff6485c950c8d02c8d3a33893059f5d82e`. The Java preview-error test
+still covers error formatting, but the historical G-0006/G-0007 browser flows
+are not current automated coverage. Any future browser acceptance criterion
+needs a new portable test under maintained test source.

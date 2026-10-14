@@ -40,4 +40,5 @@ docs/roadmap/baseline/
 SOURCE-MANIFEST.sha256
 docs/archive-source-manifest-*.sha256
 goals/**/work/*-checks/
+goals/**/work/control-reviews/
 docs/roadmap/planning-discovery.txt
