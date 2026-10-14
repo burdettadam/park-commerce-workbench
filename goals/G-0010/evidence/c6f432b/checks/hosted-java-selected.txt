@@ -1,4 +1,4 @@
-﻿Selected verbatim lines from GitHub Actions java job 115670861365, run 38508335182, source c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5.
+Selected verbatim lines from GitHub Actions java job 115670861365, run 38508335182, checkout b66eb8e3b3bb012a246ec4d20a6c959f37862f39 (same tree as source S c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5; see hosted-checkout.txt).
 Full downloaded job log SHA-256: 79f1ee5e0111a3fda370e0ffb37e9f8cb3e6847c4941d3acadaee8b9381762a4.
 Selection: G-0010 assertion markers, Maven test totals, database integration selection and BUILD SUCCESS; complete raw job log retained as GitHub Actions run.
 

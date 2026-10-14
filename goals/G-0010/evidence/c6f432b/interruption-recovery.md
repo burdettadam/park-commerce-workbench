@@ -1,6 +1,6 @@
 # G-0010 interruption, expiry and rollback evidence
 
-Source S: `c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5`. The fixed-source public CI run `38508335182`, java job `115670861365`, passed on 2026-10-14 UTC. The selected raw job lines and downloaded JUnit summaries are in `checks/hosted-java-selected.txt` and `checks/hosted-junit.txt`; the complete job log has SHA-256 `79f1ee5e0111a3fda370e0ffb37e9f8cb3e6847c4941d3acadaee8b9381762a4` at the hosted run.
+Source S: `c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5`. Public CI run `38508335182`, java job `115670861365`, checked out synthetic merge `b66eb8e3b3bb012a246ec4d20a6c959f37862f39`, whose tree equals S exactly (see `checks/hosted-checkout.txt`), and passed on 2026-10-14 UTC. The selected raw job lines and downloaded JUnit summaries are in `checks/hosted-java-selected.txt` and `checks/hosted-junit.txt`; the complete job log has SHA-256 `79f1ee5e0111a3fda370e0ffb37e9f8cb3e6847c4941d3acadaee8b9381762a4` at the hosted run.
 
 ## Actual process interruption procedure
 
@@ -18,4 +18,4 @@ The pre-freeze focused local run passed the interruption case 1/1 and later the 
 
 ## Unsuccessful broad local attempt retained
 
-The first Windows `scripts/verify.sh --integration` attempt completed core, catalog and pricing, then Docker Desktop returned HTTP 500 and MySQL Testcontainer handshakes timed out during booking. After verifying the exact hung Failsafe child PID/parent/command, the writer stopped only that owned fork. Maven exited 1. Raw local log `%TEMP%/g0010-full-integration-first-run.txt`, SHA-256 `06ae644dfe89f2012b78ce2b391b8151b75829e1edc4650350b221f96a2cd143`. This is a visible infrastructure failure, not silently converted into a green check. The later hosted run on S passed all required Java suites, but it does not prove this workstation's Docker Desktop recovered.
+The first Windows `scripts/verify.sh --integration` attempt completed core, catalog and pricing, then Docker Desktop returned HTTP 500 and MySQL Testcontainer handshakes timed out during booking. After verifying the exact hung Failsafe child PID/parent/command, the writer stopped only that owned fork. Maven exited 1. Raw local log `%TEMP%/g0010-full-integration-first-run.txt`, SHA-256 `06ae644dfe89f2012b78ce2b391b8151b75829e1edc4650350b221f96a2cd143`. This is a visible infrastructure failure, not silently converted into a green check. The later hosted run on a tree identical to S passed all required Java suites, but it does not prove this workstation's Docker Desktop recovered.

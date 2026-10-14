@@ -17,6 +17,10 @@
       "id": "CI-JAVA",
       "type": "automated",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
+      "executed_commit": "b66eb8e3b3bb012a246ec4d20a6c959f37862f39",
+      "executed_tree": "973d948bf97e652c5ce4eef3eb24cc997aad9341",
+      "source_tree": "973d948bf97e652c5ce4eef3eb24cc997aad9341",
+      "checkout_proof_artifact_id": "CHECK-CHECKOUT",
       "command": "bash scripts/verify.sh --integration",
       "working_directory": "GitHub Actions public pull request checkout",
       "started_at": "2026-10-14T03:50:41Z",
@@ -88,7 +92,7 @@
     {
       "id": "G-0010-A02",
       "path": "interruption-recovery.md",
-      "sha256": "9081af972652537c63b40d2d0c45999fbd724e0ff2d5d17ccfe955493916c8f5",
+      "sha256": "0ab746138d1e4a43e2c1402cc5aa38f084a1c1680b0f2a9ba4ae75fe0201a1a8",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
@@ -106,7 +110,7 @@
     {
       "id": "CHECK-JAVA",
       "path": "checks/hosted-java-selected.txt",
-      "sha256": "4c58a7f66fc597e70a5baa8b997b372411d9e315aec45936e42d155c0166e64c",
+      "sha256": "6b9b9845180c816cf5fbdd6310ebd7156af7d34751fa6a83618a3f3a697f3d4f",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
@@ -118,7 +122,13 @@
     {
       "id": "CHECK-CI",
       "path": "checks/hosted-ci.txt",
-      "sha256": "dbd12697b92bb88582820b810761f911b43a3c4bc94e39dc85548062bbdb3208",
+      "sha256": "16f1d246145ea203eaebc402b4c8b98bb9b2359d29ec822066301155762776d9",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "CHECK-CHECKOUT",
+      "path": "checks/hosted-checkout.txt",
+      "sha256": "1654449db18f557e921807a063820e55e9506449335c3d58d615753a74cd32c3",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
@@ -130,7 +140,7 @@
     {
       "id": "SCOPE",
       "path": "scope-and-review.md",
-      "sha256": "474c381d33711fa572a661aa25f5144453ff8ecc5281c791bd07609ce29dd1ea",
+      "sha256": "6d7588cbe5c6945102876922fed759a4f12a293caa8f1ef1991be2d3e4696c19",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
@@ -143,6 +153,24 @@
       "id": "CONFIGURATION",
       "path": "configuration.json",
       "sha256": "8e407581b6ab94e50e76d330bf0d2bdacf28459592ea1e10f47c57e8ad6e095c",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "REVIEW-ROUND1-CONTRACT",
+      "path": "reviews/contract-round-1.md",
+      "sha256": "8171ec81f5263ac1eba3d7dc757cb512d30664ba04515c4d9157df0c813eb58c",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "REVIEW-ROUND1-ADVERSARIAL",
+      "path": "reviews/adversarial-round-1.md",
+      "sha256": "eaf0dcc4966d081bc475425960d2c657c4d953b194cfefa35af91a9a9c8f327f",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "REVIEW-ROUND1-RECONCILIATION",
+      "path": "reviews/round-1-reconciliation.md",
+      "sha256": "45e7bdbd36a6ae7bf856e49677d1f25750826fcff23344dc9a7cfc8eebba7dc8",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
