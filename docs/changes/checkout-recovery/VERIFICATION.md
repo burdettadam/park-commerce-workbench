@@ -12,7 +12,7 @@
 
 These are local Git identities, **not GitHub publication or release identifiers**.
 The checkout has no remotes. Source S was clean before and after the final checks.
-The full [check index](evidence/checks.json) retains command, directory, source,
+The full [check index](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/checks.json) retains command, directory, source,
 clean/dirty classification, timestamps, exit status, duration and output digest.
 Recorded timestamps are UTC from the execution environment.
 
@@ -20,15 +20,15 @@ Recorded timestamps are UTC from the execution environment.
 
 | Check | Actual result | Raw evidence |
 | --- | --- | --- |
-| JDK-only Java core | 123 passed / 0 failed; 107 previous + 16 recovery | [final-core.txt](evidence/final-core.txt) |
-| Client state and recovery coordinator | 66 passed / 0 failed; 10 previous + 56 recovery | [final-client.txt](evidence/final-client.txt) |
-| Tooling and initializer wrapper | 29 passed; mock initializer only | [final-tooling.txt](evidence/final-tooling.txt) |
-| Roadmap/evidence validators | 41 passed / 0 failed | [final-validators.txt](evidence/final-validators.txt) |
-| Roadmap structure | 10 milestones / 30 proposals / 120 criteria retained | [final-roadmap.txt](evidence/final-roadmap.txt) |
-| Public TypeScript declaration contract | Exit 0 with installed TypeScript 5.8.3 | [final-types.txt](evidence/final-types.txt) |
+| JDK-only Java core | 123 passed / 0 failed; 107 previous + 16 recovery | [final-core.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-core.txt) |
+| Client state and recovery coordinator | 66 passed / 0 failed; 10 previous + 56 recovery | [final-client.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-client.txt) |
+| Tooling and initializer wrapper | 29 passed; mock initializer only | [final-tooling.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-tooling.txt) |
+| Roadmap/evidence validators | 41 passed / 0 failed | [final-validators.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-validators.txt) |
+| Roadmap structure | 10 milestones / 30 proposals / 120 criteria retained | [final-roadmap.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-roadmap.txt) |
+| Public TypeScript declaration contract | Exit 0 with installed TypeScript 5.8.3 | [final-types.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-types.txt) |
 | JavaScript and Bash syntax | Exit 0 | `final-js-syntax.txt`, `final-shell-syntax.txt` |
-| JSON, POM XML, workflow YAML parsing | Exit 0; syntax/structure only | [final-static-config.txt](evidence/final-static-config.txt) |
-| Source-S file manifest | All listed hashes matched | [final-source-manifest.txt](evidence/final-source-manifest.txt) |
+| JSON, POM XML, workflow YAML parsing | Exit 0; syntax/structure only | [final-static-config.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-static-config.txt) |
+| Source-S file manifest | All listed hashes matched | [final-source-manifest.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-source-manifest.txt) |
 
 Source S was also archived, extracted into a directory containing spaces, and its
 manifest/core/client/tooling/validator checks rerun successfully. Corresponding
@@ -43,12 +43,12 @@ baseline. The declaration-only test is not proof of the pinned Angular toolchain
 
 Maven and Docker are absent. Maven Central lookup failed DNS resolution; npm
 registry lookup failed/timed out. No frontend dependencies are installed. The
-capability check is retained in [capabilities.txt](evidence/capabilities.txt).
+capability check is retained in [capabilities.txt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/capabilities.txt).
 
 `bash scripts/verify.sh --java` and `--integration` each returned **2** at the
 missing-Maven prerequisite. They are **blocked, not passed or intentionally skipped**.
-See [Java attempt](evidence/final-java-framework.txt) and
-[integration attempt](evidence/final-database-framework.txt).
+See [Java attempt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-java-framework.txt) and
+[integration attempt](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/changes/checkout-recovery/evidence/final-database-framework.txt).
 
 **Not compiled/executed here:** Spring application modules and authentication
 filters, real MongoDB/MySQL adapters, all 23 Testcontainers tests (including the

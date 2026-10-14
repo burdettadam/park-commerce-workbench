@@ -1,5 +1,0 @@
-
-> park-commerce-storefront@0.1.0 build
-> ng build
-
-sh: 1: ng: not found

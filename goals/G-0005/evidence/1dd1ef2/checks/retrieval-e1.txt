@@ -1,4 +1,0 @@
-Published preflight evidence E1: a98fb15946f0c5abf6d9f8fb79a15465e346932b on origin/goal/G-0005.
-Fresh public HTTPS clone: .tmp/g0005-preflight-retrieval, clean Git status, HEAD exactly E1.
-An initial comparison of local working-tree bytes to the clone found CRLF versus LF in ci-java-summary.txt; Git normalized that file on commit. The authoritative follow-up compared each committed HEAD blob with the retrieved clone file, using SHA-256 on both byte strings. All 17/17 committed evidence files matched; the clone's roadmap validator passed. The initial local-working-tree mismatch was line-ending normalization, not a remote content mismatch.
-This proves retrieval of E1's committed evidence files, not final-manifest or whole-goal recovery. Full local logs, toolchain image cache, private .env and machine settings remain separate from Git.

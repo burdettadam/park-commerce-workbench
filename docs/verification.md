@@ -18,14 +18,14 @@ The final packaging check also extracts the ZIP into a path containing spaces an
 
 ## Retained raw evidence
 
-- [Core results and walkthrough](evidence/core-tests.txt)
-- [Client retry-state results](evidence/frontend-state-tests.txt)
-- [Tooling results](evidence/tooling-tests.txt)
-- [Structural checks](evidence/static-checks.txt)
-- [Environment](evidence/environment.txt)
-- [Repeat 1](evidence/core-repeat-1.txt), [repeat 2](evidence/core-repeat-2.txt), [repeat 3](evidence/core-repeat-3.txt)
+- [Core results and walkthrough](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/core-tests.txt)
+- [Client retry-state results](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/frontend-state-tests.txt)
+- [Tooling results](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/tooling-tests.txt)
+- [Structural checks](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/static-checks.txt)
+- [Environment](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/environment.txt)
+- [Repeat 1](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/core-repeat-1.txt), [repeat 2](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/core-repeat-2.txt), [repeat 3](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/evidence/core-repeat-3.txt)
 
-These original observations describe the foundation archive; its source manifest is now also retained at `docs/roadmap/baseline/SOURCE-MANIFEST.sha256`. The new archive root manifest includes the roadmap additions and is not the identity of the original test run. The ZIP deliberately contains no Git administration/history. When importing it into your clone, record the actual resulting source commit alongside your own test results.
+These original observations describe the foundation archive; its source manifest is available in the [historical snapshot](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/roadmap/baseline/SOURCE-MANIFEST.sha256). The later archive root manifest includes the roadmap additions and is not the identity of the original test run. The ZIP deliberately contains no Git administration/history. When importing it into your clone, record the actual resulting source commit alongside your own test results.
 
 ## Environment and verification limit
 

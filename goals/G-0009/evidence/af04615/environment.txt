@@ -1,9 +1,0 @@
-Source S: af04615957d172e6ad145baa7ba7858584b9a4f2
-Working tree at check start: clean
-Host: Windows, Git 2.53.0.windows.2, Git Bash via C:/Program Files/Git/bin/bash.exe
-JDK: local Microsoft JDK 21.0.12.1; Maven: local Apache Maven 3.9.16
-Node: v24.14.1
-Database: Docker Desktop engine 29.7.2; Testcontainers mysql:8.4.11
-Data: synthetic test catalog, guest subjects, dates and USD cents; no production data
-Access: local test services and standard free public GitHub runners only
-Limit: full local integration attempt at prior S was interrupted at booking MySQL readiness; final S has focused real pricing/booking database passes and four passing hosted PR checks in run 38481693801

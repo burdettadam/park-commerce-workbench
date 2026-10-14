@@ -133,7 +133,7 @@ class CheckoutRecoveryIT {
         assertEquals(0,jdbc.queryForObject("SELECT COUNT(*) FROM orders",Integer.class));
     }
     @Test void discardedResponseCanBeRecoveredAfterQuoteExpiry()throws Exception {
-        var h=hold();assertEquals(200,request("/api/orders",GUEST,"same",h.id()).statusCode()); // Deliberately discard receipt.
+        var h=hold();assertEquals(200,request("/api/orders",GUEST,"same",h.id()).statusCode());
         clock.now.set(NOW.plusSeconds(3600));quotes.values.clear();
         var recovered=recover(h);assertNotNull(recovered.order());assertEquals(Booking.HoldStatus.CONFIRMED,recovered.hold().status());
         var replay=request("/api/orders",GUEST,"same",h.id());assertEquals(200,replay.statusCode());
@@ -224,7 +224,6 @@ class CheckoutRecoveryIT {
                 receipts.add(json.readValue(response.body(),Booking.Order.class).id());}
         }finally{start.countDown();}
         assertEquals(1,receipts.size());
-        // Treat the original HTTP receipt as lost: the authenticated recovery key resolves it.
         var recovered=recover(first);assertEquals(receipts.iterator().next(),recovered.order().id());
         var replay=request("/api/orders",GUEST,"same",first.id());
         assertEquals(200,replay.statusCode());assertEquals(recovered.order(),json.readValue(replay.body(),Booking.Order.class));
@@ -308,7 +307,7 @@ class CheckoutRecoveryIT {
                     .POST(HttpRequest.BodyPublishers.ofByteArray(body)).build();
                 forwardedStatus.set(HTTP.send(outgoing,HttpResponse.BodyHandlers.ofString()).statusCode());
                 forwarded.countDown();
-                dropResponse.await(15,TimeUnit.SECONDS); // Keep response private to proxy until child is killed.
+                dropResponse.await(15,TimeUnit.SECONDS);
             }catch(Throwable e){proxyError.set(e);forwarded.countDown();}
             finally{exchange.close();}
         });
@@ -366,7 +365,7 @@ class CheckoutRecoveryIT {
         environment.put("DEMO_GUEST_TOKEN",GUEST);
         environment.put("DEMO_OTHER_GUEST_TOKEN",OTHER);
         environment.put("DEMO_SERVICE_TOKEN","test_service_1234567890123456789012345");
-        environment.put("PRICING_URL","http://127.0.0.1:9"); // Confirmation/recovery must not call pricing.
+        environment.put("PRICING_URL","http://127.0.0.1:9");
         var process=builder.start();
         System.out.println("G-0010 child process pid="+process.pid()+" port="+port+" at="+Instant.now()+" localLog="+output);
         return process;

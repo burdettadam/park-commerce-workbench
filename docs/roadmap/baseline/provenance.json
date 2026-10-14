@@ -1,9 +1,0 @@
-{
-  "archive": "park-commerce-workbench-foundation-2026-10-11.zip",
-  "sha256": "97a9c94e9b3c1289992d6f870d3f8e43115a5ced22cdbeec3a14be7f33975a29",
-  "source_manifest": "docs/roadmap/baseline/SOURCE-MANIFEST.sha256",
-  "original_files": 105,
-  "original_evidence": "docs/verification.md; docs/evidence/",
-  "native_initializer_executed": false,
-  "remote_changes_in_roadmap_delivery": false
-}

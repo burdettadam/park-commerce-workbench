@@ -1,5 +1,0 @@
-# Fourth-round artifact count reconciliation
-
-Both fourth-round reports say 25 artifact hashes matched at checkpoint `e7108e16b50fcb8baff61d4340ddc951dba52186`, but that checkpoint's draft manifest lists 26 artifacts. This was a report-count error, not an omitted artifact in the native checks. The retained raw command outputs in contract reviewer session `01a136a5-96a2-7c71-a662-9e44b42ff6ba`, adversarial reviewer session `01a136a5-a6ea-7c02-adc7-ea87193cd781`, and parent session `01a136a5-64da-7893-9e3e-9f851c67fbad` each contain **26 `MATCH` results**, including `REVIEW-EXCEPTION`. The integration writer independently cloned the public checkpoint and compared 26 artifact digests, with no mismatch. The original reviewer text is preserved; this note corrects only its count.
-
-The hash comparison proves matching declared local bytes, not the authenticity of owner decisions, the semantics of the logs, or erasure of withdrawn Git objects. The later draft manifest has 29 artifacts because it adds round-four reports, disposition and the retained round-three role reports. A fifth-round reviewer must inspect the current count and bytes independently.

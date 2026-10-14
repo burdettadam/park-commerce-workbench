@@ -1,5 +1,0 @@
-Source 6578753c94674d95793f3ffd82ad7e67d9e98c4e
-Independent Python Decimal ROUND_HALF_UP per active variant; no Java/Node pricing code imported
-Cases: 22 Matches: 22 Mismatches: 0
-Fields checked: subtotal, discount, total, lineDiscounts, appliedOffer
-IDs: no-offer, below-threshold, exact-threshold, above-threshold, child-only, zero-percent, full-discount, below-half-cent, exact-half-cent, above-half-cent, split-variant-rounding, grouped-variant-rounding, fractional-percent, free-product-with-offer, maximum-party-and-unit, threshold-twenty-not-met, threshold-twenty-met, one-basis-point-below-half, one-basis-point-at-half, one-basis-point-above-half, near-full-single-cent, odd-price-mixed-party

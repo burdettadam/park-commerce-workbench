@@ -1,1 +1,0 @@
-JSON, POM XML and workflow YAML parsed. This is not a framework build or a hosted pipeline validation.

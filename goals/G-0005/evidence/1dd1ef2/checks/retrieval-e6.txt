@@ -1,9 +1,0 @@
-G-0005 final report public retrieval, 2026-10-13 UTC.
-Fresh HTTPS clone of public origin/goal/G-0005 into a new .tmp/g0005-final-retrieval path.
-Report checkpoint E6: 6a1ba440ead5799b7b13f243d0ced817f18ad354.
-The first local comparison used a mistyped expected E6 hash and stopped before artifact comparisons; no repository file changed. A corrected comparison required the clone HEAD to equal the actual writer HEAD.
-Corrected comparison: clone HEAD matched E6; Git status was clean; all 33/33 manifest.json artifact SHA-256 digests matched file bytes.
-Source S 1dd1ef28d3d5db6bcd4e47255c074ed6205c1627 and accepted plan P 30ffac8304f0ddf40a4845bb19e32393b1f0a516 were reachable commit objects in the clone.
-The bytes of goals/G-0005/README.md at P matched the accepted_plan_sha256 in manifest.json.
-Running node scripts/validate-evidence.mjs against the retrieved manifest returned PASS: one declared check, 33 local artifacts.
-This retrieval covers the published E6 report and its tracked branch tree; a later coordination-only status commit will need a separate clone check.

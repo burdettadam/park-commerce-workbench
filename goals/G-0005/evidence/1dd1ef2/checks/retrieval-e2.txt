@@ -1,4 +1,0 @@
-Published first-review/disposition checkpoint E2: 5974a4102e2cc7817df96bf20f34e462268dc272 on origin/goal/G-0005.
-Fresh public HTTPS clone: .tmp/g0005-review-retrieval, clean Git status, HEAD exactly E2.
-Compared each committed E2 evidence blob to the retrieved clone file by SHA-256: 22/22 evidence files matched. This includes the two distinct first-review reports, native provenance and disposition. Source S remains 1dd1ef28d3d5db6bcd4e47255c074ed6205c1627; E2 only updates reports and goal state.
-This is not final-manifest or whole-goal retrieval. Local full logs, Docker/Maven image cache, private .env and machine settings remain outside Git.

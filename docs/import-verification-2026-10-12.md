@@ -4,7 +4,7 @@ Date: 2026-10-12
 
 Branch: `codex/git-agent-bootstrap-20261012` (draft PR #1)
 
-The handoff was found in a local handoff directory. Its 393-entry `SOURCE-MANIFEST.sha256` passed before import, and 394 files were copied into the existing Git clone. The original manifest is retained as [archive source provenance](archive-source-manifest-2026-10-12.sha256). The root manifest is regenerated for the integrated checkout because merged documentation, source fixes, the frontend lockfile, and project-local guidance change the file set.
+The handoff was found in a local handoff directory. Its 393-entry `SOURCE-MANIFEST.sha256` passed before import, and 394 files were copied into the existing Git clone. The original manifest is retained as [archive source provenance](https://github.com/burdettadam/park-commerce-workbench/blob/90ae8eff6485c950c8d02c8d3a33893059f5d82e/docs/archive-source-manifest-2026-10-12.sha256). The root manifest is regenerated for the integrated checkout because merged documentation, source fixes, the frontend lockfile, and project-local guidance change the file set.
 
 GitHub reported `PRIVATE` before the starter code was pushed. The source handoff contained no `.git` directory or `.env`; the latter remains ignored. The private `git-agent` implementation was not copied into this repository.
 

@@ -3,7 +3,7 @@
 **Status:** implemented local candidate under G-0007 review. At fixed source
 `15c70f15154997f6eda7b72ad70aa3eba76e5fdd`, 17 real catalog Mongo/Spring
 integration tests, the 43-check live HTTP run, and a focused production Vaadin
-browser flow passed on 2026-10-13. The [G-0007 evidence](../../goals/G-0007/evidence/15c70f1/)
+browser flow passed on 2026-10-13. The [G-0007 evidence](https://github.com/burdettadam/park-commerce-workbench/tree/90ae8eff6485c950c8d02c8d3a33893059f5d82e/goals/G-0007/evidence/15c70f1)
 records the results and the earlier failed browser attempts. Final independent
 review found an evidence privacy issue; G-0007 is `needs-decision` after the accepted
 round limit. This is independent fictional commerce software.

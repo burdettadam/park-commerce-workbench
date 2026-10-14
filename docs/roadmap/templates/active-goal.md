@@ -14,14 +14,14 @@ Copy/adapt the relevant proposal and record the actual accepted revision before 
 
 ## Branch inventory
 
-| Slice | Actual ref | Writer/session | Plan revision | Dependencies | Included commit | Work/evidence |
+| Slice | Actual ref | Writer/session | Plan revision | Dependencies | Included commit | PR/CI link |
 | --- | --- | --- | --- | --- | --- | --- |
 
 ## Current candidate and evidence
 
 Source S / base / accepted plan P / toolchain / configuration: UNRECORDED
 Dirty or unsupported conditions: UNRECORDED
-Evidence/report commit E (may be later than S): UNRECORDED
+PR and hosted CI run identities; local-only evidence limits: UNRECORDED
 Checks/criteria and actual outcomes: UNRECORDED
 Independent review assignments / rounds / findings: UNRECORDED
 Intended-use validation / actual decision: UNRECORDED
@@ -31,5 +31,5 @@ Scope changes / exceptions / debt owner and reconsideration: UNRECORDED
 
 Human version-producing-merge approval: NOT REQUESTED
 Actual merged M / built D / version/tag / deployment health: NOT PERFORMED
-Checkpoint inventory, retrieval and retention: UNRECORDED
-Local-only remainder and next real action: UNRECORDED
+Source checkpoint inventory and retrieval: UNRECORDED
+Local evidence cleanup after merge and next real action: UNRECORDED

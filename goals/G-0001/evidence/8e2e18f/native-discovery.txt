@@ -1,8 +1,0 @@
-The loaded project entry point is [AGENTS.md](<../../../../AGENTS.md>). It directs accepted work to `$work-goal` and assigned worktree execution or recovery to `$worktree-flow`. Both skills are listed in this session’s runtime context at `.agents/skills/work-goal/SKILL.md` and `.agents/skills/worktree-flow/SKILL.md`.
-
-I invoked exactly two read-only native project subagents. Each identified its role from its own instructions:
-
-- **contract-reviewer** — instructed to inspect independently before seeing other reviewers’ conclusions.
-- **adversarial-reviewer** — instructed to challenge duplicate behavior, unclear ownership, integration assumptions, stale evidence, and missing checkpoint coverage.
-
-**Both roles loaded.** Neither subagent edited files.

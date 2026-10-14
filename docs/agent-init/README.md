@@ -42,6 +42,11 @@ into each product, and document any required private repository/access dependenc
 GitHub settings, secure account recovery, runtime resources and large artifacts
 need their own verified configuration and retention.
 
+Generated evidence, logs, screenshots and build artifacts are ignored. Keep
+local review material only while the PR is open, link the PR and CI results in
+concise goal records, and remove local copies after the feature code merges.
+Keep code comments minimal; put historical rationale in the PR for Git blame.
+
 ## Product acceptance record
 
 These are demonstrations to perform, not completed test results. Record exact

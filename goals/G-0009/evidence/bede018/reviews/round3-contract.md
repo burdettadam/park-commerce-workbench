@@ -1,7 +1,0 @@
-# Independent contract review, round 3 — blocked
-
-The configured native `contract-reviewer` reviewed fixed source S3 `bede01801a1c489982edbe688ac87f68c7ba7396` and evidence E `53edbd93d14a1f99646cbf400a2d48e5badb08a5`. Native parent thread `01a13785-befd-7ad2-b408-5384930b39c1`, child `/root/g0009_contract_round_two` (continued native role). Decision: **BLOCKED**. The reviewer was read-only, ran no tests, and granted no intended-use or release approval.
-
-The prior S2 stale-status text was corrected. There was no demonstrated price, expiry, ownership, wire, or DRY behavior defect. C1: `quote-boundary-tests.md:3` mislabeled S3's hosted 356 JUnit/43 HTTP results with S2 run `38481693801`; the actual S3 run is `38482621889`. C2: active goal README lines 80/91/97 and API/pricing contract docs linked blocked S2 evidence `af04615` as current, while the reviewed S3 bundle is `bede018`. This could misdirect independent recovery. The reviewer verified 22 manifest artifact digests and proof-clone bytes, inspected local pricing 16/16, booking 8/8, hosted 356/43 extracts, and did not independently query the live GitHub run or verify clone creation time.
-
-Disposition: documentation and A02 attribution were corrected after this review in S4 `6de44d3249c1f16028f57043bc95514c7794c486`; this report remains blocked. The adopted three-round cap is exhausted, so another independent review requires a scoped owner exception. No readiness is claimed.

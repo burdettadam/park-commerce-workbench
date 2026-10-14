@@ -1,7 +1,0 @@
-G-0005 pre-final public retrieval, 2026-10-13 UTC.
-Separate public checkout: .tmp/g0005-handoff-retrieval (local path, not part of public evidence).
-Fetched and fast-forwarded origin/goal/G-0005 to E5 c350bc1897bb73b4ab2a94eb8d3bb5f85ae170f7.
-Git status in retrieval checkout: clean.
-All 27/27 populated artifact SHA-256 values in E5 manifest.preflight.json matched retrieved file bytes.
-Source S 1dd1ef28d3d5db6bcd4e47255c074ed6205c1627 and accepted plan P 30ffac8304f0ddf40a4845bb19e32393b1f0a516 are reachable Git commits.
-This records E5, not a future final-report commit. Local-only full Maven/native logs remain outside public Git.

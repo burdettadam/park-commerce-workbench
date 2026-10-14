@@ -1,16 +1,0 @@
-openjdk version "21.0.12.1" 2026-08-18
-OpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)
-OpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)
-javac 21.0.12.1
-v22.16.0
-Version 5.8.3
-git version 2.47.3
-GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)
-Maven: Docker: Node dependencies installed: no
-Maven repository lookup:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: repo.maven.apache.org
-npm registry lookup:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0
-curl: (28) Resolving timed out after 5001 milliseconds
