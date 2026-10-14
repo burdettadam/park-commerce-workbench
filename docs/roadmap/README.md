@@ -76,7 +76,7 @@ Human approval, a version-producing merge, artifact publication, deployment heal
 
 ## Review outputs and workflow test
 
-Every goal proposal has a legacy `manifest.template.json`. Source, tests and necessary documentation remain in Git. Generated review outputs stay ignored and local while a PR is open; link hosted checks, reviewer findings, validation and decisions in the PR. Remove local generated outputs after feature code merges.
+Every goal proposal has a legacy `manifest.template.json`. Source, tests and necessary documentation remain in Git. Generated review outputs stay ignored and local while a PR is open; link hosted checks, reviewer findings, validation and decisions in the PR. Remove local generated outputs after merge or terminal cancellation/supersession.
 
 Use [the review evidence policy](ARTIFACT-CONTRACT.md) for current retention and review rules; use [PROCESS-EXPERIMENT.md](PROCESS-EXPERIMENT.md) to measure the workflow. The legacy evidence validator checks structure and local hashes; it does not run agents, authenticate reviewer independence or grant approval.
 

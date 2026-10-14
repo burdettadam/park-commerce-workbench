@@ -62,7 +62,7 @@ Required evidence: `G-0027-A03` plus the relevant raw check, source S and indepe
 
 ## Review evidence outputs (temporary and ignored)
 
-The following IDs name expected review outputs, not files to commit. If generated, keep them under ignored `goals/G-0027/evidence/<candidate>/` only while the PR is open. Record concise findings and hosted check links in the PR; remove local outputs after feature code merges.
+The following IDs name expected review outputs, not files to commit. If generated, keep them under ignored `goals/G-0027/evidence/<candidate>/` only while the PR is open. Record concise findings and hosted check links in the PR; remove local outputs after merge or terminal cancellation/supersession.
 
 | ID | File | Purpose |
 | --- | --- | --- |

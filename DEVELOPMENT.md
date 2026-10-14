@@ -72,7 +72,7 @@ flaky-check handling.
 Generated evidence and artifact directories are ignored. Do not stage logs,
 screenshots, test output, reviewer transcripts or evidence manifests. Keep them
 locally during review; use PR discussion and hosted CI checks for concise,
-source-linked findings. Remove local copies after the feature code merges once
+source-linked findings. Remove local copies after work merges or is cancelled or superseded, once
 the merge and required decisions are recorded. Keep code comments minimal and
 put change rationale in the PR.
 
@@ -124,7 +124,7 @@ separate scope decision. Production-data recovery is separate from development.
 | Maximum tolerable active-work loss / RPO | G-0001 target: one hour while actively working. Push each meaningful increment, at handoff and at least hourly during active work; no unattended backup while inactive. Owner: Adam Burdett. |
 | Target time to resume useful development / RTO | G-0001 target: one working day with GitHub material and independently recoverable account access surviving. Owner: Adam Burdett. |
 | Retained work/checkpoint refs and required private guidance | Per-goal record; push source refs before a coordinating goal checkpoint. The initializer executable is not required after adoption. |
-| Development evidence retention | Keep generated local evidence only while the PR is open; link relevant hosted CI runs and review findings. Remove local copies after feature code merges. Separate release/operational retention decisions remain goal-specific. |
+| Development evidence retention | Keep generated local evidence only while the PR is open; link relevant hosted CI runs and review findings. Remove local copies after merge or terminal cancellation/supersession. Separate release/operational retention decisions remain goal-specific. |
 | Access, machine setup and native GitHub/Codex settings recovery | Adam Burdett owns secure GitHub/Codex account recovery. Reinstall documented toolchain, restore account settings through native facilities, and recreate `.env` locally from `.env.example`; never commit tokens. |
 | Restore-drill triggers and measured loss/resumption time | Drill after material setup, access or recovery changes and before the first version release. Record measured elapsed loss/resumption time in the applicable goal evidence; the G-0001 clean-clone retrieval is partial, not a measured full restore. |
 

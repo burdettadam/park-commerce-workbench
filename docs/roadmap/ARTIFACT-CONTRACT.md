@@ -28,11 +28,12 @@ manifests or generated outputs for a new goal. Review still requires real
 checks, two independent configured reviewers under `GOVERNANCE.md`, intended-use
 validation and a recorded decision. Missing evidence remains a gap.
 
-## After merge
+## After merge or terminal cancellation/supersession
 
-Record the PR, exact merged commit and concise outcome in the goal record. Then
-remove the feature's local generated evidence and artifacts, including obsolete
-worktree copies, after confirming ownership and merge identity. Keep source,
+Record the PR and exact merged commit, or the terminal cancellation/supersession
+decision, with a concise outcome in the goal record. Then remove the work's local
+generated evidence and artifacts, including obsolete worktree copies, after
+confirming ownership and outcome identity. Keep source,
 reconstructable tests, necessary design or operating documentation, and PR/CI
 links. Do not delete another owner's work or a separately required release,
 security, legal or operational record; decide those retention needs explicitly.

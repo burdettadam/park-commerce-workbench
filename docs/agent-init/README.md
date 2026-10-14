@@ -44,7 +44,7 @@ need their own verified configuration and retention.
 
 Generated evidence, logs, screenshots and build artifacts are ignored. Keep
 local review material only while the PR is open, link the PR and CI results in
-concise goal records, and remove local copies after the feature code merges.
+concise goal records, and remove local copies after merge or terminal cancellation/supersession.
 Keep code comments minimal; put historical rationale in the PR for Git blame.
 
 ## Product acceptance record
