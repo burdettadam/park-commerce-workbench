@@ -1,0 +1,12 @@
+{
+  "source_commit": "bede01801a1c489982edbe688ac87f68c7ba7396",
+  "accepted_plan_commit": "ae52a4564ff732994578a7d698713d042e2bf287",
+  "dependency_main_commit": "620a505cc68f81fac58f596cb4d8488c83b9d903",
+  "data_classification": "synthetic",
+  "park_time_zone": "America/New_York",
+  "currency": "USD",
+  "quote_ttl_seconds": 900,
+  "tools": ["Git Bash", "Microsoft JDK 21.0.12.1", "Apache Maven 3.9.16", "Node", "Docker Desktop / Testcontainers mysql:8.4.11"],
+  "secrets": "No secret values retained. Test fixture bearer strings are synthetic only.",
+  "runtime_scope": "Owned local test processes and free standard public GitHub Actions jobs; no deployment"
+}

@@ -63,11 +63,18 @@ class CheckoutRecoveryIT {
         jdbc.update("DELETE FROM orders");jdbc.update("DELETE FROM holds");jdbc.update("DELETE FROM events");
         clock.now.set(NOW);quotes.values.clear();service.create(new Booking.Event("night","night",LocalDate.of(2030,10,31),3));
     }
-    Booking.Hold hold(){
+    Pricing.Quote quote(){
         var quote=new Pricing.Quote(UUID.randomUUID(),"guest","night","Night",Catalog.Kind.EVENT,1,LocalDate.of(2030,10,31),1,1,
             List.of(new Pricing.Line(Catalog.Variant.ADULT,1,new Money(10000),new Money(10000),new Money(0),new Money(10000))),
             null,new Money(10000),new Money(0),new Money(10000),NOW,NOW.plusSeconds(900));
-        quotes.values.put(quote.id(),quote);return service.reserve("night",quote.id(),"guest");
+        quotes.values.put(quote.id(),quote);return quote;
+    }
+    Booking.Hold hold(){return service.reserve("night",quote().id(),"guest");}
+    HttpResponse<String> reserve(Pricing.Quote quote)throws Exception {
+        var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+env.getRequiredProperty("local.server.port")+"/api/holds"))
+            .timeout(Duration.ofSeconds(10)).header("Authorization","Bearer "+GUEST).header("Content-Type","application/json")
+            .POST(HttpRequest.BodyPublishers.ofString("{\"eventId\":\"night\",\"quoteId\":\""+quote.id()+"\"}"));
+        try(var client=HttpClient.newHttpClient()){return client.send(builder.build(),HttpResponse.BodyHandlers.ofString());}
     }
     HttpResponse<String> request(String path,String token,String key,UUID hold)throws Exception {
         var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+env.getRequiredProperty("local.server.port")+path)).timeout(Duration.ofSeconds(10));
@@ -111,6 +118,16 @@ class CheckoutRecoveryIT {
         assertEquals(Booking.HoldStatus.EXPIRED,state.hold().status());assertNull(state.order());assertEquals(state,recover(h));
         assertEquals("EXPIRED",jdbc.queryForObject("SELECT status FROM holds WHERE id=?",String.class,h.id().toString()));
         assertEquals(0,jdbc.queryForObject("SELECT COUNT(*) FROM orders",Integer.class));assertEquals(3,service.availability("night").available());
+    }
+    @Test void newHoldAtExactQuoteExpiryHasPublicExpiredErrorShape()throws Exception {
+        var justBefore=quote();clock.now.set(justBefore.expiresAt().minusNanos(1));
+        var accepted=reserve(justBefore);assertEquals(201,accepted.statusCode(),accepted.body());
+        var atExpiry=quote();clock.now.set(atExpiry.expiresAt());
+        var rejected=reserve(atExpiry);assertEquals(410,rejected.statusCode(),rejected.body());
+        var problem=json.readValue(rejected.body(),Map.class);
+        assertEquals("EXPIRED",problem.get("code"));assertEquals("EXPIRED",problem.get("title"));
+        assertEquals(410,((Number)problem.get("status")).intValue());
+        assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM holds",Integer.class));
     }
     @Test void changedKeysAndChangedHoldIdentityAreConflicts()throws Exception {
         var h=hold();service.confirm(h.id(),"guest","same");var second=hold();

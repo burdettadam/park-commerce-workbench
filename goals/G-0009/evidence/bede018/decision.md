@@ -1,0 +1,3 @@
+# G-0009 readiness decision — pending
+
+Source S3: `bede01801a1c489982edbe688ac87f68c7ba7396`; narrow citation correction S4: `6de44d3249c1f16028f57043bc95514c7794c486`. A01–A03 and S3 local/hosted checks are assembled. Native rounds one, two, and three remain blocked/not-ready historical records; the three-round cap is exhausted. The goal is **needs-decision** pending a scoped owner exception for one further independent review pair. Delegated intended-use validation, final manifest validation, and remote retrieval still need completion. This record makes no readiness, version, merge, deployment, or release claim.

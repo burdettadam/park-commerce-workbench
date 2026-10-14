@@ -90,17 +90,22 @@ export function validateEvidence(filename, root = projectRoot) {
   }
   const reviews = Array.isArray(x.reviews) ? x.reviews : [];
   const reviewException = x.review_policy_exception;
-  const scopedReviewException = x.goal_id === 'G-0007' &&
-    reviewException?.decision_artifact_id === 'REVIEW-EXCEPTION' &&
-    map.has('REVIEW-EXCEPTION') &&
+  const decisionArtifactPresent = reviewException?.decision_artifact_id === 'REVIEW-EXCEPTION' && map.has('REVIEW-EXCEPTION');
+  const g7ReviewException = x.goal_id === 'G-0007' &&
+    decisionArtifactPresent &&
     reviewException?.authority_id === 'Adam Burdett';
-  const fourthRoundAllowed = scopedReviewException && reviewException.max_round === 4 && reviewException.lost_attempt_exception_artifact_id == null;
-  const fifthRoundAllowed = scopedReviewException && reviewException.max_round === 5 &&
+  const g9ReviewException = x.goal_id === 'G-0009' &&
+    decisionArtifactPresent &&
+    reviewException?.authority_id === 'Codex (delegated by Adam Burdett)' &&
+    reviewException?.max_round === 4 &&
+    reviewException?.lost_attempt_exception_artifact_id == null;
+  const fourthRoundAllowed = (g7ReviewException || g9ReviewException) && reviewException.max_round === 4 && reviewException.lost_attempt_exception_artifact_id == null;
+  const fifthRoundAllowed = g7ReviewException && reviewException.max_round === 5 &&
     reviewException.lost_attempt_exception_artifact_id === 'LOST-TRANSCRIPT-EXCEPTION' &&
     map.has('LOST-TRANSCRIPT-EXCEPTION');
   const allowedRound = fifthRoundAllowed ? 5 : fourthRoundAllowed ? 4 : 3;
-  if (reviewException != null && !(fourthRoundAllowed || fifthRoundAllowed)) fail('Review policy exception is missing, invalid or outside G-0007.');
-  if (allowedRound > 3 && reviews.some(r => r.round !== allowedRound)) fail(`G-0007 exception requires both final reviews from round ${allowedRound}.`);
+  if (reviewException != null && !(fourthRoundAllowed || fifthRoundAllowed)) fail('Review policy exception is missing, invalid or outside G-0007/G-0009.');
+  if (allowedRound > 3 && reviews.some(r => r.round !== allowedRound)) fail(`Scoped exception requires both final reviews from round ${allowedRound}.`);
   if (reviews.length !== 2 || !['contract','adversarial'].every(role => reviews.filter(r => r.role === role).length === 1)) fail('Two independent roles are required: contract and adversarial.');
   if (!unique(reviews.map(r => r.session_id))) fail('Review assignments must have distinct independent sessions.');
   for (const r of reviews) {
