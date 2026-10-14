@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "goal_id": "G-0010",
+  "claim": "not_ready",
+  "candidate": {
+    "source_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
+    "base_commit": "e3719e6bf067e09a0fad20ffc78891a4c144f736",
+    "accepted_plan_commit": "2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd",
+    "accepted_plan_path": "goals/G-0010/README.md",
+    "accepted_plan_sha256": "afa91986e407058b9d3fbd1b74fb49a9d0e484d3b276157bcd233925edc7f6a4",
+    "working_tree_clean": true,
+    "configuration_sha256": "8e407581b6ab94e50e76d330bf0d2bdacf28459592ea1e10f47c57e8ad6e095c",
+    "environment_artifact_id": "ENVIRONMENT"
+  },
+  "checks": [
+    {
+      "id": "CI-JAVA",
+      "type": "automated",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
+      "command": "bash scripts/verify.sh --integration",
+      "working_directory": "GitHub Actions public pull request checkout",
+      "started_at": "2026-10-14T03:50:41Z",
+      "finished_at": "2026-10-14T03:52:50Z",
+      "expected_exit_code": 0,
+      "observed_exit_code": 0,
+      "selected": 358,
+      "passed": 358,
+      "failed": 0,
+      "skipped": 0,
+      "status": "passed",
+      "observed_result": "All Java suites passed; database integration gate selected seven suites and 78 tests; zero skips.",
+      "output_artifact_id": "CHECK-JAVA"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "G-0010-AC01",
+      "result": "passed",
+      "independent_expected_result": "Race at least 100 real hold requests for 10 available seats. Exactly 10 or fewer seats may be held/sold, never more; reconcile final ledger totals and expected rejections.",
+      "check_ids": [
+        "CI-JAVA"
+      ],
+      "artifact_ids": [
+        "G-0010-A01"
+      ]
+    },
+    {
+      "id": "G-0010-AC02",
+      "result": "passed",
+      "independent_expected_result": "Replay the same authenticated checkout key concurrently and after an uncertain response. Observe one order, one transition and one capacity consumption; different payload under that key returns a conflict.",
+      "check_ids": [
+        "CI-JAVA"
+      ],
+      "artifact_ids": [
+        "G-0010-A01"
+      ]
+    },
+    {
+      "id": "G-0010-AC03",
+      "result": "passed",
+      "independent_expected_result": "Exercise hold-expiry versus checkout, rollback, and an actual process interruption around commit/response. Restart and reconcile confirmed, expired and available counts without manual database edits.",
+      "check_ids": [
+        "CI-JAVA"
+      ],
+      "artifact_ids": [
+        "G-0010-A02"
+      ]
+    },
+    {
+      "id": "G-0010-AC04",
+      "result": "passed",
+      "independent_expected_result": "Trace/inspect lock scope and prove dependency fetches complete before the booking database lock. Retain transaction isolation/locking rationale and real SQL evidence.",
+      "check_ids": [
+        "CI-JAVA"
+      ],
+      "artifact_ids": [
+        "G-0010-A03"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "G-0010-A01",
+      "path": "contention-results.json",
+      "sha256": "74f13152051e7f10acee23650c03641c195515f1afe67f56a6ab008e0eee5609",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "G-0010-A02",
+      "path": "interruption-recovery.md",
+      "sha256": "9081af972652537c63b40d2d0c45999fbd724e0ff2d5d17ccfe955493916c8f5",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "G-0010-A03",
+      "path": "transaction-design.md",
+      "sha256": "37786f0b6a35e34e8855de13a529f5edb3dcdcb56ab74583216ff99b0a730b97",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "ENVIRONMENT",
+      "path": "environment.txt",
+      "sha256": "86f1fb50e491fa70eef9159eceb14f2707c4bb58df53a5c45a1e1ed99133cf84",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "CHECK-JAVA",
+      "path": "checks/hosted-java-selected.txt",
+      "sha256": "4c58a7f66fc597e70a5baa8b997b372411d9e315aec45936e42d155c0166e64c",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "CHECK-JUNIT",
+      "path": "checks/hosted-junit.txt",
+      "sha256": "092d8d30d46bc724fb2e15dd41684e48dc017eae89f8c65fa9b0deaae6c707f0",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "CHECK-CI",
+      "path": "checks/hosted-ci.txt",
+      "sha256": "dbd12697b92bb88582820b810761f911b43a3c4bc94e39dc85548062bbdb3208",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "LOCAL-ATTEMPTS",
+      "path": "checks/local-attempts.md",
+      "sha256": "a52e546d38341627f53286c3cf3323968e53b200c8e388c83bf3564c6f090eb0",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "SCOPE",
+      "path": "scope-and-review.md",
+      "sha256": "474c381d33711fa572a661aa25f5144453ff8ecc5281c791bd07609ce29dd1ea",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "PLAN",
+      "path": "accepted-plan.md",
+      "sha256": "afa91986e407058b9d3fbd1b74fb49a9d0e484d3b276157bcd233925edc7f6a4",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "CONFIGURATION",
+      "path": "configuration.json",
+      "sha256": "8e407581b6ab94e50e76d330bf0d2bdacf28459592ea1e10f47c57e8ad6e095c",
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "REVIEW-CONTRACT",
+      "path": "reviews/contract.md",
+      "sha256": null,
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "REVIEW-ADVERSARIAL",
+      "path": "reviews/adversarial.md",
+      "sha256": null,
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "VALIDATION",
+      "path": "validation.md",
+      "sha256": null,
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "DECISION",
+      "path": "decision.md",
+      "sha256": null,
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    },
+    {
+      "id": "HANDOFF",
+      "path": "handoff.md",
+      "sha256": null,
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
+    }
+  ],
+  "reviews": [
+    {
+      "role": "contract",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-CONTRACT"
+    },
+    {
+      "role": "adversarial",
+      "reviewer_id": null,
+      "session_id": null,
+      "independent_of_writer": null,
+      "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
+      "round": null,
+      "open_blockers": null,
+      "decision": "not_run",
+      "report_artifact_id": "REVIEW-ADVERSARIAL"
+    }
+  ],
+  "intended_use_validation": {
+    "validator_id": null,
+    "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
+    "decision": "not_run",
+    "report_artifact_id": "VALIDATION"
+  },
+  "readiness_decision": {
+    "authority_id": null,
+    "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
+    "decision": "not_requested",
+    "report_artifact_id": "DECISION"
+  },
+  "retention": {
+    "scope": "local_only",
+    "owner_id": "Adam Burdett",
+    "retrieval_verified": null,
+    "report_artifact_id": "HANDOFF"
+  },
+  "release": {
+    "status": "not_requested",
+    "human_approval_record": null,
+    "merged_commit": null,
+    "artifact_digest": null,
+    "tag": null
+  }
+}

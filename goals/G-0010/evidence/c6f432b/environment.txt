@@ -1,0 +1,8 @@
+Source S: c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5
+Base/main input: e3719e6bf067e09a0fad20ffc78891a4c144f736 (G-0009 accepted product merge M 15010a258ac6618045d5afb35fb971127ce3ae7c included)
+Accepted G-0010 plan P: 2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd
+Hosted acceptance: public GitHub Actions Ubuntu standard runner, run 38508335182, JDK 21 (Temurin), Node 24; `bash scripts/verify.sh --integration`; real Docker/Testcontainers MySQL 8.4.11 and MongoDB for selected suites. Test credentials are synthetic.
+Local exploratory: Windows, Microsoft JDK 21.0.12.1, Maven 3.9.16, Docker Desktop engine 29.7.2. Focused booking test passed before final evidence-marker edits. Broad local Docker Desktop engine later returned HTTP 500; it is not a local full-suite pass.
+100-request harness: real Spring HTTP to a random local test port, authenticated synthetic guest, 100 worker barrier, ten-seat event, distinct persisted quote IDs, Hikari maximum pool 32 for this test context.
+Process interruption: separate booking JVM bound to 127.0.0.1, same disposable MySQL container, loopback proxy withholding its committed checkout response, explicit force kill/restart and SQL reconciliation.
+External effects: no production data, deployment, paid workflow or paid service.
