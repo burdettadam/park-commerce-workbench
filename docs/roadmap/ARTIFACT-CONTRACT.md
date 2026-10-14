@@ -14,7 +14,8 @@ and `**/artifacts/`. Do not use `git add -f` to bypass those rules.
 - Give independent reviewers the source, plan, PR and raw local or hosted output
   they need. Put their concise findings and blocker dispositions in PR review
   comments. Do not create an evidence-only commit to publish transcripts.
-- Keep raw local outputs in ignored paths only as long as review needs them.
+- Keep raw local outputs in ignored paths only as long as review or a live
+  handoff needs them.
   Sanitize material before sharing it. Hosted CI logs and PR discussion may
   expire or be edited; do not describe them as permanent artifact storage.
 - Source comments explain only non-obvious behavior or a durable contract.
