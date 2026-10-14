@@ -1,0 +1,19 @@
+Public PR #16 Candidate checks, source S c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5; actual checkout b66eb8e3b3bb012a246ec4d20a6c959f37862f39 (identical tree 973d948bf97e652c5ce4eef3eb24cc997aad9341; see hosted-checkout.txt)
+Run: https://github.com/burdettadam/park-commerce-workbench/actions/runs/38508335182
+Created: 2026-10-14T03:50:39Z; completed/updated: 2026-10-14T03:52:51Z
+Run conclusion: success
+
+live-stack: job 115670861180, success, 03:50:41Z–03:52:29Z
+client-contracts: job 115670861298, success, 03:50:42Z–03:51:10Z
+java: job 115670861365, success, 03:50:41Z–03:52:50Z
+admin-ui: job 115670861483, success, 03:50:41Z–03:51:09Z
+
+Java command: bash scripts/verify.sh --integration
+Core Surefire: 280 selected, 280 passed, 0 failed/errors/skipped.
+Catalog Failsafe: 17 selected, 17 passed, 0 failed/errors/skipped.
+Pricing Surefire/Failsafe: 25 selected, 25 passed, 0 failed/errors/skipped.
+Booking Failsafe: 36 selected, 36 passed, 0 failed/errors/skipped.
+Total Java: 358 selected, 358 passed, 0 failed/errors/skipped.
+The Java build and required integration report checker exited 0. Its raw line states: `PASS database integration selection: 7 suites, 78 executed tests, 0 skipped`. The selected raw lines and downloaded text reports are retained beside this file. Full downloaded Java job log SHA-256: 79f1ee5e0111a3fda370e0ffb37e9f8cb3e6847c4941d3acadaee8b9381762a4.
+
+All jobs use standard free runners for this public repository. The run is a candidate check, not a release, version tag or deployment approval.

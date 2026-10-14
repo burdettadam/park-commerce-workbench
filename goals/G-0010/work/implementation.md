@@ -1,0 +1,26 @@
+# G-0010 implementation progress
+
+- Sole writer/integration owner: assigned G-0010 Codex subagent; `goal/G-0010` in `.tmp/g0010-planning`.
+- Accepted G-0010 plan P: `2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd`; unchanged AC01–AC04. The current living goal record SHA-256 at this increment is `0ca23e84d77d4c7d8e36abe5f7477840563d9e934385a6760a023f4df61c00b9`. It contains later state updates, not a new accepted criterion set.
+- G-0009 exact prerequisite: P `ae52a4564ff732994578a7d698713d042e2bf287`, S `6578753c94674d95793f3ffd82ad7e67d9e98c4e`, E `a59360a3366d4db0a212972d7d07f3dc0bb07445`, branch head `a439342d367a4fa44ae584a141466ebb5f723eaa`, main M `15010a258ac6618045d5afb35fb971127ce3ae7c`. G-0010 merged M locally before this slice. The G-0009 documentation-only main commit `e3719e6bf067e09a0fad20ffc78891a4c144f736` was subsequently merged with no product-code conflict.
+- Candidate S: not frozen. This is a mutable implementation increment. No independent review, intended-use validation or readiness claim yet.
+
+## Reuse and first check
+
+Reused `CheckoutRecoveryIT`'s real Spring HTTP, authenticated guest, MySQL 8.4 Testcontainer, controlled clock and pricing fixture rather than adding a second transaction model. Added a shared HTTP client, a 100-request barrier for ten seats, SQL outcome reconciliation, concurrent same-key checkout/recovery/conflict, expiry at the exact boundary, and a gated dependency call with an independent `FOR UPDATE NOWAIT` observer. Booking `Ledger`, `Service`, JDBC store and migrations are unchanged.
+
+First focused check on Windows with process-local Microsoft JDK 21.0.12.1, Maven 3.9.16, Docker Desktop 29.7.2 and synthetic data:
+
+`mvn -B -ntp -Pintegration -pl booking-service -am -Dit.test=CheckoutRecoveryIT -Dfailsafe.failIfNoSpecifiedTests=false verify`
+
+It exited 0: 12 tests passed, zero failures/errors/skips. The contention test submitted 100 real HTTP requests, observed ten accepted and 90 `SOLD_OUT`, and reconciled ten active hold rows/quantity, zero orders and zero availability. The lock test held the pricing fixture call open while a separate JDBC connection acquired the event row `FOR UPDATE NOWAIT`; `EXPLAIN` chose `ix_holds_event_status_expiry` for the event ledger read. Full initial framework output is local at `%TEMP%/g0010-contention-first-run.txt`; it is exploratory because source was not yet frozen. Retain a sanitized summary/raw test report for the fixed candidate.
+
+The next slice added a separate booking JVM against the same disposable MySQL Testcontainer. A loopback proxy withheld the child application's 200 response after SQL showed one committed order, then the test killed the child. The client observed a dropped response. A new child process used the same database and port; authenticated recovery and replay returned the identical persisted order, with one order, one confirmed hold and two available seats. The focused interruption test passed 1/1; after a deterministic transactional clock gate and loopback-only child binding were added, the full `CheckoutRecoveryIT` focused run passed 13/13 with zero skips. Raw local logs: `%TEMP%/g0010-interruption-first-run.txt` and `%TEMP%/g0010-contention-second-run.txt` (the latter SHA-256 `a3462e5b8b10ae66143cdf9d347b36b0b056c1a6ec974be65926dc003a5e0e63`). These runs preceded the final evidence-marker changes and are exploratory.
+
+The first broad `bash scripts/verify.sh --integration` attempt ran core 280/280, catalog 17/17, pricing 25/25 with zero skips, then Docker Desktop's Linux engine returned HTTP 500 and MySQL Testcontainer connections timed out during booking. The owned Failsafe fork was stopped after confirming its PID/parent/command; Maven terminated exit 1. This is retained infrastructure-failure evidence, **not** a passing full suite. Raw local log: `%TEMP%/g0010-full-integration-first-run.txt`, SHA-256 `06ae644dfe89f2012b78ce2b391b8151b75829e1edc4650350b221f96a2cd143`. A follow-up test-compilation/package command with skipped execution exited 0, but it does not replace integration validation.
+
+Next: freeze candidate S, run focused checks on the fixed source where infrastructure permits, open a draft PR for the existing free public CI integration job, retain sanitized raw evidence and result categories, and obtain independent reviews and intended-use validation. Never relabel the failed local broad run as green.
+
+## Fixed-source hosted checkpoint
+
+Source S `c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5` was pushed and draft PR #16 opened. The later documentation-only main status commit `e3719e6bf067e09a0fad20ffc78891a4c144f736` is included in S. Public Candidate checks run `38508335182` passed all four standard-runner jobs on synthetic merge `b66eb8e3b3bb012a246ec4d20a6c959f37862f39`, whose tree equals S: Java 358/358 with zero failures/errors/skips, including booking 36/36 and `CheckoutRecoveryIT` 13/13. It recorded 100 real hold requests, ten accepted, 90 sold out, and zero other/transport/timeout; the process kill/restart and READ COMMITTED/lock evidence also passed. The evidence directory `evidence/c6f432b/` links the hosted run and selected raw reports. Its manifest intentionally remains `not_ready` until independent reviews, intended-use validation, decision and handoff are real. No new product source change followed S.

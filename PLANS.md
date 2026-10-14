@@ -6,6 +6,8 @@ The [10-milestone roadmap](docs/roadmap/README.md) contains goal proposals. [G-0
 
 [G-0009](goals/G-0009/README.md) is ready for the versioned price and quote contract at fixed source `6578753c94674d95793f3ffd82ad7e67d9e98c4e`. Its completed [evidence manifest](goals/G-0009/evidence/6578753/manifest.json) passed with six checks and 31 artifacts in a fresh public clone; both native reviewers passed the scoped fourth round. [PR #14](https://github.com/burdettadam/park-commerce-workbench/pull/14) was squash-merged to `main` at `15010a258ac6618045d5afb35fb971127ce3ae7c`. The original `goal/G-0009` branch remains published for source/evidence identity. G-0010 can now execute against this accepted input. No version tag, release artifact or deployment was created.
 
+[G-0010](goals/G-0010/README.md) is ready for booking contention and interrupted-checkout recovery at fixed source `c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5`. Its [evidence manifest](goals/G-0010/evidence/c6f432b/manifest.json) records the exact hosted checkout tree, two passing configured native round-2 reviews, delegated intended-use acceptance, and verified retrieval of all 20 artifacts. [Draft PR #16](https://github.com/burdettadam/park-commerce-workbench/pull/16) awaits integration review. No G-0010 merge, version tag, release artifact or deployment has occurred.
+
 This is a project convention informed by OpenAI's ExecPlan pattern. It is not a
 native Codex database or parsed configuration schema. Reuse existing issue/plan
 files with the responsibilities below. Keep enough context in Git to resume on

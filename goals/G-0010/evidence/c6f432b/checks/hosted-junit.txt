@@ -1,0 +1,55 @@
+﻿Selected verbatim Surefire/Failsafe text reports from public run 38508335182 artifact java-test-reports.
+
+SOURCE: booking-service\target\failsafe-reports\dev.parkcommerce.booking.AdmissionCheckoutIT.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.booking.AdmissionCheckoutIT
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.23 s -- in dev.parkcommerce.booking.AdmissionCheckoutIT
+
+SOURCE: booking-service\target\failsafe-reports\dev.parkcommerce.booking.CheckoutRecoveryIT.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.booking.CheckoutRecoveryIT
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.00 s -- in dev.parkcommerce.booking.CheckoutRecoveryIT
+
+SOURCE: booking-service\target\failsafe-reports\dev.parkcommerce.booking.JdbcBookingIT.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.booking.JdbcBookingIT
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.93 s -- in dev.parkcommerce.booking.JdbcBookingIT
+
+SOURCE: catalog-service\target\failsafe-reports\dev.parkcommerce.catalog.CatalogEditorialIT.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.catalog.CatalogEditorialIT
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.56 s -- in dev.parkcommerce.catalog.CatalogEditorialIT
+
+SOURCE: catalog-service\target\failsafe-reports\dev.parkcommerce.catalog.MongoCatalogIT.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.catalog.MongoCatalogIT
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.900 s -- in dev.parkcommerce.catalog.MongoCatalogIT
+
+SOURCE: core\target\surefire-reports\dev.parkcommerce.core.CoreScenariosTest.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.core.CoreScenariosTest
+-------------------------------------------------------------------------------
+Tests run: 280, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.463 s -- in dev.parkcommerce.core.CoreScenariosTest
+
+SOURCE: pricing-service\target\failsafe-reports\dev.parkcommerce.pricing.JpaPricingIT.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.pricing.JpaPricingIT
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.033 s -- in dev.parkcommerce.pricing.JpaPricingIT
+
+SOURCE: pricing-service\target\failsafe-reports\dev.parkcommerce.pricing.QuoteContractIT.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.pricing.QuoteContractIT
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.16 s -- in dev.parkcommerce.pricing.QuoteContractIT
+
+SOURCE: pricing-service\target\surefire-reports\dev.parkcommerce.pricing.PreviewErrorContractTest.txt
+-------------------------------------------------------------------------------
+Test set: dev.parkcommerce.pricing.PreviewErrorContractTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s -- in dev.parkcommerce.pricing.PreviewErrorContractTest
