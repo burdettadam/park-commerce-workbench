@@ -1,6 +1,6 @@
 # G-0009 — Freeze the price and quote contract with independent examples
 
-Status: **active** (scoped fourth independent review authorized by delegated decision; acceptance pending). Milestone: M2.
+Status: **ready and merged** by [PR #14](https://github.com/burdettadam/park-commerce-workbench/pull/14) to `main` at `15010a258ac6618045d5afb35fb971127ce3ae7c`. Milestone: M2.
 
 ## Accepted work contract
 
@@ -94,7 +94,7 @@ One writer owns each future worktree. The integration owner records included rev
 
 ## State, review and recovery
 
-G-0009 is **active** after both third-round native reviewers blocked source S3 on evidence citation drift and Codex authorized exactly one further review pair under Adam Burdett's decision delegation. The preparatory [audit](work/bootstrap.md) is not acceptance evidence. The [review checkpoint](work/review-checkpoint.md) identifies the current source and evidence, while the S3 [historical evidence](evidence/bede018/) retains blocked attempts. The scoped exception and validator control change are in [round-three disposition](work/round3-disposition.md). G-0009 intended-use validation was explicitly delegated to Codex but remains pending, as does readiness. No merge, tag, release or deployment is claimed.
+G-0009 is **ready and merged**. The [review checkpoint](work/review-checkpoint.md) identifies fixed source S6 and ready evidence E8. Both fourth-round native reviewers passed with zero blockers, Codex accepted intended use under Adam Burdett's delegation, and the completed [manifest](evidence/6578753/manifest.json) passed with six checks and 31 artifacts in a fresh public clone. Earlier blocked attempts remain in the historical evidence directories. The scoped exception and validator control change are in [round-three disposition](work/round3-disposition.md). Final PR-head [run 38506477450](https://github.com/burdettadam/park-commerce-workbench/actions/runs/38506477450) passed all four free jobs before the PR #14 squash merge. The [merge status](work/merge-status.md) records exact revisions. No version tag, release artifact or deployment was created.
 
 At execution, publish source and indispensable artifacts before updating this canonical record. Verify retrieval and report local-only remainder. Source S, later evidence E, merge M and release/deployment observations are separate facts. A version-producing merge still requires distinct eligible human review.
 
