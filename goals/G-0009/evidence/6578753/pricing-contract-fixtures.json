@@ -1,0 +1,501 @@
+{
+  "revision": "pricing-fixtures-1",
+  "currency": "USD",
+  "policy": "One offer; half-up discount on each variant subtotal, then sum. Zero-ticket variants omitted.",
+  "provenance": "Expected totals and line discounts were entered before running the Java calculation. Not reviewer approval.",
+  "cases": [
+    {
+      "id": "no-offer",
+      "input": {
+        "adultUnitCents": "10000",
+        "childUnitCents": "7000",
+        "adults": 2,
+        "children": 2,
+        "offer": null
+      },
+      "expected": {
+        "subtotal": "34000",
+        "discount": "0",
+        "total": "34000",
+        "lineDiscounts": [
+          "0",
+          "0"
+        ],
+        "appliedOffer": null
+      }
+    },
+    {
+      "id": "below-threshold",
+      "input": {
+        "adultUnitCents": "10000",
+        "childUnitCents": "7000",
+        "adults": 2,
+        "children": 1,
+        "offer": {
+          "minimumTickets": 4,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "27000",
+        "discount": "0",
+        "total": "27000",
+        "lineDiscounts": [
+          "0",
+          "0"
+        ],
+        "appliedOffer": null
+      }
+    },
+    {
+      "id": "exact-threshold",
+      "input": {
+        "adultUnitCents": "10000",
+        "childUnitCents": "7000",
+        "adults": 2,
+        "children": 2,
+        "offer": {
+          "minimumTickets": 4,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "34000",
+        "discount": "3400",
+        "total": "30600",
+        "lineDiscounts": [
+          "2000",
+          "1400"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "above-threshold",
+      "input": {
+        "adultUnitCents": "10000",
+        "childUnitCents": "7000",
+        "adults": 3,
+        "children": 2,
+        "offer": {
+          "minimumTickets": 4,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "44000",
+        "discount": "4400",
+        "total": "39600",
+        "lineDiscounts": [
+          "3000",
+          "1400"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "child-only",
+      "input": {
+        "adultUnitCents": "10000",
+        "childUnitCents": "7000",
+        "adults": 0,
+        "children": 2,
+        "offer": {
+          "minimumTickets": 2,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "14000",
+        "discount": "1400",
+        "total": "12600",
+        "lineDiscounts": [
+          "1400"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "zero-percent",
+      "input": {
+        "adultUnitCents": "10000",
+        "childUnitCents": "7000",
+        "adults": 2,
+        "children": 2,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 0
+        }
+      },
+      "expected": {
+        "subtotal": "34000",
+        "discount": "0",
+        "total": "34000",
+        "lineDiscounts": [
+          "0",
+          "0"
+        ],
+        "appliedOffer": null
+      }
+    },
+    {
+      "id": "full-discount",
+      "input": {
+        "adultUnitCents": "10000",
+        "childUnitCents": "7000",
+        "adults": 2,
+        "children": 2,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 10000
+        }
+      },
+      "expected": {
+        "subtotal": "34000",
+        "discount": "34000",
+        "total": "0",
+        "lineDiscounts": [
+          "20000",
+          "14000"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "below-half-cent",
+      "input": {
+        "adultUnitCents": "4",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "4",
+        "discount": "0",
+        "total": "4",
+        "lineDiscounts": [
+          "0"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "exact-half-cent",
+      "input": {
+        "adultUnitCents": "5",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "5",
+        "discount": "1",
+        "total": "4",
+        "lineDiscounts": [
+          "1"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "above-half-cent",
+      "input": {
+        "adultUnitCents": "6",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "6",
+        "discount": "1",
+        "total": "5",
+        "lineDiscounts": [
+          "1"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "split-variant-rounding",
+      "input": {
+        "adultUnitCents": "5",
+        "childUnitCents": "5",
+        "adults": 1,
+        "children": 1,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "10",
+        "discount": "2",
+        "total": "8",
+        "lineDiscounts": [
+          "1",
+          "1"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "grouped-variant-rounding",
+      "input": {
+        "adultUnitCents": "5",
+        "childUnitCents": "5",
+        "adults": 2,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "10",
+        "discount": "1",
+        "total": "9",
+        "lineDiscounts": [
+          "1"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "fractional-percent",
+      "input": {
+        "adultUnitCents": "9999",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 3333
+        }
+      },
+      "expected": {
+        "subtotal": "9999",
+        "discount": "3333",
+        "total": "6666",
+        "lineDiscounts": [
+          "3333"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "free-product-with-offer",
+      "input": {
+        "adultUnitCents": "0",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 1,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "0",
+        "discount": "0",
+        "total": "0",
+        "lineDiscounts": [
+          "0",
+          "0"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "maximum-party-and-unit",
+      "input": {
+        "adultUnitCents": "1000000",
+        "childUnitCents": "1000000",
+        "adults": 10,
+        "children": 10,
+        "offer": {
+          "minimumTickets": 20,
+          "discountBasisPoints": 9999
+        }
+      },
+      "expected": {
+        "subtotal": "20000000",
+        "discount": "19998000",
+        "total": "2000",
+        "lineDiscounts": [
+          "9999000",
+          "9999000"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "threshold-twenty-not-met",
+      "input": {
+        "adultUnitCents": "100",
+        "childUnitCents": "100",
+        "adults": 10,
+        "children": 9,
+        "offer": {
+          "minimumTickets": 20,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "1900",
+        "discount": "0",
+        "total": "1900",
+        "lineDiscounts": [
+          "0",
+          "0"
+        ],
+        "appliedOffer": null
+      }
+    },
+    {
+      "id": "threshold-twenty-met",
+      "input": {
+        "adultUnitCents": "100",
+        "childUnitCents": "100",
+        "adults": 10,
+        "children": 10,
+        "offer": {
+          "minimumTickets": 20,
+          "discountBasisPoints": 1000
+        }
+      },
+      "expected": {
+        "subtotal": "2000",
+        "discount": "200",
+        "total": "1800",
+        "lineDiscounts": [
+          "100",
+          "100"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "one-basis-point-below-half",
+      "input": {
+        "adultUnitCents": "4999",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1
+        }
+      },
+      "expected": {
+        "subtotal": "4999",
+        "discount": "0",
+        "total": "4999",
+        "lineDiscounts": [
+          "0"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "one-basis-point-at-half",
+      "input": {
+        "adultUnitCents": "5000",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1
+        }
+      },
+      "expected": {
+        "subtotal": "5000",
+        "discount": "1",
+        "total": "4999",
+        "lineDiscounts": [
+          "1"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "one-basis-point-above-half",
+      "input": {
+        "adultUnitCents": "5001",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 1
+        }
+      },
+      "expected": {
+        "subtotal": "5001",
+        "discount": "1",
+        "total": "5000",
+        "lineDiscounts": [
+          "1"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "near-full-single-cent",
+      "input": {
+        "adultUnitCents": "1",
+        "childUnitCents": "0",
+        "adults": 1,
+        "children": 0,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 9999
+        }
+      },
+      "expected": {
+        "subtotal": "1",
+        "discount": "1",
+        "total": "0",
+        "lineDiscounts": [
+          "1"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    },
+    {
+      "id": "odd-price-mixed-party",
+      "input": {
+        "adultUnitCents": "101",
+        "childUnitCents": "99",
+        "adults": 3,
+        "children": 2,
+        "offer": {
+          "minimumTickets": 1,
+          "discountBasisPoints": 5000
+        }
+      },
+      "expected": {
+        "subtotal": "501",
+        "discount": "251",
+        "total": "250",
+        "lineDiscounts": [
+          "152",
+          "99"
+        ],
+        "appliedOffer": "fixture-offer"
+      }
+    }
+  ]
+}
