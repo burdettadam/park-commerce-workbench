@@ -13,7 +13,7 @@ This is the active canonical record on `goal/G-0010`, owned for integration and 
 
 Real database concurrency and retries cannot oversell an event, lose an accepted order or consume capacity twice.
 
-Intended-use validation owner: Adam Burdett, proposed; record the actual responsible person and method at adoption. Reviewer roles are separate from the implementation writer. No approval is implied by naming the owner.
+Intended-use validation owner: Codex, under Adam Burdett's delegated project-decision authority. Record the actual procedure and result for the fixed candidate; independent reviewer roles remain separate from the implementation writer. This delegation does not manufacture human release approval.
 
 ## Scope
 
@@ -105,7 +105,7 @@ Retain source/branch/artifact checkpoints before the canonical coordination reco
 - Accepted authority: owner's 2026-10-13 request for the next three roadmap goals to become active for subagent work; unchanged `proposal-1` acceptance criteria. Exact plan commit and digest are in `work/bootstrap.md`.
 - Integration owner, actual ref and active writer: assigned G-0010 Codex subagent, `goal/G-0010`. No implementation or validation writer is assigned while the prerequisite remains open.
 - Dependency gate: G-0009 accepted plan P `ae52a4564ff732994578a7d698713d042e2bf287`, fixed source S `6578753c94674d95793f3ffd82ad7e67d9e98c4e`, ready evidence E `a59360a3366d4db0a212972d7d07f3dc0bb07445`, final branch head `a439342d367a4fa44ae584a141466ebb5f723eaa`, squash merge on main M `15010a258ac6618045d5afb35fb971127ce3ae7c` (PR #14). These are distinct identities; no G-0009 release or deployment is inferred.
-- G-0010 source candidate S / configuration: not yet frozen. Accepted G-0010 plan P is `2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd`; later planning clarifications changed no criteria. Initial execution base is G-0009 merge M above.
+- G-0010 source candidate S / configuration: not yet frozen. Accepted G-0010 plan P is `2e5e740ca5eeeb1ffed0a688c158a01e63fbb0dd`; later planning clarifications changed no criteria. Initial execution base is G-0009 merge M above; the documentation-only G-0009 main status commit `e3719e6bf067e09a0fad20ffc78891a4c144f736` is also integrated.
 - Runtime state: **active** on the bounded real contention/interrupt/lock evidence slice. Branch `goal/G-0010` merged the exact G-0009 main commit before implementation. Refresh affected checks if later main documentation or product inputs change.
 - Verification, independent reviews, human validation and release: not performed by this planning record.
 - Next action: extend the existing real HTTP/MySQL harness for AC01–AC04, retain raw attempts, then freeze source and obtain the required independent reviews and intended-use validation.

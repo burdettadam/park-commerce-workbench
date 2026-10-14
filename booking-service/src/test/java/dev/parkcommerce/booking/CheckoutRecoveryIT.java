@@ -1,8 +1,12 @@
 package dev.parkcommerce.booking;
 
 import dev.parkcommerce.core.*;
+import com.sun.net.httpserver.HttpServer;
+import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.http.*;
+import java.net.ServerSocket;
+import java.nio.file.*;
 import java.time.*;
 import java.util.*;
 import java.util.concurrent.*;
@@ -47,7 +51,14 @@ class CheckoutRecoveryIT {
     }
     static final class RecoveryClock extends Clock {
         final AtomicReference<Instant> now=new AtomicReference<>(NOW);
-        @Override public Instant instant(){return now.get();}
+        final AtomicReference<CountDownLatch> entered=new AtomicReference<>(),release=new AtomicReference<>();
+        @Override public Instant instant(){
+            var signal=entered.get();var gate=release.get();
+            if(signal!=null&&gate!=null){signal.countDown();try{
+                if(!gate.await(15,TimeUnit.SECONDS))throw new AssertionError("Clock gate timed out");
+            }catch(InterruptedException e){Thread.currentThread().interrupt();throw new AssertionError(e);}}
+            return now.get();
+        }
         @Override public ZoneId getZone(){return ZoneOffset.UTC;}
         @Override public Clock withZone(ZoneId zone){return Clock.fixed(now.get(),zone);}
     }
@@ -66,12 +77,14 @@ class CheckoutRecoveryIT {
         @Bean @Primary RecoveryClock recoveryClock(){return new RecoveryClock();}
         @Bean @Primary QuoteFixture recoveryPricing(){return new QuoteFixture();}
     }
-    @Autowired Booking.Service service; @Autowired JdbcTemplate jdbc; @Autowired DataSource dataSource;
+    @Autowired Booking.Service service; @Autowired JdbcBookingStore store;
+    @Autowired JdbcTemplate jdbc; @Autowired DataSource dataSource;
     @Autowired Environment env; @Autowired ObjectMapper json;
     @Autowired RecoveryClock clock; @Autowired QuoteFixture quotes;
     @BeforeEach void setup(){
         jdbc.update("DELETE FROM orders");jdbc.update("DELETE FROM holds");jdbc.update("DELETE FROM events");
-        clock.now.set(NOW);quotes.values.clear();quotes.entered.set(null);quotes.release.set(null);
+        clock.now.set(NOW);clock.entered.set(null);clock.release.set(null);
+        quotes.values.clear();quotes.entered.set(null);quotes.release.set(null);
         service.create(new Booking.Event("night","night",LocalDate.of(2030,10,31),3));
     }
     Pricing.Quote quote(){
@@ -88,7 +101,10 @@ class CheckoutRecoveryIT {
         return HTTP.send(builder.build(),HttpResponse.BodyHandlers.ofString());
     }
     HttpResponse<String> request(String path,String token,String key,UUID hold)throws Exception {
-        var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+env.getRequiredProperty("local.server.port")+path)).timeout(Duration.ofSeconds(10));
+        return requestAt(Integer.parseInt(env.getRequiredProperty("local.server.port")),path,token,key,hold);
+    }
+    HttpResponse<String> requestAt(int port,String path,String token,String key,UUID hold)throws Exception {
+        var builder=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+port+path)).timeout(Duration.ofSeconds(15));
         if(token!=null)builder.header("Authorization","Bearer "+token);
         if(key!=null)builder.header("Idempotency-Key",key);
         if(hold!=null)builder.header("Content-Type","application/json").POST(HttpRequest.BodyPublishers.ofString("{\"holdId\":\""+hold+"\"}"));
@@ -186,7 +202,7 @@ class CheckoutRecoveryIT {
         var orders=jdbc.queryForObject("SELECT COUNT(*) FROM orders WHERE event_id='night'",Integer.class);
         var availability=service.availability("night");
         System.out.println("G-0010 HTTP contention: submitted=100 accepted="+accepted+" soldOut="+soldOut+
-            " held="+held+" confirmed="+confirmed+" holdRows="+count+" orderRows="+orders+
+            " other=0 transportErrors=0 timeouts=0 held="+held+" confirmed="+confirmed+" holdRows="+count+" orderRows="+orders+
             " available="+availability.available());
         assertEquals(100,outcomes.size());assertEquals(10,accepted);assertEquals(90,soldOut);
         assertEquals(accepted,held);assertEquals(accepted,count);assertEquals(0,confirmed);
@@ -221,8 +237,16 @@ class CheckoutRecoveryIT {
     }
 
     @Test void expiryAndConfirmationAtBoundaryHaveOneReconciledOutcome()throws Exception {
-        var expiring=hold();clock.now.set(expiring.expiresAt());
-        var rejected=request("/api/orders",GUEST,"boundary",expiring.id());
+        var expiring=hold();var entered=new CountDownLatch(1);var release=new CountDownLatch(1);
+        clock.entered.set(entered);clock.release.set(release);
+        HttpResponse<String> rejected;
+        try(var pool=Executors.newSingleThreadExecutor()){
+            var pending=pool.submit(()->request("/api/orders",GUEST,"boundary",expiring.id()));
+            assertTrue(entered.await(10,TimeUnit.SECONDS),"Checkout did not reach transactional clock");
+            clock.now.set(expiring.expiresAt());
+            release.countDown();
+            rejected=pending.get(20,TimeUnit.SECONDS);
+        }finally{release.countDown();clock.entered.set(null);clock.release.set(null);}
         assertEquals(410,rejected.statusCode(),rejected.body());
         assertEquals("EXPIRED",json.readValue(rejected.body(),Map.class).get("code"));
         assertEquals(Booking.HoldStatus.EXPIRED,recoverWithKey(expiring,"boundary").hold().status());
@@ -261,6 +285,99 @@ class CheckoutRecoveryIT {
         }finally{release.countDown();quotes.entered.set(null);quotes.release.set(null);}
         var indexes=jdbc.queryForList("EXPLAIN SELECT * FROM holds WHERE event_id='night'");
         assertFalse(indexes.isEmpty());
-        System.out.println("G-0010 lock ordering: pricing blocked, independent event FOR UPDATE NOWAIT succeeded; hold query EXPLAIN="+indexes);
+        var isolation=store.transact("night",ledger->jdbc.queryForObject("SELECT @@transaction_isolation",String.class));
+        assertEquals("READ-COMMITTED",isolation);
+        System.out.println("G-0010 lock ordering: pricing blocked, independent event FOR UPDATE NOWAIT succeeded; isolation="+
+            isolation+" hold query EXPLAIN="+indexes);
+    }
+
+    @Test void killedApplicationAfterCommitBeforeClientResponseRecoversAfterRestart()throws Exception {
+        var reserved=hold();int port=freePort();
+        var forwarded=new CountDownLatch(1);var dropResponse=new CountDownLatch(1);
+        var forwardedStatus=new AtomicReference<Integer>();var proxyError=new AtomicReference<Throwable>();
+        var proxy=HttpServer.create(new InetSocketAddress("127.0.0.1",0),0);
+        Process child=null;
+        proxy.createContext("/api/orders",exchange->{
+            try{
+                var body=exchange.getRequestBody().readAllBytes();
+                var outgoing=HttpRequest.newBuilder(URI.create("http://127.0.0.1:"+port+"/api/orders"))
+                    .timeout(Duration.ofSeconds(15))
+                    .header("Authorization",exchange.getRequestHeaders().getFirst("Authorization"))
+                    .header("Idempotency-Key",exchange.getRequestHeaders().getFirst("Idempotency-Key"))
+                    .header("Content-Type","application/json")
+                    .POST(HttpRequest.BodyPublishers.ofByteArray(body)).build();
+                forwardedStatus.set(HTTP.send(outgoing,HttpResponse.BodyHandlers.ofString()).statusCode());
+                forwarded.countDown();
+                dropResponse.await(15,TimeUnit.SECONDS); // Keep response private to proxy until child is killed.
+            }catch(Throwable e){proxyError.set(e);forwarded.countDown();}
+            finally{exchange.close();}
+        });
+        proxy.start();
+        try(var pool=Executors.newSingleThreadExecutor()){
+            child=startBookingProcess(port);awaitChild(port,child);
+            var pending=pool.submit(()->requestAt(proxy.getAddress().getPort(),"/api/orders",GUEST,"after-commit",reserved.id()));
+            assertTrue(forwarded.await(20,TimeUnit.SECONDS),"Proxy did not observe committed checkout");
+            assertNull(proxyError.get(),"Proxy forwarding failed: "+proxyError.get());
+            assertEquals(200,forwardedStatus.get());
+            assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM orders WHERE hold_id=?",Integer.class,reserved.id().toString()));
+            System.out.println("G-0010 proxy observed committed response status=200; mysqlContainer="+mysql.getContainerId()+
+                " heldResponseAt="+Instant.now()+" childPid="+child.pid());
+            child.destroyForcibly();assertTrue(child.waitFor(10,TimeUnit.SECONDS));
+            System.out.println("G-0010 child killed pid="+child.pid()+" exit="+child.exitValue()+" at="+Instant.now());
+            dropResponse.countDown();
+            assertThrows(ExecutionException.class,()->pending.get(20,TimeUnit.SECONDS),
+                "Proxy must drop the response so the client has an uncertain result");
+            proxy.stop(0);
+            child=startBookingProcess(port);awaitChild(port,child);
+            var recovered=requestAt(port,"/api/orders/recovery",GUEST,"after-commit",reserved.id());
+            assertEquals(200,recovered.statusCode(),recovered.body());
+            var state=json.readValue(recovered.body(),Booking.Recovery.class);
+            assertEquals(Booking.HoldStatus.CONFIRMED,state.hold().status());
+            assertNotNull(state.order());
+            var replay=requestAt(port,"/api/orders",GUEST,"after-commit",reserved.id());
+            assertEquals(200,replay.statusCode(),replay.body());
+            assertEquals(state.order(),json.readValue(replay.body(),Booking.Order.class));
+            assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM orders",Integer.class));
+            assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM holds WHERE status='CONFIRMED'",Integer.class));
+            assertEquals(2,service.availability("night").available());
+            System.out.println("G-0010 process interruption: committed order="+state.order().id()+
+                " recovered after child restart; orders=1 confirmed=1 available=2");
+        }finally{
+            dropResponse.countDown();proxy.stop(0);
+            if(child!=null&&child.isAlive()){child.destroyForcibly();child.waitFor(10,TimeUnit.SECONDS);}
+        }
+    }
+
+    static int freePort()throws Exception{
+        try(var socket=new ServerSocket(0)){return socket.getLocalPort();}
+    }
+    Process startBookingProcess(int port)throws Exception{
+        var jar=Path.of("target","app.jar").toAbsolutePath();assertTrue(Files.isRegularFile(jar),jar.toString());
+        var java=Path.of(System.getProperty("java.home"),"bin","java").toString();
+        var output=Files.createTempFile("g0010-booking-child-",".log");
+        var builder=new ProcessBuilder(java,"-jar",jar.toString(),"--server.address=127.0.0.1","--server.port="+port);
+        builder.redirectErrorStream(true).redirectOutput(output.toFile());
+        var environment=builder.environment();
+        environment.put("SPRING_PROFILES_ACTIVE","local");
+        environment.put("JDBC_URL",mysql.getJdbcUrl());
+        environment.put("DB_USER",mysql.getUsername());
+        environment.put("DB_PASSWORD",mysql.getPassword());
+        environment.put("DEMO_EMPLOYEE_TOKEN",EMPLOYEE);
+        environment.put("DEMO_GUEST_TOKEN",GUEST);
+        environment.put("DEMO_OTHER_GUEST_TOKEN",OTHER);
+        environment.put("DEMO_SERVICE_TOKEN","test_service_1234567890123456789012345");
+        environment.put("PRICING_URL","http://127.0.0.1:9"); // Confirmation/recovery must not call pricing.
+        var process=builder.start();
+        System.out.println("G-0010 child process pid="+process.pid()+" port="+port+" at="+Instant.now()+" localLog="+output);
+        return process;
+    }
+    void awaitChild(int port,Process child)throws Exception{
+        long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(45);
+        while(System.nanoTime()<deadline){
+            assertTrue(child.isAlive(),"Booking child exited before readiness");
+            try{if(requestAt(port,"/api/session",GUEST,null,null).statusCode()==200)return;}
+            catch(Exception ignored){Thread.sleep(100);}
+        }
+        fail("Booking child readiness timed out");
     }
 }
