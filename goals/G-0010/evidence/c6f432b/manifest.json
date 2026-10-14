@@ -176,19 +176,19 @@
     {
       "id": "REVIEW-CONTRACT",
       "path": "reviews/contract.md",
-      "sha256": null,
+      "sha256": "b1d9f6fa8a197662292a23d9bb1cdf8cb5580b0371b5710c78011b5ad89f8eee",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
       "id": "REVIEW-ADVERSARIAL",
       "path": "reviews/adversarial.md",
-      "sha256": null,
+      "sha256": "d540bb7e47da6476c87d2a5a600ad341fb36fcf723377a1227640c16f289c948",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
       "id": "VALIDATION",
       "path": "validation.md",
-      "sha256": null,
+      "sha256": "1cd06130cb168a609076ce52bf01f86c1dd96f28249799ca6c72611e32550139",
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5"
     },
     {
@@ -207,31 +207,31 @@
   "reviews": [
     {
       "role": "contract",
-      "reviewer_id": null,
-      "session_id": null,
-      "independent_of_writer": null,
+      "reviewer_id": "native contract-reviewer /root/g0010_contract_round2_native",
+      "session_id": "01a13897-1d97-76b2-8b9c-d064881c86ae",
+      "independent_of_writer": true,
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
-      "round": null,
-      "open_blockers": null,
-      "decision": "not_run",
+      "round": 2,
+      "open_blockers": 0,
+      "decision": "pass",
       "report_artifact_id": "REVIEW-CONTRACT"
     },
     {
       "role": "adversarial",
-      "reviewer_id": null,
-      "session_id": null,
-      "independent_of_writer": null,
+      "reviewer_id": "native adversarial-reviewer /root/g0010_adversarial_round2",
+      "session_id": "01a13897-1dec-71f1-afab-bd53b9d573e8",
+      "independent_of_writer": true,
       "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
-      "round": null,
-      "open_blockers": null,
-      "decision": "not_run",
+      "round": 2,
+      "open_blockers": 0,
+      "decision": "pass",
       "report_artifact_id": "REVIEW-ADVERSARIAL"
     }
   ],
   "intended_use_validation": {
-    "validator_id": null,
+    "validator_id": "Codex delegated by Adam Burdett",
     "candidate_commit": "c6f432bf25f3ee71b4e58b7dd17c70272d2e9ff5",
-    "decision": "not_run",
+    "decision": "accept",
     "report_artifact_id": "VALIDATION"
   },
   "readiness_decision": {
